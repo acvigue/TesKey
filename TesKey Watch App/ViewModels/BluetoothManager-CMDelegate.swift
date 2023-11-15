@@ -1,8 +1,8 @@
 //
-//  CoreBluetoothViewModelExtension.swift
-//  SwiftUI-BLE-Project
+//  BluetoothManager-CMDelegate.swift
+//  TesKey Watch App
 //
-//  Created by kazuya ito on 2021/02/02.
+//  Created by aiden on November 14, 2023.
 //
 
 import CoreBluetooth
@@ -30,7 +30,7 @@ extension BluetoothManager: CBCentralManagerDelegate {
             if(savedPeripherals?.isEmpty ?? false) {
                 showPairingDialog = true;
             } else {
-                let savedPeripheral = 
+                let savedPeripheral =
             }
         } else {
             logger.info("CoreBluetooth power off!");

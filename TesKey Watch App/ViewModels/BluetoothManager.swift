@@ -1,8 +1,8 @@
 //
-//  CoreBluetoothViewModel.swift
-//  SwiftUI-BLE-Project
+//  BluetoothManager.swift
+//  TesKey Watch App
 //
-//  Created by kazuya ito on 2021/02/02.
+//  Created by aiden on November 14, 2023.
 //
 
 import SwiftUI
