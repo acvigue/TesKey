@@ -1,0 +1,745 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		DF31F1372B02CC65006A47F4 /* TesKey Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = DF31F1362B02CC65006A47F4 /* TesKey Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		DF31F13C2B02CC65006A47F4 /* TesKeyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF31F13B2B02CC65006A47F4 /* TesKeyApp.swift */; };
+		DF31F13E2B02CC65006A47F4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF31F13D2B02CC65006A47F4 /* ContentView.swift */; };
+		DF31F1402B02CC67006A47F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF31F13F2B02CC67006A47F4 /* Assets.xcassets */; };
+		DF31F1432B02CC67006A47F4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF31F1422B02CC67006A47F4 /* Preview Assets.xcassets */; };
+		DF31F14D2B02CC67006A47F4 /* TesKey_Watch_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF31F14C2B02CC67006A47F4 /* TesKey_Watch_AppTests.swift */; };
+		DF31F1572B02CC67006A47F4 /* TesKey_Watch_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF31F1562B02CC67006A47F4 /* TesKey_Watch_AppUITests.swift */; };
+		DF31F1592B02CC67006A47F4 /* TesKey_Watch_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF31F1582B02CC67006A47F4 /* TesKey_Watch_AppUITestsLaunchTests.swift */; };
+		DFD10B862B03BE00007E8477 /* SwiftProtobuf in Frameworks */ = {isa = PBXBuildFile; productRef = DFD10B852B03BE00007E8477 /* SwiftProtobuf */; };
+		DFD10B882B03BE0B007E8477 /* vcsec.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD10B872B03BE0B007E8477 /* vcsec.pb.swift */; };
+		DFD10B8B2B03FF83007E8477 /* BluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD10B8A2B03FF83007E8477 /* BluetoothManager.swift */; };
+		DFD10B8D2B03FFA9007E8477 /* BluetoothManager-CMDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD10B8C2B03FFA9007E8477 /* BluetoothManager-CMDelegate.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DF31F1382B02CC65006A47F4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DF31F12A2B02CC65006A47F4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DF31F1352B02CC65006A47F4;
+			remoteInfo = "TesKey Watch App";
+		};
+		DF31F1492B02CC67006A47F4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DF31F12A2B02CC65006A47F4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DF31F1352B02CC65006A47F4;
+			remoteInfo = "TesKey Watch App";
+		};
+		DF31F1532B02CC67006A47F4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DF31F12A2B02CC65006A47F4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DF31F1352B02CC65006A47F4;
+			remoteInfo = "TesKey Watch App";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		DF31F15F2B02CC67006A47F4 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				DF31F1372B02CC65006A47F4 /* TesKey Watch App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		DF31F1302B02CC65006A47F4 /* TesKey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TesKey.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF31F1362B02CC65006A47F4 /* TesKey Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TesKey Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF31F13B2B02CC65006A47F4 /* TesKeyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TesKeyApp.swift; sourceTree = "<group>"; };
+		DF31F13D2B02CC65006A47F4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		DF31F13F2B02CC67006A47F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DF31F1422B02CC67006A47F4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		DF31F1482B02CC67006A47F4 /* TesKey Watch AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TesKey Watch AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF31F14C2B02CC67006A47F4 /* TesKey_Watch_AppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TesKey_Watch_AppTests.swift; sourceTree = "<group>"; };
+		DF31F1522B02CC67006A47F4 /* TesKey Watch AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TesKey Watch AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF31F1562B02CC67006A47F4 /* TesKey_Watch_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TesKey_Watch_AppUITests.swift; sourceTree = "<group>"; };
+		DF31F1582B02CC67006A47F4 /* TesKey_Watch_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TesKey_Watch_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		DFD10B872B03BE0B007E8477 /* vcsec.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vcsec.pb.swift; sourceTree = "<group>"; };
+		DFD10B8A2B03FF83007E8477 /* BluetoothManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothManager.swift; sourceTree = "<group>"; };
+		DFD10B8C2B03FFA9007E8477 /* BluetoothManager-CMDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BluetoothManager-CMDelegate.swift"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DF31F1332B02CC65006A47F4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DFD10B862B03BE00007E8477 /* SwiftProtobuf in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DF31F1452B02CC67006A47F4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DF31F14F2B02CC67006A47F4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DF31F1292B02CC65006A47F4 = {
+			isa = PBXGroup;
+			children = (
+				DF31F13A2B02CC65006A47F4 /* TesKey Watch App */,
+				DF31F14B2B02CC67006A47F4 /* TesKey Watch AppTests */,
+				DF31F1552B02CC67006A47F4 /* TesKey Watch AppUITests */,
+				DF31F1312B02CC65006A47F4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DF31F1312B02CC65006A47F4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DF31F1302B02CC65006A47F4 /* TesKey.app */,
+				DF31F1362B02CC65006A47F4 /* TesKey Watch App.app */,
+				DF31F1482B02CC67006A47F4 /* TesKey Watch AppTests.xctest */,
+				DF31F1522B02CC67006A47F4 /* TesKey Watch AppUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DF31F13A2B02CC65006A47F4 /* TesKey Watch App */ = {
+			isa = PBXGroup;
+			children = (
+				DFD10B892B03FF72007E8477 /* ViewModels */,
+				DFD10B872B03BE0B007E8477 /* vcsec.pb.swift */,
+				DF31F13B2B02CC65006A47F4 /* TesKeyApp.swift */,
+				DF31F13D2B02CC65006A47F4 /* ContentView.swift */,
+				DF31F13F2B02CC67006A47F4 /* Assets.xcassets */,
+				DF31F1412B02CC67006A47F4 /* Preview Content */,
+			);
+			path = "TesKey Watch App";
+			sourceTree = "<group>";
+		};
+		DF31F1412B02CC67006A47F4 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				DF31F1422B02CC67006A47F4 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		DF31F14B2B02CC67006A47F4 /* TesKey Watch AppTests */ = {
+			isa = PBXGroup;
+			children = (
+				DF31F14C2B02CC67006A47F4 /* TesKey_Watch_AppTests.swift */,
+			);
+			path = "TesKey Watch AppTests";
+			sourceTree = "<group>";
+		};
+		DF31F1552B02CC67006A47F4 /* TesKey Watch AppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				DF31F1562B02CC67006A47F4 /* TesKey_Watch_AppUITests.swift */,
+				DF31F1582B02CC67006A47F4 /* TesKey_Watch_AppUITestsLaunchTests.swift */,
+			);
+			path = "TesKey Watch AppUITests";
+			sourceTree = "<group>";
+		};
+		DFD10B892B03FF72007E8477 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				DFD10B8A2B03FF83007E8477 /* BluetoothManager.swift */,
+				DFD10B8C2B03FFA9007E8477 /* BluetoothManager-CMDelegate.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DF31F12F2B02CC65006A47F4 /* TesKey */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DF31F1602B02CC67006A47F4 /* Build configuration list for PBXNativeTarget "TesKey" */;
+			buildPhases = (
+				DF31F12E2B02CC65006A47F4 /* Resources */,
+				DF31F15F2B02CC67006A47F4 /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DF31F1392B02CC65006A47F4 /* PBXTargetDependency */,
+			);
+			name = TesKey;
+			productName = TesKey;
+			productReference = DF31F1302B02CC65006A47F4 /* TesKey.app */;
+			productType = "com.apple.product-type.application.watchapp2-container";
+		};
+		DF31F1352B02CC65006A47F4 /* TesKey Watch App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DF31F15C2B02CC67006A47F4 /* Build configuration list for PBXNativeTarget "TesKey Watch App" */;
+			buildPhases = (
+				DF31F1322B02CC65006A47F4 /* Sources */,
+				DF31F1332B02CC65006A47F4 /* Frameworks */,
+				DF31F1342B02CC65006A47F4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "TesKey Watch App";
+			packageProductDependencies = (
+				DFD10B852B03BE00007E8477 /* SwiftProtobuf */,
+			);
+			productName = "TesKey Watch App";
+			productReference = DF31F1362B02CC65006A47F4 /* TesKey Watch App.app */;
+			productType = "com.apple.product-type.application";
+		};
+		DF31F1472B02CC67006A47F4 /* TesKey Watch AppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DF31F1632B02CC67006A47F4 /* Build configuration list for PBXNativeTarget "TesKey Watch AppTests" */;
+			buildPhases = (
+				DF31F1442B02CC67006A47F4 /* Sources */,
+				DF31F1452B02CC67006A47F4 /* Frameworks */,
+				DF31F1462B02CC67006A47F4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DF31F14A2B02CC67006A47F4 /* PBXTargetDependency */,
+			);
+			name = "TesKey Watch AppTests";
+			productName = "TesKey Watch AppTests";
+			productReference = DF31F1482B02CC67006A47F4 /* TesKey Watch AppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		DF31F1512B02CC67006A47F4 /* TesKey Watch AppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DF31F1662B02CC67006A47F4 /* Build configuration list for PBXNativeTarget "TesKey Watch AppUITests" */;
+			buildPhases = (
+				DF31F14E2B02CC67006A47F4 /* Sources */,
+				DF31F14F2B02CC67006A47F4 /* Frameworks */,
+				DF31F1502B02CC67006A47F4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DF31F1542B02CC67006A47F4 /* PBXTargetDependency */,
+			);
+			name = "TesKey Watch AppUITests";
+			productName = "TesKey Watch AppUITests";
+			productReference = DF31F1522B02CC67006A47F4 /* TesKey Watch AppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DF31F12A2B02CC65006A47F4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					DF31F12F2B02CC65006A47F4 = {
+						CreatedOnToolsVersion = 15.0.1;
+					};
+					DF31F1352B02CC65006A47F4 = {
+						CreatedOnToolsVersion = 15.0.1;
+					};
+					DF31F1472B02CC67006A47F4 = {
+						CreatedOnToolsVersion = 15.0.1;
+						TestTargetID = DF31F1352B02CC65006A47F4;
+					};
+					DF31F1512B02CC67006A47F4 = {
+						CreatedOnToolsVersion = 15.0.1;
+						TestTargetID = DF31F1352B02CC65006A47F4;
+					};
+				};
+			};
+			buildConfigurationList = DF31F12D2B02CC65006A47F4 /* Build configuration list for PBXProject "TesKey" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = DF31F1292B02CC65006A47F4;
+			packageReferences = (
+				DFD10B842B03BE00007E8477 /* XCRemoteSwiftPackageReference "swift-protobuf" */,
+			);
+			productRefGroup = DF31F1312B02CC65006A47F4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DF31F12F2B02CC65006A47F4 /* TesKey */,
+				DF31F1352B02CC65006A47F4 /* TesKey Watch App */,
+				DF31F1472B02CC67006A47F4 /* TesKey Watch AppTests */,
+				DF31F1512B02CC67006A47F4 /* TesKey Watch AppUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DF31F12E2B02CC65006A47F4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DF31F1342B02CC65006A47F4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DF31F1432B02CC67006A47F4 /* Preview Assets.xcassets in Resources */,
+				DF31F1402B02CC67006A47F4 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DF31F1462B02CC67006A47F4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DF31F1502B02CC67006A47F4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DF31F1322B02CC65006A47F4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DFD10B882B03BE0B007E8477 /* vcsec.pb.swift in Sources */,
+				DF31F13E2B02CC65006A47F4 /* ContentView.swift in Sources */,
+				DFD10B8D2B03FFA9007E8477 /* BluetoothManager-CMDelegate.swift in Sources */,
+				DFD10B8B2B03FF83007E8477 /* BluetoothManager.swift in Sources */,
+				DF31F13C2B02CC65006A47F4 /* TesKeyApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DF31F1442B02CC67006A47F4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DF31F14D2B02CC67006A47F4 /* TesKey_Watch_AppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DF31F14E2B02CC67006A47F4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DF31F1572B02CC67006A47F4 /* TesKey_Watch_AppUITests.swift in Sources */,
+				DF31F1592B02CC67006A47F4 /* TesKey_Watch_AppUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DF31F1392B02CC65006A47F4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DF31F1352B02CC65006A47F4 /* TesKey Watch App */;
+			targetProxy = DF31F1382B02CC65006A47F4 /* PBXContainerItemProxy */;
+		};
+		DF31F14A2B02CC67006A47F4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DF31F1352B02CC65006A47F4 /* TesKey Watch App */;
+			targetProxy = DF31F1492B02CC67006A47F4 /* PBXContainerItemProxy */;
+		};
+		DF31F1542B02CC67006A47F4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DF31F1352B02CC65006A47F4 /* TesKey Watch App */;
+			targetProxy = DF31F1532B02CC67006A47F4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		DF31F15A2B02CC67006A47F4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		DF31F15B2B02CC67006A47F4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		DF31F15D2B02CC67006A47F4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"TesKey Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = 9R8RREG67J;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = TesKey;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKWatchOnly = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.vigue.TesKey.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Debug;
+		};
+		DF31F15E2B02CC67006A47F4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"TesKey Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = 9R8RREG67J;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = TesKey;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKWatchOnly = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.vigue.TesKey.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Release;
+		};
+		DF31F1612B02CC67006A47F4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9R8RREG67J;
+				INFOPLIST_KEY_CFBundleDisplayName = TesKey;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.vigue.TesKey;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		DF31F1622B02CC67006A47F4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9R8RREG67J;
+				INFOPLIST_KEY_CFBundleDisplayName = TesKey;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.vigue.TesKey;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		DF31F1642B02CC67006A47F4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9R8RREG67J;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "me.vigue.TesKey-Watch-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TesKey Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TesKey Watch App";
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Debug;
+		};
+		DF31F1652B02CC67006A47F4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9R8RREG67J;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "me.vigue.TesKey-Watch-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TesKey Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TesKey Watch App";
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Release;
+		};
+		DF31F1672B02CC67006A47F4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9R8RREG67J;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "me.vigue.TesKey-Watch-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = "TesKey Watch App";
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Debug;
+		};
+		DF31F1682B02CC67006A47F4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9R8RREG67J;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "me.vigue.TesKey-Watch-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = "TesKey Watch App";
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DF31F12D2B02CC65006A47F4 /* Build configuration list for PBXProject "TesKey" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DF31F15A2B02CC67006A47F4 /* Debug */,
+				DF31F15B2B02CC67006A47F4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DF31F15C2B02CC67006A47F4 /* Build configuration list for PBXNativeTarget "TesKey Watch App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DF31F15D2B02CC67006A47F4 /* Debug */,
+				DF31F15E2B02CC67006A47F4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DF31F1602B02CC67006A47F4 /* Build configuration list for PBXNativeTarget "TesKey" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DF31F1612B02CC67006A47F4 /* Debug */,
+				DF31F1622B02CC67006A47F4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DF31F1632B02CC67006A47F4 /* Build configuration list for PBXNativeTarget "TesKey Watch AppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DF31F1642B02CC67006A47F4 /* Debug */,
+				DF31F1652B02CC67006A47F4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DF31F1662B02CC67006A47F4 /* Build configuration list for PBXNativeTarget "TesKey Watch AppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DF31F1672B02CC67006A47F4 /* Debug */,
+				DF31F1682B02CC67006A47F4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		DFD10B842B03BE00007E8477 /* XCRemoteSwiftPackageReference "swift-protobuf" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-protobuf.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.25.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DFD10B852B03BE00007E8477 /* SwiftProtobuf */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DFD10B842B03BE00007E8477 /* XCRemoteSwiftPackageReference "swift-protobuf" */;
+			productName = SwiftProtobuf;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = DF31F12A2B02CC65006A47F4 /* Project object */;
+}
