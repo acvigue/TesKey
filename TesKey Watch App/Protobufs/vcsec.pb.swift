@@ -7,6 +7,22 @@
 // For information on using the generated types, please see the documentation:
 //   https://github.com/apple/swift-protobuf/
 
+//
+//
+// Licensed under the Apache License, Version 2.0 (the "License"); you may not
+// use this file except in compliance with the License. You may obtain a copy of
+// the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+// WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+// License for the specific language governing permissions and limitations under
+// the License.
+//
+// Adapted from https://github.com/teslamotors/vehicle-command
+
 import Foundation
 import SwiftProtobuf
 
@@ -20,7 +36,7 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
   typealias Version = _2
 }
 
-enum VCSEC_Activity_E: SwiftProtobuf.Enum {
+enum Activity_E: SwiftProtobuf.Enum {
   typealias RawValue = Int
   case activityNone // = 0
   case activityStationary // = 1
@@ -56,9 +72,9 @@ enum VCSEC_Activity_E: SwiftProtobuf.Enum {
 
 #if swift(>=4.2)
 
-extension VCSEC_Activity_E: CaseIterable {
+extension Activity_E: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  static let allCases: [VCSEC_Activity_E] = [
+  static let allCases: [Activity_E] = [
     .activityNone,
     .activityStationary,
     .activityMotion,
@@ -68,7 +84,47 @@ extension VCSEC_Activity_E: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-enum VCSEC_AppDeviceInfoRequest_E: SwiftProtobuf.Enum {
+enum AlertConfirmation: SwiftProtobuf.Enum {
+  typealias RawValue = Int
+  case none // = 0
+  case peerRemovedInformation // = 1
+  case UNRECOGNIZED(Int)
+
+  init() {
+    self = .none
+  }
+
+  init?(rawValue: Int) {
+    switch rawValue {
+    case 0: self = .none
+    case 1: self = .peerRemovedInformation
+    default: self = .UNRECOGNIZED(rawValue)
+    }
+  }
+
+  var rawValue: Int {
+    switch self {
+    case .none: return 0
+    case .peerRemovedInformation: return 1
+    case .UNRECOGNIZED(let i): return i
+    }
+  }
+
+}
+
+#if swift(>=4.2)
+
+extension AlertConfirmation: CaseIterable {
+  // The compiler won't synthesize support with the UNRECOGNIZED case.
+  static let allCases: [AlertConfirmation] = [
+    .none,
+    .peerRemovedInformation,
+  ]
+}
+
+#endif  // swift(>=4.2)
+
+enum AppDeviceInfoRequest_E: SwiftProtobuf.Enum {
   typealias RawValue = Int
   case appDeviceInfoRequestNone // = 0
   case appDeviceInfoRequestGetModelNumber // = 1
@@ -98,9 +154,9 @@ enum VCSEC_AppDeviceInfoRequest_E: SwiftProtobuf.Enum {
 
 #if swift(>=4.2)
 
-extension VCSEC_AppDeviceInfoRequest_E: CaseIterable {
+extension AppDeviceInfoRequest_E: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  static let allCases: [VCSEC_AppDeviceInfoRequest_E] = [
+  static let allCases: [AppDeviceInfoRequest_E] = [
     .appDeviceInfoRequestNone,
     .appDeviceInfoRequestGetModelNumber,
   ]
@@ -108,7 +164,7 @@ extension VCSEC_AppDeviceInfoRequest_E: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-enum VCSEC_AppOperatingSystem: SwiftProtobuf.Enum {
+enum AppOperatingSystem: SwiftProtobuf.Enum {
   typealias RawValue = Int
   case unknown // = 0
   case android // = 1
@@ -141,9 +197,9 @@ enum VCSEC_AppOperatingSystem: SwiftProtobuf.Enum {
 
 #if swift(>=4.2)
 
-extension VCSEC_AppOperatingSystem: CaseIterable {
+extension AppOperatingSystem: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  static let allCases: [VCSEC_AppOperatingSystem] = [
+  static let allCases: [AppOperatingSystem] = [
     .unknown,
     .android,
     .ios,
@@ -152,7 +208,7 @@ extension VCSEC_AppOperatingSystem: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-enum VCSEC_AuthenticationLevel_E: SwiftProtobuf.Enum {
+enum AuthenticationLevel_E: SwiftProtobuf.Enum {
   typealias RawValue = Int
   case authenticationLevelNone // = 0
   case authenticationLevelUnlock // = 1
@@ -185,9 +241,9 @@ enum VCSEC_AuthenticationLevel_E: SwiftProtobuf.Enum {
 
 #if swift(>=4.2)
 
-extension VCSEC_AuthenticationLevel_E: CaseIterable {
+extension AuthenticationLevel_E: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  static let allCases: [VCSEC_AuthenticationLevel_E] = [
+  static let allCases: [AuthenticationLevel_E] = [
     .authenticationLevelNone,
     .authenticationLevelUnlock,
     .authenticationLevelDrive,
@@ -196,7 +252,7 @@ extension VCSEC_AuthenticationLevel_E: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-enum VCSEC_AuthenticationReason_E: SwiftProtobuf.Enum {
+enum AuthenticationReason_E: SwiftProtobuf.Enum {
   typealias RawValue = Int
   case authenticationreasonNotDocumented // = 0
   case authenticationreasonIdentification // = 1
@@ -253,9 +309,9 @@ enum VCSEC_AuthenticationReason_E: SwiftProtobuf.Enum {
 
 #if swift(>=4.2)
 
-extension VCSEC_AuthenticationReason_E: CaseIterable {
+extension AuthenticationReason_E: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  static let allCases: [VCSEC_AuthenticationReason_E] = [
+  static let allCases: [AuthenticationReason_E] = [
     .authenticationreasonNotDocumented,
     .authenticationreasonIdentification,
     .authenticationreasonPowerOnVehicleRequest,
@@ -272,7 +328,7 @@ extension VCSEC_AuthenticationReason_E: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-enum VCSEC_AuthenticationRejection_E: SwiftProtobuf.Enum {
+enum AuthenticationRejection_E: SwiftProtobuf.Enum {
   typealias RawValue = Int
   case authenticationrejectionNone // = 0
   case authenticationrejectionDeviceStationary // = 1
@@ -308,9 +364,9 @@ enum VCSEC_AuthenticationRejection_E: SwiftProtobuf.Enum {
 
 #if swift(>=4.2)
 
-extension VCSEC_AuthenticationRejection_E: CaseIterable {
+extension AuthenticationRejection_E: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  static let allCases: [VCSEC_AuthenticationRejection_E] = [
+  static let allCases: [AuthenticationRejection_E] = [
     .authenticationrejectionNone,
     .authenticationrejectionDeviceStationary,
     .authenticationrejectionPassiveDisabled,
@@ -320,7 +376,7 @@ extension VCSEC_AuthenticationRejection_E: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-enum VCSEC_BLEAdditionalTRIMApplied_E: SwiftProtobuf.Enum {
+enum BLEAdditionalTRIMApplied_E: SwiftProtobuf.Enum {
   typealias RawValue = Int
   case bleAdditionalTrimAppliedNone // = 0
   case bleAdditionalTrimAppliedApplied // = 1
@@ -353,9 +409,9 @@ enum VCSEC_BLEAdditionalTRIMApplied_E: SwiftProtobuf.Enum {
 
 #if swift(>=4.2)
 
-extension VCSEC_BLEAdditionalTRIMApplied_E: CaseIterable {
+extension BLEAdditionalTRIMApplied_E: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  static let allCases: [VCSEC_BLEAdditionalTRIMApplied_E] = [
+  static let allCases: [BLEAdditionalTRIMApplied_E] = [
     .bleAdditionalTrimAppliedNone,
     .bleAdditionalTrimAppliedApplied,
     .bleAdditionalTrimAppliedNotApplied,
@@ -364,7 +420,7 @@ extension VCSEC_BLEAdditionalTRIMApplied_E: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-enum VCSEC_BLEConfigCommandType_E: SwiftProtobuf.Enum {
+enum BLEConfigCommandType_E: SwiftProtobuf.Enum {
   typealias RawValue = Int
   case bleConfigCommandTypeNone // = 0
   case bleConfigCommandTypeRead // = 1
@@ -397,9 +453,9 @@ enum VCSEC_BLEConfigCommandType_E: SwiftProtobuf.Enum {
 
 #if swift(>=4.2)
 
-extension VCSEC_BLEConfigCommandType_E: CaseIterable {
+extension BLEConfigCommandType_E: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  static let allCases: [VCSEC_BLEConfigCommandType_E] = [
+  static let allCases: [BLEConfigCommandType_E] = [
     .bleConfigCommandTypeNone,
     .bleConfigCommandTypeRead,
     .bleConfigCommandTypeWrite,
@@ -408,7 +464,7 @@ extension VCSEC_BLEConfigCommandType_E: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-enum VCSEC_BLEPresence: SwiftProtobuf.Enum {
+enum BLEPresence: SwiftProtobuf.Enum {
   typealias RawValue = Int
   case notPresent // = 0
   case present // = 1
@@ -438,9 +494,9 @@ enum VCSEC_BLEPresence: SwiftProtobuf.Enum {
 
 #if swift(>=4.2)
 
-extension VCSEC_BLEPresence: CaseIterable {
+extension BLEPresence: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  static let allCases: [VCSEC_BLEPresence] = [
+  static let allCases: [BLEPresence] = [
     .notPresent,
     .present,
   ]
@@ -448,7 +504,51 @@ extension VCSEC_BLEPresence: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-enum VCSEC_ClosureMoveType_E: SwiftProtobuf.Enum {
+enum CertificateStatus_E: SwiftProtobuf.Enum {
+  typealias RawValue = Int
+  case certificateStatusNone // = 0
+  case ceritficateStatusNotWritten // = 1
+  case certificateStatusWritten // = 2
+  case UNRECOGNIZED(Int)
+
+  init() {
+    self = .certificateStatusNone
+  }
+
+  init?(rawValue: Int) {
+    switch rawValue {
+    case 0: self = .certificateStatusNone
+    case 1: self = .ceritficateStatusNotWritten
+    case 2: self = .certificateStatusWritten
+    default: self = .UNRECOGNIZED(rawValue)
+    }
+  }
+
+  var rawValue: Int {
+    switch self {
+    case .certificateStatusNone: return 0
+    case .ceritficateStatusNotWritten: return 1
+    case .certificateStatusWritten: return 2
+    case .UNRECOGNIZED(let i): return i
+    }
+  }
+
+}
+
+#if swift(>=4.2)
+
+extension CertificateStatus_E: CaseIterable {
+  // The compiler won't synthesize support with the UNRECOGNIZED case.
+  static let allCases: [CertificateStatus_E] = [
+    .certificateStatusNone,
+    .ceritficateStatusNotWritten,
+    .certificateStatusWritten,
+  ]
+}
+
+#endif  // swift(>=4.2)
+
+enum ClosureMoveType_E: SwiftProtobuf.Enum {
   typealias RawValue = Int
   case closureMoveTypeNone // = 0
   case closureMoveTypeMove // = 1
@@ -487,9 +587,9 @@ enum VCSEC_ClosureMoveType_E: SwiftProtobuf.Enum {
 
 #if swift(>=4.2)
 
-extension VCSEC_ClosureMoveType_E: CaseIterable {
+extension ClosureMoveType_E: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  static let allCases: [VCSEC_ClosureMoveType_E] = [
+  static let allCases: [ClosureMoveType_E] = [
     .closureMoveTypeNone,
     .closureMoveTypeMove,
     .closureMoveTypeStop,
@@ -500,7 +600,7 @@ extension VCSEC_ClosureMoveType_E: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-enum VCSEC_ClosureState_E: SwiftProtobuf.Enum {
+enum ClosureState_E: SwiftProtobuf.Enum {
   typealias RawValue = Int
   case closurestateClosed // = 0
   case closurestateOpen // = 1
@@ -539,9 +639,9 @@ enum VCSEC_ClosureState_E: SwiftProtobuf.Enum {
 
 #if swift(>=4.2)
 
-extension VCSEC_ClosureState_E: CaseIterable {
+extension ClosureState_E: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  static let allCases: [VCSEC_ClosureState_E] = [
+  static let allCases: [ClosureState_E] = [
     .closurestateClosed,
     .closurestateOpen,
     .closurestateAjar,
@@ -552,7 +652,7 @@ extension VCSEC_ClosureState_E: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-enum VCSEC_Device_Motion_Confidence: SwiftProtobuf.Enum {
+enum Device_Motion_Confidence: SwiftProtobuf.Enum {
   typealias RawValue = Int
   case unknown // = 0
   case low // = 1
@@ -588,9 +688,9 @@ enum VCSEC_Device_Motion_Confidence: SwiftProtobuf.Enum {
 
 #if swift(>=4.2)
 
-extension VCSEC_Device_Motion_Confidence: CaseIterable {
+extension Device_Motion_Confidence: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  static let allCases: [VCSEC_Device_Motion_Confidence] = [
+  static let allCases: [Device_Motion_Confidence] = [
     .unknown,
     .low,
     .medium,
@@ -600,7 +700,7 @@ extension VCSEC_Device_Motion_Confidence: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-enum VCSEC_Device_Motion_State: SwiftProtobuf.Enum {
+enum Device_Motion_State: SwiftProtobuf.Enum {
   typealias RawValue = Int
   case deviceMotionUnknown // = 0
   case deviceMotionStationary // = 1
@@ -642,9 +742,9 @@ enum VCSEC_Device_Motion_State: SwiftProtobuf.Enum {
 
 #if swift(>=4.2)
 
-extension VCSEC_Device_Motion_State: CaseIterable {
+extension Device_Motion_State: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  static let allCases: [VCSEC_Device_Motion_State] = [
+  static let allCases: [Device_Motion_State] = [
     .deviceMotionUnknown,
     .deviceMotionStationary,
     .deviceMotionWalking,
@@ -656,7 +756,7 @@ extension VCSEC_Device_Motion_State: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-enum VCSEC_GenealogyRequest_E: SwiftProtobuf.Enum {
+enum GenealogyRequest_E: SwiftProtobuf.Enum {
   typealias RawValue = Int
   case genealogyrequestNone // = 0
   case genealogyrequestRead // = 1
@@ -692,9 +792,9 @@ enum VCSEC_GenealogyRequest_E: SwiftProtobuf.Enum {
 
 #if swift(>=4.2)
 
-extension VCSEC_GenealogyRequest_E: CaseIterable {
+extension GenealogyRequest_E: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  static let allCases: [VCSEC_GenealogyRequest_E] = [
+  static let allCases: [GenealogyRequest_E] = [
     .genealogyrequestNone,
     .genealogyrequestRead,
     .genealogyrequestKeyfobinfoRead,
@@ -704,7 +804,7 @@ extension VCSEC_GenealogyRequest_E: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-enum VCSEC_GenealogyStatus_E: SwiftProtobuf.Enum {
+enum GenealogyStatus_E: SwiftProtobuf.Enum {
   typealias RawValue = Int
   case genealogyStatusNone // = 0
   case genealogyStatusNotWritten // = 1
@@ -749,9 +849,9 @@ enum VCSEC_GenealogyStatus_E: SwiftProtobuf.Enum {
 
 #if swift(>=4.2)
 
-extension VCSEC_GenealogyStatus_E: CaseIterable {
+extension GenealogyStatus_E: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  static let allCases: [VCSEC_GenealogyStatus_E] = [
+  static let allCases: [GenealogyStatus_E] = [
     .genealogyStatusNone,
     .genealogyStatusNotWritten,
     .genealogyStatusWriteSuccess,
@@ -764,71 +864,7 @@ extension VCSEC_GenealogyStatus_E: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-enum VCSEC_GenericError_E: SwiftProtobuf.Enum {
-  typealias RawValue = Int
-  case genericerrorNone // = 0
-  case genericerrorUnknown // = 1
-  case genericerrorClosuresOpen // = 2
-  case genericerrorAlreadyOn // = 3
-  case genericerrorDisabledForUserCommand // = 4
-  case genericerrorVehicleNotInPark // = 5
-  case genericerrorUnauthorized // = 6
-  case genericerrorNotAllowedOverTransport // = 7
-  case UNRECOGNIZED(Int)
-
-  init() {
-    self = .genericerrorNone
-  }
-
-  init?(rawValue: Int) {
-    switch rawValue {
-    case 0: self = .genericerrorNone
-    case 1: self = .genericerrorUnknown
-    case 2: self = .genericerrorClosuresOpen
-    case 3: self = .genericerrorAlreadyOn
-    case 4: self = .genericerrorDisabledForUserCommand
-    case 5: self = .genericerrorVehicleNotInPark
-    case 6: self = .genericerrorUnauthorized
-    case 7: self = .genericerrorNotAllowedOverTransport
-    default: self = .UNRECOGNIZED(rawValue)
-    }
-  }
-
-  var rawValue: Int {
-    switch self {
-    case .genericerrorNone: return 0
-    case .genericerrorUnknown: return 1
-    case .genericerrorClosuresOpen: return 2
-    case .genericerrorAlreadyOn: return 3
-    case .genericerrorDisabledForUserCommand: return 4
-    case .genericerrorVehicleNotInPark: return 5
-    case .genericerrorUnauthorized: return 6
-    case .genericerrorNotAllowedOverTransport: return 7
-    case .UNRECOGNIZED(let i): return i
-    }
-  }
-
-}
-
-#if swift(>=4.2)
-
-extension VCSEC_GenericError_E: CaseIterable {
-  // The compiler won't synthesize support with the UNRECOGNIZED case.
-  static let allCases: [VCSEC_GenericError_E] = [
-    .genericerrorNone,
-    .genericerrorUnknown,
-    .genericerrorClosuresOpen,
-    .genericerrorAlreadyOn,
-    .genericerrorDisabledForUserCommand,
-    .genericerrorVehicleNotInPark,
-    .genericerrorUnauthorized,
-    .genericerrorNotAllowedOverTransport,
-  ]
-}
-
-#endif  // swift(>=4.2)
-
-enum VCSEC_GetReaderKeyCommand: SwiftProtobuf.Enum {
+enum GetReaderKeyCommand: SwiftProtobuf.Enum {
   typealias RawValue = Int
   case unknown // = 0
   case startLooking // = 1
@@ -861,9 +897,9 @@ enum VCSEC_GetReaderKeyCommand: SwiftProtobuf.Enum {
 
 #if swift(>=4.2)
 
-extension VCSEC_GetReaderKeyCommand: CaseIterable {
+extension GetReaderKeyCommand: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  static let allCases: [VCSEC_GetReaderKeyCommand] = [
+  static let allCases: [GetReaderKeyCommand] = [
     .unknown,
     .startLooking,
     .stopLooking,
@@ -872,7 +908,7 @@ extension VCSEC_GetReaderKeyCommand: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-enum VCSEC_HandlePulled_E: SwiftProtobuf.Enum {
+enum HandlePulled_E: SwiftProtobuf.Enum {
   typealias RawValue = Int
   case handlePulledFrontDriverDoor // = 0
   case handlePulledFrontPassengerDoor // = 1
@@ -883,6 +919,7 @@ enum VCSEC_HandlePulled_E: SwiftProtobuf.Enum {
   case handlePulledFrontDriverAutoPresentDoor // = 6
   case handlePulledFrontPassengerAutoPresentDoor // = 7
   case handlePulledOther // = 8
+  case handlePulledFrunk // = 9
   case UNRECOGNIZED(Int)
 
   init() {
@@ -900,6 +937,7 @@ enum VCSEC_HandlePulled_E: SwiftProtobuf.Enum {
     case 6: self = .handlePulledFrontDriverAutoPresentDoor
     case 7: self = .handlePulledFrontPassengerAutoPresentDoor
     case 8: self = .handlePulledOther
+    case 9: self = .handlePulledFrunk
     default: self = .UNRECOGNIZED(rawValue)
     }
   }
@@ -915,6 +953,7 @@ enum VCSEC_HandlePulled_E: SwiftProtobuf.Enum {
     case .handlePulledFrontDriverAutoPresentDoor: return 6
     case .handlePulledFrontPassengerAutoPresentDoor: return 7
     case .handlePulledOther: return 8
+    case .handlePulledFrunk: return 9
     case .UNRECOGNIZED(let i): return i
     }
   }
@@ -923,9 +962,9 @@ enum VCSEC_HandlePulled_E: SwiftProtobuf.Enum {
 
 #if swift(>=4.2)
 
-extension VCSEC_HandlePulled_E: CaseIterable {
+extension HandlePulled_E: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  static let allCases: [VCSEC_HandlePulled_E] = [
+  static let allCases: [HandlePulled_E] = [
     .handlePulledFrontDriverDoor,
     .handlePulledFrontPassengerDoor,
     .handlePulledRearDriverDoor,
@@ -935,12 +974,13 @@ extension VCSEC_HandlePulled_E: CaseIterable {
     .handlePulledFrontDriverAutoPresentDoor,
     .handlePulledFrontPassengerAutoPresentDoor,
     .handlePulledOther,
+    .handlePulledFrunk,
   ]
 }
 
 #endif  // swift(>=4.2)
 
-enum VCSEC_IMURequest_E: SwiftProtobuf.Enum {
+enum IMURequest_E: SwiftProtobuf.Enum {
   typealias RawValue = Int
   case imuRequestNone // = 0
   case imuRequestGetSleepState // = 1
@@ -976,9 +1016,9 @@ enum VCSEC_IMURequest_E: SwiftProtobuf.Enum {
 
 #if swift(>=4.2)
 
-extension VCSEC_IMURequest_E: CaseIterable {
+extension IMURequest_E: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  static let allCases: [VCSEC_IMURequest_E] = [
+  static let allCases: [IMURequest_E] = [
     .imuRequestNone,
     .imuRequestGetSleepState,
     .nableContinuousActivityUpdate,
@@ -988,7 +1028,7 @@ extension VCSEC_IMURequest_E: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-enum VCSEC_IMUState_E: SwiftProtobuf.Enum {
+enum IMUState_E: SwiftProtobuf.Enum {
   typealias RawValue = Int
   case imuStateNotConfigured // = 0
   case imuStateActivity // = 1
@@ -1021,9 +1061,9 @@ enum VCSEC_IMUState_E: SwiftProtobuf.Enum {
 
 #if swift(>=4.2)
 
-extension VCSEC_IMUState_E: CaseIterable {
+extension IMUState_E: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  static let allCases: [VCSEC_IMUState_E] = [
+  static let allCases: [IMUState_E] = [
     .imuStateNotConfigured,
     .imuStateActivity,
     .imuStateInactivity,
@@ -1032,7 +1072,7 @@ extension VCSEC_IMUState_E: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-enum VCSEC_InformationRequestType: SwiftProtobuf.Enum {
+enum InformationRequestType: SwiftProtobuf.Enum {
   typealias RawValue = Int
   case getStatus // = 0
   case getToken // = 1
@@ -1089,9 +1129,9 @@ enum VCSEC_InformationRequestType: SwiftProtobuf.Enum {
 
 #if swift(>=4.2)
 
-extension VCSEC_InformationRequestType: CaseIterable {
+extension InformationRequestType: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  static let allCases: [VCSEC_InformationRequestType] = [
+  static let allCases: [InformationRequestType] = [
     .getStatus,
     .getToken,
     .getCounter,
@@ -1108,7 +1148,7 @@ extension VCSEC_InformationRequestType: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-enum VCSEC_KeyFormFactor: SwiftProtobuf.Enum {
+enum KeyFormFactor: SwiftProtobuf.Enum {
   typealias RawValue = Int
   case unknown // = 0
   case nfcCard // = 1
@@ -1177,9 +1217,9 @@ enum VCSEC_KeyFormFactor: SwiftProtobuf.Enum {
 
 #if swift(>=4.2)
 
-extension VCSEC_KeyFormFactor: CaseIterable {
+extension KeyFormFactor: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  static let allCases: [VCSEC_KeyFormFactor] = [
+  static let allCases: [KeyFormFactor] = [
     .unknown,
     .nfcCard,
     .keyFormFactor3ButtonBleCarKeyfob,
@@ -1200,7 +1240,7 @@ extension VCSEC_KeyFormFactor: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-enum VCSEC_LRDetectionResult_E: SwiftProtobuf.Enum {
+enum LRDetectionResult_E: SwiftProtobuf.Enum {
   typealias RawValue = Int
   case rrorMaxcnt // = 0
   case rrorNegperiod // = 1
@@ -1239,9 +1279,9 @@ enum VCSEC_LRDetectionResult_E: SwiftProtobuf.Enum {
 
 #if swift(>=4.2)
 
-extension VCSEC_LRDetectionResult_E: CaseIterable {
+extension LRDetectionResult_E: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  static let allCases: [VCSEC_LRDetectionResult_E] = [
+  static let allCases: [LRDetectionResult_E] = [
     .rrorMaxcnt,
     .rrorNegperiod,
     .rrorLongperiod,
@@ -1252,7 +1292,7 @@ extension VCSEC_LRDetectionResult_E: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-enum VCSEC_MIError_E: SwiftProtobuf.Enum {
+enum MIError_E: SwiftProtobuf.Enum {
   typealias RawValue = Int
   case errorUnknown // = 0
   case errorSessionLimitExceeded // = 1
@@ -1262,6 +1302,7 @@ enum VCSEC_MIError_E: SwiftProtobuf.Enum {
   case errorUnsupportedPlatform // = 5
   case errorUserDidNotAllow // = 6
   case errorBlePeerUnavailable // = 7
+  case errorVehicleNotSelectedForRanging // = 8
   case UNRECOGNIZED(Int)
 
   init() {
@@ -1278,6 +1319,7 @@ enum VCSEC_MIError_E: SwiftProtobuf.Enum {
     case 5: self = .errorUnsupportedPlatform
     case 6: self = .errorUserDidNotAllow
     case 7: self = .errorBlePeerUnavailable
+    case 8: self = .errorVehicleNotSelectedForRanging
     default: self = .UNRECOGNIZED(rawValue)
     }
   }
@@ -1292,6 +1334,7 @@ enum VCSEC_MIError_E: SwiftProtobuf.Enum {
     case .errorUnsupportedPlatform: return 5
     case .errorUserDidNotAllow: return 6
     case .errorBlePeerUnavailable: return 7
+    case .errorVehicleNotSelectedForRanging: return 8
     case .UNRECOGNIZED(let i): return i
     }
   }
@@ -1300,9 +1343,9 @@ enum VCSEC_MIError_E: SwiftProtobuf.Enum {
 
 #if swift(>=4.2)
 
-extension VCSEC_MIError_E: CaseIterable {
+extension MIError_E: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  static let allCases: [VCSEC_MIError_E] = [
+  static let allCases: [MIError_E] = [
     .errorUnknown,
     .errorSessionLimitExceeded,
     .errorInvalidConfiguration,
@@ -1311,12 +1354,13 @@ extension VCSEC_MIError_E: CaseIterable {
     .errorUnsupportedPlatform,
     .errorUserDidNotAllow,
     .errorBlePeerUnavailable,
+    .errorVehicleNotSelectedForRanging,
   ]
 }
 
 #endif  // swift(>=4.2)
 
-enum VCSEC_MLXWakePeriod_E: SwiftProtobuf.Enum {
+enum MLXWakePeriod_E: SwiftProtobuf.Enum {
   typealias RawValue = Int
   case mlxwakeperiod2Ms // = 0
   case mlxwakeperiod3Ms // = 1
@@ -1442,9 +1486,9 @@ enum VCSEC_MLXWakePeriod_E: SwiftProtobuf.Enum {
 
 #if swift(>=4.2)
 
-extension VCSEC_MLXWakePeriod_E: CaseIterable {
+extension MLXWakePeriod_E: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  static let allCases: [VCSEC_MLXWakePeriod_E] = [
+  static let allCases: [MLXWakePeriod_E] = [
     .mlxwakeperiod2Ms,
     .mlxwakeperiod3Ms,
     .mlxwakeperiod5Ms,
@@ -1484,7 +1528,7 @@ extension VCSEC_MLXWakePeriod_E: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-enum VCSEC_NFCPresence: SwiftProtobuf.Enum {
+enum NFCPresence: SwiftProtobuf.Enum {
   typealias RawValue = Int
   case notPresent // = 0
   case presentAtBPillar // = 1
@@ -1517,9 +1561,9 @@ enum VCSEC_NFCPresence: SwiftProtobuf.Enum {
 
 #if swift(>=4.2)
 
-extension VCSEC_NFCPresence: CaseIterable {
+extension NFCPresence: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  static let allCases: [VCSEC_NFCPresence] = [
+  static let allCases: [NFCPresence] = [
     .notPresent,
     .presentAtBPillar,
     .presentAtCenterConsole,
@@ -1528,7 +1572,7 @@ extension VCSEC_NFCPresence: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-enum VCSEC_NFCSEDevicePubKeyState_E: SwiftProtobuf.Enum {
+enum NFCSEDevicePubKeyState_E: SwiftProtobuf.Enum {
   typealias RawValue = Int
   case nfcsecDevicepubkeyStateNone // = 0
   case nfcsecDevicepubkeyStateRetrieved // = 1
@@ -1561,9 +1605,9 @@ enum VCSEC_NFCSEDevicePubKeyState_E: SwiftProtobuf.Enum {
 
 #if swift(>=4.2)
 
-extension VCSEC_NFCSEDevicePubKeyState_E: CaseIterable {
+extension NFCSEDevicePubKeyState_E: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  static let allCases: [VCSEC_NFCSEDevicePubKeyState_E] = [
+  static let allCases: [NFCSEDevicePubKeyState_E] = [
     .nfcsecDevicepubkeyStateNone,
     .nfcsecDevicepubkeyStateRetrieved,
     .nfcsecDevicepubkeyStateNotRetrieved,
@@ -1572,7 +1616,7 @@ extension VCSEC_NFCSEDevicePubKeyState_E: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-enum VCSEC_NFCSEInsecureCommandState_E: SwiftProtobuf.Enum {
+enum NFCSEInsecureCommandState_E: SwiftProtobuf.Enum {
   typealias RawValue = Int
   case nfcsecInsecureCommandStateNone // = 0
   case nfcsecInsecureCommandStateEnabled // = 1
@@ -1605,9 +1649,9 @@ enum VCSEC_NFCSEInsecureCommandState_E: SwiftProtobuf.Enum {
 
 #if swift(>=4.2)
 
-extension VCSEC_NFCSEInsecureCommandState_E: CaseIterable {
+extension NFCSEInsecureCommandState_E: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  static let allCases: [VCSEC_NFCSEInsecureCommandState_E] = [
+  static let allCases: [NFCSEInsecureCommandState_E] = [
     .nfcsecInsecureCommandStateNone,
     .nfcsecInsecureCommandStateEnabled,
     .nfcsecInsecureCommandStateDisabled,
@@ -1616,7 +1660,7 @@ extension VCSEC_NFCSEInsecureCommandState_E: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-enum VCSEC_NFCSERequest_E: SwiftProtobuf.Enum {
+enum NFCSERequest_E: SwiftProtobuf.Enum {
   typealias RawValue = Int
   case nfcseRequestNone // = 0
   case nfcseRequestRefetchSessionInfo // = 1
@@ -1652,9 +1696,9 @@ enum VCSEC_NFCSERequest_E: SwiftProtobuf.Enum {
 
 #if swift(>=4.2)
 
-extension VCSEC_NFCSERequest_E: CaseIterable {
+extension NFCSERequest_E: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  static let allCases: [VCSEC_NFCSERequest_E] = [
+  static let allCases: [NFCSERequest_E] = [
     .nfcseRequestNone,
     .nfcseRequestRefetchSessionInfo,
     .nfcseRequestDisableInsecureCommands,
@@ -1664,7 +1708,7 @@ extension VCSEC_NFCSERequest_E: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-enum VCSEC_NFCSESharedSecretState_E: SwiftProtobuf.Enum {
+enum NFCSESharedSecretState_E: SwiftProtobuf.Enum {
   typealias RawValue = Int
   case nfcsecSharedsecretStateNone // = 0
   case nfcsecSharedsecretStateGenerated // = 1
@@ -1697,9 +1741,9 @@ enum VCSEC_NFCSESharedSecretState_E: SwiftProtobuf.Enum {
 
 #if swift(>=4.2)
 
-extension VCSEC_NFCSESharedSecretState_E: CaseIterable {
+extension NFCSESharedSecretState_E: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  static let allCases: [VCSEC_NFCSESharedSecretState_E] = [
+  static let allCases: [NFCSESharedSecretState_E] = [
     .nfcsecSharedsecretStateNone,
     .nfcsecSharedsecretStateGenerated,
     .nfcsecSharedsecretStateNotGenerated,
@@ -1708,7 +1752,7 @@ extension VCSEC_NFCSESharedSecretState_E: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-enum VCSEC_NFCSEVehiclePubKeyState_E: SwiftProtobuf.Enum {
+enum NFCSEVehiclePubKeyState_E: SwiftProtobuf.Enum {
   typealias RawValue = Int
   case nfcsecVehiclepubkeyStateNone // = 0
   case nfcsecVehiclepubkeyStateRetrieved // = 1
@@ -1741,9 +1785,9 @@ enum VCSEC_NFCSEVehiclePubKeyState_E: SwiftProtobuf.Enum {
 
 #if swift(>=4.2)
 
-extension VCSEC_NFCSEVehiclePubKeyState_E: CaseIterable {
+extension NFCSEVehiclePubKeyState_E: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  static let allCases: [VCSEC_NFCSEVehiclePubKeyState_E] = [
+  static let allCases: [NFCSEVehiclePubKeyState_E] = [
     .nfcsecVehiclepubkeyStateNone,
     .nfcsecVehiclepubkeyStateRetrieved,
     .nfcsecVehiclepubkeyStateNotRetrieved,
@@ -1752,31 +1796,28 @@ extension VCSEC_NFCSEVehiclePubKeyState_E: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-enum VCSEC_OperationStatus_E: SwiftProtobuf.Enum {
+enum PublicKeyRequest_E: SwiftProtobuf.Enum {
   typealias RawValue = Int
-  case operationstatusOk // = 0
-  case operationstatusWait // = 1
-  case rror // = 2
+  case publicKeyRequestNone // = 0
+  case publicKeyRequestRead // = 1
   case UNRECOGNIZED(Int)
 
   init() {
-    self = .operationstatusOk
+    self = .publicKeyRequestNone
   }
 
   init?(rawValue: Int) {
     switch rawValue {
-    case 0: self = .operationstatusOk
-    case 1: self = .operationstatusWait
-    case 2: self = .rror
+    case 0: self = .publicKeyRequestNone
+    case 1: self = .publicKeyRequestRead
     default: self = .UNRECOGNIZED(rawValue)
     }
   }
 
   var rawValue: Int {
     switch self {
-    case .operationstatusOk: return 0
-    case .operationstatusWait: return 1
-    case .rror: return 2
+    case .publicKeyRequestNone: return 0
+    case .publicKeyRequestRead: return 1
     case .UNRECOGNIZED(let i): return i
     }
   }
@@ -1785,18 +1826,61 @@ enum VCSEC_OperationStatus_E: SwiftProtobuf.Enum {
 
 #if swift(>=4.2)
 
-extension VCSEC_OperationStatus_E: CaseIterable {
+extension PublicKeyRequest_E: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  static let allCases: [VCSEC_OperationStatus_E] = [
-    .operationstatusOk,
-    .operationstatusWait,
-    .rror,
+  static let allCases: [PublicKeyRequest_E] = [
+    .publicKeyRequestNone,
+    .publicKeyRequestRead,
   ]
 }
 
 #endif  // swift(>=4.2)
 
-enum VCSEC_RCI_control_E: SwiftProtobuf.Enum {
+enum PublicKeyStatus_E: SwiftProtobuf.Enum {
+  typealias RawValue = Int
+  case publicKeyStatusNone // = 0
+  case publicKeyStatusNotWritten // = 1
+  case publicKeyStatusWritten // = 2
+  case UNRECOGNIZED(Int)
+
+  init() {
+    self = .publicKeyStatusNone
+  }
+
+  init?(rawValue: Int) {
+    switch rawValue {
+    case 0: self = .publicKeyStatusNone
+    case 1: self = .publicKeyStatusNotWritten
+    case 2: self = .publicKeyStatusWritten
+    default: self = .UNRECOGNIZED(rawValue)
+    }
+  }
+
+  var rawValue: Int {
+    switch self {
+    case .publicKeyStatusNone: return 0
+    case .publicKeyStatusNotWritten: return 1
+    case .publicKeyStatusWritten: return 2
+    case .UNRECOGNIZED(let i): return i
+    }
+  }
+
+}
+
+#if swift(>=4.2)
+
+extension PublicKeyStatus_E: CaseIterable {
+  // The compiler won't synthesize support with the UNRECOGNIZED case.
+  static let allCases: [PublicKeyStatus_E] = [
+    .publicKeyStatusNone,
+    .publicKeyStatusNotWritten,
+    .publicKeyStatusWritten,
+  ]
+}
+
+#endif  // swift(>=4.2)
+
+enum RCI_control_E: SwiftProtobuf.Enum {
   typealias RawValue = Int
   case rciControlNone // = 0
   case rciControlTurnOff // = 1
@@ -1826,9 +1910,9 @@ enum VCSEC_RCI_control_E: SwiftProtobuf.Enum {
 
 #if swift(>=4.2)
 
-extension VCSEC_RCI_control_E: CaseIterable {
+extension RCI_control_E: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  static let allCases: [VCSEC_RCI_control_E] = [
+  static let allCases: [RCI_control_E] = [
     .rciControlNone,
     .rciControlTurnOff,
   ]
@@ -1836,7 +1920,7 @@ extension VCSEC_RCI_control_E: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-enum VCSEC_ResetTrackerCommand_E: SwiftProtobuf.Enum {
+enum ResetTrackerCommand_E: SwiftProtobuf.Enum {
   typealias RawValue = Int
   case resettrackerCommandNone // = 0
   case resettrackerCommandGetStats // = 1
@@ -1869,9 +1953,9 @@ enum VCSEC_ResetTrackerCommand_E: SwiftProtobuf.Enum {
 
 #if swift(>=4.2)
 
-extension VCSEC_ResetTrackerCommand_E: CaseIterable {
+extension ResetTrackerCommand_E: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  static let allCases: [VCSEC_ResetTrackerCommand_E] = [
+  static let allCases: [ResetTrackerCommand_E] = [
     .resettrackerCommandNone,
     .resettrackerCommandGetStats,
     .resettrackerCommandClearStats,
@@ -1880,7 +1964,7 @@ extension VCSEC_ResetTrackerCommand_E: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-enum VCSEC_RKEAction_E: SwiftProtobuf.Enum {
+enum RKEAction_E: SwiftProtobuf.Enum {
   typealias RawValue = Int
   case rkeActionUnlock // = 0
   case rkeActionLock // = 1
@@ -1997,9 +2081,9 @@ enum VCSEC_RKEAction_E: SwiftProtobuf.Enum {
 
 #if swift(>=4.2)
 
-extension VCSEC_RKEAction_E: CaseIterable {
+extension RKEAction_E: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  static let allCases: [VCSEC_RKEAction_E] = [
+  static let allCases: [RKEAction_E] = [
     .rkeActionUnlock,
     .rkeActionLock,
     .rkeActionOpenTrunk,
@@ -2036,111 +2120,7 @@ extension VCSEC_RKEAction_E: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-enum VCSEC_Role: SwiftProtobuf.Enum {
-  typealias RawValue = Int
-  case none // = 0
-  case service // = 1
-  case owner // = 2
-  case driver // = 3
-  case fm // = 4
-  case vehicleMonitor // = 5
-  case chargingManager // = 6
-  case serviceTech // = 7
-  case UNRECOGNIZED(Int)
-
-  init() {
-    self = .none
-  }
-
-  init?(rawValue: Int) {
-    switch rawValue {
-    case 0: self = .none
-    case 1: self = .service
-    case 2: self = .owner
-    case 3: self = .driver
-    case 4: self = .fm
-    case 5: self = .vehicleMonitor
-    case 6: self = .chargingManager
-    case 7: self = .serviceTech
-    default: self = .UNRECOGNIZED(rawValue)
-    }
-  }
-
-  var rawValue: Int {
-    switch self {
-    case .none: return 0
-    case .service: return 1
-    case .owner: return 2
-    case .driver: return 3
-    case .fm: return 4
-    case .vehicleMonitor: return 5
-    case .chargingManager: return 6
-    case .serviceTech: return 7
-    case .UNRECOGNIZED(let i): return i
-    }
-  }
-
-}
-
-#if swift(>=4.2)
-
-extension VCSEC_Role: CaseIterable {
-  // The compiler won't synthesize support with the UNRECOGNIZED case.
-  static let allCases: [VCSEC_Role] = [
-    .none,
-    .service,
-    .owner,
-    .driver,
-    .fm,
-    .vehicleMonitor,
-    .chargingManager,
-    .serviceTech,
-  ]
-}
-
-#endif  // swift(>=4.2)
-
-enum VCSEC_Session_Info_Status: SwiftProtobuf.Enum {
-  typealias RawValue = Int
-  case ok // = 0
-  case keyNotOnWhitelist // = 1
-  case UNRECOGNIZED(Int)
-
-  init() {
-    self = .ok
-  }
-
-  init?(rawValue: Int) {
-    switch rawValue {
-    case 0: self = .ok
-    case 1: self = .keyNotOnWhitelist
-    default: self = .UNRECOGNIZED(rawValue)
-    }
-  }
-
-  var rawValue: Int {
-    switch self {
-    case .ok: return 0
-    case .keyNotOnWhitelist: return 1
-    case .UNRECOGNIZED(let i): return i
-    }
-  }
-
-}
-
-#if swift(>=4.2)
-
-extension VCSEC_Session_Info_Status: CaseIterable {
-  // The compiler won't synthesize support with the UNRECOGNIZED case.
-  static let allCases: [VCSEC_Session_Info_Status] = [
-    .ok,
-    .keyNotOnWhitelist,
-  ]
-}
-
-#endif  // swift(>=4.2)
-
-enum VCSEC_SignatureType: SwiftProtobuf.Enum {
+enum SignatureType: SwiftProtobuf.Enum {
   typealias RawValue = Int
   case aesGcm // = 0
   case ecdsa // = 1
@@ -2179,9 +2159,9 @@ enum VCSEC_SignatureType: SwiftProtobuf.Enum {
 
 #if swift(>=4.2)
 
-extension VCSEC_SignatureType: CaseIterable {
+extension SignatureType: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  static let allCases: [VCSEC_SignatureType] = [
+  static let allCases: [SignatureType] = [
     .aesGcm,
     .ecdsa,
     .presentKey,
@@ -2192,7 +2172,7 @@ extension VCSEC_SignatureType: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-enum VCSEC_SignedMessage_information_E: SwiftProtobuf.Enum {
+enum SignedMessage_information_E: SwiftProtobuf.Enum {
   typealias RawValue = Int
   case signedmessageInformationNone // = 0
   case signedmessageInformationFaultUnknown // = 1
@@ -2276,9 +2256,9 @@ enum VCSEC_SignedMessage_information_E: SwiftProtobuf.Enum {
 
 #if swift(>=4.2)
 
-extension VCSEC_SignedMessage_information_E: CaseIterable {
+extension SignedMessage_information_E: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  static let allCases: [VCSEC_SignedMessage_information_E] = [
+  static let allCases: [SignedMessage_information_E] = [
     .signedmessageInformationNone,
     .signedmessageInformationFaultUnknown,
     .signedmessageInformationFaultNotOnWhitelist,
@@ -2304,7 +2284,7 @@ extension VCSEC_SignedMessage_information_E: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-enum VCSEC_SleepManagerCommand_E: SwiftProtobuf.Enum {
+enum SleepManagerCommand_E: SwiftProtobuf.Enum {
   typealias RawValue = Int
   case sleepmanagerCommandNone // = 0
   case sleepmanagerGetStats // = 1
@@ -2337,9 +2317,9 @@ enum VCSEC_SleepManagerCommand_E: SwiftProtobuf.Enum {
 
 #if swift(>=4.2)
 
-extension VCSEC_SleepManagerCommand_E: CaseIterable {
+extension SleepManagerCommand_E: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  static let allCases: [VCSEC_SleepManagerCommand_E] = [
+  static let allCases: [SleepManagerCommand_E] = [
     .sleepmanagerCommandNone,
     .sleepmanagerGetStats,
     .sleepmanagerResetStats,
@@ -2348,7 +2328,7 @@ extension VCSEC_SleepManagerCommand_E: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-enum VCSEC_TPDataRequest_E: SwiftProtobuf.Enum {
+enum TPDataRequest_E: SwiftProtobuf.Enum {
   typealias RawValue = Int
   case tpDatarequestNone // = 0
   case tpDatarequestPressureTemperature // = 1
@@ -2358,6 +2338,11 @@ enum VCSEC_TPDataRequest_E: SwiftProtobuf.Enum {
   case tpDatarequestMotionDetectionStart // = 5
   case tpDatarequestReadAlarms // = 6
   case tpDatarequestMotionDetectionStop // = 7
+  case tpDatarequestReadPublicKey // = 8
+  case tpDatarequestRfMonitorCounters // = 9
+  case tpDatarequestMotionConfig // = 10
+  case tpDatarequestStationaryConfig // = 11
+  case tpDatarequestCapabilities // = 12
   case UNRECOGNIZED(Int)
 
   init() {
@@ -2374,6 +2359,11 @@ enum VCSEC_TPDataRequest_E: SwiftProtobuf.Enum {
     case 5: self = .tpDatarequestMotionDetectionStart
     case 6: self = .tpDatarequestReadAlarms
     case 7: self = .tpDatarequestMotionDetectionStop
+    case 8: self = .tpDatarequestReadPublicKey
+    case 9: self = .tpDatarequestRfMonitorCounters
+    case 10: self = .tpDatarequestMotionConfig
+    case 11: self = .tpDatarequestStationaryConfig
+    case 12: self = .tpDatarequestCapabilities
     default: self = .UNRECOGNIZED(rawValue)
     }
   }
@@ -2388,6 +2378,11 @@ enum VCSEC_TPDataRequest_E: SwiftProtobuf.Enum {
     case .tpDatarequestMotionDetectionStart: return 5
     case .tpDatarequestReadAlarms: return 6
     case .tpDatarequestMotionDetectionStop: return 7
+    case .tpDatarequestReadPublicKey: return 8
+    case .tpDatarequestRfMonitorCounters: return 9
+    case .tpDatarequestMotionConfig: return 10
+    case .tpDatarequestStationaryConfig: return 11
+    case .tpDatarequestCapabilities: return 12
     case .UNRECOGNIZED(let i): return i
     }
   }
@@ -2396,9 +2391,9 @@ enum VCSEC_TPDataRequest_E: SwiftProtobuf.Enum {
 
 #if swift(>=4.2)
 
-extension VCSEC_TPDataRequest_E: CaseIterable {
+extension TPDataRequest_E: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  static let allCases: [VCSEC_TPDataRequest_E] = [
+  static let allCases: [TPDataRequest_E] = [
     .tpDatarequestNone,
     .tpDatarequestPressureTemperature,
     .tpDatarequestNewSensorInfo,
@@ -2407,12 +2402,17 @@ extension VCSEC_TPDataRequest_E: CaseIterable {
     .tpDatarequestMotionDetectionStart,
     .tpDatarequestReadAlarms,
     .tpDatarequestMotionDetectionStop,
+    .tpDatarequestReadPublicKey,
+    .tpDatarequestRfMonitorCounters,
+    .tpDatarequestMotionConfig,
+    .tpDatarequestStationaryConfig,
+    .tpDatarequestCapabilities,
   ]
 }
 
 #endif  // swift(>=4.2)
 
-enum VCSEC_TPMSAdvType_E: SwiftProtobuf.Enum {
+enum TPMSAdvType_E: SwiftProtobuf.Enum {
   typealias RawValue = Int
   case tpmsAdvTypeSemi // = 0
   case UNRECOGNIZED(Int)
@@ -2439,16 +2439,16 @@ enum VCSEC_TPMSAdvType_E: SwiftProtobuf.Enum {
 
 #if swift(>=4.2)
 
-extension VCSEC_TPMSAdvType_E: CaseIterable {
+extension TPMSAdvType_E: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  static let allCases: [VCSEC_TPMSAdvType_E] = [
+  static let allCases: [TPMSAdvType_E] = [
     .tpmsAdvTypeSemi,
   ]
 }
 
 #endif  // swift(>=4.2)
 
-enum VCSEC_TPNotifyReason_E: SwiftProtobuf.Enum {
+enum TPNotifyReason_E: SwiftProtobuf.Enum {
   typealias RawValue = Int
   case tpNotifyReasonUnknown // = 0
   case tpNotifyReasonLowPressure // = 1
@@ -2493,9 +2493,9 @@ enum VCSEC_TPNotifyReason_E: SwiftProtobuf.Enum {
 
 #if swift(>=4.2)
 
-extension VCSEC_TPNotifyReason_E: CaseIterable {
+extension TPNotifyReason_E: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  static let allCases: [VCSEC_TPNotifyReason_E] = [
+  static let allCases: [TPNotifyReason_E] = [
     .tpNotifyReasonUnknown,
     .tpNotifyReasonLowPressure,
     .tpNotifyReasonPtValueUpdate,
@@ -2508,7 +2508,7 @@ extension VCSEC_TPNotifyReason_E: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-enum VCSEC_TPNotifyTrackerCommand_E: SwiftProtobuf.Enum {
+enum TPNotifyTrackerCommand_E: SwiftProtobuf.Enum {
   typealias RawValue = Int
   case tpNotifytrackerCommandNone // = 0
   case tpNotifytrackerCommandGetStats // = 1
@@ -2541,9 +2541,9 @@ enum VCSEC_TPNotifyTrackerCommand_E: SwiftProtobuf.Enum {
 
 #if swift(>=4.2)
 
-extension VCSEC_TPNotifyTrackerCommand_E: CaseIterable {
+extension TPNotifyTrackerCommand_E: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  static let allCases: [VCSEC_TPNotifyTrackerCommand_E] = [
+  static let allCases: [TPNotifyTrackerCommand_E] = [
     .tpNotifytrackerCommandNone,
     .tpNotifytrackerCommandGetStats,
     .tpNotifytrackerCommandClearStats,
@@ -2552,7 +2552,47 @@ extension VCSEC_TPNotifyTrackerCommand_E: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-enum VCSEC_UpdaterLocation: SwiftProtobuf.Enum {
+enum UIRequest_E: SwiftProtobuf.Enum {
+  typealias RawValue = Int
+  case uiRequestNone // = 0
+  case uiRequestGetVehicleBleNickName // = 1
+  case UNRECOGNIZED(Int)
+
+  init() {
+    self = .uiRequestNone
+  }
+
+  init?(rawValue: Int) {
+    switch rawValue {
+    case 0: self = .uiRequestNone
+    case 1: self = .uiRequestGetVehicleBleNickName
+    default: self = .UNRECOGNIZED(rawValue)
+    }
+  }
+
+  var rawValue: Int {
+    switch self {
+    case .uiRequestNone: return 0
+    case .uiRequestGetVehicleBleNickName: return 1
+    case .UNRECOGNIZED(let i): return i
+    }
+  }
+
+}
+
+#if swift(>=4.2)
+
+extension UIRequest_E: CaseIterable {
+  // The compiler won't synthesize support with the UNRECOGNIZED case.
+  static let allCases: [UIRequest_E] = [
+    .uiRequestNone,
+    .uiRequestGetVehicleBleNickName,
+  ]
+}
+
+#endif  // swift(>=4.2)
+
+enum UpdaterLocation: SwiftProtobuf.Enum {
   typealias RawValue = Int
   case none // = 0
   case application // = 1
@@ -2591,9 +2631,9 @@ enum VCSEC_UpdaterLocation: SwiftProtobuf.Enum {
 
 #if swift(>=4.2)
 
-extension VCSEC_UpdaterLocation: CaseIterable {
+extension UpdaterLocation: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  static let allCases: [VCSEC_UpdaterLocation] = [
+  static let allCases: [UpdaterLocation] = [
     .none,
     .application,
     .bootloader,
@@ -2604,7 +2644,7 @@ extension VCSEC_UpdaterLocation: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-enum VCSEC_UpdaterStatusCode: SwiftProtobuf.Enum {
+enum UpdaterStatusCode: SwiftProtobuf.Enum {
   typealias RawValue = Int
   case error // = 0
   case wait // = 1
@@ -2658,9 +2698,9 @@ enum VCSEC_UpdaterStatusCode: SwiftProtobuf.Enum {
 
 #if swift(>=4.2)
 
-extension VCSEC_UpdaterStatusCode: CaseIterable {
+extension UpdaterStatusCode: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  static let allCases: [VCSEC_UpdaterStatusCode] = [
+  static let allCases: [UpdaterStatusCode] = [
     .error,
     .wait,
     .blockStaged,
@@ -2676,7 +2716,51 @@ extension VCSEC_UpdaterStatusCode: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-enum VCSEC_UWBAvailability: SwiftProtobuf.Enum {
+enum UserPresence_E: SwiftProtobuf.Enum {
+  typealias RawValue = Int
+  case vehicleUserPresenceUnknown // = 0
+  case vehicleUserPresenceNotPresent // = 1
+  case vehicleUserPresencePresent // = 2
+  case UNRECOGNIZED(Int)
+
+  init() {
+    self = .vehicleUserPresenceUnknown
+  }
+
+  init?(rawValue: Int) {
+    switch rawValue {
+    case 0: self = .vehicleUserPresenceUnknown
+    case 1: self = .vehicleUserPresenceNotPresent
+    case 2: self = .vehicleUserPresencePresent
+    default: self = .UNRECOGNIZED(rawValue)
+    }
+  }
+
+  var rawValue: Int {
+    switch self {
+    case .vehicleUserPresenceUnknown: return 0
+    case .vehicleUserPresenceNotPresent: return 1
+    case .vehicleUserPresencePresent: return 2
+    case .UNRECOGNIZED(let i): return i
+    }
+  }
+
+}
+
+#if swift(>=4.2)
+
+extension UserPresence_E: CaseIterable {
+  // The compiler won't synthesize support with the UNRECOGNIZED case.
+  static let allCases: [UserPresence_E] = [
+    .vehicleUserPresenceUnknown,
+    .vehicleUserPresenceNotPresent,
+    .vehicleUserPresencePresent,
+  ]
+}
+
+#endif  // swift(>=4.2)
+
+enum UWBAvailability: SwiftProtobuf.Enum {
   typealias RawValue = Int
   case unknown // = 0
   case available // = 1
@@ -2715,9 +2799,9 @@ enum VCSEC_UWBAvailability: SwiftProtobuf.Enum {
 
 #if swift(>=4.2)
 
-extension VCSEC_UWBAvailability: CaseIterable {
+extension UWBAvailability: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  static let allCases: [VCSEC_UWBAvailability] = [
+  static let allCases: [UWBAvailability] = [
     .unknown,
     .available,
     .unavailableUnsupportedDevice,
@@ -2728,7 +2812,7 @@ extension VCSEC_UWBAvailability: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-enum VCSEC_VehicleLockState_E: SwiftProtobuf.Enum {
+enum VehicleLockState_E: SwiftProtobuf.Enum {
   typealias RawValue = Int
   case vehiclelockstateUnlocked // = 0
   case vehiclelockstateLocked // = 1
@@ -2764,9 +2848,9 @@ enum VCSEC_VehicleLockState_E: SwiftProtobuf.Enum {
 
 #if swift(>=4.2)
 
-extension VCSEC_VehicleLockState_E: CaseIterable {
+extension VehicleLockState_E: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  static let allCases: [VCSEC_VehicleLockState_E] = [
+  static let allCases: [VehicleLockState_E] = [
     .vehiclelockstateUnlocked,
     .vehiclelockstateLocked,
     .vehiclelockstateInternalLocked,
@@ -2776,7 +2860,7 @@ extension VCSEC_VehicleLockState_E: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-enum VCSEC_VehicleSleepStatus_E: SwiftProtobuf.Enum {
+enum VehicleSleepStatus_E: SwiftProtobuf.Enum {
   typealias RawValue = Int
   case vehicleSleepStatusUnknown // = 0
   case vehicleSleepStatusAwake // = 1
@@ -2809,9 +2893,9 @@ enum VCSEC_VehicleSleepStatus_E: SwiftProtobuf.Enum {
 
 #if swift(>=4.2)
 
-extension VCSEC_VehicleSleepStatus_E: CaseIterable {
+extension VehicleSleepStatus_E: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  static let allCases: [VCSEC_VehicleSleepStatus_E] = [
+  static let allCases: [VehicleSleepStatus_E] = [
     .vehicleSleepStatusUnknown,
     .vehicleSleepStatusAwake,
     .vehicleSleepStatusAsleep,
@@ -2820,7 +2904,7 @@ extension VCSEC_VehicleSleepStatus_E: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-enum VCSEC_WhitelistKeyPermission_E: SwiftProtobuf.Enum {
+enum WhitelistKeyPermission_E: SwiftProtobuf.Enum {
   typealias RawValue = Int
   case whitelistkeypermissionAddToWhitelist // = 0
   case whitelistkeypermissionLocalUnlock // = 1
@@ -2874,9 +2958,9 @@ enum VCSEC_WhitelistKeyPermission_E: SwiftProtobuf.Enum {
 
 #if swift(>=4.2)
 
-extension VCSEC_WhitelistKeyPermission_E: CaseIterable {
+extension WhitelistKeyPermission_E: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  static let allCases: [VCSEC_WhitelistKeyPermission_E] = [
+  static let allCases: [WhitelistKeyPermission_E] = [
     .whitelistkeypermissionAddToWhitelist,
     .whitelistkeypermissionLocalUnlock,
     .whitelistkeypermissionLocalDrive,
@@ -2892,7 +2976,7 @@ extension VCSEC_WhitelistKeyPermission_E: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-enum VCSEC_WhitelistOperation_information_E: SwiftProtobuf.Enum {
+enum WhitelistOperation_information_E: SwiftProtobuf.Enum {
   typealias RawValue = Int
   case whitelistoperationInformationNone // = 0
   case whitelistoperationInformationUndocumentedError // = 1
@@ -2917,6 +3001,12 @@ enum VCSEC_WhitelistOperation_information_E: SwiftProtobuf.Enum {
   case whitelistoperationInformationAttemptingToAddKeyWithServiceRole // = 20
   case whitelistoperationInformationNonServiceKeyAttemptingToAddServiceTech // = 21
   case whitelistoperationInformationServiceKeyAttemptingToAddServiceTechOutsideServiceMode // = 22
+  case whitelistoperationInformationCouldNotStartLocalEntityAuth // = 23
+  case whitelistoperationInformationLocalEntityAuthFailedUiDenied // = 24
+  case whitelistoperationInformationLocalEntityAuthFailedTimedOutWaitingForTap // = 25
+  case whitelistoperationInformationLocalEntityAuthFailedTimedOutWaitingForUiAck // = 26
+  case whitelistoperationInformationLocalEntityAuthFailedValetMode // = 27
+  case whitelistoperationInformationLocalEntityAuthFailedCancelled // = 28
   case UNRECOGNIZED(Int)
 
   init() {
@@ -2948,6 +3038,12 @@ enum VCSEC_WhitelistOperation_information_E: SwiftProtobuf.Enum {
     case 20: self = .whitelistoperationInformationAttemptingToAddKeyWithServiceRole
     case 21: self = .whitelistoperationInformationNonServiceKeyAttemptingToAddServiceTech
     case 22: self = .whitelistoperationInformationServiceKeyAttemptingToAddServiceTechOutsideServiceMode
+    case 23: self = .whitelistoperationInformationCouldNotStartLocalEntityAuth
+    case 24: self = .whitelistoperationInformationLocalEntityAuthFailedUiDenied
+    case 25: self = .whitelistoperationInformationLocalEntityAuthFailedTimedOutWaitingForTap
+    case 26: self = .whitelistoperationInformationLocalEntityAuthFailedTimedOutWaitingForUiAck
+    case 27: self = .whitelistoperationInformationLocalEntityAuthFailedValetMode
+    case 28: self = .whitelistoperationInformationLocalEntityAuthFailedCancelled
     default: self = .UNRECOGNIZED(rawValue)
     }
   }
@@ -2977,6 +3073,12 @@ enum VCSEC_WhitelistOperation_information_E: SwiftProtobuf.Enum {
     case .whitelistoperationInformationAttemptingToAddKeyWithServiceRole: return 20
     case .whitelistoperationInformationNonServiceKeyAttemptingToAddServiceTech: return 21
     case .whitelistoperationInformationServiceKeyAttemptingToAddServiceTechOutsideServiceMode: return 22
+    case .whitelistoperationInformationCouldNotStartLocalEntityAuth: return 23
+    case .whitelistoperationInformationLocalEntityAuthFailedUiDenied: return 24
+    case .whitelistoperationInformationLocalEntityAuthFailedTimedOutWaitingForTap: return 25
+    case .whitelistoperationInformationLocalEntityAuthFailedTimedOutWaitingForUiAck: return 26
+    case .whitelistoperationInformationLocalEntityAuthFailedValetMode: return 27
+    case .whitelistoperationInformationLocalEntityAuthFailedCancelled: return 28
     case .UNRECOGNIZED(let i): return i
     }
   }
@@ -2985,9 +3087,9 @@ enum VCSEC_WhitelistOperation_information_E: SwiftProtobuf.Enum {
 
 #if swift(>=4.2)
 
-extension VCSEC_WhitelistOperation_information_E: CaseIterable {
+extension WhitelistOperation_information_E: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  static let allCases: [VCSEC_WhitelistOperation_information_E] = [
+  static let allCases: [WhitelistOperation_information_E] = [
     .whitelistoperationInformationNone,
     .whitelistoperationInformationUndocumentedError,
     .whitelistoperationInformationNoPermissionToRemoveOneself,
@@ -3011,12 +3113,18 @@ extension VCSEC_WhitelistOperation_information_E: CaseIterable {
     .whitelistoperationInformationAttemptingToAddKeyWithServiceRole,
     .whitelistoperationInformationNonServiceKeyAttemptingToAddServiceTech,
     .whitelistoperationInformationServiceKeyAttemptingToAddServiceTechOutsideServiceMode,
+    .whitelistoperationInformationCouldNotStartLocalEntityAuth,
+    .whitelistoperationInformationLocalEntityAuthFailedUiDenied,
+    .whitelistoperationInformationLocalEntityAuthFailedTimedOutWaitingForTap,
+    .whitelistoperationInformationLocalEntityAuthFailedTimedOutWaitingForUiAck,
+    .whitelistoperationInformationLocalEntityAuthFailedValetMode,
+    .whitelistoperationInformationLocalEntityAuthFailedCancelled,
   ]
 }
 
 #endif  // swift(>=4.2)
 
-struct VCSEC_AccelData {
+struct AccelData {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -3030,13 +3138,13 @@ struct VCSEC_AccelData {
   init() {}
 }
 
-struct VCSEC_ActiveKey {
+struct ActiveKey {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var activeKey: VCSEC_KeyIdentifier {
-    get {return _activeKey ?? VCSEC_KeyIdentifier()}
+  var activeKey: KeyIdentifier {
+    get {return _activeKey ?? KeyIdentifier()}
     set {_activeKey = newValue}
   }
   /// Returns true if `activeKey` has been explicitly set.
@@ -3048,37 +3156,140 @@ struct VCSEC_ActiveKey {
 
   init() {}
 
-  fileprivate var _activeKey: VCSEC_KeyIdentifier? = nil
+  fileprivate var _activeKey: KeyIdentifier? = nil
 }
 
-struct VCSEC_Alert {
+struct Alert {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var subMessage: VCSEC_Alert.OneOf_SubMessage? = nil
+  var subMessage: Alert.OneOf_SubMessage? = nil
 
-  var alertHandlePulledWithoutAuth: VCSEC_AlertHandlePulledWithoutAuth {
+  var alertHandlePulledWithoutAuth: AlertHandlePulledWithoutAuth {
     get {
       if case .alertHandlePulledWithoutAuth(let v)? = subMessage {return v}
-      return VCSEC_AlertHandlePulledWithoutAuth()
+      return AlertHandlePulledWithoutAuth()
     }
     set {subMessage = .alertHandlePulledWithoutAuth(newValue)}
+  }
+
+  var alertConfirmation: AlertConfirmation {
+    get {
+      if case .alertConfirmation(let v)? = subMessage {return v}
+      return .none
+    }
+    set {subMessage = .alertConfirmation(newValue)}
   }
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   enum OneOf_SubMessage: Equatable {
-    case alertHandlePulledWithoutAuth(VCSEC_AlertHandlePulledWithoutAuth)
+    case alertHandlePulledWithoutAuth(AlertHandlePulledWithoutAuth)
+    case alertConfirmation(AlertConfirmation)
 
   #if !swift(>=4.1)
-    static func ==(lhs: VCSEC_Alert.OneOf_SubMessage, rhs: VCSEC_Alert.OneOf_SubMessage) -> Bool {
+    static func ==(lhs: Alert.OneOf_SubMessage, rhs: Alert.OneOf_SubMessage) -> Bool {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
       switch (lhs, rhs) {
       case (.alertHandlePulledWithoutAuth, .alertHandlePulledWithoutAuth): return {
         guard case .alertHandlePulledWithoutAuth(let l) = lhs, case .alertHandlePulledWithoutAuth(let r) = rhs else { preconditionFailure() }
+        return l == r
+      }()
+      case (.alertConfirmation, .alertConfirmation): return {
+        guard case .alertConfirmation(let l) = lhs, case .alertConfirmation(let r) = rhs else { preconditionFailure() }
+        return l == r
+      }()
+      default: return false
+      }
+    }
+  #endif
+  }
+
+  init() {}
+}
+
+struct AlertHandlePulledWithoutAuth {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var timeSinceAlertSetMs: UInt32 = 0
+
+  var handlePulled: HandlePulled_E = .handlePulledFrontDriverDoor
+
+  var connectionCount: UInt32 = 0
+
+  var unknownDevicePresent: Bool = false
+
+  var authRequested: Bool = false
+
+  var deviceSpecificPayload: [HandlePulledWithoutAuthDeviceSpecificPayload] = []
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+}
+
+struct AppDeviceInfo {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var hardwareModelSha256: Data = Data()
+
+  var os: AppOperatingSystem = .unknown
+
+  var uwbavailable: UWBAvailability = .unknown
+
+  var phoneVersion: PhoneVersionInfo {
+    get {return _phoneVersion ?? PhoneVersionInfo()}
+    set {_phoneVersion = newValue}
+  }
+  /// Returns true if `phoneVersion` has been explicitly set.
+  var hasPhoneVersion: Bool {return self._phoneVersion != nil}
+  /// Clears the value of `phoneVersion`. Subsequent reads from it will return its default value.
+  mutating func clearPhoneVersion() {self._phoneVersion = nil}
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+
+  fileprivate var _phoneVersion: PhoneVersionInfo? = nil
+}
+
+struct AppEventLog {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var timestamp: UInt32 = 0
+
+  var subMessage: AppEventLog.OneOf_SubMessage? = nil
+
+  var peerRemovedPairingInformation: AppEventPeerRemovedPairingInformation {
+    get {
+      if case .peerRemovedPairingInformation(let v)? = subMessage {return v}
+      return AppEventPeerRemovedPairingInformation()
+    }
+    set {subMessage = .peerRemovedPairingInformation(newValue)}
+  }
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  enum OneOf_SubMessage: Equatable {
+    case peerRemovedPairingInformation(AppEventPeerRemovedPairingInformation)
+
+  #if !swift(>=4.1)
+    static func ==(lhs: AppEventLog.OneOf_SubMessage, rhs: AppEventLog.OneOf_SubMessage) -> Bool {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch (lhs, rhs) {
+      case (.peerRemovedPairingInformation, .peerRemovedPairingInformation): return {
+        guard case .peerRemovedPairingInformation(let l) = lhs, case .peerRemovedPairingInformation(let r) = rhs else { preconditionFailure() }
         return l == r
       }()
       }
@@ -3089,51 +3300,50 @@ struct VCSEC_Alert {
   init() {}
 }
 
-struct VCSEC_AlertHandlePulledWithoutAuth {
+struct AppEventPeerRemovedPairingInformation {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var timeSinceAlertSetMs: UInt32 = 0
+  var keyID: KeyIdentifier {
+    get {return _keyID ?? KeyIdentifier()}
+    set {_keyID = newValue}
+  }
+  /// Returns true if `keyID` has been explicitly set.
+  var hasKeyID: Bool {return self._keyID != nil}
+  /// Clears the value of `keyID`. Subsequent reads from it will return its default value.
+  mutating func clearKeyID() {self._keyID = nil}
 
-  var handlePulled: VCSEC_HandlePulled_E = .handlePulledFrontDriverDoor
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  var connectionCount: UInt32 = 0
+  init() {}
 
-  var unknownDevicePresent: Bool = false
+  fileprivate var _keyID: KeyIdentifier? = nil
+}
 
-  var authRequested: Bool = false
+struct ASICSPIRead {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
 
-  var deviceSpecificPayload: [VCSEC_HandlePulledWithoutAuthDeviceSpecificPayload] = []
+  var response: UInt32 = 0
+
+  var data_: UInt32 = 0
+
+  var opCode: UInt32 = 0
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
 }
 
-struct VCSEC_AppDeviceInfo {
+struct AuthenticationRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var hardwareModelSha256: Data = Data()
-
-  var os: VCSEC_AppOperatingSystem = .unknown
-
-  var uwbavailable: VCSEC_UWBAvailability = .unknown
-
-  var unknownFields = SwiftProtobuf.UnknownStorage()
-
-  init() {}
-}
-
-struct VCSEC_AuthenticationRequest {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
-  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-  // methods supported on all messages.
-
-  var sessionInfo: VCSEC_AuthenticationRequestToken {
-    get {return _sessionInfo ?? VCSEC_AuthenticationRequestToken()}
+  var sessionInfo: AuthenticationRequestToken {
+    get {return _sessionInfo ?? AuthenticationRequestToken()}
     set {_sessionInfo = newValue}
   }
   /// Returns true if `sessionInfo` has been explicitly set.
@@ -3141,18 +3351,18 @@ struct VCSEC_AuthenticationRequest {
   /// Clears the value of `sessionInfo`. Subsequent reads from it will return its default value.
   mutating func clearSessionInfo() {self._sessionInfo = nil}
 
-  var requestedLevel: VCSEC_AuthenticationLevel_E = .authenticationLevelNone
+  var requestedLevel: AuthenticationLevel_E = .authenticationLevelNone
 
-  var reasonsForAuth: [VCSEC_AuthenticationReason_E] = []
+  var reasonsForAuth: [AuthenticationReason_E] = []
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
 
-  fileprivate var _sessionInfo: VCSEC_AuthenticationRequestToken? = nil
+  fileprivate var _sessionInfo: AuthenticationRequestToken? = nil
 }
 
-struct VCSEC_AuthenticationRequestToken {
+struct AuthenticationRequestToken {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -3164,28 +3374,28 @@ struct VCSEC_AuthenticationRequestToken {
   init() {}
 }
 
-struct VCSEC_AuthenticationResponse {
+struct AuthenticationResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var authenticationLevel: VCSEC_AuthenticationLevel_E = .authenticationLevelNone
+  var authenticationLevel: AuthenticationLevel_E = .authenticationLevelNone
 
   var estimatedDistance: UInt32 = 0
 
-  var authenticationRejection: VCSEC_AuthenticationRejection_E = .authenticationrejectionNone
+  var authenticationRejection: AuthenticationRejection_E = .authenticationrejectionNone
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
 }
 
-struct VCSEC_BLEConfig {
+struct BLEConfig {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var subMessage: VCSEC_BLEConfig.OneOf_SubMessage? = nil
+  var subMessage: BLEConfig.OneOf_SubMessage? = nil
 
   var advinterval: UInt32 {
     get {
@@ -3210,7 +3420,7 @@ struct VCSEC_BLEConfig {
     case sleepClockAccuracy(UInt32)
 
   #if !swift(>=4.1)
-    static func ==(lhs: VCSEC_BLEConfig.OneOf_SubMessage, rhs: VCSEC_BLEConfig.OneOf_SubMessage) -> Bool {
+    static func ==(lhs: BLEConfig.OneOf_SubMessage, rhs: BLEConfig.OneOf_SubMessage) -> Bool {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
@@ -3232,7 +3442,7 @@ struct VCSEC_BLEConfig {
   init() {}
 }
 
-struct VCSEC_BLEConfigAll {
+struct BLEConfigAll {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -3246,15 +3456,15 @@ struct VCSEC_BLEConfigAll {
   init() {}
 }
 
-struct VCSEC_BLEConfigCommand {
+struct BLEConfigCommand {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var bleconfigCommandType: VCSEC_BLEConfigCommandType_E = .bleConfigCommandTypeNone
+  var bleconfigCommandType: BLEConfigCommandType_E = .bleConfigCommandTypeNone
 
-  var bleconfig: VCSEC_BLEConfig {
-    get {return _bleconfig ?? VCSEC_BLEConfig()}
+  var bleconfig: BLEConfig {
+    get {return _bleconfig ?? BLEConfig()}
     set {_bleconfig = newValue}
   }
   /// Returns true if `bleconfig` has been explicitly set.
@@ -3266,10 +3476,10 @@ struct VCSEC_BLEConfigCommand {
 
   init() {}
 
-  fileprivate var _bleconfig: VCSEC_BLEConfig? = nil
+  fileprivate var _bleconfig: BLEConfig? = nil
 }
 
-struct VCSEC_Capabilities {
+struct Capabilities {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -3283,60 +3493,179 @@ struct VCSEC_Capabilities {
   init() {}
 }
 
-struct VCSEC_ClosureMoveRequest {
+struct Certificate {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var frontDriverDoor: VCSEC_ClosureMoveType_E = .closureMoveTypeNone
+  var subMessage: Certificate.OneOf_SubMessage? = nil
 
-  var frontPassengerDoor: VCSEC_ClosureMoveType_E = .closureMoveTypeNone
+  var certificateInParts: CertificateInParts {
+    get {
+      if case .certificateInParts(let v)? = subMessage {return v}
+      return CertificateInParts()
+    }
+    set {subMessage = .certificateInParts(newValue)}
+  }
 
-  var rearDriverDoor: VCSEC_ClosureMoveType_E = .closureMoveTypeNone
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  var rearPassengerDoor: VCSEC_ClosureMoveType_E = .closureMoveTypeNone
+  enum OneOf_SubMessage: Equatable {
+    case certificateInParts(CertificateInParts)
 
-  var rearTrunk: VCSEC_ClosureMoveType_E = .closureMoveTypeNone
+  #if !swift(>=4.1)
+    static func ==(lhs: Certificate.OneOf_SubMessage, rhs: Certificate.OneOf_SubMessage) -> Bool {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch (lhs, rhs) {
+      case (.certificateInParts, .certificateInParts): return {
+        guard case .certificateInParts(let l) = lhs, case .certificateInParts(let r) = rhs else { preconditionFailure() }
+        return l == r
+      }()
+      }
+    }
+  #endif
+  }
 
-  var frontTrunk: VCSEC_ClosureMoveType_E = .closureMoveTypeNone
+  init() {}
+}
 
-  var chargePort: VCSEC_ClosureMoveType_E = .closureMoveTypeNone
+struct CertificateInParts {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var startIndex: UInt32 = 0
+
+  var certificateSize: UInt32 = 0
+
+  var data_: Data = Data()
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
 }
 
-struct VCSEC_ClosureStatuses {
+struct CertificateRead {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var frontDriverDoor: VCSEC_ClosureState_E = .closurestateClosed
+  var readIndex: UInt32 = 0
 
-  var frontPassengerDoor: VCSEC_ClosureState_E = .closurestateClosed
-
-  var rearDriverDoor: VCSEC_ClosureState_E = .closurestateClosed
-
-  var rearPassengerDoor: VCSEC_ClosureState_E = .closurestateClosed
-
-  var rearTrunk: VCSEC_ClosureState_E = .closurestateClosed
-
-  var frontTrunk: VCSEC_ClosureState_E = .closurestateClosed
-
-  var chargePort: VCSEC_ClosureState_E = .closurestateClosed
+  var lengthToRead: UInt32 = 0
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
 }
 
-struct VCSEC_CodeDescriptor {
+struct CertificateResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var codeDescriptorLocation: VCSEC_UpdaterLocation = .none
+  var certificate: Certificate {
+    get {return _certificate ?? Certificate()}
+    set {_certificate = newValue}
+  }
+  /// Returns true if `certificate` has been explicitly set.
+  var hasCertificate: Bool {return self._certificate != nil}
+  /// Clears the value of `certificate`. Subsequent reads from it will return its default value.
+  mutating func clearCertificate() {self._certificate = nil}
+
+  var certificateStatus: CertificateStatus_E = .certificateStatusNone
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+
+  fileprivate var _certificate: Certificate? = nil
+}
+
+struct ChallengeCommand {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var challenge: Data = Data()
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+}
+
+struct ChallengeResponse {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var signature: Data = Data()
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+}
+
+struct ClosureMoveRequest {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var frontDriverDoor: ClosureMoveType_E = .closureMoveTypeNone
+
+  var frontPassengerDoor: ClosureMoveType_E = .closureMoveTypeNone
+
+  var rearDriverDoor: ClosureMoveType_E = .closureMoveTypeNone
+
+  var rearPassengerDoor: ClosureMoveType_E = .closureMoveTypeNone
+
+  var rearTrunk: ClosureMoveType_E = .closureMoveTypeNone
+
+  var frontTrunk: ClosureMoveType_E = .closureMoveTypeNone
+
+  var chargePort: ClosureMoveType_E = .closureMoveTypeNone
+
+  var tonneau: ClosureMoveType_E = .closureMoveTypeNone
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+}
+
+struct ClosureStatuses {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var frontDriverDoor: ClosureState_E = .closurestateClosed
+
+  var frontPassengerDoor: ClosureState_E = .closurestateClosed
+
+  var rearDriverDoor: ClosureState_E = .closurestateClosed
+
+  var rearPassengerDoor: ClosureState_E = .closurestateClosed
+
+  var rearTrunk: ClosureState_E = .closurestateClosed
+
+  var frontTrunk: ClosureState_E = .closurestateClosed
+
+  var chargePort: ClosureState_E = .closurestateClosed
+
+  var tonneau: ClosureState_E = .closurestateClosed
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+}
+
+struct CodeDescriptor {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var codeDescriptorLocation: UpdaterLocation = .none
 
   var version: UInt32 = 0
 
@@ -3347,27 +3676,27 @@ struct VCSEC_CodeDescriptor {
   init() {}
 }
 
-struct VCSEC_CommandStatus {
+struct CommandStatus {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var operationStatus: VCSEC_OperationStatus_E = .operationstatusOk
+  var operationStatus: OperationStatus_E = .operationstatusOk
 
-  var subMessage: VCSEC_CommandStatus.OneOf_SubMessage? = nil
+  var subMessage: CommandStatus.OneOf_SubMessage? = nil
 
-  var signedMessageStatus: VCSEC_SignedMessage_status {
+  var signedMessageStatus: SignedMessage_status {
     get {
       if case .signedMessageStatus(let v)? = subMessage {return v}
-      return VCSEC_SignedMessage_status()
+      return SignedMessage_status()
     }
     set {subMessage = .signedMessageStatus(newValue)}
   }
 
-  var whitelistOperationStatus: VCSEC_WhitelistOperation_status {
+  var whitelistOperationStatus: WhitelistOperation_status {
     get {
       if case .whitelistOperationStatus(let v)? = subMessage {return v}
-      return VCSEC_WhitelistOperation_status()
+      return WhitelistOperation_status()
     }
     set {subMessage = .whitelistOperationStatus(newValue)}
   }
@@ -3375,11 +3704,11 @@ struct VCSEC_CommandStatus {
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   enum OneOf_SubMessage: Equatable {
-    case signedMessageStatus(VCSEC_SignedMessage_status)
-    case whitelistOperationStatus(VCSEC_WhitelistOperation_status)
+    case signedMessageStatus(SignedMessage_status)
+    case whitelistOperationStatus(WhitelistOperation_status)
 
   #if !swift(>=4.1)
-    static func ==(lhs: VCSEC_CommandStatus.OneOf_SubMessage, rhs: VCSEC_CommandStatus.OneOf_SubMessage) -> Bool {
+    static func ==(lhs: CommandStatus.OneOf_SubMessage, rhs: CommandStatus.OneOf_SubMessage) -> Bool {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
@@ -3401,7 +3730,7 @@ struct VCSEC_CommandStatus {
   init() {}
 }
 
-struct VCSEC_ConnectionMetrics {
+struct ConnectionMetrics {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -3412,12 +3741,14 @@ struct VCSEC_ConnectionMetrics {
 
   var badCrcconnEventCount: UInt32 = 0
 
+  var otherFailuresCount: UInt32 = 0
+
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
 }
 
-struct VCSEC_DelaySleepRequest {
+struct DelaySleepRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -3429,21 +3760,33 @@ struct VCSEC_DelaySleepRequest {
   init() {}
 }
 
-struct VCSEC_DeviceMotion {
+struct DetailedClosureStatus {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var states: [VCSEC_Device_Motion_State] = []
-
-  var confidence: VCSEC_Device_Motion_Confidence = .unknown
+  var tonneauPercentOpen: UInt32 = 0
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
 }
 
-struct VCSEC_FromRCI {
+struct DeviceMotion {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var states: [Device_Motion_State] = []
+
+  var confidence: Device_Motion_Confidence = .unknown
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+}
+
+struct FromRCI {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -3455,118 +3798,126 @@ struct VCSEC_FromRCI {
   init() {}
 }
 
-struct VCSEC_FromVCSECMessage {
+struct FromVCSECMessage {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var subMessage: VCSEC_FromVCSECMessage.OneOf_SubMessage? = nil
+  var subMessage: FromVCSECMessage.OneOf_SubMessage? = nil
 
-  var vehicleStatus: VCSEC_VehicleStatus {
+  var vehicleStatus: VehicleStatus {
     get {
       if case .vehicleStatus(let v)? = subMessage {return v}
-      return VCSEC_VehicleStatus()
+      return VehicleStatus()
     }
     set {subMessage = .vehicleStatus(newValue)}
   }
 
-  var sessionInfo: VCSEC_SessionInfo {
+  var sessionInfo: SessionInfo {
     get {
       if case .sessionInfo(let v)? = subMessage {return v}
-      return VCSEC_SessionInfo()
+      return SessionInfo()
     }
     set {subMessage = .sessionInfo(newValue)}
   }
 
-  var authenticationRequest: VCSEC_AuthenticationRequest {
+  var authenticationRequest: AuthenticationRequest {
     get {
       if case .authenticationRequest(let v)? = subMessage {return v}
-      return VCSEC_AuthenticationRequest()
+      return AuthenticationRequest()
     }
     set {subMessage = .authenticationRequest(newValue)}
   }
 
-  var commandStatus: VCSEC_CommandStatus {
+  var commandStatus: CommandStatus {
     get {
       if case .commandStatus(let v)? = subMessage {return v}
-      return VCSEC_CommandStatus()
+      return CommandStatus()
     }
     set {subMessage = .commandStatus(newValue)}
   }
 
-  var personalizationInformation: VCSEC_PersonalizationInformation {
+  var personalizationInformation: PersonalizationInformation {
     get {
       if case .personalizationInformation(let v)? = subMessage {return v}
-      return VCSEC_PersonalizationInformation()
+      return PersonalizationInformation()
     }
     set {subMessage = .personalizationInformation(newValue)}
   }
 
-  var whitelistInfo: VCSEC_WhitelistInfo {
+  var whitelistInfo: WhitelistInfo {
     get {
       if case .whitelistInfo(let v)? = subMessage {return v}
-      return VCSEC_WhitelistInfo()
+      return WhitelistInfo()
     }
     set {subMessage = .whitelistInfo(newValue)}
   }
 
-  var whitelistEntryInfo: VCSEC_WhitelistEntryInfo {
+  var whitelistEntryInfo: WhitelistEntryInfo {
     get {
       if case .whitelistEntryInfo(let v)? = subMessage {return v}
-      return VCSEC_WhitelistEntryInfo()
+      return WhitelistEntryInfo()
     }
     set {subMessage = .whitelistEntryInfo(newValue)}
   }
 
-  var vehicleInfo: VCSEC_VehicleInfo {
+  var vehicleInfo: VehicleInfo {
     get {
       if case .vehicleInfo(let v)? = subMessage {return v}
-      return VCSEC_VehicleInfo()
+      return VehicleInfo()
     }
     set {subMessage = .vehicleInfo(newValue)}
   }
 
-  var capabilities: VCSEC_Capabilities {
+  var capabilities: Capabilities {
     get {
       if case .capabilities(let v)? = subMessage {return v}
-      return VCSEC_Capabilities()
+      return Capabilities()
     }
     set {subMessage = .capabilities(newValue)}
   }
 
-  var keyStatusInfo: VCSEC_KeyStatusInfo {
+  var keyStatusInfo: KeyStatusInfo {
     get {
       if case .keyStatusInfo(let v)? = subMessage {return v}
-      return VCSEC_KeyStatusInfo()
+      return KeyStatusInfo()
     }
     set {subMessage = .keyStatusInfo(newValue)}
   }
 
-  var activeKey: VCSEC_ActiveKey {
+  var activeKey: ActiveKey {
     get {
       if case .activeKey(let v)? = subMessage {return v}
-      return VCSEC_ActiveKey()
+      return ActiveKey()
     }
     set {subMessage = .activeKey(newValue)}
   }
 
-  var unknownKeyInfo: VCSEC_UnknownKeyInfo {
+  var unknownKeyInfo: UnknownKeyInfo {
     get {
       if case .unknownKeyInfo(let v)? = subMessage {return v}
-      return VCSEC_UnknownKeyInfo()
+      return UnknownKeyInfo()
     }
     set {subMessage = .unknownKeyInfo(newValue)}
   }
 
-  var updaterCommand: VCSEC_UpdaterCommand {
+  var uirequest: UIRequest_E {
+    get {
+      if case .uirequest(let v)? = subMessage {return v}
+      return .uiRequestNone
+    }
+    set {subMessage = .uirequest(newValue)}
+  }
+
+  var updaterCommand: UpdaterCommand {
     get {
       if case .updaterCommand(let v)? = subMessage {return v}
-      return VCSEC_UpdaterCommand()
+      return UpdaterCommand()
     }
     set {subMessage = .updaterCommand(newValue)}
   }
 
-  var genealogyRequest: VCSEC_GenealogyRequest_E {
+  var genealogyRequest: GenealogyRequest_E {
     get {
       if case .genealogyRequest(let v)? = subMessage {return v}
       return .genealogyrequestNone
@@ -3574,15 +3925,15 @@ struct VCSEC_FromVCSECMessage {
     set {subMessage = .genealogyRequest(newValue)}
   }
 
-  var sleepManagerRequest: VCSEC_SleepManagerRequest {
+  var sleepManagerRequest: SleepManagerRequest {
     get {
       if case .sleepManagerRequest(let v)? = subMessage {return v}
-      return VCSEC_SleepManagerRequest()
+      return SleepManagerRequest()
     }
     set {subMessage = .sleepManagerRequest(newValue)}
   }
 
-  var imuRequest: VCSEC_IMURequest_E {
+  var imuRequest: IMURequest_E {
     get {
       if case .imuRequest(let v)? = subMessage {return v}
       return .imuRequestNone
@@ -3590,7 +3941,7 @@ struct VCSEC_FromVCSECMessage {
     set {subMessage = .imuRequest(newValue)}
   }
 
-  var nfcseRequest: VCSEC_NFCSERequest_E {
+  var nfcseRequest: NFCSERequest_E {
     get {
       if case .nfcseRequest(let v)? = subMessage {return v}
       return .nfcseRequestNone
@@ -3598,7 +3949,7 @@ struct VCSEC_FromVCSECMessage {
     set {subMessage = .nfcseRequest(newValue)}
   }
 
-  var tpdataRequest: VCSEC_TPDataRequest_E {
+  var tpdataRequest: TPDataRequest_E {
     get {
       if case .tpdataRequest(let v)? = subMessage {return v}
       return .tpDatarequestNone
@@ -3606,7 +3957,7 @@ struct VCSEC_FromVCSECMessage {
     set {subMessage = .tpdataRequest(newValue)}
   }
 
-  var resetTrackerCommand: VCSEC_ResetTrackerCommand_E {
+  var resetTrackerCommand: ResetTrackerCommand_E {
     get {
       if case .resetTrackerCommand(let v)? = subMessage {return v}
       return .resettrackerCommandNone
@@ -3614,7 +3965,7 @@ struct VCSEC_FromVCSECMessage {
     set {subMessage = .resetTrackerCommand(newValue)}
   }
 
-  var tpnotifyTrackerCommand: VCSEC_TPNotifyTrackerCommand_E {
+  var tpnotifyTrackerCommand: TPNotifyTrackerCommand_E {
     get {
       if case .tpnotifyTrackerCommand(let v)? = subMessage {return v}
       return .tpNotifytrackerCommandNone
@@ -3622,39 +3973,39 @@ struct VCSEC_FromVCSECMessage {
     set {subMessage = .tpnotifyTrackerCommand(newValue)}
   }
 
-  var setTpconfiguration: VCSEC_SetTPConfigration {
+  var setTpconfiguration: SetTPConfiguration {
     get {
       if case .setTpconfiguration(let v)? = subMessage {return v}
-      return VCSEC_SetTPConfigration()
+      return SetTPConfiguration()
     }
     set {subMessage = .setTpconfiguration(newValue)}
   }
 
-  var unsecureNotification: VCSEC_UnsecureNotification {
+  var unsecureNotification: UnsecureNotification {
     get {
       if case .unsecureNotification(let v)? = subMessage {return v}
-      return VCSEC_UnsecureNotification()
+      return UnsecureNotification()
     }
     set {subMessage = .unsecureNotification(newValue)}
   }
 
-  var epochSessionInfo: VCSEC_Signatures.SessionInfo {
+  var epochSessionInfo: Signatures.SessionInfo {
     get {
       if case .epochSessionInfo(let v)? = subMessage {return v}
-      return VCSEC_Signatures.SessionInfo()
+      return Signatures.SessionInfo()
     }
     set {subMessage = .epochSessionInfo(newValue)}
   }
 
-  var toRcicommand: VCSEC_ToRCI {
+  var toRcicommand: ToRCI {
     get {
       if case .toRcicommand(let v)? = subMessage {return v}
-      return VCSEC_ToRCI()
+      return ToRCI()
     }
     set {subMessage = .toRcicommand(newValue)}
   }
 
-  var rciControl: VCSEC_RCI_control_E {
+  var rciControl: RCI_control_E {
     get {
       if case .rciControl(let v)? = subMessage {return v}
       return .rciControlNone
@@ -3662,15 +4013,15 @@ struct VCSEC_FromVCSECMessage {
     set {subMessage = .rciControl(newValue)}
   }
 
-  var bleconfigCommand: VCSEC_BLEConfigCommand {
+  var bleconfigCommand: BLEConfigCommand {
     get {
       if case .bleconfigCommand(let v)? = subMessage {return v}
-      return VCSEC_BLEConfigCommand()
+      return BLEConfigCommand()
     }
     set {subMessage = .bleconfigCommand(newValue)}
   }
 
-  var appDeviceInfoRequest: VCSEC_AppDeviceInfoRequest_E {
+  var appDeviceInfoRequest: AppDeviceInfoRequest_E {
     get {
       if case .appDeviceInfoRequest(let v)? = subMessage {return v}
       return .appDeviceInfoRequestNone
@@ -3678,84 +4029,112 @@ struct VCSEC_FromVCSECMessage {
     set {subMessage = .appDeviceInfoRequest(newValue)}
   }
 
-  var alert: VCSEC_Alert {
+  var alert: Alert {
     get {
       if case .alert(let v)? = subMessage {return v}
-      return VCSEC_Alert()
+      return Alert()
     }
     set {subMessage = .alert(newValue)}
   }
 
-  var nominalError: VCSEC_NominalError {
+  var nominalError: NominalError {
     get {
       if case .nominalError(let v)? = subMessage {return v}
-      return VCSEC_NominalError()
+      return NominalError()
     }
     set {subMessage = .nominalError(newValue)}
   }
 
-  var misessionRequest: VCSEC_MISessionRequest {
+  var misessionRequest: MISessionRequest {
     get {
       if case .misessionRequest(let v)? = subMessage {return v}
-      return VCSEC_MISessionRequest()
+      return MISessionRequest()
     }
     set {subMessage = .misessionRequest(newValue)}
   }
 
-  var misessionStop: VCSEC_MISessionStop {
+  var misessionStop: MISessionStop {
     get {
       if case .misessionStop(let v)? = subMessage {return v}
-      return VCSEC_MISessionStop()
+      return MISessionStop()
     }
     set {subMessage = .misessionStop(newValue)}
   }
 
-  var clearTpmsalarms_p: VCSEC_TPMSAlarms {
+  var clearTpmsalarms_p: TPMSAlarms {
     get {
       if case .clearTpmsalarms_p(let v)? = subMessage {return v}
-      return VCSEC_TPMSAlarms()
+      return TPMSAlarms()
     }
     set {subMessage = .clearTpmsalarms_p(newValue)}
+  }
+
+  var certificateRead: CertificateRead {
+    get {
+      if case .certificateRead(let v)? = subMessage {return v}
+      return CertificateRead()
+    }
+    set {subMessage = .certificateRead(newValue)}
+  }
+
+  var challengeCommand: ChallengeCommand {
+    get {
+      if case .challengeCommand(let v)? = subMessage {return v}
+      return ChallengeCommand()
+    }
+    set {subMessage = .challengeCommand(newValue)}
+  }
+
+  var publicKeyRequest: PublicKeyRequest_E {
+    get {
+      if case .publicKeyRequest(let v)? = subMessage {return v}
+      return .publicKeyRequestNone
+    }
+    set {subMessage = .publicKeyRequest(newValue)}
   }
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   enum OneOf_SubMessage: Equatable {
-    case vehicleStatus(VCSEC_VehicleStatus)
-    case sessionInfo(VCSEC_SessionInfo)
-    case authenticationRequest(VCSEC_AuthenticationRequest)
-    case commandStatus(VCSEC_CommandStatus)
-    case personalizationInformation(VCSEC_PersonalizationInformation)
-    case whitelistInfo(VCSEC_WhitelistInfo)
-    case whitelistEntryInfo(VCSEC_WhitelistEntryInfo)
-    case vehicleInfo(VCSEC_VehicleInfo)
-    case capabilities(VCSEC_Capabilities)
-    case keyStatusInfo(VCSEC_KeyStatusInfo)
-    case activeKey(VCSEC_ActiveKey)
-    case unknownKeyInfo(VCSEC_UnknownKeyInfo)
-    case updaterCommand(VCSEC_UpdaterCommand)
-    case genealogyRequest(VCSEC_GenealogyRequest_E)
-    case sleepManagerRequest(VCSEC_SleepManagerRequest)
-    case imuRequest(VCSEC_IMURequest_E)
-    case nfcseRequest(VCSEC_NFCSERequest_E)
-    case tpdataRequest(VCSEC_TPDataRequest_E)
-    case resetTrackerCommand(VCSEC_ResetTrackerCommand_E)
-    case tpnotifyTrackerCommand(VCSEC_TPNotifyTrackerCommand_E)
-    case setTpconfiguration(VCSEC_SetTPConfigration)
-    case unsecureNotification(VCSEC_UnsecureNotification)
-    case epochSessionInfo(VCSEC_Signatures.SessionInfo)
-    case toRcicommand(VCSEC_ToRCI)
-    case rciControl(VCSEC_RCI_control_E)
-    case bleconfigCommand(VCSEC_BLEConfigCommand)
-    case appDeviceInfoRequest(VCSEC_AppDeviceInfoRequest_E)
-    case alert(VCSEC_Alert)
-    case nominalError(VCSEC_NominalError)
-    case misessionRequest(VCSEC_MISessionRequest)
-    case misessionStop(VCSEC_MISessionStop)
-    case clearTpmsalarms_p(VCSEC_TPMSAlarms)
+    case vehicleStatus(VehicleStatus)
+    case sessionInfo(SessionInfo)
+    case authenticationRequest(AuthenticationRequest)
+    case commandStatus(CommandStatus)
+    case personalizationInformation(PersonalizationInformation)
+    case whitelistInfo(WhitelistInfo)
+    case whitelistEntryInfo(WhitelistEntryInfo)
+    case vehicleInfo(VehicleInfo)
+    case capabilities(Capabilities)
+    case keyStatusInfo(KeyStatusInfo)
+    case activeKey(ActiveKey)
+    case unknownKeyInfo(UnknownKeyInfo)
+    case uirequest(UIRequest_E)
+    case updaterCommand(UpdaterCommand)
+    case genealogyRequest(GenealogyRequest_E)
+    case sleepManagerRequest(SleepManagerRequest)
+    case imuRequest(IMURequest_E)
+    case nfcseRequest(NFCSERequest_E)
+    case tpdataRequest(TPDataRequest_E)
+    case resetTrackerCommand(ResetTrackerCommand_E)
+    case tpnotifyTrackerCommand(TPNotifyTrackerCommand_E)
+    case setTpconfiguration(SetTPConfiguration)
+    case unsecureNotification(UnsecureNotification)
+    case epochSessionInfo(Signatures.SessionInfo)
+    case toRcicommand(ToRCI)
+    case rciControl(RCI_control_E)
+    case bleconfigCommand(BLEConfigCommand)
+    case appDeviceInfoRequest(AppDeviceInfoRequest_E)
+    case alert(Alert)
+    case nominalError(NominalError)
+    case misessionRequest(MISessionRequest)
+    case misessionStop(MISessionStop)
+    case clearTpmsalarms_p(TPMSAlarms)
+    case certificateRead(CertificateRead)
+    case challengeCommand(ChallengeCommand)
+    case publicKeyRequest(PublicKeyRequest_E)
 
   #if !swift(>=4.1)
-    static func ==(lhs: VCSEC_FromVCSECMessage.OneOf_SubMessage, rhs: VCSEC_FromVCSECMessage.OneOf_SubMessage) -> Bool {
+    static func ==(lhs: FromVCSECMessage.OneOf_SubMessage, rhs: FromVCSECMessage.OneOf_SubMessage) -> Bool {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
@@ -3806,6 +4185,10 @@ struct VCSEC_FromVCSECMessage {
       }()
       case (.unknownKeyInfo, .unknownKeyInfo): return {
         guard case .unknownKeyInfo(let l) = lhs, case .unknownKeyInfo(let r) = rhs else { preconditionFailure() }
+        return l == r
+      }()
+      case (.uirequest, .uirequest): return {
+        guard case .uirequest(let l) = lhs, case .uirequest(let r) = rhs else { preconditionFailure() }
         return l == r
       }()
       case (.updaterCommand, .updaterCommand): return {
@@ -3888,6 +4271,18 @@ struct VCSEC_FromVCSECMessage {
         guard case .clearTpmsalarms_p(let l) = lhs, case .clearTpmsalarms_p(let r) = rhs else { preconditionFailure() }
         return l == r
       }()
+      case (.certificateRead, .certificateRead): return {
+        guard case .certificateRead(let l) = lhs, case .certificateRead(let r) = rhs else { preconditionFailure() }
+        return l == r
+      }()
+      case (.challengeCommand, .challengeCommand): return {
+        guard case .challengeCommand(let l) = lhs, case .challengeCommand(let r) = rhs else { preconditionFailure() }
+        return l == r
+      }()
+      case (.publicKeyRequest, .publicKeyRequest): return {
+        guard case .publicKeyRequest(let l) = lhs, case .publicKeyRequest(let r) = rhs else { preconditionFailure() }
+        return l == r
+      }()
       default: return false
       }
     }
@@ -3897,7 +4292,7 @@ struct VCSEC_FromVCSECMessage {
   init() {}
 }
 
-struct VCSEC_Genealogy {
+struct Genealogy {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -3911,13 +4306,13 @@ struct VCSEC_Genealogy {
   init() {}
 }
 
-struct VCSEC_GenealogyResponse {
+struct GenealogyResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var currentGenealogy: VCSEC_Genealogy {
-    get {return _currentGenealogy ?? VCSEC_Genealogy()}
+  var currentGenealogy: Genealogy {
+    get {return _currentGenealogy ?? Genealogy()}
     set {_currentGenealogy = newValue}
   }
   /// Returns true if `currentGenealogy` has been explicitly set.
@@ -3925,61 +4320,40 @@ struct VCSEC_GenealogyResponse {
   /// Clears the value of `currentGenealogy`. Subsequent reads from it will return its default value.
   mutating func clearCurrentGenealogy() {self._currentGenealogy = nil}
 
-  var status: VCSEC_GenealogyStatus_E = .genealogyStatusNone
+  var status: GenealogyStatus_E = .genealogyStatusNone
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
 
-  fileprivate var _currentGenealogy: VCSEC_Genealogy? = nil
+  fileprivate var _currentGenealogy: Genealogy? = nil
 }
 
-struct VCSEC_GetCodeDescriptor {
+struct GetCodeDescriptor {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var location: VCSEC_UpdaterLocation = .none
+  var location: UpdaterLocation = .none
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
 }
 
-struct VCSEC_GetReaderKey {
+struct GetReaderKey {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var command: VCSEC_GetReaderKeyCommand = .unknown
+  var command: GetReaderKeyCommand = .unknown
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
 }
 
-struct VCSEC_GetSessionInfoRequest {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
-  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-  // methods supported on all messages.
-
-  var keyIdentity: VCSEC_KeyIdentity {
-    get {return _keyIdentity ?? VCSEC_KeyIdentity()}
-    set {_keyIdentity = newValue}
-  }
-  /// Returns true if `keyIdentity` has been explicitly set.
-  var hasKeyIdentity: Bool {return self._keyIdentity != nil}
-  /// Clears the value of `keyIdentity`. Subsequent reads from it will return its default value.
-  mutating func clearKeyIdentity() {self._keyIdentity = nil}
-
-  var unknownFields = SwiftProtobuf.UnknownStorage()
-
-  init() {}
-
-  fileprivate var _keyIdentity: VCSEC_KeyIdentity? = nil
-}
-
-struct VCSEC_HandlePulledWithoutAuthDeviceSpecificPayload {
+struct HandlePulledWithoutAuthDeviceSpecificPayload {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -3989,7 +4363,7 @@ struct VCSEC_HandlePulledWithoutAuthDeviceSpecificPayload {
     set {_uniqueStorage()._keyChannel = newValue}
   }
 
-  var authenticationLevel: VCSEC_AuthenticationLevel_E {
+  var authenticationLevel: AuthenticationLevel_E {
     get {return _storage._authenticationLevel}
     set {_uniqueStorage()._authenticationLevel = newValue}
   }
@@ -4116,19 +4490,19 @@ struct VCSEC_HandlePulledWithoutAuthDeviceSpecificPayload {
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-struct VCSEC_InformationRequest {
+struct InformationRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var informationRequestType: VCSEC_InformationRequestType = .getStatus
+  var informationRequestType: InformationRequestType = .getStatus
 
-  var subMessage: VCSEC_InformationRequest.OneOf_SubMessage? = nil
+  var subMessage: InformationRequest.OneOf_SubMessage? = nil
 
-  var keyID: VCSEC_KeyIdentifier {
+  var keyID: KeyIdentifier {
     get {
       if case .keyID(let v)? = subMessage {return v}
-      return VCSEC_KeyIdentifier()
+      return KeyIdentifier()
     }
     set {subMessage = .keyID(newValue)}
   }
@@ -4152,12 +4526,12 @@ struct VCSEC_InformationRequest {
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   enum OneOf_SubMessage: Equatable {
-    case keyID(VCSEC_KeyIdentifier)
+    case keyID(KeyIdentifier)
     case publicKey(Data)
     case slot(UInt32)
 
   #if !swift(>=4.1)
-    static func ==(lhs: VCSEC_InformationRequest.OneOf_SubMessage, rhs: VCSEC_InformationRequest.OneOf_SubMessage) -> Bool {
+    static func ==(lhs: InformationRequest.OneOf_SubMessage, rhs: InformationRequest.OneOf_SubMessage) -> Bool {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
@@ -4183,7 +4557,7 @@ struct VCSEC_InformationRequest {
   init() {}
 }
 
-struct VCSEC_KeyfobInfo {
+struct KeyfobInfo {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -4199,7 +4573,7 @@ struct VCSEC_KeyfobInfo {
   init() {}
 }
 
-struct VCSEC_KeyIdentifier {
+struct KeyIdentifier {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -4211,77 +4585,25 @@ struct VCSEC_KeyIdentifier {
   init() {}
 }
 
-struct VCSEC_KeyIdentity {
+struct KeyMetadata {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var subMessage: VCSEC_KeyIdentity.OneOf_SubMessage? = nil
-
-  var publicKey: Data {
-    get {
-      if case .publicKey(let v)? = subMessage {return v}
-      return Data()
-    }
-    set {subMessage = .publicKey(newValue)}
-  }
-
-  var keyID: Data {
-    get {
-      if case .keyID(let v)? = subMessage {return v}
-      return Data()
-    }
-    set {subMessage = .keyID(newValue)}
-  }
-
-  var unknownFields = SwiftProtobuf.UnknownStorage()
-
-  enum OneOf_SubMessage: Equatable {
-    case publicKey(Data)
-    case keyID(Data)
-
-  #if !swift(>=4.1)
-    static func ==(lhs: VCSEC_KeyIdentity.OneOf_SubMessage, rhs: VCSEC_KeyIdentity.OneOf_SubMessage) -> Bool {
-      // The use of inline closures is to circumvent an issue where the compiler
-      // allocates stack space for every case branch when no optimizations are
-      // enabled. https://github.com/apple/swift-protobuf/issues/1034
-      switch (lhs, rhs) {
-      case (.publicKey, .publicKey): return {
-        guard case .publicKey(let l) = lhs, case .publicKey(let r) = rhs else { preconditionFailure() }
-        return l == r
-      }()
-      case (.keyID, .keyID): return {
-        guard case .keyID(let l) = lhs, case .keyID(let r) = rhs else { preconditionFailure() }
-        return l == r
-      }()
-      default: return false
-      }
-    }
-  #endif
-  }
-
-  init() {}
-}
-
-struct VCSEC_KeyMetadata {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
-  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-  // methods supported on all messages.
-
-  var keyFormFactor: VCSEC_KeyFormFactor = .unknown
+  var keyFormFactor: KeyFormFactor = .unknown
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
 }
 
-struct VCSEC_KeyStatus {
+struct KeyStatus {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var keyID: VCSEC_KeyIdentifier {
-    get {return _keyID ?? VCSEC_KeyIdentifier()}
+  var keyID: KeyIdentifier {
+    get {return _keyID ?? KeyIdentifier()}
     set {_keyID = newValue}
   }
   /// Returns true if `keyID` has been explicitly set.
@@ -4289,12 +4611,12 @@ struct VCSEC_KeyStatus {
   /// Clears the value of `keyID`. Subsequent reads from it will return its default value.
   mutating func clearKeyID() {self._keyID = nil}
 
-  var nfcPresence: VCSEC_NFCPresence = .notPresent
+  var nfcPresence: NFCPresence = .notPresent
 
-  var blePresence: VCSEC_BLEPresence = .notPresent
+  var blePresence: BLEPresence = .notPresent
 
-  var publicKey: VCSEC_PublicKey {
-    get {return _publicKey ?? VCSEC_PublicKey()}
+  var publicKey: PublicKey {
+    get {return _publicKey ?? PublicKey()}
     set {_publicKey = newValue}
   }
   /// Returns true if `publicKey` has been explicitly set.
@@ -4302,7 +4624,7 @@ struct VCSEC_KeyStatus {
   /// Clears the value of `publicKey`. Subsequent reads from it will return its default value.
   mutating func clearPublicKey() {self._publicKey = nil}
 
-  var keyFormFactor: VCSEC_KeyFormFactor = .unknown
+  var keyFormFactor: KeyFormFactor = .unknown
 
   var slot: UInt32 = 0
 
@@ -4310,23 +4632,23 @@ struct VCSEC_KeyStatus {
 
   init() {}
 
-  fileprivate var _keyID: VCSEC_KeyIdentifier? = nil
-  fileprivate var _publicKey: VCSEC_PublicKey? = nil
+  fileprivate var _keyID: KeyIdentifier? = nil
+  fileprivate var _publicKey: PublicKey? = nil
 }
 
-struct VCSEC_KeyStatusInfo {
+struct KeyStatusInfo {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var keyStatuses: [VCSEC_KeyStatus] = []
+  var keyStatuses: [KeyStatus] = []
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
 }
 
-struct VCSEC_MIConfigurationData {
+struct MIConfigurationData {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -4338,7 +4660,7 @@ struct VCSEC_MIConfigurationData {
   init() {}
 }
 
-struct VCSEC_MISessionRequest {
+struct MISessionRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -4352,24 +4674,24 @@ struct VCSEC_MISessionRequest {
   init() {}
 }
 
-struct VCSEC_MISessionResponse {
+struct MISessionResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   var sessionID: UInt32 = 0
 
-  var subMessage: VCSEC_MISessionResponse.OneOf_SubMessage? = nil
+  var subMessage: MISessionResponse.OneOf_SubMessage? = nil
 
-  var miconfigurationData: VCSEC_MIConfigurationData {
+  var miconfigurationData: MIConfigurationData {
     get {
       if case .miconfigurationData(let v)? = subMessage {return v}
-      return VCSEC_MIConfigurationData()
+      return MIConfigurationData()
     }
     set {subMessage = .miconfigurationData(newValue)}
   }
 
-  var errorCode: VCSEC_MIError_E {
+  var errorCode: MIError_E {
     get {
       if case .errorCode(let v)? = subMessage {return v}
       return .errorUnknown
@@ -4380,11 +4702,11 @@ struct VCSEC_MISessionResponse {
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   enum OneOf_SubMessage: Equatable {
-    case miconfigurationData(VCSEC_MIConfigurationData)
-    case errorCode(VCSEC_MIError_E)
+    case miconfigurationData(MIConfigurationData)
+    case errorCode(MIError_E)
 
   #if !swift(>=4.1)
-    static func ==(lhs: VCSEC_MISessionResponse.OneOf_SubMessage, rhs: VCSEC_MISessionResponse.OneOf_SubMessage) -> Bool {
+    static func ==(lhs: MISessionResponse.OneOf_SubMessage, rhs: MISessionResponse.OneOf_SubMessage) -> Bool {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
@@ -4406,12 +4728,12 @@ struct VCSEC_MISessionResponse {
   init() {}
 }
 
-struct VCSEC_MISessionStop {
+struct MISessionStop {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var subMessage: VCSEC_MISessionStop.OneOf_SubMessage? = nil
+  var subMessage: MISessionStop.OneOf_SubMessage? = nil
 
   var sessionID: UInt32 {
     get {
@@ -4427,7 +4749,7 @@ struct VCSEC_MISessionStop {
     case sessionID(UInt32)
 
   #if !swift(>=4.1)
-    static func ==(lhs: VCSEC_MISessionStop.OneOf_SubMessage, rhs: VCSEC_MISessionStop.OneOf_SubMessage) -> Bool {
+    static func ==(lhs: MISessionStop.OneOf_SubMessage, rhs: MISessionStop.OneOf_SubMessage) -> Bool {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
@@ -4444,12 +4766,12 @@ struct VCSEC_MISessionStop {
   init() {}
 }
 
-struct VCSEC_MISessionStopped {
+struct MISessionStopped {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var subMessage: VCSEC_MISessionStopped.OneOf_SubMessage? = nil
+  var subMessage: MISessionStopped.OneOf_SubMessage? = nil
 
   var sessionID: UInt32 {
     get {
@@ -4465,7 +4787,7 @@ struct VCSEC_MISessionStopped {
     case sessionID(UInt32)
 
   #if !swift(>=4.1)
-    static func ==(lhs: VCSEC_MISessionStopped.OneOf_SubMessage, rhs: VCSEC_MISessionStopped.OneOf_SubMessage) -> Bool {
+    static func ==(lhs: MISessionStopped.OneOf_SubMessage, rhs: MISessionStopped.OneOf_SubMessage) -> Bool {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
@@ -4482,21 +4804,21 @@ struct VCSEC_MISessionStopped {
   init() {}
 }
 
-struct VCSEC_NFCSEState {
+struct NFCSEState {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var devicePubKeyState: VCSEC_NFCSEDevicePubKeyState_E = .nfcsecDevicepubkeyStateNone
+  var devicePubKeyState: NFCSEDevicePubKeyState_E = .nfcsecDevicepubkeyStateNone
 
-  var vehiclePubKeyState: VCSEC_NFCSEVehiclePubKeyState_E = .nfcsecVehiclepubkeyStateNone
+  var vehiclePubKeyState: NFCSEVehiclePubKeyState_E = .nfcsecVehiclepubkeyStateNone
 
-  var sharedSecretState: VCSEC_NFCSESharedSecretState_E = .nfcsecSharedsecretStateNone
+  var sharedSecretState: NFCSESharedSecretState_E = .nfcsecSharedsecretStateNone
 
-  var insecureCommandState: VCSEC_NFCSEInsecureCommandState_E = .nfcsecInsecureCommandStateNone
+  var insecureCommandState: NFCSEInsecureCommandState_E = .nfcsecInsecureCommandStateNone
 
-  var vehiclePubKey: VCSEC_PublicKey {
-    get {return _vehiclePubKey ?? VCSEC_PublicKey()}
+  var vehiclePubKey: PublicKey {
+    get {return _vehiclePubKey ?? PublicKey()}
     set {_vehiclePubKey = newValue}
   }
   /// Returns true if `vehiclePubKey` has been explicitly set.
@@ -4508,28 +4830,16 @@ struct VCSEC_NFCSEState {
 
   init() {}
 
-  fileprivate var _vehiclePubKey: VCSEC_PublicKey? = nil
+  fileprivate var _vehiclePubKey: PublicKey? = nil
 }
 
-struct VCSEC_NominalError {
+struct PermissionChange {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var genericError: VCSEC_GenericError_E = .genericerrorNone
-
-  var unknownFields = SwiftProtobuf.UnknownStorage()
-
-  init() {}
-}
-
-struct VCSEC_PermissionChange {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
-  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-  // methods supported on all messages.
-
-  var key: VCSEC_PublicKey {
-    get {return _key ?? VCSEC_PublicKey()}
+  var key: PublicKey {
+    get {return _key ?? PublicKey()}
     set {_key = newValue}
   }
   /// Returns true if `key` has been explicitly set.
@@ -4537,20 +4847,20 @@ struct VCSEC_PermissionChange {
   /// Clears the value of `key`. Subsequent reads from it will return its default value.
   mutating func clearKey() {self._key = nil}
 
-  var permission: [VCSEC_WhitelistKeyPermission_E] = []
+  var permission: [WhitelistKeyPermission_E] = []
 
   var secondsToBeActive: UInt32 = 0
 
-  var keyRole: VCSEC_Role = .none
+  var keyRole: Role = .none
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
 
-  fileprivate var _key: VCSEC_PublicKey? = nil
+  fileprivate var _key: PublicKey? = nil
 }
 
-struct VCSEC_PersonalizationInformation {
+struct PersonalizationInformation {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -4562,7 +4872,29 @@ struct VCSEC_PersonalizationInformation {
   init() {}
 }
 
-struct VCSEC_PublicKey {
+struct PhoneVersionInfo {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var osVersionMajor: UInt32 = 0
+
+  var osVersionMinor: UInt32 = 0
+
+  var osVersionPatch: UInt32 = 0
+
+  var appVersionMajor: UInt32 = 0
+
+  var appVersionMinor: UInt32 = 0
+
+  var appVersionPatch: UInt32 = 0
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+}
+
+struct PublicKey {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -4574,7 +4906,30 @@ struct VCSEC_PublicKey {
   init() {}
 }
 
-struct VCSEC_RCISignature {
+struct PublicKeyResponse {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var publicKey: PublicKey {
+    get {return _publicKey ?? PublicKey()}
+    set {_publicKey = newValue}
+  }
+  /// Returns true if `publicKey` has been explicitly set.
+  var hasPublicKey: Bool {return self._publicKey != nil}
+  /// Clears the value of `publicKey`. Subsequent reads from it will return its default value.
+  mutating func clearPublicKey() {self._publicKey = nil}
+
+  var publicKeyStatus: PublicKeyStatus_E = .publicKeyStatusNone
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+
+  fileprivate var _publicKey: PublicKey? = nil
+}
+
+struct RCISignature {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -4588,13 +4943,13 @@ struct VCSEC_RCISignature {
   init() {}
 }
 
-struct VCSEC_ReplaceKey {
+struct ReplaceKey {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var keyToAdd: VCSEC_PublicKey {
-    get {return _keyToAdd ?? VCSEC_PublicKey()}
+  var keyToAdd: PublicKey {
+    get {return _keyToAdd ?? PublicKey()}
     set {_keyToAdd = newValue}
   }
   /// Returns true if `keyToAdd` has been explicitly set.
@@ -4602,16 +4957,16 @@ struct VCSEC_ReplaceKey {
   /// Clears the value of `keyToAdd`. Subsequent reads from it will return its default value.
   mutating func clearKeyToAdd() {self._keyToAdd = nil}
 
-  var keyRole: VCSEC_Role = .none
+  var keyRole: Role = .none
 
   var impermanent: Bool = false
 
-  var subMessage: VCSEC_ReplaceKey.OneOf_SubMessage? = nil
+  var subMessage: ReplaceKey.OneOf_SubMessage? = nil
 
-  var publicKeyToReplace: VCSEC_PublicKey {
+  var publicKeyToReplace: PublicKey {
     get {
       if case .publicKeyToReplace(let v)? = subMessage {return v}
-      return VCSEC_PublicKey()
+      return PublicKey()
     }
     set {subMessage = .publicKeyToReplace(newValue)}
   }
@@ -4627,11 +4982,11 @@ struct VCSEC_ReplaceKey {
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   enum OneOf_SubMessage: Equatable {
-    case publicKeyToReplace(VCSEC_PublicKey)
+    case publicKeyToReplace(PublicKey)
     case slotToReplace(UInt32)
 
   #if !swift(>=4.1)
-    static func ==(lhs: VCSEC_ReplaceKey.OneOf_SubMessage, rhs: VCSEC_ReplaceKey.OneOf_SubMessage) -> Bool {
+    static func ==(lhs: ReplaceKey.OneOf_SubMessage, rhs: ReplaceKey.OneOf_SubMessage) -> Bool {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
@@ -4652,10 +5007,10 @@ struct VCSEC_ReplaceKey {
 
   init() {}
 
-  fileprivate var _keyToAdd: VCSEC_PublicKey? = nil
+  fileprivate var _keyToAdd: PublicKey? = nil
 }
 
-struct VCSEC_ResetTrackerStats {
+struct ResetTrackerStats {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -4685,66 +5040,56 @@ struct VCSEC_ResetTrackerStats {
   init() {}
 }
 
-struct VCSEC_SessionInfo {
+struct RFMonitorCounterResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var token: Data = Data()
+  var rfinterruptCounter: UInt32 = 0
 
-  var counter: UInt32 = 0
-
-  var publicKey: Data = Data()
+  var advCompleteCounter: UInt32 = 0
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
 }
 
-struct VCSEC_SetTPConfigration {
+struct SetTPConfiguration {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var stationaryConfig: VCSEC_TPStationaryConfig {
-    get {return _stationaryConfig ?? VCSEC_TPStationaryConfig()}
-    set {_stationaryConfig = newValue}
+  var config: TPConfiguration {
+    get {return _config ?? TPConfiguration()}
+    set {_config = newValue}
   }
-  /// Returns true if `stationaryConfig` has been explicitly set.
-  var hasStationaryConfig: Bool {return self._stationaryConfig != nil}
-  /// Clears the value of `stationaryConfig`. Subsequent reads from it will return its default value.
-  mutating func clearStationaryConfig() {self._stationaryConfig = nil}
+  /// Returns true if `config` has been explicitly set.
+  var hasConfig: Bool {return self._config != nil}
+  /// Clears the value of `config`. Subsequent reads from it will return its default value.
+  mutating func clearConfig() {self._config = nil}
 
-  var motionConfig: VCSEC_TPMotionConfig {
-    get {return _motionConfig ?? VCSEC_TPMotionConfig()}
-    set {_motionConfig = newValue}
-  }
-  /// Returns true if `motionConfig` has been explicitly set.
-  var hasMotionConfig: Bool {return self._motionConfig != nil}
-  /// Clears the value of `motionConfig`. Subsequent reads from it will return its default value.
-  mutating func clearMotionConfig() {self._motionConfig = nil}
+  var permanentConfig: Bool = false
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
 
-  fileprivate var _stationaryConfig: VCSEC_TPStationaryConfig? = nil
-  fileprivate var _motionConfig: VCSEC_TPMotionConfig? = nil
+  fileprivate var _config: TPConfiguration? = nil
 }
 
-struct VCSEC_SetUpdaterLocation {
+struct SetUpdaterLocation {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var updaterLocation: VCSEC_UpdaterLocation = .none
+  var updaterLocation: UpdaterLocation = .none
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
 }
 
-struct VCSEC_Signatures {
+struct Signatures {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -4764,7 +5109,7 @@ struct VCSEC_Signatures {
 
     var clockTime: UInt32 = 0
 
-    var status: VCSEC_Session_Info_Status = .ok
+    var status: Session_Info_Status = .ok
 
     var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -4774,7 +5119,7 @@ struct VCSEC_Signatures {
   init() {}
 }
 
-struct VCSEC_SignedMessage {
+struct SignedMessage {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -4783,7 +5128,7 @@ struct VCSEC_SignedMessage {
 
   var protobufMessageAsBytes: Data = Data()
 
-  var signatureType: VCSEC_SignatureType = .aesGcm
+  var signatureType: SignatureType = .aesGcm
 
   var signature: Data = Data()
 
@@ -4796,36 +5141,36 @@ struct VCSEC_SignedMessage {
   init() {}
 }
 
-struct VCSEC_SignedMessage_status {
+struct SignedMessage_status {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   var counter: UInt32 = 0
 
-  var signedMessageInformation: VCSEC_SignedMessage_information_E = .signedmessageInformationNone
+  var signedMessageInformation: SignedMessage_information_E = .signedmessageInformationNone
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
 }
 
-struct VCSEC_SleepManagerRequest {
+struct SleepManagerRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var subMessage: VCSEC_SleepManagerRequest.OneOf_SubMessage? = nil
+  var subMessage: SleepManagerRequest.OneOf_SubMessage? = nil
 
-  var delaySleepRequest: VCSEC_DelaySleepRequest {
+  var delaySleepRequest: DelaySleepRequest {
     get {
       if case .delaySleepRequest(let v)? = subMessage {return v}
-      return VCSEC_DelaySleepRequest()
+      return DelaySleepRequest()
     }
     set {subMessage = .delaySleepRequest(newValue)}
   }
 
-  var sleepManagerCommand: VCSEC_SleepManagerCommand_E {
+  var sleepManagerCommand: SleepManagerCommand_E {
     get {
       if case .sleepManagerCommand(let v)? = subMessage {return v}
       return .sleepmanagerCommandNone
@@ -4836,11 +5181,11 @@ struct VCSEC_SleepManagerRequest {
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   enum OneOf_SubMessage: Equatable {
-    case delaySleepRequest(VCSEC_DelaySleepRequest)
-    case sleepManagerCommand(VCSEC_SleepManagerCommand_E)
+    case delaySleepRequest(DelaySleepRequest)
+    case sleepManagerCommand(SleepManagerCommand_E)
 
   #if !swift(>=4.1)
-    static func ==(lhs: VCSEC_SleepManagerRequest.OneOf_SubMessage, rhs: VCSEC_SleepManagerRequest.OneOf_SubMessage) -> Bool {
+    static func ==(lhs: SleepManagerRequest.OneOf_SubMessage, rhs: SleepManagerRequest.OneOf_SubMessage) -> Bool {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
@@ -4862,7 +5207,7 @@ struct VCSEC_SleepManagerRequest {
   init() {}
 }
 
-struct VCSEC_SleepManagerStats {
+struct SleepManagerStats {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -4871,14 +5216,14 @@ struct VCSEC_SleepManagerStats {
 
   var totalAwakeTime: UInt32 = 0
 
-  var isBletrimApplied: VCSEC_BLEAdditionalTRIMApplied_E = .bleAdditionalTrimAppliedNone
+  var isBletrimApplied: BLEAdditionalTRIMApplied_E = .bleAdditionalTrimAppliedNone
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
 }
 
-struct VCSEC_StageBlock {
+struct StageBlock {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -4892,14 +5237,14 @@ struct VCSEC_StageBlock {
   init() {}
 }
 
-struct VCSEC_ToRCI {
+struct ToRCI {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   var command: Data = Data()
 
-  var subMessage: VCSEC_ToRCI.OneOf_SubMessage? = nil
+  var subMessage: ToRCI.OneOf_SubMessage? = nil
 
   var hmacSignature: Data {
     get {
@@ -4909,10 +5254,10 @@ struct VCSEC_ToRCI {
     set {subMessage = .hmacSignature(newValue)}
   }
 
-  var rciSignature: VCSEC_RCISignature {
+  var rciSignature: RCISignature {
     get {
       if case .rciSignature(let v)? = subMessage {return v}
-      return VCSEC_RCISignature()
+      return RCISignature()
     }
     set {subMessage = .rciSignature(newValue)}
   }
@@ -4921,10 +5266,10 @@ struct VCSEC_ToRCI {
 
   enum OneOf_SubMessage: Equatable {
     case hmacSignature(Data)
-    case rciSignature(VCSEC_RCISignature)
+    case rciSignature(RCISignature)
 
   #if !swift(>=4.1)
-    static func ==(lhs: VCSEC_ToRCI.OneOf_SubMessage, rhs: VCSEC_ToRCI.OneOf_SubMessage) -> Bool {
+    static func ==(lhs: ToRCI.OneOf_SubMessage, rhs: ToRCI.OneOf_SubMessage) -> Bool {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
@@ -4946,25 +5291,25 @@ struct VCSEC_ToRCI {
   init() {}
 }
 
-struct VCSEC_ToVCSECMessage {
+struct ToVCSECMessage {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var subMessage: VCSEC_ToVCSECMessage.OneOf_SubMessage? = nil
+  var subMessage: ToVCSECMessage.OneOf_SubMessage? = nil
 
-  var signedMessage: VCSEC_SignedMessage {
+  var signedMessage: SignedMessage {
     get {
       if case .signedMessage(let v)? = subMessage {return v}
-      return VCSEC_SignedMessage()
+      return SignedMessage()
     }
     set {subMessage = .signedMessage(newValue)}
   }
 
-  var unsignedMessage: VCSEC_UnsignedMessage {
+  var unsignedMessage: UnsignedMessage {
     get {
       if case .unsignedMessage(let v)? = subMessage {return v}
-      return VCSEC_UnsignedMessage()
+      return UnsignedMessage()
     }
     set {subMessage = .unsignedMessage(newValue)}
   }
@@ -4972,11 +5317,11 @@ struct VCSEC_ToVCSECMessage {
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   enum OneOf_SubMessage: Equatable {
-    case signedMessage(VCSEC_SignedMessage)
-    case unsignedMessage(VCSEC_UnsignedMessage)
+    case signedMessage(SignedMessage)
+    case unsignedMessage(UnsignedMessage)
 
   #if !swift(>=4.1)
-    static func ==(lhs: VCSEC_ToVCSECMessage.OneOf_SubMessage, rhs: VCSEC_ToVCSECMessage.OneOf_SubMessage) -> Bool {
+    static func ==(lhs: ToVCSECMessage.OneOf_SubMessage, rhs: ToVCSECMessage.OneOf_SubMessage) -> Bool {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
@@ -4998,7 +5343,7 @@ struct VCSEC_ToVCSECMessage {
   init() {}
 }
 
-struct VCSEC_TPAdv {
+struct TPAdv {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -5007,20 +5352,86 @@ struct VCSEC_TPAdv {
 
   var temperature: Int32 = 0
 
-  var tpnotifyReason: VCSEC_TPNotifyReason_E = .tpNotifyReasonUnknown
+  var tpnotifyReason: TPNotifyReason_E = .tpNotifyReasonUnknown
 
   var batteryVoltageMV: UInt32 = 0
 
   var advertismentCount: UInt32 = 0
 
-  var tpmsadvType: VCSEC_TPMSAdvType_E = .tpmsAdvTypeSemi
+  var tpmsadvType: TPMSAdvType_E = .tpmsAdvTypeSemi
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
 }
 
-struct VCSEC_TPData {
+struct TPCapabilities {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var pressureInAdv: Bool = false
+
+  var configurableIntervalThreshold: Bool = false
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+}
+
+struct TPConfiguration {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var subMessage: TPConfiguration.OneOf_SubMessage? = nil
+
+  var stationaryConfig: TPStationaryConfig {
+    get {
+      if case .stationaryConfig(let v)? = subMessage {return v}
+      return TPStationaryConfig()
+    }
+    set {subMessage = .stationaryConfig(newValue)}
+  }
+
+  var motionConfig: TPMotionConfig {
+    get {
+      if case .motionConfig(let v)? = subMessage {return v}
+      return TPMotionConfig()
+    }
+    set {subMessage = .motionConfig(newValue)}
+  }
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  enum OneOf_SubMessage: Equatable {
+    case stationaryConfig(TPStationaryConfig)
+    case motionConfig(TPMotionConfig)
+
+  #if !swift(>=4.1)
+    static func ==(lhs: TPConfiguration.OneOf_SubMessage, rhs: TPConfiguration.OneOf_SubMessage) -> Bool {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch (lhs, rhs) {
+      case (.stationaryConfig, .stationaryConfig): return {
+        guard case .stationaryConfig(let l) = lhs, case .stationaryConfig(let r) = rhs else { preconditionFailure() }
+        return l == r
+      }()
+      case (.motionConfig, .motionConfig): return {
+        guard case .motionConfig(let l) = lhs, case .motionConfig(let r) = rhs else { preconditionFailure() }
+        return l == r
+      }()
+      default: return false
+      }
+    }
+  #endif
+  }
+
+  init() {}
+}
+
+struct TPData {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -5034,12 +5445,12 @@ struct VCSEC_TPData {
   init() {}
 }
 
-struct VCSEC_TPLRDetection {
+struct TPLRDetection {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var lrdetectionResult: VCSEC_LRDetectionResult_E = .rrorMaxcnt
+  var lrdetectionResult: LRDetectionResult_E = .rrorMaxcnt
 
   var totalPeriodMs: UInt32 = 0
 
@@ -5056,7 +5467,7 @@ struct VCSEC_TPLRDetection {
   init() {}
 }
 
-struct VCSEC_TPMotionConfig {
+struct TPMotionConfig {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -5065,14 +5476,20 @@ struct VCSEC_TPMotionConfig {
 
   var temperatureDelta: UInt32 = 0
 
-  var ptmeasurePeriod: VCSEC_MLXWakePeriod_E = .mlxwakeperiod2Ms
+  var motionPeriod: MLXWakePeriod_E = .mlxwakeperiod2Ms
+
+  var accelMeasureMod: UInt32 = 0
+
+  var ptmeasureMod: UInt32 = 0
+
+  var motionDuration: UInt32 = 0
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
 }
 
-struct VCSEC_TPMSAlarms {
+struct TPMSAlarms {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -5094,13 +5511,13 @@ struct VCSEC_TPMSAlarms {
   init() {}
 }
 
-struct VCSEC_TPNewSensorData {
+struct TPNewSensorData {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var sensorPublicKey: VCSEC_PublicKey {
-    get {return _sensorPublicKey ?? VCSEC_PublicKey()}
+  var sensorPublicKey: PublicKey {
+    get {return _sensorPublicKey ?? PublicKey()}
     set {_sensorPublicKey = newValue}
   }
   /// Returns true if `sensorPublicKey` has been explicitly set.
@@ -5112,10 +5529,10 @@ struct VCSEC_TPNewSensorData {
 
   init() {}
 
-  fileprivate var _sensorPublicKey: VCSEC_PublicKey? = nil
+  fileprivate var _sensorPublicKey: PublicKey? = nil
 }
 
-struct VCSEC_TPNotifyTrackerStats {
+struct TPNotifyTrackerStats {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -5139,7 +5556,7 @@ struct VCSEC_TPNotifyTrackerStats {
   init() {}
 }
 
-struct VCSEC_TPStationaryConfig {
+struct TPStationaryConfig {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -5148,18 +5565,18 @@ struct VCSEC_TPStationaryConfig {
 
   var pressureDelta: UInt32 = 0
 
-  var accelMeasurePeriod: VCSEC_MLXWakePeriod_E = .mlxwakeperiod2Ms
+  var stationaryTaskPeriod: MLXWakePeriod_E = .mlxwakeperiod2Ms
 
-  var absoluteAccelWakeThreshold: Int32 = 0
+  var pressureMeasureMod: UInt32 = 0
 
-  var ptmeasureMod: UInt32 = 0
+  var accelMeasureMod: UInt32 = 0
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
 }
 
-struct VCSEC_TPWheelUnitInfo {
+struct TPWheelUnitInfo {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -5175,13 +5592,13 @@ struct VCSEC_TPWheelUnitInfo {
   init() {}
 }
 
-struct VCSEC_UnknownKeyInfo {
+struct UnknownKeyInfo {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var keyStatus: VCSEC_KeyStatus {
-    get {return _keyStatus ?? VCSEC_KeyStatus()}
+  var keyStatus: KeyStatus {
+    get {return _keyStatus ?? KeyStatus()}
     set {_keyStatus = newValue}
   }
   /// Returns true if `keyStatus` has been explicitly set.
@@ -5189,8 +5606,8 @@ struct VCSEC_UnknownKeyInfo {
   /// Clears the value of `keyStatus`. Subsequent reads from it will return its default value.
   mutating func clearKeyStatus() {self._keyStatus = nil}
 
-  var publicKey: VCSEC_PublicKey {
-    get {return _publicKey ?? VCSEC_PublicKey()}
+  var publicKey: PublicKey {
+    get {return _publicKey ?? PublicKey()}
     set {_publicKey = newValue}
   }
   /// Returns true if `publicKey` has been explicitly set.
@@ -5198,25 +5615,25 @@ struct VCSEC_UnknownKeyInfo {
   /// Clears the value of `publicKey`. Subsequent reads from it will return its default value.
   mutating func clearPublicKey() {self._publicKey = nil}
 
-  var keyFormFactor: VCSEC_KeyFormFactor = .unknown
+  var keyFormFactor: KeyFormFactor = .unknown
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
 
-  fileprivate var _keyStatus: VCSEC_KeyStatus? = nil
-  fileprivate var _publicKey: VCSEC_PublicKey? = nil
+  fileprivate var _keyStatus: KeyStatus? = nil
+  fileprivate var _publicKey: PublicKey? = nil
 }
 
-struct VCSEC_UnsecureNotification {
+struct UnsecureNotification {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   var notifyUser: Bool = false
 
-  var closureStatuses: VCSEC_ClosureStatuses {
-    get {return _closureStatuses ?? VCSEC_ClosureStatuses()}
+  var closureStatuses: ClosureStatuses {
+    get {return _closureStatuses ?? ClosureStatuses()}
     set {_closureStatuses = newValue}
   }
   /// Returns true if `closureStatuses` has been explicitly set.
@@ -5228,16 +5645,16 @@ struct VCSEC_UnsecureNotification {
 
   init() {}
 
-  fileprivate var _closureStatuses: VCSEC_ClosureStatuses? = nil
+  fileprivate var _closureStatuses: ClosureStatuses? = nil
 }
 
-struct VCSEC_UnsignedMessage {
+struct UnsignedMessage {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var personalizationInformation: VCSEC_PersonalizationInformation {
-    get {return _personalizationInformation ?? VCSEC_PersonalizationInformation()}
+  var personalizationInformation: PersonalizationInformation {
+    get {return _personalizationInformation ?? PersonalizationInformation()}
     set {_personalizationInformation = newValue}
   }
   /// Returns true if `personalizationInformation` has been explicitly set.
@@ -5245,17 +5662,17 @@ struct VCSEC_UnsignedMessage {
   /// Clears the value of `personalizationInformation`. Subsequent reads from it will return its default value.
   mutating func clearPersonalizationInformation() {self._personalizationInformation = nil}
 
-  var subMessage: VCSEC_UnsignedMessage.OneOf_SubMessage? = nil
+  var subMessage: UnsignedMessage.OneOf_SubMessage? = nil
 
-  var informationRequest: VCSEC_InformationRequest {
+  var informationRequest: InformationRequest {
     get {
       if case .informationRequest(let v)? = subMessage {return v}
-      return VCSEC_InformationRequest()
+      return InformationRequest()
     }
     set {subMessage = .informationRequest(newValue)}
   }
 
-  var rkeaction: VCSEC_RKEAction_E {
+  var rkeaction: RKEAction_E {
     get {
       if case .rkeaction(let v)? = subMessage {return v}
       return .rkeActionUnlock
@@ -5263,71 +5680,71 @@ struct VCSEC_UnsignedMessage {
     set {subMessage = .rkeaction(newValue)}
   }
 
-  var authenticationResponse: VCSEC_AuthenticationResponse {
+  var authenticationResponse: AuthenticationResponse {
     get {
       if case .authenticationResponse(let v)? = subMessage {return v}
-      return VCSEC_AuthenticationResponse()
+      return AuthenticationResponse()
     }
     set {subMessage = .authenticationResponse(newValue)}
   }
 
-  var closureMoveRequest: VCSEC_ClosureMoveRequest {
+  var closureMoveRequest: ClosureMoveRequest {
     get {
       if case .closureMoveRequest(let v)? = subMessage {return v}
-      return VCSEC_ClosureMoveRequest()
+      return ClosureMoveRequest()
     }
     set {subMessage = .closureMoveRequest(newValue)}
   }
 
-  var tpadv: VCSEC_TPAdv {
+  var tpadv: TPAdv {
     get {
       if case .tpadv(let v)? = subMessage {return v}
-      return VCSEC_TPAdv()
+      return TPAdv()
     }
     set {subMessage = .tpadv(newValue)}
   }
 
-  var whitelistOperation: VCSEC_WhitelistOperation {
+  var whitelistOperation: WhitelistOperation {
     get {
       if case .whitelistOperation(let v)? = subMessage {return v}
-      return VCSEC_WhitelistOperation()
+      return WhitelistOperation()
     }
     set {subMessage = .whitelistOperation(newValue)}
   }
 
-  var updaterResponse: VCSEC_UpdaterResponse {
+  var updaterResponse: UpdaterResponse {
     get {
       if case .updaterResponse(let v)? = subMessage {return v}
-      return VCSEC_UpdaterResponse()
+      return UpdaterResponse()
     }
     set {subMessage = .updaterResponse(newValue)}
   }
 
-  var genealogyResponse: VCSEC_GenealogyResponse {
+  var genealogyResponse: GenealogyResponse {
     get {
       if case .genealogyResponse(let v)? = subMessage {return v}
-      return VCSEC_GenealogyResponse()
+      return GenealogyResponse()
     }
     set {subMessage = .genealogyResponse(newValue)}
   }
 
-  var setMetaDataForKey: VCSEC_KeyMetadata {
+  var setMetaDataForKey: KeyMetadata {
     get {
       if case .setMetaDataForKey(let v)? = subMessage {return v}
-      return VCSEC_KeyMetadata()
+      return KeyMetadata()
     }
     set {subMessage = .setMetaDataForKey(newValue)}
   }
 
-  var keyfobInfo: VCSEC_KeyfobInfo {
+  var keyfobInfo: KeyfobInfo {
     get {
       if case .keyfobInfo(let v)? = subMessage {return v}
-      return VCSEC_KeyfobInfo()
+      return KeyfobInfo()
     }
     set {subMessage = .keyfobInfo(newValue)}
   }
 
-  var imustate: VCSEC_IMUState_E {
+  var imustate: IMUState_E {
     get {
       if case .imustate(let v)? = subMessage {return v}
       return .imuStateNotConfigured
@@ -5335,79 +5752,79 @@ struct VCSEC_UnsignedMessage {
     set {subMessage = .imustate(newValue)}
   }
 
-  var nfcseState: VCSEC_NFCSEState {
+  var nfcseState: NFCSEState {
     get {
       if case .nfcseState(let v)? = subMessage {return v}
-      return VCSEC_NFCSEState()
+      return NFCSEState()
     }
     set {subMessage = .nfcseState(newValue)}
   }
 
-  var lowPowerDeviceSleepManagerStats: VCSEC_SleepManagerStats {
+  var lowPowerDeviceSleepManagerStats: SleepManagerStats {
     get {
       if case .lowPowerDeviceSleepManagerStats(let v)? = subMessage {return v}
-      return VCSEC_SleepManagerStats()
+      return SleepManagerStats()
     }
     set {subMessage = .lowPowerDeviceSleepManagerStats(newValue)}
   }
 
-  var tpdata: VCSEC_TPData {
+  var tpdata: TPData {
     get {
       if case .tpdata(let v)? = subMessage {return v}
-      return VCSEC_TPData()
+      return TPData()
     }
     set {subMessage = .tpdata(newValue)}
   }
 
-  var tpwheelUnitInfo: VCSEC_TPWheelUnitInfo {
+  var tpwheelUnitInfo: TPWheelUnitInfo {
     get {
       if case .tpwheelUnitInfo(let v)? = subMessage {return v}
-      return VCSEC_TPWheelUnitInfo()
+      return TPWheelUnitInfo()
     }
     set {subMessage = .tpwheelUnitInfo(newValue)}
   }
 
-  var resetTrackerStats: VCSEC_ResetTrackerStats {
+  var resetTrackerStats: ResetTrackerStats {
     get {
       if case .resetTrackerStats(let v)? = subMessage {return v}
-      return VCSEC_ResetTrackerStats()
+      return ResetTrackerStats()
     }
     set {subMessage = .resetTrackerStats(newValue)}
   }
 
-  var tpnotifyTrackerStats: VCSEC_TPNotifyTrackerStats {
+  var tpnotifyTrackerStats: TPNotifyTrackerStats {
     get {
       if case .tpnotifyTrackerStats(let v)? = subMessage {return v}
-      return VCSEC_TPNotifyTrackerStats()
+      return TPNotifyTrackerStats()
     }
     set {subMessage = .tpnotifyTrackerStats(newValue)}
   }
 
-  var tpnewSensorData: VCSEC_TPNewSensorData {
+  var tpnewSensorData: TPNewSensorData {
     get {
       if case .tpnewSensorData(let v)? = subMessage {return v}
-      return VCSEC_TPNewSensorData()
+      return TPNewSensorData()
     }
     set {subMessage = .tpnewSensorData(newValue)}
   }
 
-  var tplrdetection: VCSEC_TPLRDetection {
+  var tplrdetection: TPLRDetection {
     get {
       if case .tplrdetection(let v)? = subMessage {return v}
-      return VCSEC_TPLRDetection()
+      return TPLRDetection()
     }
     set {subMessage = .tplrdetection(newValue)}
   }
 
-  var connectionMetrics: VCSEC_ConnectionMetrics {
+  var connectionMetrics: ConnectionMetrics {
     get {
       if case .connectionMetrics(let v)? = subMessage {return v}
-      return VCSEC_ConnectionMetrics()
+      return ConnectionMetrics()
     }
     set {subMessage = .connectionMetrics(newValue)}
   }
 
-  var deviceActivity: VCSEC_Activity_E {
+  var deviceActivity: Activity_E {
     get {
       if case .deviceActivity(let v)? = subMessage {return v}
       return .activityNone
@@ -5415,123 +5832,204 @@ struct VCSEC_UnsignedMessage {
     set {subMessage = .deviceActivity(newValue)}
   }
 
-  var getEpochSessionInfo: VCSEC_GetSessionInfoRequest {
+  var getEpochSessionInfo: GetSessionInfoRequest {
     get {
       if case .getEpochSessionInfo(let v)? = subMessage {return v}
-      return VCSEC_GetSessionInfoRequest()
+      return GetSessionInfoRequest()
     }
     set {subMessage = .getEpochSessionInfo(newValue)}
   }
 
-  var fromRciresponse: VCSEC_FromRCI {
+  var fromRciresponse: FromRCI {
     get {
       if case .fromRciresponse(let v)? = subMessage {return v}
-      return VCSEC_FromRCI()
+      return FromRCI()
     }
     set {subMessage = .fromRciresponse(newValue)}
   }
 
-  var bleconfigAll: VCSEC_BLEConfigAll {
+  var bleconfigAll: BLEConfigAll {
     get {
       if case .bleconfigAll(let v)? = subMessage {return v}
-      return VCSEC_BLEConfigAll()
+      return BLEConfigAll()
     }
     set {subMessage = .bleconfigAll(newValue)}
   }
 
-  var deviceMotion: VCSEC_DeviceMotion {
+  var deviceMotion: DeviceMotion {
     get {
       if case .deviceMotion(let v)? = subMessage {return v}
-      return VCSEC_DeviceMotion()
+      return DeviceMotion()
     }
     set {subMessage = .deviceMotion(newValue)}
   }
 
-  var appDeviceInfo: VCSEC_AppDeviceInfo {
+  var appDeviceInfo: AppDeviceInfo {
     get {
       if case .appDeviceInfo(let v)? = subMessage {return v}
-      return VCSEC_AppDeviceInfo()
+      return AppDeviceInfo()
     }
     set {subMessage = .appDeviceInfo(newValue)}
   }
 
-  var getReaderKey: VCSEC_GetReaderKey {
+  var getReaderKey: GetReaderKey {
     get {
       if case .getReaderKey(let v)? = subMessage {return v}
-      return VCSEC_GetReaderKey()
+      return GetReaderKey()
     }
     set {subMessage = .getReaderKey(newValue)}
   }
 
-  var misessionResponse: VCSEC_MISessionResponse {
+  var misessionResponse: MISessionResponse {
     get {
       if case .misessionResponse(let v)? = subMessage {return v}
-      return VCSEC_MISessionResponse()
+      return MISessionResponse()
     }
     set {subMessage = .misessionResponse(newValue)}
   }
 
-  var misessionStopped: VCSEC_MISessionStopped {
+  var misessionStopped: MISessionStopped {
     get {
       if case .misessionStopped(let v)? = subMessage {return v}
-      return VCSEC_MISessionStopped()
+      return MISessionStopped()
     }
     set {subMessage = .misessionStopped(newValue)}
   }
 
-  var accelData: VCSEC_AccelData {
+  var accelData: AccelData {
     get {
       if case .accelData(let v)? = subMessage {return v}
-      return VCSEC_AccelData()
+      return AccelData()
     }
     set {subMessage = .accelData(newValue)}
   }
 
-  var tpmsalarms: VCSEC_TPMSAlarms {
+  var tpmsalarms: TPMSAlarms {
     get {
       if case .tpmsalarms(let v)? = subMessage {return v}
-      return VCSEC_TPMSAlarms()
+      return TPMSAlarms()
     }
     set {subMessage = .tpmsalarms(newValue)}
+  }
+
+  var certificateResponse: CertificateResponse {
+    get {
+      if case .certificateResponse(let v)? = subMessage {return v}
+      return CertificateResponse()
+    }
+    set {subMessage = .certificateResponse(newValue)}
+  }
+
+  var challengeResponse: ChallengeResponse {
+    get {
+      if case .challengeResponse(let v)? = subMessage {return v}
+      return ChallengeResponse()
+    }
+    set {subMessage = .challengeResponse(newValue)}
+  }
+
+  var publicKeyResponse: PublicKeyResponse {
+    get {
+      if case .publicKeyResponse(let v)? = subMessage {return v}
+      return PublicKeyResponse()
+    }
+    set {subMessage = .publicKeyResponse(newValue)}
+  }
+
+  var asicspiread: ASICSPIRead {
+    get {
+      if case .asicspiread(let v)? = subMessage {return v}
+      return ASICSPIRead()
+    }
+    set {subMessage = .asicspiread(newValue)}
+  }
+
+  var rfmonitorCounterResponse: RFMonitorCounterResponse {
+    get {
+      if case .rfmonitorCounterResponse(let v)? = subMessage {return v}
+      return RFMonitorCounterResponse()
+    }
+    set {subMessage = .rfmonitorCounterResponse(newValue)}
+  }
+
+  var blenickName: VehicleBLENickName {
+    get {
+      if case .blenickName(let v)? = subMessage {return v}
+      return VehicleBLENickName()
+    }
+    set {subMessage = .blenickName(newValue)}
+  }
+
+  var tpconfiguration: TPConfiguration {
+    get {
+      if case .tpconfiguration(let v)? = subMessage {return v}
+      return TPConfiguration()
+    }
+    set {subMessage = .tpconfiguration(newValue)}
+  }
+
+  var tpcapabilities: TPCapabilities {
+    get {
+      if case .tpcapabilities(let v)? = subMessage {return v}
+      return TPCapabilities()
+    }
+    set {subMessage = .tpcapabilities(newValue)}
+  }
+
+  var appEventLog: AppEventLog {
+    get {
+      if case .appEventLog(let v)? = subMessage {return v}
+      return AppEventLog()
+    }
+    set {subMessage = .appEventLog(newValue)}
   }
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   enum OneOf_SubMessage: Equatable {
-    case informationRequest(VCSEC_InformationRequest)
-    case rkeaction(VCSEC_RKEAction_E)
-    case authenticationResponse(VCSEC_AuthenticationResponse)
-    case closureMoveRequest(VCSEC_ClosureMoveRequest)
-    case tpadv(VCSEC_TPAdv)
-    case whitelistOperation(VCSEC_WhitelistOperation)
-    case updaterResponse(VCSEC_UpdaterResponse)
-    case genealogyResponse(VCSEC_GenealogyResponse)
-    case setMetaDataForKey(VCSEC_KeyMetadata)
-    case keyfobInfo(VCSEC_KeyfobInfo)
-    case imustate(VCSEC_IMUState_E)
-    case nfcseState(VCSEC_NFCSEState)
-    case lowPowerDeviceSleepManagerStats(VCSEC_SleepManagerStats)
-    case tpdata(VCSEC_TPData)
-    case tpwheelUnitInfo(VCSEC_TPWheelUnitInfo)
-    case resetTrackerStats(VCSEC_ResetTrackerStats)
-    case tpnotifyTrackerStats(VCSEC_TPNotifyTrackerStats)
-    case tpnewSensorData(VCSEC_TPNewSensorData)
-    case tplrdetection(VCSEC_TPLRDetection)
-    case connectionMetrics(VCSEC_ConnectionMetrics)
-    case deviceActivity(VCSEC_Activity_E)
-    case getEpochSessionInfo(VCSEC_GetSessionInfoRequest)
-    case fromRciresponse(VCSEC_FromRCI)
-    case bleconfigAll(VCSEC_BLEConfigAll)
-    case deviceMotion(VCSEC_DeviceMotion)
-    case appDeviceInfo(VCSEC_AppDeviceInfo)
-    case getReaderKey(VCSEC_GetReaderKey)
-    case misessionResponse(VCSEC_MISessionResponse)
-    case misessionStopped(VCSEC_MISessionStopped)
-    case accelData(VCSEC_AccelData)
-    case tpmsalarms(VCSEC_TPMSAlarms)
+    case informationRequest(InformationRequest)
+    case rkeaction(RKEAction_E)
+    case authenticationResponse(AuthenticationResponse)
+    case closureMoveRequest(ClosureMoveRequest)
+    case tpadv(TPAdv)
+    case whitelistOperation(WhitelistOperation)
+    case updaterResponse(UpdaterResponse)
+    case genealogyResponse(GenealogyResponse)
+    case setMetaDataForKey(KeyMetadata)
+    case keyfobInfo(KeyfobInfo)
+    case imustate(IMUState_E)
+    case nfcseState(NFCSEState)
+    case lowPowerDeviceSleepManagerStats(SleepManagerStats)
+    case tpdata(TPData)
+    case tpwheelUnitInfo(TPWheelUnitInfo)
+    case resetTrackerStats(ResetTrackerStats)
+    case tpnotifyTrackerStats(TPNotifyTrackerStats)
+    case tpnewSensorData(TPNewSensorData)
+    case tplrdetection(TPLRDetection)
+    case connectionMetrics(ConnectionMetrics)
+    case deviceActivity(Activity_E)
+    case getEpochSessionInfo(GetSessionInfoRequest)
+    case fromRciresponse(FromRCI)
+    case bleconfigAll(BLEConfigAll)
+    case deviceMotion(DeviceMotion)
+    case appDeviceInfo(AppDeviceInfo)
+    case getReaderKey(GetReaderKey)
+    case misessionResponse(MISessionResponse)
+    case misessionStopped(MISessionStopped)
+    case accelData(AccelData)
+    case tpmsalarms(TPMSAlarms)
+    case certificateResponse(CertificateResponse)
+    case challengeResponse(ChallengeResponse)
+    case publicKeyResponse(PublicKeyResponse)
+    case asicspiread(ASICSPIRead)
+    case rfmonitorCounterResponse(RFMonitorCounterResponse)
+    case blenickName(VehicleBLENickName)
+    case tpconfiguration(TPConfiguration)
+    case tpcapabilities(TPCapabilities)
+    case appEventLog(AppEventLog)
 
   #if !swift(>=4.1)
-    static func ==(lhs: VCSEC_UnsignedMessage.OneOf_SubMessage, rhs: VCSEC_UnsignedMessage.OneOf_SubMessage) -> Bool {
+    static func ==(lhs: UnsignedMessage.OneOf_SubMessage, rhs: UnsignedMessage.OneOf_SubMessage) -> Bool {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
@@ -5660,6 +6158,42 @@ struct VCSEC_UnsignedMessage {
         guard case .tpmsalarms(let l) = lhs, case .tpmsalarms(let r) = rhs else { preconditionFailure() }
         return l == r
       }()
+      case (.certificateResponse, .certificateResponse): return {
+        guard case .certificateResponse(let l) = lhs, case .certificateResponse(let r) = rhs else { preconditionFailure() }
+        return l == r
+      }()
+      case (.challengeResponse, .challengeResponse): return {
+        guard case .challengeResponse(let l) = lhs, case .challengeResponse(let r) = rhs else { preconditionFailure() }
+        return l == r
+      }()
+      case (.publicKeyResponse, .publicKeyResponse): return {
+        guard case .publicKeyResponse(let l) = lhs, case .publicKeyResponse(let r) = rhs else { preconditionFailure() }
+        return l == r
+      }()
+      case (.asicspiread, .asicspiread): return {
+        guard case .asicspiread(let l) = lhs, case .asicspiread(let r) = rhs else { preconditionFailure() }
+        return l == r
+      }()
+      case (.rfmonitorCounterResponse, .rfmonitorCounterResponse): return {
+        guard case .rfmonitorCounterResponse(let l) = lhs, case .rfmonitorCounterResponse(let r) = rhs else { preconditionFailure() }
+        return l == r
+      }()
+      case (.blenickName, .blenickName): return {
+        guard case .blenickName(let l) = lhs, case .blenickName(let r) = rhs else { preconditionFailure() }
+        return l == r
+      }()
+      case (.tpconfiguration, .tpconfiguration): return {
+        guard case .tpconfiguration(let l) = lhs, case .tpconfiguration(let r) = rhs else { preconditionFailure() }
+        return l == r
+      }()
+      case (.tpcapabilities, .tpcapabilities): return {
+        guard case .tpcapabilities(let l) = lhs, case .tpcapabilities(let r) = rhs else { preconditionFailure() }
+        return l == r
+      }()
+      case (.appEventLog, .appEventLog): return {
+        guard case .appEventLog(let l) = lhs, case .appEventLog(let r) = rhs else { preconditionFailure() }
+        return l == r
+      }()
       default: return false
       }
     }
@@ -5668,44 +6202,44 @@ struct VCSEC_UnsignedMessage {
 
   init() {}
 
-  fileprivate var _personalizationInformation: VCSEC_PersonalizationInformation? = nil
+  fileprivate var _personalizationInformation: PersonalizationInformation? = nil
 }
 
-struct VCSEC_UpdaterCommand {
+struct UpdaterCommand {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var subMessage: VCSEC_UpdaterCommand.OneOf_SubMessage? = nil
+  var subMessage: UpdaterCommand.OneOf_SubMessage? = nil
 
-  var getCodeDescriptor: VCSEC_GetCodeDescriptor {
+  var getCodeDescriptor: GetCodeDescriptor {
     get {
       if case .getCodeDescriptor(let v)? = subMessage {return v}
-      return VCSEC_GetCodeDescriptor()
+      return GetCodeDescriptor()
     }
     set {subMessage = .getCodeDescriptor(newValue)}
   }
 
-  var setUpdaterLocation: VCSEC_SetUpdaterLocation {
+  var setUpdaterLocation: SetUpdaterLocation {
     get {
       if case .setUpdaterLocation(let v)? = subMessage {return v}
-      return VCSEC_SetUpdaterLocation()
+      return SetUpdaterLocation()
     }
     set {subMessage = .setUpdaterLocation(newValue)}
   }
 
-  var stageBlock: VCSEC_StageBlock {
+  var stageBlock: StageBlock {
     get {
       if case .stageBlock(let v)? = subMessage {return v}
-      return VCSEC_StageBlock()
+      return StageBlock()
     }
     set {subMessage = .stageBlock(newValue)}
   }
 
-  var verifyAndInstallApp: VCSEC_VerifyAndInstallApp {
+  var verifyAndInstallApp: VerifyAndInstallApp {
     get {
       if case .verifyAndInstallApp(let v)? = subMessage {return v}
-      return VCSEC_VerifyAndInstallApp()
+      return VerifyAndInstallApp()
     }
     set {subMessage = .verifyAndInstallApp(newValue)}
   }
@@ -5721,14 +6255,14 @@ struct VCSEC_UpdaterCommand {
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   enum OneOf_SubMessage: Equatable {
-    case getCodeDescriptor(VCSEC_GetCodeDescriptor)
-    case setUpdaterLocation(VCSEC_SetUpdaterLocation)
-    case stageBlock(VCSEC_StageBlock)
-    case verifyAndInstallApp(VCSEC_VerifyAndInstallApp)
+    case getCodeDescriptor(GetCodeDescriptor)
+    case setUpdaterLocation(SetUpdaterLocation)
+    case stageBlock(StageBlock)
+    case verifyAndInstallApp(VerifyAndInstallApp)
     case firmwareInfo(Data)
 
   #if !swift(>=4.1)
-    static func ==(lhs: VCSEC_UpdaterCommand.OneOf_SubMessage, rhs: VCSEC_UpdaterCommand.OneOf_SubMessage) -> Bool {
+    static func ==(lhs: UpdaterCommand.OneOf_SubMessage, rhs: UpdaterCommand.OneOf_SubMessage) -> Bool {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
@@ -5762,25 +6296,25 @@ struct VCSEC_UpdaterCommand {
   init() {}
 }
 
-struct VCSEC_UpdaterResponse {
+struct UpdaterResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var subMessage: VCSEC_UpdaterResponse.OneOf_SubMessage? = nil
+  var subMessage: UpdaterResponse.OneOf_SubMessage? = nil
 
-  var codeDescriptorMessage: VCSEC_CodeDescriptor {
+  var codeDescriptorMessage: CodeDescriptor {
     get {
       if case .codeDescriptorMessage(let v)? = subMessage {return v}
-      return VCSEC_CodeDescriptor()
+      return CodeDescriptor()
     }
     set {subMessage = .codeDescriptorMessage(newValue)}
   }
 
-  var updaterStatus: VCSEC_UpdaterStatus {
+  var updaterStatus: UpdaterStatus {
     get {
       if case .updaterStatus(let v)? = subMessage {return v}
-      return VCSEC_UpdaterStatus()
+      return UpdaterStatus()
     }
     set {subMessage = .updaterStatus(newValue)}
   }
@@ -5788,11 +6322,11 @@ struct VCSEC_UpdaterResponse {
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   enum OneOf_SubMessage: Equatable {
-    case codeDescriptorMessage(VCSEC_CodeDescriptor)
-    case updaterStatus(VCSEC_UpdaterStatus)
+    case codeDescriptorMessage(CodeDescriptor)
+    case updaterStatus(UpdaterStatus)
 
   #if !swift(>=4.1)
-    static func ==(lhs: VCSEC_UpdaterResponse.OneOf_SubMessage, rhs: VCSEC_UpdaterResponse.OneOf_SubMessage) -> Bool {
+    static func ==(lhs: UpdaterResponse.OneOf_SubMessage, rhs: UpdaterResponse.OneOf_SubMessage) -> Bool {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
@@ -5814,14 +6348,14 @@ struct VCSEC_UpdaterResponse {
   init() {}
 }
 
-struct VCSEC_UpdaterStatus {
+struct UpdaterStatus {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var statusCode: VCSEC_UpdaterStatusCode = .error
+  var statusCode: UpdaterStatusCode = .error
 
-  var location: VCSEC_UpdaterLocation = .none
+  var location: UpdaterLocation = .none
 
   var nextAddressNumber: UInt32 = 0
 
@@ -5830,7 +6364,19 @@ struct VCSEC_UpdaterStatus {
   init() {}
 }
 
-struct VCSEC_VehicleInfo {
+struct VehicleBLENickName {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var nickName: Data = Data()
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+}
+
+struct VehicleInfo {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -5842,13 +6388,13 @@ struct VCSEC_VehicleInfo {
   init() {}
 }
 
-struct VCSEC_VehicleStatus {
+struct VehicleStatus {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var closureStatuses: VCSEC_ClosureStatuses {
-    get {return _closureStatuses ?? VCSEC_ClosureStatuses()}
+  var closureStatuses: ClosureStatuses {
+    get {return _closureStatuses ?? ClosureStatuses()}
     set {_closureStatuses = newValue}
   }
   /// Returns true if `closureStatuses` has been explicitly set.
@@ -5856,18 +6402,30 @@ struct VCSEC_VehicleStatus {
   /// Clears the value of `closureStatuses`. Subsequent reads from it will return its default value.
   mutating func clearClosureStatuses() {self._closureStatuses = nil}
 
-  var vehicleLockState: VCSEC_VehicleLockState_E = .vehiclelockstateUnlocked
+  var vehicleLockState: VehicleLockState_E = .vehiclelockstateUnlocked
 
-  var vehicleSleepStatus: VCSEC_VehicleSleepStatus_E = .vehicleSleepStatusUnknown
+  var vehicleSleepStatus: VehicleSleepStatus_E = .vehicleSleepStatusUnknown
+
+  var userPresence: UserPresence_E = .vehicleUserPresenceUnknown
+
+  var detailedClosureStatus: DetailedClosureStatus {
+    get {return _detailedClosureStatus ?? DetailedClosureStatus()}
+    set {_detailedClosureStatus = newValue}
+  }
+  /// Returns true if `detailedClosureStatus` has been explicitly set.
+  var hasDetailedClosureStatus: Bool {return self._detailedClosureStatus != nil}
+  /// Clears the value of `detailedClosureStatus`. Subsequent reads from it will return its default value.
+  mutating func clearDetailedClosureStatus() {self._detailedClosureStatus = nil}
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
 
-  fileprivate var _closureStatuses: VCSEC_ClosureStatuses? = nil
+  fileprivate var _closureStatuses: ClosureStatuses? = nil
+  fileprivate var _detailedClosureStatus: DetailedClosureStatus? = nil
 }
 
-struct VCSEC_VerifyAndInstallApp {
+struct VerifyAndInstallApp {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -5883,13 +6441,13 @@ struct VCSEC_VerifyAndInstallApp {
   init() {}
 }
 
-struct VCSEC_WhitelistEntryInfo {
+struct WhitelistEntryInfo {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var keyID: VCSEC_KeyIdentifier {
-    get {return _keyID ?? VCSEC_KeyIdentifier()}
+  var keyID: KeyIdentifier {
+    get {return _keyID ?? KeyIdentifier()}
     set {_keyID = newValue}
   }
   /// Returns true if `keyID` has been explicitly set.
@@ -5897,8 +6455,8 @@ struct VCSEC_WhitelistEntryInfo {
   /// Clears the value of `keyID`. Subsequent reads from it will return its default value.
   mutating func clearKeyID() {self._keyID = nil}
 
-  var publicKey: VCSEC_PublicKey {
-    get {return _publicKey ?? VCSEC_PublicKey()}
+  var publicKey: PublicKey {
+    get {return _publicKey ?? PublicKey()}
     set {_publicKey = newValue}
   }
   /// Returns true if `publicKey` has been explicitly set.
@@ -5906,10 +6464,10 @@ struct VCSEC_WhitelistEntryInfo {
   /// Clears the value of `publicKey`. Subsequent reads from it will return its default value.
   mutating func clearPublicKey() {self._publicKey = nil}
 
-  var permissions: [VCSEC_WhitelistKeyPermission_E] = []
+  var permissions: [WhitelistKeyPermission_E] = []
 
-  var metadataForKey: VCSEC_KeyMetadata {
-    get {return _metadataForKey ?? VCSEC_KeyMetadata()}
+  var metadataForKey: KeyMetadata {
+    get {return _metadataForKey ?? KeyMetadata()}
     set {_metadataForKey = newValue}
   }
   /// Returns true if `metadataForKey` has been explicitly set.
@@ -5921,25 +6479,25 @@ struct VCSEC_WhitelistEntryInfo {
 
   var slot: UInt32 = 0
 
-  var keyRole: VCSEC_Role = .none
+  var keyRole: Role = .none
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
 
-  fileprivate var _keyID: VCSEC_KeyIdentifier? = nil
-  fileprivate var _publicKey: VCSEC_PublicKey? = nil
-  fileprivate var _metadataForKey: VCSEC_KeyMetadata? = nil
+  fileprivate var _keyID: KeyIdentifier? = nil
+  fileprivate var _publicKey: PublicKey? = nil
+  fileprivate var _metadataForKey: KeyMetadata? = nil
 }
 
-struct VCSEC_WhitelistInfo {
+struct WhitelistInfo {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   var numberOfEntries: UInt32 = 0
 
-  var whitelistEntries: [VCSEC_KeyIdentifier] = []
+  var whitelistEntries: [KeyIdentifier] = []
 
   var slotMask: UInt32 = 0
 
@@ -5948,13 +6506,13 @@ struct VCSEC_WhitelistInfo {
   init() {}
 }
 
-struct VCSEC_WhitelistOperation {
+struct WhitelistOperation {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var metadataForKey: VCSEC_KeyMetadata {
-    get {return _metadataForKey ?? VCSEC_KeyMetadata()}
+  var metadataForKey: KeyMetadata {
+    get {return _metadataForKey ?? KeyMetadata()}
     set {_metadataForKey = newValue}
   }
   /// Returns true if `metadataForKey` has been explicitly set.
@@ -5962,68 +6520,68 @@ struct VCSEC_WhitelistOperation {
   /// Clears the value of `metadataForKey`. Subsequent reads from it will return its default value.
   mutating func clearMetadataForKey() {self._metadataForKey = nil}
 
-  var subMessage: VCSEC_WhitelistOperation.OneOf_SubMessage? = nil
+  var subMessage: WhitelistOperation.OneOf_SubMessage? = nil
 
-  var addPublicKeyToWhitelist: VCSEC_PublicKey {
+  var addPublicKeyToWhitelist: PublicKey {
     get {
       if case .addPublicKeyToWhitelist(let v)? = subMessage {return v}
-      return VCSEC_PublicKey()
+      return PublicKey()
     }
     set {subMessage = .addPublicKeyToWhitelist(newValue)}
   }
 
-  var removePublicKeyFromWhitelist: VCSEC_PublicKey {
+  var removePublicKeyFromWhitelist: PublicKey {
     get {
       if case .removePublicKeyFromWhitelist(let v)? = subMessage {return v}
-      return VCSEC_PublicKey()
+      return PublicKey()
     }
     set {subMessage = .removePublicKeyFromWhitelist(newValue)}
   }
 
-  var addPermissionsToPublicKey: VCSEC_PermissionChange {
+  var addPermissionsToPublicKey: PermissionChange {
     get {
       if case .addPermissionsToPublicKey(let v)? = subMessage {return v}
-      return VCSEC_PermissionChange()
+      return PermissionChange()
     }
     set {subMessage = .addPermissionsToPublicKey(newValue)}
   }
 
-  var removePermissionsFromPublicKey: VCSEC_PermissionChange {
+  var removePermissionsFromPublicKey: PermissionChange {
     get {
       if case .removePermissionsFromPublicKey(let v)? = subMessage {return v}
-      return VCSEC_PermissionChange()
+      return PermissionChange()
     }
     set {subMessage = .removePermissionsFromPublicKey(newValue)}
   }
 
-  var addKeyToWhitelistAndAddPermissions: VCSEC_PermissionChange {
+  var addKeyToWhitelistAndAddPermissions: PermissionChange {
     get {
       if case .addKeyToWhitelistAndAddPermissions(let v)? = subMessage {return v}
-      return VCSEC_PermissionChange()
+      return PermissionChange()
     }
     set {subMessage = .addKeyToWhitelistAndAddPermissions(newValue)}
   }
 
-  var updateKeyAndPermissions: VCSEC_PermissionChange {
+  var updateKeyAndPermissions: PermissionChange {
     get {
       if case .updateKeyAndPermissions(let v)? = subMessage {return v}
-      return VCSEC_PermissionChange()
+      return PermissionChange()
     }
     set {subMessage = .updateKeyAndPermissions(newValue)}
   }
 
-  var addImpermanentKey: VCSEC_PermissionChange {
+  var addImpermanentKey: PermissionChange {
     get {
       if case .addImpermanentKey(let v)? = subMessage {return v}
-      return VCSEC_PermissionChange()
+      return PermissionChange()
     }
     set {subMessage = .addImpermanentKey(newValue)}
   }
 
-  var addImpermanentKeyAndRemoveExisting: VCSEC_PermissionChange {
+  var addImpermanentKeyAndRemoveExisting: PermissionChange {
     get {
       if case .addImpermanentKeyAndRemoveExisting(let v)? = subMessage {return v}
-      return VCSEC_PermissionChange()
+      return PermissionChange()
     }
     set {subMessage = .addImpermanentKeyAndRemoveExisting(newValue)}
   }
@@ -6036,10 +6594,10 @@ struct VCSEC_WhitelistOperation {
     set {subMessage = .removeAllImpermanentKeys(newValue)}
   }
 
-  var replaceKey: VCSEC_ReplaceKey {
+  var replaceKey: ReplaceKey {
     get {
       if case .replaceKey(let v)? = subMessage {return v}
-      return VCSEC_ReplaceKey()
+      return ReplaceKey()
     }
     set {subMessage = .replaceKey(newValue)}
   }
@@ -6047,19 +6605,19 @@ struct VCSEC_WhitelistOperation {
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   enum OneOf_SubMessage: Equatable {
-    case addPublicKeyToWhitelist(VCSEC_PublicKey)
-    case removePublicKeyFromWhitelist(VCSEC_PublicKey)
-    case addPermissionsToPublicKey(VCSEC_PermissionChange)
-    case removePermissionsFromPublicKey(VCSEC_PermissionChange)
-    case addKeyToWhitelistAndAddPermissions(VCSEC_PermissionChange)
-    case updateKeyAndPermissions(VCSEC_PermissionChange)
-    case addImpermanentKey(VCSEC_PermissionChange)
-    case addImpermanentKeyAndRemoveExisting(VCSEC_PermissionChange)
+    case addPublicKeyToWhitelist(PublicKey)
+    case removePublicKeyFromWhitelist(PublicKey)
+    case addPermissionsToPublicKey(PermissionChange)
+    case removePermissionsFromPublicKey(PermissionChange)
+    case addKeyToWhitelistAndAddPermissions(PermissionChange)
+    case updateKeyAndPermissions(PermissionChange)
+    case addImpermanentKey(PermissionChange)
+    case addImpermanentKeyAndRemoveExisting(PermissionChange)
     case removeAllImpermanentKeys(Bool)
-    case replaceKey(VCSEC_ReplaceKey)
+    case replaceKey(ReplaceKey)
 
   #if !swift(>=4.1)
-    static func ==(lhs: VCSEC_WhitelistOperation.OneOf_SubMessage, rhs: VCSEC_WhitelistOperation.OneOf_SubMessage) -> Bool {
+    static func ==(lhs: WhitelistOperation.OneOf_SubMessage, rhs: WhitelistOperation.OneOf_SubMessage) -> Bool {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
@@ -6112,18 +6670,18 @@ struct VCSEC_WhitelistOperation {
 
   init() {}
 
-  fileprivate var _metadataForKey: VCSEC_KeyMetadata? = nil
+  fileprivate var _metadataForKey: KeyMetadata? = nil
 }
 
-struct VCSEC_WhitelistOperation_status {
+struct WhitelistOperation_status {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var whitelistOperationInformation: VCSEC_WhitelistOperation_information_E = .whitelistoperationInformationNone
+  var whitelistOperationInformation: WhitelistOperation_information_E = .whitelistoperationInformationNone
 
-  var signerOfOperation: VCSEC_KeyIdentifier {
-    get {return _signerOfOperation ?? VCSEC_KeyIdentifier()}
+  var signerOfOperation: KeyIdentifier {
+    get {return _signerOfOperation ?? KeyIdentifier()}
     set {_signerOfOperation = newValue}
   }
   /// Returns true if `signerOfOperation` has been explicitly set.
@@ -6131,172 +6689,186 @@ struct VCSEC_WhitelistOperation_status {
   /// Clears the value of `signerOfOperation`. Subsequent reads from it will return its default value.
   mutating func clearSignerOfOperation() {self._signerOfOperation = nil}
 
-  var operationStatus: VCSEC_OperationStatus_E = .operationstatusOk
+  var operationStatus: OperationStatus_E = .operationstatusOk
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
 
-  fileprivate var _signerOfOperation: VCSEC_KeyIdentifier? = nil
+  fileprivate var _signerOfOperation: KeyIdentifier? = nil
 }
 
 #if swift(>=5.5) && canImport(_Concurrency)
-extension VCSEC_Activity_E: @unchecked Sendable {}
-extension VCSEC_AppDeviceInfoRequest_E: @unchecked Sendable {}
-extension VCSEC_AppOperatingSystem: @unchecked Sendable {}
-extension VCSEC_AuthenticationLevel_E: @unchecked Sendable {}
-extension VCSEC_AuthenticationReason_E: @unchecked Sendable {}
-extension VCSEC_AuthenticationRejection_E: @unchecked Sendable {}
-extension VCSEC_BLEAdditionalTRIMApplied_E: @unchecked Sendable {}
-extension VCSEC_BLEConfigCommandType_E: @unchecked Sendable {}
-extension VCSEC_BLEPresence: @unchecked Sendable {}
-extension VCSEC_ClosureMoveType_E: @unchecked Sendable {}
-extension VCSEC_ClosureState_E: @unchecked Sendable {}
-extension VCSEC_Device_Motion_Confidence: @unchecked Sendable {}
-extension VCSEC_Device_Motion_State: @unchecked Sendable {}
-extension VCSEC_GenealogyRequest_E: @unchecked Sendable {}
-extension VCSEC_GenealogyStatus_E: @unchecked Sendable {}
-extension VCSEC_GenericError_E: @unchecked Sendable {}
-extension VCSEC_GetReaderKeyCommand: @unchecked Sendable {}
-extension VCSEC_HandlePulled_E: @unchecked Sendable {}
-extension VCSEC_IMURequest_E: @unchecked Sendable {}
-extension VCSEC_IMUState_E: @unchecked Sendable {}
-extension VCSEC_InformationRequestType: @unchecked Sendable {}
-extension VCSEC_KeyFormFactor: @unchecked Sendable {}
-extension VCSEC_LRDetectionResult_E: @unchecked Sendable {}
-extension VCSEC_MIError_E: @unchecked Sendable {}
-extension VCSEC_MLXWakePeriod_E: @unchecked Sendable {}
-extension VCSEC_NFCPresence: @unchecked Sendable {}
-extension VCSEC_NFCSEDevicePubKeyState_E: @unchecked Sendable {}
-extension VCSEC_NFCSEInsecureCommandState_E: @unchecked Sendable {}
-extension VCSEC_NFCSERequest_E: @unchecked Sendable {}
-extension VCSEC_NFCSESharedSecretState_E: @unchecked Sendable {}
-extension VCSEC_NFCSEVehiclePubKeyState_E: @unchecked Sendable {}
-extension VCSEC_OperationStatus_E: @unchecked Sendable {}
-extension VCSEC_RCI_control_E: @unchecked Sendable {}
-extension VCSEC_ResetTrackerCommand_E: @unchecked Sendable {}
-extension VCSEC_RKEAction_E: @unchecked Sendable {}
-extension VCSEC_Role: @unchecked Sendable {}
-extension VCSEC_Session_Info_Status: @unchecked Sendable {}
-extension VCSEC_SignatureType: @unchecked Sendable {}
-extension VCSEC_SignedMessage_information_E: @unchecked Sendable {}
-extension VCSEC_SleepManagerCommand_E: @unchecked Sendable {}
-extension VCSEC_TPDataRequest_E: @unchecked Sendable {}
-extension VCSEC_TPMSAdvType_E: @unchecked Sendable {}
-extension VCSEC_TPNotifyReason_E: @unchecked Sendable {}
-extension VCSEC_TPNotifyTrackerCommand_E: @unchecked Sendable {}
-extension VCSEC_UpdaterLocation: @unchecked Sendable {}
-extension VCSEC_UpdaterStatusCode: @unchecked Sendable {}
-extension VCSEC_UWBAvailability: @unchecked Sendable {}
-extension VCSEC_VehicleLockState_E: @unchecked Sendable {}
-extension VCSEC_VehicleSleepStatus_E: @unchecked Sendable {}
-extension VCSEC_WhitelistKeyPermission_E: @unchecked Sendable {}
-extension VCSEC_WhitelistOperation_information_E: @unchecked Sendable {}
-extension VCSEC_AccelData: @unchecked Sendable {}
-extension VCSEC_ActiveKey: @unchecked Sendable {}
-extension VCSEC_Alert: @unchecked Sendable {}
-extension VCSEC_Alert.OneOf_SubMessage: @unchecked Sendable {}
-extension VCSEC_AlertHandlePulledWithoutAuth: @unchecked Sendable {}
-extension VCSEC_AppDeviceInfo: @unchecked Sendable {}
-extension VCSEC_AuthenticationRequest: @unchecked Sendable {}
-extension VCSEC_AuthenticationRequestToken: @unchecked Sendable {}
-extension VCSEC_AuthenticationResponse: @unchecked Sendable {}
-extension VCSEC_BLEConfig: @unchecked Sendable {}
-extension VCSEC_BLEConfig.OneOf_SubMessage: @unchecked Sendable {}
-extension VCSEC_BLEConfigAll: @unchecked Sendable {}
-extension VCSEC_BLEConfigCommand: @unchecked Sendable {}
-extension VCSEC_Capabilities: @unchecked Sendable {}
-extension VCSEC_ClosureMoveRequest: @unchecked Sendable {}
-extension VCSEC_ClosureStatuses: @unchecked Sendable {}
-extension VCSEC_CodeDescriptor: @unchecked Sendable {}
-extension VCSEC_CommandStatus: @unchecked Sendable {}
-extension VCSEC_CommandStatus.OneOf_SubMessage: @unchecked Sendable {}
-extension VCSEC_ConnectionMetrics: @unchecked Sendable {}
-extension VCSEC_DelaySleepRequest: @unchecked Sendable {}
-extension VCSEC_DeviceMotion: @unchecked Sendable {}
-extension VCSEC_FromRCI: @unchecked Sendable {}
-extension VCSEC_FromVCSECMessage: @unchecked Sendable {}
-extension VCSEC_FromVCSECMessage.OneOf_SubMessage: @unchecked Sendable {}
-extension VCSEC_Genealogy: @unchecked Sendable {}
-extension VCSEC_GenealogyResponse: @unchecked Sendable {}
-extension VCSEC_GetCodeDescriptor: @unchecked Sendable {}
-extension VCSEC_GetReaderKey: @unchecked Sendable {}
-extension VCSEC_GetSessionInfoRequest: @unchecked Sendable {}
-extension VCSEC_HandlePulledWithoutAuthDeviceSpecificPayload: @unchecked Sendable {}
-extension VCSEC_InformationRequest: @unchecked Sendable {}
-extension VCSEC_InformationRequest.OneOf_SubMessage: @unchecked Sendable {}
-extension VCSEC_KeyfobInfo: @unchecked Sendable {}
-extension VCSEC_KeyIdentifier: @unchecked Sendable {}
-extension VCSEC_KeyIdentity: @unchecked Sendable {}
-extension VCSEC_KeyIdentity.OneOf_SubMessage: @unchecked Sendable {}
-extension VCSEC_KeyMetadata: @unchecked Sendable {}
-extension VCSEC_KeyStatus: @unchecked Sendable {}
-extension VCSEC_KeyStatusInfo: @unchecked Sendable {}
-extension VCSEC_MIConfigurationData: @unchecked Sendable {}
-extension VCSEC_MISessionRequest: @unchecked Sendable {}
-extension VCSEC_MISessionResponse: @unchecked Sendable {}
-extension VCSEC_MISessionResponse.OneOf_SubMessage: @unchecked Sendable {}
-extension VCSEC_MISessionStop: @unchecked Sendable {}
-extension VCSEC_MISessionStop.OneOf_SubMessage: @unchecked Sendable {}
-extension VCSEC_MISessionStopped: @unchecked Sendable {}
-extension VCSEC_MISessionStopped.OneOf_SubMessage: @unchecked Sendable {}
-extension VCSEC_NFCSEState: @unchecked Sendable {}
-extension VCSEC_NominalError: @unchecked Sendable {}
-extension VCSEC_PermissionChange: @unchecked Sendable {}
-extension VCSEC_PersonalizationInformation: @unchecked Sendable {}
-extension VCSEC_PublicKey: @unchecked Sendable {}
-extension VCSEC_RCISignature: @unchecked Sendable {}
-extension VCSEC_ReplaceKey: @unchecked Sendable {}
-extension VCSEC_ReplaceKey.OneOf_SubMessage: @unchecked Sendable {}
-extension VCSEC_ResetTrackerStats: @unchecked Sendable {}
-extension VCSEC_SessionInfo: @unchecked Sendable {}
-extension VCSEC_SetTPConfigration: @unchecked Sendable {}
-extension VCSEC_SetUpdaterLocation: @unchecked Sendable {}
-extension VCSEC_Signatures: @unchecked Sendable {}
-extension VCSEC_Signatures.SessionInfo: @unchecked Sendable {}
-extension VCSEC_SignedMessage: @unchecked Sendable {}
-extension VCSEC_SignedMessage_status: @unchecked Sendable {}
-extension VCSEC_SleepManagerRequest: @unchecked Sendable {}
-extension VCSEC_SleepManagerRequest.OneOf_SubMessage: @unchecked Sendable {}
-extension VCSEC_SleepManagerStats: @unchecked Sendable {}
-extension VCSEC_StageBlock: @unchecked Sendable {}
-extension VCSEC_ToRCI: @unchecked Sendable {}
-extension VCSEC_ToRCI.OneOf_SubMessage: @unchecked Sendable {}
-extension VCSEC_ToVCSECMessage: @unchecked Sendable {}
-extension VCSEC_ToVCSECMessage.OneOf_SubMessage: @unchecked Sendable {}
-extension VCSEC_TPAdv: @unchecked Sendable {}
-extension VCSEC_TPData: @unchecked Sendable {}
-extension VCSEC_TPLRDetection: @unchecked Sendable {}
-extension VCSEC_TPMotionConfig: @unchecked Sendable {}
-extension VCSEC_TPMSAlarms: @unchecked Sendable {}
-extension VCSEC_TPNewSensorData: @unchecked Sendable {}
-extension VCSEC_TPNotifyTrackerStats: @unchecked Sendable {}
-extension VCSEC_TPStationaryConfig: @unchecked Sendable {}
-extension VCSEC_TPWheelUnitInfo: @unchecked Sendable {}
-extension VCSEC_UnknownKeyInfo: @unchecked Sendable {}
-extension VCSEC_UnsecureNotification: @unchecked Sendable {}
-extension VCSEC_UnsignedMessage: @unchecked Sendable {}
-extension VCSEC_UnsignedMessage.OneOf_SubMessage: @unchecked Sendable {}
-extension VCSEC_UpdaterCommand: @unchecked Sendable {}
-extension VCSEC_UpdaterCommand.OneOf_SubMessage: @unchecked Sendable {}
-extension VCSEC_UpdaterResponse: @unchecked Sendable {}
-extension VCSEC_UpdaterResponse.OneOf_SubMessage: @unchecked Sendable {}
-extension VCSEC_UpdaterStatus: @unchecked Sendable {}
-extension VCSEC_VehicleInfo: @unchecked Sendable {}
-extension VCSEC_VehicleStatus: @unchecked Sendable {}
-extension VCSEC_VerifyAndInstallApp: @unchecked Sendable {}
-extension VCSEC_WhitelistEntryInfo: @unchecked Sendable {}
-extension VCSEC_WhitelistInfo: @unchecked Sendable {}
-extension VCSEC_WhitelistOperation: @unchecked Sendable {}
-extension VCSEC_WhitelistOperation.OneOf_SubMessage: @unchecked Sendable {}
-extension VCSEC_WhitelistOperation_status: @unchecked Sendable {}
+extension Activity_E: @unchecked Sendable {}
+extension AlertConfirmation: @unchecked Sendable {}
+extension AppDeviceInfoRequest_E: @unchecked Sendable {}
+extension AppOperatingSystem: @unchecked Sendable {}
+extension AuthenticationLevel_E: @unchecked Sendable {}
+extension AuthenticationReason_E: @unchecked Sendable {}
+extension AuthenticationRejection_E: @unchecked Sendable {}
+extension BLEAdditionalTRIMApplied_E: @unchecked Sendable {}
+extension BLEConfigCommandType_E: @unchecked Sendable {}
+extension BLEPresence: @unchecked Sendable {}
+extension CertificateStatus_E: @unchecked Sendable {}
+extension ClosureMoveType_E: @unchecked Sendable {}
+extension ClosureState_E: @unchecked Sendable {}
+extension Device_Motion_Confidence: @unchecked Sendable {}
+extension Device_Motion_State: @unchecked Sendable {}
+extension GenealogyRequest_E: @unchecked Sendable {}
+extension GenealogyStatus_E: @unchecked Sendable {}
+extension GetReaderKeyCommand: @unchecked Sendable {}
+extension HandlePulled_E: @unchecked Sendable {}
+extension IMURequest_E: @unchecked Sendable {}
+extension IMUState_E: @unchecked Sendable {}
+extension InformationRequestType: @unchecked Sendable {}
+extension KeyFormFactor: @unchecked Sendable {}
+extension LRDetectionResult_E: @unchecked Sendable {}
+extension MIError_E: @unchecked Sendable {}
+extension MLXWakePeriod_E: @unchecked Sendable {}
+extension NFCPresence: @unchecked Sendable {}
+extension NFCSEDevicePubKeyState_E: @unchecked Sendable {}
+extension NFCSEInsecureCommandState_E: @unchecked Sendable {}
+extension NFCSERequest_E: @unchecked Sendable {}
+extension NFCSESharedSecretState_E: @unchecked Sendable {}
+extension NFCSEVehiclePubKeyState_E: @unchecked Sendable {}
+extension PublicKeyRequest_E: @unchecked Sendable {}
+extension PublicKeyStatus_E: @unchecked Sendable {}
+extension RCI_control_E: @unchecked Sendable {}
+extension ResetTrackerCommand_E: @unchecked Sendable {}
+extension RKEAction_E: @unchecked Sendable {}
+extension SignatureType: @unchecked Sendable {}
+extension SignedMessage_information_E: @unchecked Sendable {}
+extension SleepManagerCommand_E: @unchecked Sendable {}
+extension TPDataRequest_E: @unchecked Sendable {}
+extension TPMSAdvType_E: @unchecked Sendable {}
+extension TPNotifyReason_E: @unchecked Sendable {}
+extension TPNotifyTrackerCommand_E: @unchecked Sendable {}
+extension UIRequest_E: @unchecked Sendable {}
+extension UpdaterLocation: @unchecked Sendable {}
+extension UpdaterStatusCode: @unchecked Sendable {}
+extension UserPresence_E: @unchecked Sendable {}
+extension UWBAvailability: @unchecked Sendable {}
+extension VehicleLockState_E: @unchecked Sendable {}
+extension VehicleSleepStatus_E: @unchecked Sendable {}
+extension WhitelistKeyPermission_E: @unchecked Sendable {}
+extension WhitelistOperation_information_E: @unchecked Sendable {}
+extension AccelData: @unchecked Sendable {}
+extension ActiveKey: @unchecked Sendable {}
+extension Alert: @unchecked Sendable {}
+extension Alert.OneOf_SubMessage: @unchecked Sendable {}
+extension AlertHandlePulledWithoutAuth: @unchecked Sendable {}
+extension AppDeviceInfo: @unchecked Sendable {}
+extension AppEventLog: @unchecked Sendable {}
+extension AppEventLog.OneOf_SubMessage: @unchecked Sendable {}
+extension AppEventPeerRemovedPairingInformation: @unchecked Sendable {}
+extension ASICSPIRead: @unchecked Sendable {}
+extension AuthenticationRequest: @unchecked Sendable {}
+extension AuthenticationRequestToken: @unchecked Sendable {}
+extension AuthenticationResponse: @unchecked Sendable {}
+extension BLEConfig: @unchecked Sendable {}
+extension BLEConfig.OneOf_SubMessage: @unchecked Sendable {}
+extension BLEConfigAll: @unchecked Sendable {}
+extension BLEConfigCommand: @unchecked Sendable {}
+extension Capabilities: @unchecked Sendable {}
+extension Certificate: @unchecked Sendable {}
+extension Certificate.OneOf_SubMessage: @unchecked Sendable {}
+extension CertificateInParts: @unchecked Sendable {}
+extension CertificateRead: @unchecked Sendable {}
+extension CertificateResponse: @unchecked Sendable {}
+extension ChallengeCommand: @unchecked Sendable {}
+extension ChallengeResponse: @unchecked Sendable {}
+extension ClosureMoveRequest: @unchecked Sendable {}
+extension ClosureStatuses: @unchecked Sendable {}
+extension CodeDescriptor: @unchecked Sendable {}
+extension CommandStatus: @unchecked Sendable {}
+extension CommandStatus.OneOf_SubMessage: @unchecked Sendable {}
+extension ConnectionMetrics: @unchecked Sendable {}
+extension DelaySleepRequest: @unchecked Sendable {}
+extension DetailedClosureStatus: @unchecked Sendable {}
+extension DeviceMotion: @unchecked Sendable {}
+extension FromRCI: @unchecked Sendable {}
+extension FromVCSECMessage: @unchecked Sendable {}
+extension FromVCSECMessage.OneOf_SubMessage: @unchecked Sendable {}
+extension Genealogy: @unchecked Sendable {}
+extension GenealogyResponse: @unchecked Sendable {}
+extension GetCodeDescriptor: @unchecked Sendable {}
+extension GetReaderKey: @unchecked Sendable {}
+extension HandlePulledWithoutAuthDeviceSpecificPayload: @unchecked Sendable {}
+extension InformationRequest: @unchecked Sendable {}
+extension InformationRequest.OneOf_SubMessage: @unchecked Sendable {}
+extension KeyfobInfo: @unchecked Sendable {}
+extension KeyIdentifier: @unchecked Sendable {}
+extension KeyMetadata: @unchecked Sendable {}
+extension KeyStatus: @unchecked Sendable {}
+extension KeyStatusInfo: @unchecked Sendable {}
+extension MIConfigurationData: @unchecked Sendable {}
+extension MISessionRequest: @unchecked Sendable {}
+extension MISessionResponse: @unchecked Sendable {}
+extension MISessionResponse.OneOf_SubMessage: @unchecked Sendable {}
+extension MISessionStop: @unchecked Sendable {}
+extension MISessionStop.OneOf_SubMessage: @unchecked Sendable {}
+extension MISessionStopped: @unchecked Sendable {}
+extension MISessionStopped.OneOf_SubMessage: @unchecked Sendable {}
+extension NFCSEState: @unchecked Sendable {}
+extension PermissionChange: @unchecked Sendable {}
+extension PersonalizationInformation: @unchecked Sendable {}
+extension PhoneVersionInfo: @unchecked Sendable {}
+extension PublicKey: @unchecked Sendable {}
+extension PublicKeyResponse: @unchecked Sendable {}
+extension RCISignature: @unchecked Sendable {}
+extension ReplaceKey: @unchecked Sendable {}
+extension ReplaceKey.OneOf_SubMessage: @unchecked Sendable {}
+extension ResetTrackerStats: @unchecked Sendable {}
+extension RFMonitorCounterResponse: @unchecked Sendable {}
+extension SetTPConfiguration: @unchecked Sendable {}
+extension SetUpdaterLocation: @unchecked Sendable {}
+extension Signatures: @unchecked Sendable {}
+extension Signatures.SessionInfo: @unchecked Sendable {}
+extension SignedMessage: @unchecked Sendable {}
+extension SignedMessage_status: @unchecked Sendable {}
+extension SleepManagerRequest: @unchecked Sendable {}
+extension SleepManagerRequest.OneOf_SubMessage: @unchecked Sendable {}
+extension SleepManagerStats: @unchecked Sendable {}
+extension StageBlock: @unchecked Sendable {}
+extension ToRCI: @unchecked Sendable {}
+extension ToRCI.OneOf_SubMessage: @unchecked Sendable {}
+extension ToVCSECMessage: @unchecked Sendable {}
+extension ToVCSECMessage.OneOf_SubMessage: @unchecked Sendable {}
+extension TPAdv: @unchecked Sendable {}
+extension TPCapabilities: @unchecked Sendable {}
+extension TPConfiguration: @unchecked Sendable {}
+extension TPConfiguration.OneOf_SubMessage: @unchecked Sendable {}
+extension TPData: @unchecked Sendable {}
+extension TPLRDetection: @unchecked Sendable {}
+extension TPMotionConfig: @unchecked Sendable {}
+extension TPMSAlarms: @unchecked Sendable {}
+extension TPNewSensorData: @unchecked Sendable {}
+extension TPNotifyTrackerStats: @unchecked Sendable {}
+extension TPStationaryConfig: @unchecked Sendable {}
+extension TPWheelUnitInfo: @unchecked Sendable {}
+extension UnknownKeyInfo: @unchecked Sendable {}
+extension UnsecureNotification: @unchecked Sendable {}
+extension UnsignedMessage: @unchecked Sendable {}
+extension UnsignedMessage.OneOf_SubMessage: @unchecked Sendable {}
+extension UpdaterCommand: @unchecked Sendable {}
+extension UpdaterCommand.OneOf_SubMessage: @unchecked Sendable {}
+extension UpdaterResponse: @unchecked Sendable {}
+extension UpdaterResponse.OneOf_SubMessage: @unchecked Sendable {}
+extension UpdaterStatus: @unchecked Sendable {}
+extension VehicleBLENickName: @unchecked Sendable {}
+extension VehicleInfo: @unchecked Sendable {}
+extension VehicleStatus: @unchecked Sendable {}
+extension VerifyAndInstallApp: @unchecked Sendable {}
+extension WhitelistEntryInfo: @unchecked Sendable {}
+extension WhitelistInfo: @unchecked Sendable {}
+extension WhitelistOperation: @unchecked Sendable {}
+extension WhitelistOperation.OneOf_SubMessage: @unchecked Sendable {}
+extension WhitelistOperation_status: @unchecked Sendable {}
 #endif  // swift(>=5.5) && canImport(_Concurrency)
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "VCSEC"
-
-extension VCSEC_Activity_E: SwiftProtobuf._ProtoNameProviding {
+extension Activity_E: SwiftProtobuf._ProtoNameProviding {
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "ACTIVITY_NONE"),
     1: .same(proto: "ACTIVITY_STATIONARY"),
@@ -6305,14 +6877,21 @@ extension VCSEC_Activity_E: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension VCSEC_AppDeviceInfoRequest_E: SwiftProtobuf._ProtoNameProviding {
+extension AlertConfirmation: SwiftProtobuf._ProtoNameProviding {
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    0: .same(proto: "ALERT_CONFIRMATION_NONE"),
+    1: .same(proto: "ALERT_CONFIRMATION_PEER_REMOVED_INFORMATION"),
+  ]
+}
+
+extension AppDeviceInfoRequest_E: SwiftProtobuf._ProtoNameProviding {
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "APP_DEVICE_INFO_REQUEST_NONE"),
     1: .same(proto: "APP_DEVICE_INFO_REQUEST_GET_MODEL_NUMBER"),
   ]
 }
 
-extension VCSEC_AppOperatingSystem: SwiftProtobuf._ProtoNameProviding {
+extension AppOperatingSystem: SwiftProtobuf._ProtoNameProviding {
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "UNKNOWN"),
     1: .same(proto: "ANDROID"),
@@ -6320,7 +6899,7 @@ extension VCSEC_AppOperatingSystem: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension VCSEC_AuthenticationLevel_E: SwiftProtobuf._ProtoNameProviding {
+extension AuthenticationLevel_E: SwiftProtobuf._ProtoNameProviding {
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "AUTHENTICATION_LEVEL_NONE"),
     1: .same(proto: "AUTHENTICATION_LEVEL_UNLOCK"),
@@ -6328,7 +6907,7 @@ extension VCSEC_AuthenticationLevel_E: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension VCSEC_AuthenticationReason_E: SwiftProtobuf._ProtoNameProviding {
+extension AuthenticationReason_E: SwiftProtobuf._ProtoNameProviding {
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "AUTHENTICATIONREASON_NOT_DOCUMENTED"),
     1: .same(proto: "AUTHENTICATIONREASON_IDENTIFICATION"),
@@ -6344,7 +6923,7 @@ extension VCSEC_AuthenticationReason_E: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension VCSEC_AuthenticationRejection_E: SwiftProtobuf._ProtoNameProviding {
+extension AuthenticationRejection_E: SwiftProtobuf._ProtoNameProviding {
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "AUTHENTICATIONREJECTION_NONE"),
     1: .same(proto: "AUTHENTICATIONREJECTION_DEVICE_STATIONARY"),
@@ -6353,7 +6932,7 @@ extension VCSEC_AuthenticationRejection_E: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension VCSEC_BLEAdditionalTRIMApplied_E: SwiftProtobuf._ProtoNameProviding {
+extension BLEAdditionalTRIMApplied_E: SwiftProtobuf._ProtoNameProviding {
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "BLE_ADDITIONAL_TRIM_APPLIED_NONE"),
     1: .same(proto: "BLE_ADDITIONAL_TRIM_APPLIED_APPLIED"),
@@ -6361,7 +6940,7 @@ extension VCSEC_BLEAdditionalTRIMApplied_E: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension VCSEC_BLEConfigCommandType_E: SwiftProtobuf._ProtoNameProviding {
+extension BLEConfigCommandType_E: SwiftProtobuf._ProtoNameProviding {
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "BLE_CONFIG_COMMAND_TYPE_NONE"),
     1: .same(proto: "BLE_CONFIG_COMMAND_TYPE_READ"),
@@ -6369,14 +6948,22 @@ extension VCSEC_BLEConfigCommandType_E: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension VCSEC_BLEPresence: SwiftProtobuf._ProtoNameProviding {
+extension BLEPresence: SwiftProtobuf._ProtoNameProviding {
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "BLE_PRESENCE_NOT_PRESENT"),
     1: .same(proto: "BLE_PRESENCE_PRESENT"),
   ]
 }
 
-extension VCSEC_ClosureMoveType_E: SwiftProtobuf._ProtoNameProviding {
+extension CertificateStatus_E: SwiftProtobuf._ProtoNameProviding {
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    0: .same(proto: "CERTIFICATE_STATUS_NONE"),
+    1: .same(proto: "CERITFICATE_STATUS_NOT_WRITTEN"),
+    2: .same(proto: "CERTIFICATE_STATUS_WRITTEN"),
+  ]
+}
+
+extension ClosureMoveType_E: SwiftProtobuf._ProtoNameProviding {
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "CLOSURE_MOVE_TYPE_NONE"),
     1: .same(proto: "CLOSURE_MOVE_TYPE_MOVE"),
@@ -6386,7 +6973,7 @@ extension VCSEC_ClosureMoveType_E: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension VCSEC_ClosureState_E: SwiftProtobuf._ProtoNameProviding {
+extension ClosureState_E: SwiftProtobuf._ProtoNameProviding {
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "CLOSURESTATE_CLOSED"),
     1: .same(proto: "CLOSURESTATE_OPEN"),
@@ -6396,7 +6983,7 @@ extension VCSEC_ClosureState_E: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension VCSEC_Device_Motion_Confidence: SwiftProtobuf._ProtoNameProviding {
+extension Device_Motion_Confidence: SwiftProtobuf._ProtoNameProviding {
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "DEVICE_MOTION_CONFIDENCE_UNKNOWN"),
     1: .same(proto: "DEVICE_MOTION_CONFIDENCE_LOW"),
@@ -6405,7 +6992,7 @@ extension VCSEC_Device_Motion_Confidence: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension VCSEC_Device_Motion_State: SwiftProtobuf._ProtoNameProviding {
+extension Device_Motion_State: SwiftProtobuf._ProtoNameProviding {
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "DEVICE_MOTION_UNKNOWN"),
     1: .same(proto: "DEVICE_MOTION_STATIONARY"),
@@ -6416,7 +7003,7 @@ extension VCSEC_Device_Motion_State: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension VCSEC_GenealogyRequest_E: SwiftProtobuf._ProtoNameProviding {
+extension GenealogyRequest_E: SwiftProtobuf._ProtoNameProviding {
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "GENEALOGYREQUEST_NONE"),
     1: .same(proto: "GENEALOGYREQUEST_READ"),
@@ -6425,7 +7012,7 @@ extension VCSEC_GenealogyRequest_E: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension VCSEC_GenealogyStatus_E: SwiftProtobuf._ProtoNameProviding {
+extension GenealogyStatus_E: SwiftProtobuf._ProtoNameProviding {
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "GENEALOGY_STATUS_NONE"),
     1: .same(proto: "GENEALOGY_STATUS_NOT_WRITTEN"),
@@ -6437,20 +7024,7 @@ extension VCSEC_GenealogyStatus_E: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension VCSEC_GenericError_E: SwiftProtobuf._ProtoNameProviding {
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    0: .same(proto: "GENERICERROR_NONE"),
-    1: .same(proto: "GENERICERROR_UNKNOWN"),
-    2: .same(proto: "GENERICERROR_CLOSURES_OPEN"),
-    3: .same(proto: "GENERICERROR_ALREADY_ON"),
-    4: .same(proto: "GENERICERROR_DISABLED_FOR_USER_COMMAND"),
-    5: .same(proto: "GENERICERROR_VEHICLE_NOT_IN_PARK"),
-    6: .same(proto: "GENERICERROR_UNAUTHORIZED"),
-    7: .same(proto: "GENERICERROR_NOT_ALLOWED_OVER_TRANSPORT"),
-  ]
-}
-
-extension VCSEC_GetReaderKeyCommand: SwiftProtobuf._ProtoNameProviding {
+extension GetReaderKeyCommand: SwiftProtobuf._ProtoNameProviding {
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "GET_READER_KEY_COMMAND_UNKNOWN"),
     1: .same(proto: "GET_READER_KEY_COMMAND_START_LOOKING"),
@@ -6458,7 +7032,7 @@ extension VCSEC_GetReaderKeyCommand: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension VCSEC_HandlePulled_E: SwiftProtobuf._ProtoNameProviding {
+extension HandlePulled_E: SwiftProtobuf._ProtoNameProviding {
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "HANDLE_PULLED_FRONT_DRIVER_DOOR"),
     1: .same(proto: "HANDLE_PULLED_FRONT_PASSENGER_DOOR"),
@@ -6469,10 +7043,11 @@ extension VCSEC_HandlePulled_E: SwiftProtobuf._ProtoNameProviding {
     6: .same(proto: "HANDLE_PULLED_FRONT_DRIVER_AUTO_PRESENT_DOOR"),
     7: .same(proto: "HANDLE_PULLED_FRONT_PASSENGER_AUTO_PRESENT_DOOR"),
     8: .same(proto: "HANDLE_PULLED_OTHER"),
+    9: .same(proto: "HANDLE_PULLED_FRUNK"),
   ]
 }
 
-extension VCSEC_IMURequest_E: SwiftProtobuf._ProtoNameProviding {
+extension IMURequest_E: SwiftProtobuf._ProtoNameProviding {
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "IMU_REQUEST_NONE"),
     1: .same(proto: "IMU_REQUEST_GET_SLEEP_STATE"),
@@ -6481,7 +7056,7 @@ extension VCSEC_IMURequest_E: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension VCSEC_IMUState_E: SwiftProtobuf._ProtoNameProviding {
+extension IMUState_E: SwiftProtobuf._ProtoNameProviding {
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "IMU_STATE_NOT_CONFIGURED"),
     1: .same(proto: "IMU_STATE_ACTIVITY"),
@@ -6489,7 +7064,7 @@ extension VCSEC_IMUState_E: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension VCSEC_InformationRequestType: SwiftProtobuf._ProtoNameProviding {
+extension InformationRequestType: SwiftProtobuf._ProtoNameProviding {
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "INFORMATION_REQUEST_TYPE_GET_STATUS"),
     1: .same(proto: "INFORMATION_REQUEST_TYPE_GET_TOKEN"),
@@ -6505,7 +7080,7 @@ extension VCSEC_InformationRequestType: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension VCSEC_KeyFormFactor: SwiftProtobuf._ProtoNameProviding {
+extension KeyFormFactor: SwiftProtobuf._ProtoNameProviding {
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "KEY_FORM_FACTOR_UNKNOWN"),
     1: .same(proto: "KEY_FORM_FACTOR_NFC_CARD"),
@@ -6525,7 +7100,7 @@ extension VCSEC_KeyFormFactor: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension VCSEC_LRDetectionResult_E: SwiftProtobuf._ProtoNameProviding {
+extension LRDetectionResult_E: SwiftProtobuf._ProtoNameProviding {
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "LRDETECTIONRESULT_ERROR_MAXCNT"),
     1: .same(proto: "LRDETECTIONRESULT_ERROR_NEGPERIOD"),
@@ -6535,7 +7110,7 @@ extension VCSEC_LRDetectionResult_E: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension VCSEC_MIError_E: SwiftProtobuf._ProtoNameProviding {
+extension MIError_E: SwiftProtobuf._ProtoNameProviding {
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "ERROR_UNKNOWN"),
     1: .same(proto: "ERROR_SESSION_LIMIT_EXCEEDED"),
@@ -6545,10 +7120,11 @@ extension VCSEC_MIError_E: SwiftProtobuf._ProtoNameProviding {
     5: .same(proto: "ERROR_UNSUPPORTED_PLATFORM"),
     6: .same(proto: "ERROR_USER_DID_NOT_ALLOW"),
     7: .same(proto: "ERROR_BLE_PEER_UNAVAILABLE"),
+    8: .same(proto: "ERROR_VEHICLE_NOT_SELECTED_FOR_RANGING"),
   ]
 }
 
-extension VCSEC_MLXWakePeriod_E: SwiftProtobuf._ProtoNameProviding {
+extension MLXWakePeriod_E: SwiftProtobuf._ProtoNameProviding {
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "MLXWAKEPERIOD_2_MS"),
     1: .same(proto: "MLXWAKEPERIOD_3_MS"),
@@ -6587,7 +7163,7 @@ extension VCSEC_MLXWakePeriod_E: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension VCSEC_NFCPresence: SwiftProtobuf._ProtoNameProviding {
+extension NFCPresence: SwiftProtobuf._ProtoNameProviding {
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "NFC_PRESENCE_NOT_PRESENT"),
     1: .same(proto: "NFC_PRESENCE_PRESENT_AT_B_PILLAR"),
@@ -6595,7 +7171,7 @@ extension VCSEC_NFCPresence: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension VCSEC_NFCSEDevicePubKeyState_E: SwiftProtobuf._ProtoNameProviding {
+extension NFCSEDevicePubKeyState_E: SwiftProtobuf._ProtoNameProviding {
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "NFCSEC_DEVICEPUBKEY_STATE_NONE"),
     1: .same(proto: "NFCSEC_DEVICEPUBKEY_STATE_RETRIEVED"),
@@ -6603,7 +7179,7 @@ extension VCSEC_NFCSEDevicePubKeyState_E: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension VCSEC_NFCSEInsecureCommandState_E: SwiftProtobuf._ProtoNameProviding {
+extension NFCSEInsecureCommandState_E: SwiftProtobuf._ProtoNameProviding {
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "NFCSEC_INSECURE_COMMAND_STATE_NONE"),
     1: .same(proto: "NFCSEC_INSECURE_COMMAND_STATE_ENABLED"),
@@ -6611,7 +7187,7 @@ extension VCSEC_NFCSEInsecureCommandState_E: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension VCSEC_NFCSERequest_E: SwiftProtobuf._ProtoNameProviding {
+extension NFCSERequest_E: SwiftProtobuf._ProtoNameProviding {
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "NFCSE_REQUEST_NONE"),
     1: .same(proto: "NFCSE_REQUEST_REFETCH_SESSION_INFO"),
@@ -6620,7 +7196,7 @@ extension VCSEC_NFCSERequest_E: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension VCSEC_NFCSESharedSecretState_E: SwiftProtobuf._ProtoNameProviding {
+extension NFCSESharedSecretState_E: SwiftProtobuf._ProtoNameProviding {
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "NFCSEC_SHAREDSECRET_STATE_NONE"),
     1: .same(proto: "NFCSEC_SHAREDSECRET_STATE_GENERATED"),
@@ -6628,7 +7204,7 @@ extension VCSEC_NFCSESharedSecretState_E: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension VCSEC_NFCSEVehiclePubKeyState_E: SwiftProtobuf._ProtoNameProviding {
+extension NFCSEVehiclePubKeyState_E: SwiftProtobuf._ProtoNameProviding {
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "NFCSEC_VEHICLEPUBKEY_STATE_NONE"),
     1: .same(proto: "NFCSEC_VEHICLEPUBKEY_STATE_RETRIEVED"),
@@ -6636,22 +7212,29 @@ extension VCSEC_NFCSEVehiclePubKeyState_E: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension VCSEC_OperationStatus_E: SwiftProtobuf._ProtoNameProviding {
+extension PublicKeyRequest_E: SwiftProtobuf._ProtoNameProviding {
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    0: .same(proto: "OPERATIONSTATUS_OK"),
-    1: .same(proto: "OPERATIONSTATUS_WAIT"),
-    2: .same(proto: "OPERATIONSTATUS_ERROR"),
+    0: .same(proto: "PUBLIC_KEY_REQUEST_NONE"),
+    1: .same(proto: "PUBLIC_KEY_REQUEST_READ"),
   ]
 }
 
-extension VCSEC_RCI_control_E: SwiftProtobuf._ProtoNameProviding {
+extension PublicKeyStatus_E: SwiftProtobuf._ProtoNameProviding {
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    0: .same(proto: "PUBLIC_KEY_STATUS_NONE"),
+    1: .same(proto: "PUBLIC_KEY_STATUS_NOT_WRITTEN"),
+    2: .same(proto: "PUBLIC_KEY_STATUS_WRITTEN"),
+  ]
+}
+
+extension RCI_control_E: SwiftProtobuf._ProtoNameProviding {
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "RCI_CONTROL_NONE"),
     1: .same(proto: "RCI_CONTROL_TURN_OFF"),
   ]
 }
 
-extension VCSEC_ResetTrackerCommand_E: SwiftProtobuf._ProtoNameProviding {
+extension ResetTrackerCommand_E: SwiftProtobuf._ProtoNameProviding {
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "RESETTRACKER_COMMAND_NONE"),
     1: .same(proto: "RESETTRACKER_COMMAND_GET_STATS"),
@@ -6659,7 +7242,7 @@ extension VCSEC_ResetTrackerCommand_E: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension VCSEC_RKEAction_E: SwiftProtobuf._ProtoNameProviding {
+extension RKEAction_E: SwiftProtobuf._ProtoNameProviding {
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "RKE_ACTION_UNLOCK"),
     1: .same(proto: "RKE_ACTION_LOCK"),
@@ -6695,27 +7278,7 @@ extension VCSEC_RKEAction_E: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension VCSEC_Role: SwiftProtobuf._ProtoNameProviding {
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    0: .same(proto: "ROLE_NONE"),
-    1: .same(proto: "ROLE_SERVICE"),
-    2: .same(proto: "ROLE_OWNER"),
-    3: .same(proto: "ROLE_DRIVER"),
-    4: .same(proto: "ROLE_FM"),
-    5: .same(proto: "ROLE_VEHICLE_MONITOR"),
-    6: .same(proto: "ROLE_CHARGING_MANAGER"),
-    7: .same(proto: "ROLE_SERVICE_TECH"),
-  ]
-}
-
-extension VCSEC_Session_Info_Status: SwiftProtobuf._ProtoNameProviding {
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    0: .same(proto: "SESSION_INFO_STATUS_OK"),
-    1: .same(proto: "SESSION_INFO_STATUS_KEY_NOT_ON_WHITELIST"),
-  ]
-}
-
-extension VCSEC_SignatureType: SwiftProtobuf._ProtoNameProviding {
+extension SignatureType: SwiftProtobuf._ProtoNameProviding {
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "SIGNATURE_TYPE_AES_GCM"),
     1: .same(proto: "SIGNATURE_TYPE_ECDSA"),
@@ -6725,7 +7288,7 @@ extension VCSEC_SignatureType: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension VCSEC_SignedMessage_information_E: SwiftProtobuf._ProtoNameProviding {
+extension SignedMessage_information_E: SwiftProtobuf._ProtoNameProviding {
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "SIGNEDMESSAGE_INFORMATION_NONE"),
     1: .same(proto: "SIGNEDMESSAGE_INFORMATION_FAULT_UNKNOWN"),
@@ -6750,7 +7313,7 @@ extension VCSEC_SignedMessage_information_E: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension VCSEC_SleepManagerCommand_E: SwiftProtobuf._ProtoNameProviding {
+extension SleepManagerCommand_E: SwiftProtobuf._ProtoNameProviding {
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "SLEEPMANAGER_COMMAND_NONE"),
     1: .same(proto: "SLEEPMANAGER_GET_STATS"),
@@ -6758,7 +7321,7 @@ extension VCSEC_SleepManagerCommand_E: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension VCSEC_TPDataRequest_E: SwiftProtobuf._ProtoNameProviding {
+extension TPDataRequest_E: SwiftProtobuf._ProtoNameProviding {
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "TP_DATAREQUEST_NONE"),
     1: .same(proto: "TP_DATAREQUEST_PRESSURE_TEMPERATURE"),
@@ -6768,16 +7331,21 @@ extension VCSEC_TPDataRequest_E: SwiftProtobuf._ProtoNameProviding {
     5: .same(proto: "TP_DATAREQUEST_MOTION_DETECTION_START"),
     6: .same(proto: "TP_DATAREQUEST_READ_ALARMS"),
     7: .same(proto: "TP_DATAREQUEST_MOTION_DETECTION_STOP"),
+    8: .same(proto: "TP_DATAREQUEST_READ_PUBLIC_KEY"),
+    9: .same(proto: "TP_DATAREQUEST_RF_MONITOR_COUNTERS"),
+    10: .same(proto: "TP_DATAREQUEST_MOTION_CONFIG"),
+    11: .same(proto: "TP_DATAREQUEST_STATIONARY_CONFIG"),
+    12: .same(proto: "TP_DATAREQUEST_CAPABILITIES"),
   ]
 }
 
-extension VCSEC_TPMSAdvType_E: SwiftProtobuf._ProtoNameProviding {
+extension TPMSAdvType_E: SwiftProtobuf._ProtoNameProviding {
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "TPMS_ADV_TYPE_SEMI"),
   ]
 }
 
-extension VCSEC_TPNotifyReason_E: SwiftProtobuf._ProtoNameProviding {
+extension TPNotifyReason_E: SwiftProtobuf._ProtoNameProviding {
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "TP_NOTIFY_REASON_UNKNOWN"),
     1: .same(proto: "TP_NOTIFY_REASON_LOW_PRESSURE"),
@@ -6789,7 +7357,7 @@ extension VCSEC_TPNotifyReason_E: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension VCSEC_TPNotifyTrackerCommand_E: SwiftProtobuf._ProtoNameProviding {
+extension TPNotifyTrackerCommand_E: SwiftProtobuf._ProtoNameProviding {
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "TP_NOTIFYTRACKER_COMMAND_NONE"),
     1: .same(proto: "TP_NOTIFYTRACKER_COMMAND_GET_STATS"),
@@ -6797,7 +7365,14 @@ extension VCSEC_TPNotifyTrackerCommand_E: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension VCSEC_UpdaterLocation: SwiftProtobuf._ProtoNameProviding {
+extension UIRequest_E: SwiftProtobuf._ProtoNameProviding {
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    0: .same(proto: "UI_REQUEST_NONE"),
+    1: .same(proto: "UI_REQUEST_GET_VEHICLE_BLE_NICK_NAME"),
+  ]
+}
+
+extension UpdaterLocation: SwiftProtobuf._ProtoNameProviding {
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "UPDATER_LOCATION_NONE"),
     1: .same(proto: "UPDATER_LOCATION_APPLICATION"),
@@ -6807,7 +7382,7 @@ extension VCSEC_UpdaterLocation: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension VCSEC_UpdaterStatusCode: SwiftProtobuf._ProtoNameProviding {
+extension UpdaterStatusCode: SwiftProtobuf._ProtoNameProviding {
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "UPDATER_STATUS_CODE_ERROR"),
     1: .same(proto: "UPDATER_STATUS_CODE_WAIT"),
@@ -6822,7 +7397,15 @@ extension VCSEC_UpdaterStatusCode: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension VCSEC_UWBAvailability: SwiftProtobuf._ProtoNameProviding {
+extension UserPresence_E: SwiftProtobuf._ProtoNameProviding {
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    0: .same(proto: "VEHICLE_USER_PRESENCE_UNKNOWN"),
+    1: .same(proto: "VEHICLE_USER_PRESENCE_NOT_PRESENT"),
+    2: .same(proto: "VEHICLE_USER_PRESENCE_PRESENT"),
+  ]
+}
+
+extension UWBAvailability: SwiftProtobuf._ProtoNameProviding {
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "UWB_AVAILABILITY_UNKNOWN"),
     1: .same(proto: "UWB_AVAILABILITY_AVAILABLE"),
@@ -6832,7 +7415,7 @@ extension VCSEC_UWBAvailability: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension VCSEC_VehicleLockState_E: SwiftProtobuf._ProtoNameProviding {
+extension VehicleLockState_E: SwiftProtobuf._ProtoNameProviding {
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "VEHICLELOCKSTATE_UNLOCKED"),
     1: .same(proto: "VEHICLELOCKSTATE_LOCKED"),
@@ -6841,7 +7424,7 @@ extension VCSEC_VehicleLockState_E: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension VCSEC_VehicleSleepStatus_E: SwiftProtobuf._ProtoNameProviding {
+extension VehicleSleepStatus_E: SwiftProtobuf._ProtoNameProviding {
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "VEHICLE_SLEEP_STATUS_UNKNOWN"),
     1: .same(proto: "VEHICLE_SLEEP_STATUS_AWAKE"),
@@ -6849,7 +7432,7 @@ extension VCSEC_VehicleSleepStatus_E: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension VCSEC_WhitelistKeyPermission_E: SwiftProtobuf._ProtoNameProviding {
+extension WhitelistKeyPermission_E: SwiftProtobuf._ProtoNameProviding {
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "WHITELISTKEYPERMISSION_ADD_TO_WHITELIST"),
     1: .same(proto: "WHITELISTKEYPERMISSION_LOCAL_UNLOCK"),
@@ -6864,7 +7447,7 @@ extension VCSEC_WhitelistKeyPermission_E: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension VCSEC_WhitelistOperation_information_E: SwiftProtobuf._ProtoNameProviding {
+extension WhitelistOperation_information_E: SwiftProtobuf._ProtoNameProviding {
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "WHITELISTOPERATION_INFORMATION_NONE"),
     1: .same(proto: "WHITELISTOPERATION_INFORMATION_UNDOCUMENTED_ERROR"),
@@ -6889,11 +7472,17 @@ extension VCSEC_WhitelistOperation_information_E: SwiftProtobuf._ProtoNameProvid
     20: .same(proto: "WHITELISTOPERATION_INFORMATION_ATTEMPTING_TO_ADD_KEY_WITH_SERVICE_ROLE"),
     21: .same(proto: "WHITELISTOPERATION_INFORMATION_NON_SERVICE_KEY_ATTEMPTING_TO_ADD_SERVICE_TECH"),
     22: .same(proto: "WHITELISTOPERATION_INFORMATION_SERVICE_KEY_ATTEMPTING_TO_ADD_SERVICE_TECH_OUTSIDE_SERVICE_MODE"),
+    23: .same(proto: "WHITELISTOPERATION_INFORMATION_COULD_NOT_START_LOCAL_ENTITY_AUTH"),
+    24: .same(proto: "WHITELISTOPERATION_INFORMATION_LOCAL_ENTITY_AUTH_FAILED_UI_DENIED"),
+    25: .same(proto: "WHITELISTOPERATION_INFORMATION_LOCAL_ENTITY_AUTH_FAILED_TIMED_OUT_WAITING_FOR_TAP"),
+    26: .same(proto: "WHITELISTOPERATION_INFORMATION_LOCAL_ENTITY_AUTH_FAILED_TIMED_OUT_WAITING_FOR_UI_ACK"),
+    27: .same(proto: "WHITELISTOPERATION_INFORMATION_LOCAL_ENTITY_AUTH_FAILED_VALET_MODE"),
+    28: .same(proto: "WHITELISTOPERATION_INFORMATION_LOCAL_ENTITY_AUTH_FAILED_CANCELLED"),
   ]
 }
 
-extension VCSEC_AccelData: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".AccelData"
+extension AccelData: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "AccelData"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "xAccel_g"),
     2: .standard(proto: "zAccel_g"),
@@ -6922,7 +7511,7 @@ extension VCSEC_AccelData: SwiftProtobuf.Message, SwiftProtobuf._MessageImplemen
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_AccelData, rhs: VCSEC_AccelData) -> Bool {
+  static func ==(lhs: AccelData, rhs: AccelData) -> Bool {
     if lhs.xAccelG != rhs.xAccelG {return false}
     if lhs.zAccelG != rhs.zAccelG {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -6930,8 +7519,8 @@ extension VCSEC_AccelData: SwiftProtobuf.Message, SwiftProtobuf._MessageImplemen
   }
 }
 
-extension VCSEC_ActiveKey: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".ActiveKey"
+extension ActiveKey: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "ActiveKey"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "activeKey"),
   ]
@@ -6959,17 +7548,18 @@ extension VCSEC_ActiveKey: SwiftProtobuf.Message, SwiftProtobuf._MessageImplemen
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_ActiveKey, rhs: VCSEC_ActiveKey) -> Bool {
+  static func ==(lhs: ActiveKey, rhs: ActiveKey) -> Bool {
     if lhs._activeKey != rhs._activeKey {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension VCSEC_Alert: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".Alert"
+extension Alert: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "Alert"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "alertHandlePulledWithoutAuth"),
+    2: .same(proto: "alertConfirmation"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -6979,7 +7569,7 @@ extension VCSEC_Alert: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementati
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
       switch fieldNumber {
       case 1: try {
-        var v: VCSEC_AlertHandlePulledWithoutAuth?
+        var v: AlertHandlePulledWithoutAuth?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -6989,6 +7579,14 @@ extension VCSEC_Alert: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementati
         if let v = v {
           if hadOneofValue {try decoder.handleConflictingOneOf()}
           self.subMessage = .alertHandlePulledWithoutAuth(v)
+        }
+      }()
+      case 2: try {
+        var v: AlertConfirmation?
+        try decoder.decodeSingularEnumField(value: &v)
+        if let v = v {
+          if self.subMessage != nil {try decoder.handleConflictingOneOf()}
+          self.subMessage = .alertConfirmation(v)
         }
       }()
       default: break
@@ -7001,21 +7599,29 @@ extension VCSEC_Alert: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementati
     // allocates stack space for every if/case branch local when no optimizations
     // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
     // https://github.com/apple/swift-protobuf/issues/1182
-    try { if case .alertHandlePulledWithoutAuth(let v)? = self.subMessage {
+    switch self.subMessage {
+    case .alertHandlePulledWithoutAuth?: try {
+      guard case .alertHandlePulledWithoutAuth(let v)? = self.subMessage else { preconditionFailure() }
       try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
-    } }()
+    }()
+    case .alertConfirmation?: try {
+      guard case .alertConfirmation(let v)? = self.subMessage else { preconditionFailure() }
+      try visitor.visitSingularEnumField(value: v, fieldNumber: 2)
+    }()
+    case nil: break
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_Alert, rhs: VCSEC_Alert) -> Bool {
+  static func ==(lhs: Alert, rhs: Alert) -> Bool {
     if lhs.subMessage != rhs.subMessage {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension VCSEC_AlertHandlePulledWithoutAuth: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".AlertHandlePulledWithoutAuth"
+extension AlertHandlePulledWithoutAuth: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "AlertHandlePulledWithoutAuth"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "timeSinceAlertSet_ms"),
     2: .same(proto: "handlePulled"),
@@ -7064,7 +7670,7 @@ extension VCSEC_AlertHandlePulledWithoutAuth: SwiftProtobuf.Message, SwiftProtob
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_AlertHandlePulledWithoutAuth, rhs: VCSEC_AlertHandlePulledWithoutAuth) -> Bool {
+  static func ==(lhs: AlertHandlePulledWithoutAuth, rhs: AlertHandlePulledWithoutAuth) -> Bool {
     if lhs.timeSinceAlertSetMs != rhs.timeSinceAlertSetMs {return false}
     if lhs.handlePulled != rhs.handlePulled {return false}
     if lhs.connectionCount != rhs.connectionCount {return false}
@@ -7076,12 +7682,13 @@ extension VCSEC_AlertHandlePulledWithoutAuth: SwiftProtobuf.Message, SwiftProtob
   }
 }
 
-extension VCSEC_AppDeviceInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".AppDeviceInfo"
+extension AppDeviceInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "AppDeviceInfo"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "hardware_model_sha256"),
     2: .same(proto: "os"),
     3: .same(proto: "UWBAvailable"),
+    4: .same(proto: "phoneVersion"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -7093,12 +7700,17 @@ extension VCSEC_AppDeviceInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImpl
       case 1: try { try decoder.decodeSingularBytesField(value: &self.hardwareModelSha256) }()
       case 2: try { try decoder.decodeSingularEnumField(value: &self.os) }()
       case 3: try { try decoder.decodeSingularEnumField(value: &self.uwbavailable) }()
+      case 4: try { try decoder.decodeSingularMessageField(value: &self._phoneVersion) }()
       default: break
       }
     }
   }
 
   func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
     if !self.hardwareModelSha256.isEmpty {
       try visitor.visitSingularBytesField(value: self.hardwareModelSha256, fieldNumber: 1)
     }
@@ -7108,20 +7720,158 @@ extension VCSEC_AppDeviceInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImpl
     if self.uwbavailable != .unknown {
       try visitor.visitSingularEnumField(value: self.uwbavailable, fieldNumber: 3)
     }
+    try { if let v = self._phoneVersion {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 4)
+    } }()
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_AppDeviceInfo, rhs: VCSEC_AppDeviceInfo) -> Bool {
+  static func ==(lhs: AppDeviceInfo, rhs: AppDeviceInfo) -> Bool {
     if lhs.hardwareModelSha256 != rhs.hardwareModelSha256 {return false}
     if lhs.os != rhs.os {return false}
     if lhs.uwbavailable != rhs.uwbavailable {return false}
+    if lhs._phoneVersion != rhs._phoneVersion {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension VCSEC_AuthenticationRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".AuthenticationRequest"
+extension AppEventLog: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "AppEventLog"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "timestamp"),
+    2: .same(proto: "peerRemovedPairingInformation"),
+  ]
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularFixed32Field(value: &self.timestamp) }()
+      case 2: try {
+        var v: AppEventPeerRemovedPairingInformation?
+        var hadOneofValue = false
+        if let current = self.subMessage {
+          hadOneofValue = true
+          if case .peerRemovedPairingInformation(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.subMessage = .peerRemovedPairingInformation(v)
+        }
+      }()
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    if self.timestamp != 0 {
+      try visitor.visitSingularFixed32Field(value: self.timestamp, fieldNumber: 1)
+    }
+    try { if case .peerRemovedPairingInformation(let v)? = self.subMessage {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
+    } }()
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: AppEventLog, rhs: AppEventLog) -> Bool {
+    if lhs.timestamp != rhs.timestamp {return false}
+    if lhs.subMessage != rhs.subMessage {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension AppEventPeerRemovedPairingInformation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "AppEventPeerRemovedPairingInformation"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "keyId"),
+  ]
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularMessageField(value: &self._keyID) }()
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._keyID {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    } }()
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: AppEventPeerRemovedPairingInformation, rhs: AppEventPeerRemovedPairingInformation) -> Bool {
+    if lhs._keyID != rhs._keyID {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension ASICSPIRead: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "ASICSPIRead"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "response"),
+    2: .standard(proto: "data_"),
+    3: .same(proto: "opCode"),
+  ]
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularUInt32Field(value: &self.response) }()
+      case 2: try { try decoder.decodeSingularUInt32Field(value: &self.data_) }()
+      case 3: try { try decoder.decodeSingularUInt32Field(value: &self.opCode) }()
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if self.response != 0 {
+      try visitor.visitSingularUInt32Field(value: self.response, fieldNumber: 1)
+    }
+    if self.data_ != 0 {
+      try visitor.visitSingularUInt32Field(value: self.data_, fieldNumber: 2)
+    }
+    if self.opCode != 0 {
+      try visitor.visitSingularUInt32Field(value: self.opCode, fieldNumber: 3)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: ASICSPIRead, rhs: ASICSPIRead) -> Bool {
+    if lhs.response != rhs.response {return false}
+    if lhs.data_ != rhs.data_ {return false}
+    if lhs.opCode != rhs.opCode {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension AuthenticationRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "AuthenticationRequest"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     2: .same(proto: "sessionInfo"),
     3: .same(proto: "requestedLevel"),
@@ -7159,7 +7909,7 @@ extension VCSEC_AuthenticationRequest: SwiftProtobuf.Message, SwiftProtobuf._Mes
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_AuthenticationRequest, rhs: VCSEC_AuthenticationRequest) -> Bool {
+  static func ==(lhs: AuthenticationRequest, rhs: AuthenticationRequest) -> Bool {
     if lhs._sessionInfo != rhs._sessionInfo {return false}
     if lhs.requestedLevel != rhs.requestedLevel {return false}
     if lhs.reasonsForAuth != rhs.reasonsForAuth {return false}
@@ -7168,8 +7918,8 @@ extension VCSEC_AuthenticationRequest: SwiftProtobuf.Message, SwiftProtobuf._Mes
   }
 }
 
-extension VCSEC_AuthenticationRequestToken: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".AuthenticationRequestToken"
+extension AuthenticationRequestToken: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "AuthenticationRequestToken"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "token"),
   ]
@@ -7193,15 +7943,15 @@ extension VCSEC_AuthenticationRequestToken: SwiftProtobuf.Message, SwiftProtobuf
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_AuthenticationRequestToken, rhs: VCSEC_AuthenticationRequestToken) -> Bool {
+  static func ==(lhs: AuthenticationRequestToken, rhs: AuthenticationRequestToken) -> Bool {
     if lhs.token != rhs.token {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension VCSEC_AuthenticationResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".AuthenticationResponse"
+extension AuthenticationResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "AuthenticationResponse"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "authenticationLevel"),
     2: .same(proto: "estimatedDistance"),
@@ -7235,7 +7985,7 @@ extension VCSEC_AuthenticationResponse: SwiftProtobuf.Message, SwiftProtobuf._Me
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_AuthenticationResponse, rhs: VCSEC_AuthenticationResponse) -> Bool {
+  static func ==(lhs: AuthenticationResponse, rhs: AuthenticationResponse) -> Bool {
     if lhs.authenticationLevel != rhs.authenticationLevel {return false}
     if lhs.estimatedDistance != rhs.estimatedDistance {return false}
     if lhs.authenticationRejection != rhs.authenticationRejection {return false}
@@ -7244,8 +7994,8 @@ extension VCSEC_AuthenticationResponse: SwiftProtobuf.Message, SwiftProtobuf._Me
   }
 }
 
-extension VCSEC_BLEConfig: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".BLEConfig"
+extension BLEConfig: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "BLEConfig"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "ADVInterval"),
     2: .same(proto: "sleepClockAccuracy"),
@@ -7297,15 +8047,15 @@ extension VCSEC_BLEConfig: SwiftProtobuf.Message, SwiftProtobuf._MessageImplemen
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_BLEConfig, rhs: VCSEC_BLEConfig) -> Bool {
+  static func ==(lhs: BLEConfig, rhs: BLEConfig) -> Bool {
     if lhs.subMessage != rhs.subMessage {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension VCSEC_BLEConfigAll: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".BLEConfigAll"
+extension BLEConfigAll: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "BLEConfigAll"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "ADVInterval"),
     2: .same(proto: "sleepClockAccuracy"),
@@ -7334,7 +8084,7 @@ extension VCSEC_BLEConfigAll: SwiftProtobuf.Message, SwiftProtobuf._MessageImple
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_BLEConfigAll, rhs: VCSEC_BLEConfigAll) -> Bool {
+  static func ==(lhs: BLEConfigAll, rhs: BLEConfigAll) -> Bool {
     if lhs.advinterval != rhs.advinterval {return false}
     if lhs.sleepClockAccuracy != rhs.sleepClockAccuracy {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -7342,8 +8092,8 @@ extension VCSEC_BLEConfigAll: SwiftProtobuf.Message, SwiftProtobuf._MessageImple
   }
 }
 
-extension VCSEC_BLEConfigCommand: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".BLEConfigCommand"
+extension BLEConfigCommand: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "BLEConfigCommand"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "BLEConfigCommandType"),
     2: .same(proto: "BLEConfig"),
@@ -7376,7 +8126,7 @@ extension VCSEC_BLEConfigCommand: SwiftProtobuf.Message, SwiftProtobuf._MessageI
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_BLEConfigCommand, rhs: VCSEC_BLEConfigCommand) -> Bool {
+  static func ==(lhs: BLEConfigCommand, rhs: BLEConfigCommand) -> Bool {
     if lhs.bleconfigCommandType != rhs.bleconfigCommandType {return false}
     if lhs._bleconfig != rhs._bleconfig {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -7384,8 +8134,8 @@ extension VCSEC_BLEConfigCommand: SwiftProtobuf.Message, SwiftProtobuf._MessageI
   }
 }
 
-extension VCSEC_Capabilities: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".Capabilities"
+extension Capabilities: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "Capabilities"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "chargePortOpen"),
     2: .same(proto: "chargePortClose"),
@@ -7414,7 +8164,7 @@ extension VCSEC_Capabilities: SwiftProtobuf.Message, SwiftProtobuf._MessageImple
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_Capabilities, rhs: VCSEC_Capabilities) -> Bool {
+  static func ==(lhs: Capabilities, rhs: Capabilities) -> Bool {
     if lhs.chargePortOpen != rhs.chargePortOpen {return false}
     if lhs.chargePortClose != rhs.chargePortClose {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -7422,8 +8172,244 @@ extension VCSEC_Capabilities: SwiftProtobuf.Message, SwiftProtobuf._MessageImple
   }
 }
 
-extension VCSEC_ClosureMoveRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".ClosureMoveRequest"
+extension Certificate: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "Certificate"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "certificateInParts"),
+  ]
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try {
+        var v: CertificateInParts?
+        var hadOneofValue = false
+        if let current = self.subMessage {
+          hadOneofValue = true
+          if case .certificateInParts(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.subMessage = .certificateInParts(v)
+        }
+      }()
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if case .certificateInParts(let v)? = self.subMessage {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    } }()
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: Certificate, rhs: Certificate) -> Bool {
+    if lhs.subMessage != rhs.subMessage {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension CertificateInParts: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "CertificateInParts"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "startIndex"),
+    2: .same(proto: "certificateSize"),
+    3: .standard(proto: "data_"),
+  ]
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularUInt32Field(value: &self.startIndex) }()
+      case 2: try { try decoder.decodeSingularUInt32Field(value: &self.certificateSize) }()
+      case 3: try { try decoder.decodeSingularBytesField(value: &self.data_) }()
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if self.startIndex != 0 {
+      try visitor.visitSingularUInt32Field(value: self.startIndex, fieldNumber: 1)
+    }
+    if self.certificateSize != 0 {
+      try visitor.visitSingularUInt32Field(value: self.certificateSize, fieldNumber: 2)
+    }
+    if !self.data_.isEmpty {
+      try visitor.visitSingularBytesField(value: self.data_, fieldNumber: 3)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: CertificateInParts, rhs: CertificateInParts) -> Bool {
+    if lhs.startIndex != rhs.startIndex {return false}
+    if lhs.certificateSize != rhs.certificateSize {return false}
+    if lhs.data_ != rhs.data_ {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension CertificateRead: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "CertificateRead"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "readIndex"),
+    2: .same(proto: "lengthToRead"),
+  ]
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularUInt32Field(value: &self.readIndex) }()
+      case 2: try { try decoder.decodeSingularUInt32Field(value: &self.lengthToRead) }()
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if self.readIndex != 0 {
+      try visitor.visitSingularUInt32Field(value: self.readIndex, fieldNumber: 1)
+    }
+    if self.lengthToRead != 0 {
+      try visitor.visitSingularUInt32Field(value: self.lengthToRead, fieldNumber: 2)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: CertificateRead, rhs: CertificateRead) -> Bool {
+    if lhs.readIndex != rhs.readIndex {return false}
+    if lhs.lengthToRead != rhs.lengthToRead {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension CertificateResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "CertificateResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "certificate"),
+    2: .same(proto: "certificateStatus"),
+  ]
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularMessageField(value: &self._certificate) }()
+      case 2: try { try decoder.decodeSingularEnumField(value: &self.certificateStatus) }()
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._certificate {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    } }()
+    if self.certificateStatus != .certificateStatusNone {
+      try visitor.visitSingularEnumField(value: self.certificateStatus, fieldNumber: 2)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: CertificateResponse, rhs: CertificateResponse) -> Bool {
+    if lhs._certificate != rhs._certificate {return false}
+    if lhs.certificateStatus != rhs.certificateStatus {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension ChallengeCommand: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "ChallengeCommand"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "challenge"),
+  ]
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularBytesField(value: &self.challenge) }()
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.challenge.isEmpty {
+      try visitor.visitSingularBytesField(value: self.challenge, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: ChallengeCommand, rhs: ChallengeCommand) -> Bool {
+    if lhs.challenge != rhs.challenge {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension ChallengeResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "ChallengeResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "signature"),
+  ]
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularBytesField(value: &self.signature) }()
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.signature.isEmpty {
+      try visitor.visitSingularBytesField(value: self.signature, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: ChallengeResponse, rhs: ChallengeResponse) -> Bool {
+    if lhs.signature != rhs.signature {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension ClosureMoveRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "ClosureMoveRequest"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "frontDriverDoor"),
     2: .same(proto: "frontPassengerDoor"),
@@ -7432,6 +8418,7 @@ extension VCSEC_ClosureMoveRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
     5: .same(proto: "rearTrunk"),
     6: .same(proto: "frontTrunk"),
     7: .same(proto: "chargePort"),
+    8: .same(proto: "tonneau"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -7447,6 +8434,7 @@ extension VCSEC_ClosureMoveRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
       case 5: try { try decoder.decodeSingularEnumField(value: &self.rearTrunk) }()
       case 6: try { try decoder.decodeSingularEnumField(value: &self.frontTrunk) }()
       case 7: try { try decoder.decodeSingularEnumField(value: &self.chargePort) }()
+      case 8: try { try decoder.decodeSingularEnumField(value: &self.tonneau) }()
       default: break
       }
     }
@@ -7474,10 +8462,13 @@ extension VCSEC_ClosureMoveRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
     if self.chargePort != .closureMoveTypeNone {
       try visitor.visitSingularEnumField(value: self.chargePort, fieldNumber: 7)
     }
+    if self.tonneau != .closureMoveTypeNone {
+      try visitor.visitSingularEnumField(value: self.tonneau, fieldNumber: 8)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_ClosureMoveRequest, rhs: VCSEC_ClosureMoveRequest) -> Bool {
+  static func ==(lhs: ClosureMoveRequest, rhs: ClosureMoveRequest) -> Bool {
     if lhs.frontDriverDoor != rhs.frontDriverDoor {return false}
     if lhs.frontPassengerDoor != rhs.frontPassengerDoor {return false}
     if lhs.rearDriverDoor != rhs.rearDriverDoor {return false}
@@ -7485,13 +8476,14 @@ extension VCSEC_ClosureMoveRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
     if lhs.rearTrunk != rhs.rearTrunk {return false}
     if lhs.frontTrunk != rhs.frontTrunk {return false}
     if lhs.chargePort != rhs.chargePort {return false}
+    if lhs.tonneau != rhs.tonneau {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension VCSEC_ClosureStatuses: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".ClosureStatuses"
+extension ClosureStatuses: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "ClosureStatuses"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "frontDriverDoor"),
     2: .same(proto: "frontPassengerDoor"),
@@ -7500,6 +8492,7 @@ extension VCSEC_ClosureStatuses: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
     5: .same(proto: "rearTrunk"),
     6: .same(proto: "frontTrunk"),
     7: .same(proto: "chargePort"),
+    8: .same(proto: "tonneau"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -7515,6 +8508,7 @@ extension VCSEC_ClosureStatuses: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
       case 5: try { try decoder.decodeSingularEnumField(value: &self.rearTrunk) }()
       case 6: try { try decoder.decodeSingularEnumField(value: &self.frontTrunk) }()
       case 7: try { try decoder.decodeSingularEnumField(value: &self.chargePort) }()
+      case 8: try { try decoder.decodeSingularEnumField(value: &self.tonneau) }()
       default: break
       }
     }
@@ -7542,10 +8536,13 @@ extension VCSEC_ClosureStatuses: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
     if self.chargePort != .closurestateClosed {
       try visitor.visitSingularEnumField(value: self.chargePort, fieldNumber: 7)
     }
+    if self.tonneau != .closurestateClosed {
+      try visitor.visitSingularEnumField(value: self.tonneau, fieldNumber: 8)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_ClosureStatuses, rhs: VCSEC_ClosureStatuses) -> Bool {
+  static func ==(lhs: ClosureStatuses, rhs: ClosureStatuses) -> Bool {
     if lhs.frontDriverDoor != rhs.frontDriverDoor {return false}
     if lhs.frontPassengerDoor != rhs.frontPassengerDoor {return false}
     if lhs.rearDriverDoor != rhs.rearDriverDoor {return false}
@@ -7553,13 +8550,14 @@ extension VCSEC_ClosureStatuses: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
     if lhs.rearTrunk != rhs.rearTrunk {return false}
     if lhs.frontTrunk != rhs.frontTrunk {return false}
     if lhs.chargePort != rhs.chargePort {return false}
+    if lhs.tonneau != rhs.tonneau {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension VCSEC_CodeDescriptor: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".CodeDescriptor"
+extension CodeDescriptor: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "CodeDescriptor"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "codeDescriptorLocation"),
     2: .same(proto: "version"),
@@ -7593,7 +8591,7 @@ extension VCSEC_CodeDescriptor: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_CodeDescriptor, rhs: VCSEC_CodeDescriptor) -> Bool {
+  static func ==(lhs: CodeDescriptor, rhs: CodeDescriptor) -> Bool {
     if lhs.codeDescriptorLocation != rhs.codeDescriptorLocation {return false}
     if lhs.version != rhs.version {return false}
     if lhs.codeDescriptorBytes != rhs.codeDescriptorBytes {return false}
@@ -7602,8 +8600,8 @@ extension VCSEC_CodeDescriptor: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
   }
 }
 
-extension VCSEC_CommandStatus: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".CommandStatus"
+extension CommandStatus: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "CommandStatus"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "operationStatus"),
     2: .same(proto: "signedMessageStatus"),
@@ -7618,7 +8616,7 @@ extension VCSEC_CommandStatus: SwiftProtobuf.Message, SwiftProtobuf._MessageImpl
       switch fieldNumber {
       case 1: try { try decoder.decodeSingularEnumField(value: &self.operationStatus) }()
       case 2: try {
-        var v: VCSEC_SignedMessage_status?
+        var v: SignedMessage_status?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -7631,7 +8629,7 @@ extension VCSEC_CommandStatus: SwiftProtobuf.Message, SwiftProtobuf._MessageImpl
         }
       }()
       case 3: try {
-        var v: VCSEC_WhitelistOperation_status?
+        var v: WhitelistOperation_status?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -7670,7 +8668,7 @@ extension VCSEC_CommandStatus: SwiftProtobuf.Message, SwiftProtobuf._MessageImpl
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_CommandStatus, rhs: VCSEC_CommandStatus) -> Bool {
+  static func ==(lhs: CommandStatus, rhs: CommandStatus) -> Bool {
     if lhs.operationStatus != rhs.operationStatus {return false}
     if lhs.subMessage != rhs.subMessage {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -7678,12 +8676,13 @@ extension VCSEC_CommandStatus: SwiftProtobuf.Message, SwiftProtobuf._MessageImpl
   }
 }
 
-extension VCSEC_ConnectionMetrics: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".ConnectionMetrics"
+extension ConnectionMetrics: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "ConnectionMetrics"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "goodConnEventCount"),
     2: .same(proto: "missedConnEventCount"),
     3: .same(proto: "badCRCConnEventCount"),
+    4: .same(proto: "otherFailuresCount"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -7695,6 +8694,7 @@ extension VCSEC_ConnectionMetrics: SwiftProtobuf.Message, SwiftProtobuf._Message
       case 1: try { try decoder.decodeSingularUInt32Field(value: &self.goodConnEventCount) }()
       case 2: try { try decoder.decodeSingularUInt32Field(value: &self.missedConnEventCount) }()
       case 3: try { try decoder.decodeSingularUInt32Field(value: &self.badCrcconnEventCount) }()
+      case 4: try { try decoder.decodeSingularUInt32Field(value: &self.otherFailuresCount) }()
       default: break
       }
     }
@@ -7710,20 +8710,24 @@ extension VCSEC_ConnectionMetrics: SwiftProtobuf.Message, SwiftProtobuf._Message
     if self.badCrcconnEventCount != 0 {
       try visitor.visitSingularUInt32Field(value: self.badCrcconnEventCount, fieldNumber: 3)
     }
+    if self.otherFailuresCount != 0 {
+      try visitor.visitSingularUInt32Field(value: self.otherFailuresCount, fieldNumber: 4)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_ConnectionMetrics, rhs: VCSEC_ConnectionMetrics) -> Bool {
+  static func ==(lhs: ConnectionMetrics, rhs: ConnectionMetrics) -> Bool {
     if lhs.goodConnEventCount != rhs.goodConnEventCount {return false}
     if lhs.missedConnEventCount != rhs.missedConnEventCount {return false}
     if lhs.badCrcconnEventCount != rhs.badCrcconnEventCount {return false}
+    if lhs.otherFailuresCount != rhs.otherFailuresCount {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension VCSEC_DelaySleepRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".DelaySleepRequest"
+extension DelaySleepRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "DelaySleepRequest"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "delayTime_ms"),
   ]
@@ -7747,15 +8751,47 @@ extension VCSEC_DelaySleepRequest: SwiftProtobuf.Message, SwiftProtobuf._Message
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_DelaySleepRequest, rhs: VCSEC_DelaySleepRequest) -> Bool {
+  static func ==(lhs: DelaySleepRequest, rhs: DelaySleepRequest) -> Bool {
     if lhs.delayTimeMs != rhs.delayTimeMs {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension VCSEC_DeviceMotion: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".DeviceMotion"
+extension DetailedClosureStatus: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "DetailedClosureStatus"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "tonneauPercentOpen"),
+  ]
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularUInt32Field(value: &self.tonneauPercentOpen) }()
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if self.tonneauPercentOpen != 0 {
+      try visitor.visitSingularUInt32Field(value: self.tonneauPercentOpen, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: DetailedClosureStatus, rhs: DetailedClosureStatus) -> Bool {
+    if lhs.tonneauPercentOpen != rhs.tonneauPercentOpen {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension DeviceMotion: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "DeviceMotion"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "states"),
     2: .same(proto: "confidence"),
@@ -7784,7 +8820,7 @@ extension VCSEC_DeviceMotion: SwiftProtobuf.Message, SwiftProtobuf._MessageImple
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_DeviceMotion, rhs: VCSEC_DeviceMotion) -> Bool {
+  static func ==(lhs: DeviceMotion, rhs: DeviceMotion) -> Bool {
     if lhs.states != rhs.states {return false}
     if lhs.confidence != rhs.confidence {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -7792,8 +8828,8 @@ extension VCSEC_DeviceMotion: SwiftProtobuf.Message, SwiftProtobuf._MessageImple
   }
 }
 
-extension VCSEC_FromRCI: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".FromRCI"
+extension FromRCI: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "FromRCI"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "response"),
   ]
@@ -7817,15 +8853,15 @@ extension VCSEC_FromRCI: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementa
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_FromRCI, rhs: VCSEC_FromRCI) -> Bool {
+  static func ==(lhs: FromRCI, rhs: FromRCI) -> Bool {
     if lhs.response != rhs.response {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension VCSEC_FromVCSECMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".FromVCSECMessage"
+extension FromVCSECMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "FromVCSECMessage"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "vehicleStatus"),
     2: .same(proto: "sessionInfo"),
@@ -7839,6 +8875,7 @@ extension VCSEC_FromVCSECMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageI
     21: .same(proto: "keyStatusInfo"),
     22: .same(proto: "activeKey"),
     23: .same(proto: "unknownKeyInfo"),
+    24: .same(proto: "UIRequest"),
     30: .same(proto: "updaterCommand"),
     31: .same(proto: "genealogyRequest"),
     32: .same(proto: "sleepManagerRequest"),
@@ -7859,6 +8896,9 @@ extension VCSEC_FromVCSECMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageI
     47: .same(proto: "MISessionRequest"),
     48: .same(proto: "MISessionStop"),
     49: .same(proto: "clearTPMSAlarms"),
+    50: .same(proto: "certificateRead"),
+    51: .same(proto: "challengeCommand"),
+    52: .same(proto: "publicKeyRequest"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -7868,7 +8908,7 @@ extension VCSEC_FromVCSECMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageI
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
       switch fieldNumber {
       case 1: try {
-        var v: VCSEC_VehicleStatus?
+        var v: VehicleStatus?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -7881,7 +8921,7 @@ extension VCSEC_FromVCSECMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageI
         }
       }()
       case 2: try {
-        var v: VCSEC_SessionInfo?
+        var v: SessionInfo?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -7894,7 +8934,7 @@ extension VCSEC_FromVCSECMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageI
         }
       }()
       case 3: try {
-        var v: VCSEC_AuthenticationRequest?
+        var v: AuthenticationRequest?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -7907,7 +8947,7 @@ extension VCSEC_FromVCSECMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageI
         }
       }()
       case 4: try {
-        var v: VCSEC_CommandStatus?
+        var v: CommandStatus?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -7920,7 +8960,7 @@ extension VCSEC_FromVCSECMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageI
         }
       }()
       case 5: try {
-        var v: VCSEC_PersonalizationInformation?
+        var v: PersonalizationInformation?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -7933,7 +8973,7 @@ extension VCSEC_FromVCSECMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageI
         }
       }()
       case 16: try {
-        var v: VCSEC_WhitelistInfo?
+        var v: WhitelistInfo?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -7946,7 +8986,7 @@ extension VCSEC_FromVCSECMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageI
         }
       }()
       case 17: try {
-        var v: VCSEC_WhitelistEntryInfo?
+        var v: WhitelistEntryInfo?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -7959,7 +8999,7 @@ extension VCSEC_FromVCSECMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageI
         }
       }()
       case 18: try {
-        var v: VCSEC_VehicleInfo?
+        var v: VehicleInfo?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -7972,7 +9012,7 @@ extension VCSEC_FromVCSECMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageI
         }
       }()
       case 19: try {
-        var v: VCSEC_Capabilities?
+        var v: Capabilities?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -7985,7 +9025,7 @@ extension VCSEC_FromVCSECMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageI
         }
       }()
       case 21: try {
-        var v: VCSEC_KeyStatusInfo?
+        var v: KeyStatusInfo?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -7998,7 +9038,7 @@ extension VCSEC_FromVCSECMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageI
         }
       }()
       case 22: try {
-        var v: VCSEC_ActiveKey?
+        var v: ActiveKey?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -8011,7 +9051,7 @@ extension VCSEC_FromVCSECMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageI
         }
       }()
       case 23: try {
-        var v: VCSEC_UnknownKeyInfo?
+        var v: UnknownKeyInfo?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -8023,8 +9063,16 @@ extension VCSEC_FromVCSECMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageI
           self.subMessage = .unknownKeyInfo(v)
         }
       }()
+      case 24: try {
+        var v: UIRequest_E?
+        try decoder.decodeSingularEnumField(value: &v)
+        if let v = v {
+          if self.subMessage != nil {try decoder.handleConflictingOneOf()}
+          self.subMessage = .uirequest(v)
+        }
+      }()
       case 30: try {
-        var v: VCSEC_UpdaterCommand?
+        var v: UpdaterCommand?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -8037,7 +9085,7 @@ extension VCSEC_FromVCSECMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageI
         }
       }()
       case 31: try {
-        var v: VCSEC_GenealogyRequest_E?
+        var v: GenealogyRequest_E?
         try decoder.decodeSingularEnumField(value: &v)
         if let v = v {
           if self.subMessage != nil {try decoder.handleConflictingOneOf()}
@@ -8045,7 +9093,7 @@ extension VCSEC_FromVCSECMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageI
         }
       }()
       case 32: try {
-        var v: VCSEC_SleepManagerRequest?
+        var v: SleepManagerRequest?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -8058,7 +9106,7 @@ extension VCSEC_FromVCSECMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageI
         }
       }()
       case 33: try {
-        var v: VCSEC_IMURequest_E?
+        var v: IMURequest_E?
         try decoder.decodeSingularEnumField(value: &v)
         if let v = v {
           if self.subMessage != nil {try decoder.handleConflictingOneOf()}
@@ -8066,7 +9114,7 @@ extension VCSEC_FromVCSECMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageI
         }
       }()
       case 34: try {
-        var v: VCSEC_NFCSERequest_E?
+        var v: NFCSERequest_E?
         try decoder.decodeSingularEnumField(value: &v)
         if let v = v {
           if self.subMessage != nil {try decoder.handleConflictingOneOf()}
@@ -8074,7 +9122,7 @@ extension VCSEC_FromVCSECMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageI
         }
       }()
       case 35: try {
-        var v: VCSEC_TPDataRequest_E?
+        var v: TPDataRequest_E?
         try decoder.decodeSingularEnumField(value: &v)
         if let v = v {
           if self.subMessage != nil {try decoder.handleConflictingOneOf()}
@@ -8082,7 +9130,7 @@ extension VCSEC_FromVCSECMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageI
         }
       }()
       case 36: try {
-        var v: VCSEC_ResetTrackerCommand_E?
+        var v: ResetTrackerCommand_E?
         try decoder.decodeSingularEnumField(value: &v)
         if let v = v {
           if self.subMessage != nil {try decoder.handleConflictingOneOf()}
@@ -8090,7 +9138,7 @@ extension VCSEC_FromVCSECMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageI
         }
       }()
       case 37: try {
-        var v: VCSEC_TPNotifyTrackerCommand_E?
+        var v: TPNotifyTrackerCommand_E?
         try decoder.decodeSingularEnumField(value: &v)
         if let v = v {
           if self.subMessage != nil {try decoder.handleConflictingOneOf()}
@@ -8098,7 +9146,7 @@ extension VCSEC_FromVCSECMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageI
         }
       }()
       case 38: try {
-        var v: VCSEC_SetTPConfigration?
+        var v: SetTPConfiguration?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -8111,7 +9159,7 @@ extension VCSEC_FromVCSECMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageI
         }
       }()
       case 39: try {
-        var v: VCSEC_UnsecureNotification?
+        var v: UnsecureNotification?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -8124,7 +9172,7 @@ extension VCSEC_FromVCSECMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageI
         }
       }()
       case 40: try {
-        var v: VCSEC_Signatures.SessionInfo?
+        var v: Signatures.SessionInfo?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -8137,7 +9185,7 @@ extension VCSEC_FromVCSECMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageI
         }
       }()
       case 41: try {
-        var v: VCSEC_ToRCI?
+        var v: ToRCI?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -8150,7 +9198,7 @@ extension VCSEC_FromVCSECMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageI
         }
       }()
       case 42: try {
-        var v: VCSEC_RCI_control_E?
+        var v: RCI_control_E?
         try decoder.decodeSingularEnumField(value: &v)
         if let v = v {
           if self.subMessage != nil {try decoder.handleConflictingOneOf()}
@@ -8158,7 +9206,7 @@ extension VCSEC_FromVCSECMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageI
         }
       }()
       case 43: try {
-        var v: VCSEC_BLEConfigCommand?
+        var v: BLEConfigCommand?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -8171,7 +9219,7 @@ extension VCSEC_FromVCSECMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageI
         }
       }()
       case 44: try {
-        var v: VCSEC_AppDeviceInfoRequest_E?
+        var v: AppDeviceInfoRequest_E?
         try decoder.decodeSingularEnumField(value: &v)
         if let v = v {
           if self.subMessage != nil {try decoder.handleConflictingOneOf()}
@@ -8179,7 +9227,7 @@ extension VCSEC_FromVCSECMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageI
         }
       }()
       case 45: try {
-        var v: VCSEC_Alert?
+        var v: Alert?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -8192,7 +9240,7 @@ extension VCSEC_FromVCSECMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageI
         }
       }()
       case 46: try {
-        var v: VCSEC_NominalError?
+        var v: NominalError?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -8205,7 +9253,7 @@ extension VCSEC_FromVCSECMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageI
         }
       }()
       case 47: try {
-        var v: VCSEC_MISessionRequest?
+        var v: MISessionRequest?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -8218,7 +9266,7 @@ extension VCSEC_FromVCSECMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageI
         }
       }()
       case 48: try {
-        var v: VCSEC_MISessionStop?
+        var v: MISessionStop?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -8231,7 +9279,7 @@ extension VCSEC_FromVCSECMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageI
         }
       }()
       case 49: try {
-        var v: VCSEC_TPMSAlarms?
+        var v: TPMSAlarms?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -8241,6 +9289,40 @@ extension VCSEC_FromVCSECMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageI
         if let v = v {
           if hadOneofValue {try decoder.handleConflictingOneOf()}
           self.subMessage = .clearTpmsalarms_p(v)
+        }
+      }()
+      case 50: try {
+        var v: CertificateRead?
+        var hadOneofValue = false
+        if let current = self.subMessage {
+          hadOneofValue = true
+          if case .certificateRead(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.subMessage = .certificateRead(v)
+        }
+      }()
+      case 51: try {
+        var v: ChallengeCommand?
+        var hadOneofValue = false
+        if let current = self.subMessage {
+          hadOneofValue = true
+          if case .challengeCommand(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.subMessage = .challengeCommand(v)
+        }
+      }()
+      case 52: try {
+        var v: PublicKeyRequest_E?
+        try decoder.decodeSingularEnumField(value: &v)
+        if let v = v {
+          if self.subMessage != nil {try decoder.handleConflictingOneOf()}
+          self.subMessage = .publicKeyRequest(v)
         }
       }()
       default: break
@@ -8301,6 +9383,10 @@ extension VCSEC_FromVCSECMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageI
     case .unknownKeyInfo?: try {
       guard case .unknownKeyInfo(let v)? = self.subMessage else { preconditionFailure() }
       try visitor.visitSingularMessageField(value: v, fieldNumber: 23)
+    }()
+    case .uirequest?: try {
+      guard case .uirequest(let v)? = self.subMessage else { preconditionFailure() }
+      try visitor.visitSingularEnumField(value: v, fieldNumber: 24)
     }()
     case .updaterCommand?: try {
       guard case .updaterCommand(let v)? = self.subMessage else { preconditionFailure() }
@@ -8382,20 +9468,32 @@ extension VCSEC_FromVCSECMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageI
       guard case .clearTpmsalarms_p(let v)? = self.subMessage else { preconditionFailure() }
       try visitor.visitSingularMessageField(value: v, fieldNumber: 49)
     }()
+    case .certificateRead?: try {
+      guard case .certificateRead(let v)? = self.subMessage else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 50)
+    }()
+    case .challengeCommand?: try {
+      guard case .challengeCommand(let v)? = self.subMessage else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 51)
+    }()
+    case .publicKeyRequest?: try {
+      guard case .publicKeyRequest(let v)? = self.subMessage else { preconditionFailure() }
+      try visitor.visitSingularEnumField(value: v, fieldNumber: 52)
+    }()
     case nil: break
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_FromVCSECMessage, rhs: VCSEC_FromVCSECMessage) -> Bool {
+  static func ==(lhs: FromVCSECMessage, rhs: FromVCSECMessage) -> Bool {
     if lhs.subMessage != rhs.subMessage {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension VCSEC_Genealogy: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".Genealogy"
+extension Genealogy: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "Genealogy"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "serialNumber"),
     2: .same(proto: "partNumber"),
@@ -8424,7 +9522,7 @@ extension VCSEC_Genealogy: SwiftProtobuf.Message, SwiftProtobuf._MessageImplemen
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_Genealogy, rhs: VCSEC_Genealogy) -> Bool {
+  static func ==(lhs: Genealogy, rhs: Genealogy) -> Bool {
     if lhs.serialNumber != rhs.serialNumber {return false}
     if lhs.partNumber != rhs.partNumber {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -8432,8 +9530,8 @@ extension VCSEC_Genealogy: SwiftProtobuf.Message, SwiftProtobuf._MessageImplemen
   }
 }
 
-extension VCSEC_GenealogyResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".GenealogyResponse"
+extension GenealogyResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "GenealogyResponse"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "currentGenealogy"),
     2: .same(proto: "status"),
@@ -8466,7 +9564,7 @@ extension VCSEC_GenealogyResponse: SwiftProtobuf.Message, SwiftProtobuf._Message
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_GenealogyResponse, rhs: VCSEC_GenealogyResponse) -> Bool {
+  static func ==(lhs: GenealogyResponse, rhs: GenealogyResponse) -> Bool {
     if lhs._currentGenealogy != rhs._currentGenealogy {return false}
     if lhs.status != rhs.status {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -8474,8 +9572,8 @@ extension VCSEC_GenealogyResponse: SwiftProtobuf.Message, SwiftProtobuf._Message
   }
 }
 
-extension VCSEC_GetCodeDescriptor: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".GetCodeDescriptor"
+extension GetCodeDescriptor: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "GetCodeDescriptor"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "location"),
   ]
@@ -8499,15 +9597,15 @@ extension VCSEC_GetCodeDescriptor: SwiftProtobuf.Message, SwiftProtobuf._Message
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_GetCodeDescriptor, rhs: VCSEC_GetCodeDescriptor) -> Bool {
+  static func ==(lhs: GetCodeDescriptor, rhs: GetCodeDescriptor) -> Bool {
     if lhs.location != rhs.location {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension VCSEC_GetReaderKey: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".GetReaderKey"
+extension GetReaderKey: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "GetReaderKey"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "command"),
   ]
@@ -8531,51 +9629,15 @@ extension VCSEC_GetReaderKey: SwiftProtobuf.Message, SwiftProtobuf._MessageImple
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_GetReaderKey, rhs: VCSEC_GetReaderKey) -> Bool {
+  static func ==(lhs: GetReaderKey, rhs: GetReaderKey) -> Bool {
     if lhs.command != rhs.command {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension VCSEC_GetSessionInfoRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".GetSessionInfoRequest"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .standard(proto: "key_identity"),
-  ]
-
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    while let fieldNumber = try decoder.nextFieldNumber() {
-      // The use of inline closures is to circumvent an issue where the compiler
-      // allocates stack space for every case branch when no optimizations are
-      // enabled. https://github.com/apple/swift-protobuf/issues/1034
-      switch fieldNumber {
-      case 1: try { try decoder.decodeSingularMessageField(value: &self._keyIdentity) }()
-      default: break
-      }
-    }
-  }
-
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    // The use of inline closures is to circumvent an issue where the compiler
-    // allocates stack space for every if/case branch local when no optimizations
-    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
-    // https://github.com/apple/swift-protobuf/issues/1182
-    try { if let v = self._keyIdentity {
-      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
-    } }()
-    try unknownFields.traverse(visitor: &visitor)
-  }
-
-  static func ==(lhs: VCSEC_GetSessionInfoRequest, rhs: VCSEC_GetSessionInfoRequest) -> Bool {
-    if lhs._keyIdentity != rhs._keyIdentity {return false}
-    if lhs.unknownFields != rhs.unknownFields {return false}
-    return true
-  }
-}
-
-extension VCSEC_HandlePulledWithoutAuthDeviceSpecificPayload: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".HandlePulledWithoutAuthDeviceSpecificPayload"
+extension HandlePulledWithoutAuthDeviceSpecificPayload: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "HandlePulledWithoutAuthDeviceSpecificPayload"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "keyChannel"),
     2: .same(proto: "authenticationLevel"),
@@ -8606,7 +9668,7 @@ extension VCSEC_HandlePulledWithoutAuthDeviceSpecificPayload: SwiftProtobuf.Mess
 
   fileprivate class _StorageClass {
     var _keyChannel: UInt32 = 0
-    var _authenticationLevel: VCSEC_AuthenticationLevel_E = .authenticationLevelNone
+    var _authenticationLevel: AuthenticationLevel_E = .authenticationLevelNone
     var _present: Bool = false
     var _rssileft: Int32 = 0
     var _rssiright: Int32 = 0
@@ -8791,7 +9853,7 @@ extension VCSEC_HandlePulledWithoutAuthDeviceSpecificPayload: SwiftProtobuf.Mess
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_HandlePulledWithoutAuthDeviceSpecificPayload, rhs: VCSEC_HandlePulledWithoutAuthDeviceSpecificPayload) -> Bool {
+  static func ==(lhs: HandlePulledWithoutAuthDeviceSpecificPayload, rhs: HandlePulledWithoutAuthDeviceSpecificPayload) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -8830,8 +9892,8 @@ extension VCSEC_HandlePulledWithoutAuthDeviceSpecificPayload: SwiftProtobuf.Mess
   }
 }
 
-extension VCSEC_InformationRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".InformationRequest"
+extension InformationRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "InformationRequest"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "informationRequestType"),
     2: .same(proto: "keyId"),
@@ -8847,7 +9909,7 @@ extension VCSEC_InformationRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
       switch fieldNumber {
       case 1: try { try decoder.decodeSingularEnumField(value: &self.informationRequestType) }()
       case 2: try {
-        var v: VCSEC_KeyIdentifier?
+        var v: KeyIdentifier?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -8906,7 +9968,7 @@ extension VCSEC_InformationRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_InformationRequest, rhs: VCSEC_InformationRequest) -> Bool {
+  static func ==(lhs: InformationRequest, rhs: InformationRequest) -> Bool {
     if lhs.informationRequestType != rhs.informationRequestType {return false}
     if lhs.subMessage != rhs.subMessage {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -8914,8 +9976,8 @@ extension VCSEC_InformationRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
   }
 }
 
-extension VCSEC_KeyfobInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".KeyfobInfo"
+extension KeyfobInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "KeyfobInfo"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "appCRC"),
     2: .standard(proto: "batteryVoltage_mV"),
@@ -8949,7 +10011,7 @@ extension VCSEC_KeyfobInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImpleme
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_KeyfobInfo, rhs: VCSEC_KeyfobInfo) -> Bool {
+  static func ==(lhs: KeyfobInfo, rhs: KeyfobInfo) -> Bool {
     if lhs.appCrc != rhs.appCrc {return false}
     if lhs.batteryVoltageMV != rhs.batteryVoltageMV {return false}
     if lhs.temperatureDegreesC != rhs.temperatureDegreesC {return false}
@@ -8958,8 +10020,8 @@ extension VCSEC_KeyfobInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImpleme
   }
 }
 
-extension VCSEC_KeyIdentifier: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".KeyIdentifier"
+extension KeyIdentifier: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "KeyIdentifier"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "publicKeySHA1"),
   ]
@@ -8983,75 +10045,15 @@ extension VCSEC_KeyIdentifier: SwiftProtobuf.Message, SwiftProtobuf._MessageImpl
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_KeyIdentifier, rhs: VCSEC_KeyIdentifier) -> Bool {
+  static func ==(lhs: KeyIdentifier, rhs: KeyIdentifier) -> Bool {
     if lhs.publicKeySha1 != rhs.publicKeySha1 {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension VCSEC_KeyIdentity: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".KeyIdentity"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .standard(proto: "public_key"),
-    2: .standard(proto: "key_id"),
-  ]
-
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    while let fieldNumber = try decoder.nextFieldNumber() {
-      // The use of inline closures is to circumvent an issue where the compiler
-      // allocates stack space for every case branch when no optimizations are
-      // enabled. https://github.com/apple/swift-protobuf/issues/1034
-      switch fieldNumber {
-      case 1: try {
-        var v: Data?
-        try decoder.decodeSingularBytesField(value: &v)
-        if let v = v {
-          if self.subMessage != nil {try decoder.handleConflictingOneOf()}
-          self.subMessage = .publicKey(v)
-        }
-      }()
-      case 2: try {
-        var v: Data?
-        try decoder.decodeSingularBytesField(value: &v)
-        if let v = v {
-          if self.subMessage != nil {try decoder.handleConflictingOneOf()}
-          self.subMessage = .keyID(v)
-        }
-      }()
-      default: break
-      }
-    }
-  }
-
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    // The use of inline closures is to circumvent an issue where the compiler
-    // allocates stack space for every if/case branch local when no optimizations
-    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
-    // https://github.com/apple/swift-protobuf/issues/1182
-    switch self.subMessage {
-    case .publicKey?: try {
-      guard case .publicKey(let v)? = self.subMessage else { preconditionFailure() }
-      try visitor.visitSingularBytesField(value: v, fieldNumber: 1)
-    }()
-    case .keyID?: try {
-      guard case .keyID(let v)? = self.subMessage else { preconditionFailure() }
-      try visitor.visitSingularBytesField(value: v, fieldNumber: 2)
-    }()
-    case nil: break
-    }
-    try unknownFields.traverse(visitor: &visitor)
-  }
-
-  static func ==(lhs: VCSEC_KeyIdentity, rhs: VCSEC_KeyIdentity) -> Bool {
-    if lhs.subMessage != rhs.subMessage {return false}
-    if lhs.unknownFields != rhs.unknownFields {return false}
-    return true
-  }
-}
-
-extension VCSEC_KeyMetadata: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".KeyMetadata"
+extension KeyMetadata: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "KeyMetadata"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "keyFormFactor"),
   ]
@@ -9075,15 +10077,15 @@ extension VCSEC_KeyMetadata: SwiftProtobuf.Message, SwiftProtobuf._MessageImplem
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_KeyMetadata, rhs: VCSEC_KeyMetadata) -> Bool {
+  static func ==(lhs: KeyMetadata, rhs: KeyMetadata) -> Bool {
     if lhs.keyFormFactor != rhs.keyFormFactor {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension VCSEC_KeyStatus: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".KeyStatus"
+extension KeyStatus: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "KeyStatus"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "keyId"),
     2: .same(proto: "nfcPresence"),
@@ -9136,7 +10138,7 @@ extension VCSEC_KeyStatus: SwiftProtobuf.Message, SwiftProtobuf._MessageImplemen
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_KeyStatus, rhs: VCSEC_KeyStatus) -> Bool {
+  static func ==(lhs: KeyStatus, rhs: KeyStatus) -> Bool {
     if lhs._keyID != rhs._keyID {return false}
     if lhs.nfcPresence != rhs.nfcPresence {return false}
     if lhs.blePresence != rhs.blePresence {return false}
@@ -9148,8 +10150,8 @@ extension VCSEC_KeyStatus: SwiftProtobuf.Message, SwiftProtobuf._MessageImplemen
   }
 }
 
-extension VCSEC_KeyStatusInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".KeyStatusInfo"
+extension KeyStatusInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "KeyStatusInfo"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "keyStatuses"),
   ]
@@ -9173,15 +10175,15 @@ extension VCSEC_KeyStatusInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImpl
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_KeyStatusInfo, rhs: VCSEC_KeyStatusInfo) -> Bool {
+  static func ==(lhs: KeyStatusInfo, rhs: KeyStatusInfo) -> Bool {
     if lhs.keyStatuses != rhs.keyStatuses {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension VCSEC_MIConfigurationData: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".MIConfigurationData"
+extension MIConfigurationData: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "MIConfigurationData"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "data_"),
   ]
@@ -9205,15 +10207,15 @@ extension VCSEC_MIConfigurationData: SwiftProtobuf.Message, SwiftProtobuf._Messa
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_MIConfigurationData, rhs: VCSEC_MIConfigurationData) -> Bool {
+  static func ==(lhs: MIConfigurationData, rhs: MIConfigurationData) -> Bool {
     if lhs.data_ != rhs.data_ {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension VCSEC_MISessionRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".MISessionRequest"
+extension MISessionRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "MISessionRequest"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "sessionId"),
     2: .same(proto: "accessoryConfigurationData"),
@@ -9242,7 +10244,7 @@ extension VCSEC_MISessionRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageI
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_MISessionRequest, rhs: VCSEC_MISessionRequest) -> Bool {
+  static func ==(lhs: MISessionRequest, rhs: MISessionRequest) -> Bool {
     if lhs.sessionID != rhs.sessionID {return false}
     if lhs.accessoryConfigurationData != rhs.accessoryConfigurationData {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -9250,8 +10252,8 @@ extension VCSEC_MISessionRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageI
   }
 }
 
-extension VCSEC_MISessionResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".MISessionResponse"
+extension MISessionResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "MISessionResponse"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "sessionId"),
     2: .same(proto: "MIConfigurationData"),
@@ -9266,7 +10268,7 @@ extension VCSEC_MISessionResponse: SwiftProtobuf.Message, SwiftProtobuf._Message
       switch fieldNumber {
       case 1: try { try decoder.decodeSingularUInt32Field(value: &self.sessionID) }()
       case 2: try {
-        var v: VCSEC_MIConfigurationData?
+        var v: MIConfigurationData?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -9279,7 +10281,7 @@ extension VCSEC_MISessionResponse: SwiftProtobuf.Message, SwiftProtobuf._Message
         }
       }()
       case 3: try {
-        var v: VCSEC_MIError_E?
+        var v: MIError_E?
         try decoder.decodeSingularEnumField(value: &v)
         if let v = v {
           if self.subMessage != nil {try decoder.handleConflictingOneOf()}
@@ -9313,7 +10315,7 @@ extension VCSEC_MISessionResponse: SwiftProtobuf.Message, SwiftProtobuf._Message
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_MISessionResponse, rhs: VCSEC_MISessionResponse) -> Bool {
+  static func ==(lhs: MISessionResponse, rhs: MISessionResponse) -> Bool {
     if lhs.sessionID != rhs.sessionID {return false}
     if lhs.subMessage != rhs.subMessage {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -9321,8 +10323,8 @@ extension VCSEC_MISessionResponse: SwiftProtobuf.Message, SwiftProtobuf._Message
   }
 }
 
-extension VCSEC_MISessionStop: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".MISessionStop"
+extension MISessionStop: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "MISessionStop"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "sessionId"),
   ]
@@ -9357,15 +10359,15 @@ extension VCSEC_MISessionStop: SwiftProtobuf.Message, SwiftProtobuf._MessageImpl
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_MISessionStop, rhs: VCSEC_MISessionStop) -> Bool {
+  static func ==(lhs: MISessionStop, rhs: MISessionStop) -> Bool {
     if lhs.subMessage != rhs.subMessage {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension VCSEC_MISessionStopped: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".MISessionStopped"
+extension MISessionStopped: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "MISessionStopped"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "sessionId"),
   ]
@@ -9400,15 +10402,15 @@ extension VCSEC_MISessionStopped: SwiftProtobuf.Message, SwiftProtobuf._MessageI
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_MISessionStopped, rhs: VCSEC_MISessionStopped) -> Bool {
+  static func ==(lhs: MISessionStopped, rhs: MISessionStopped) -> Bool {
     if lhs.subMessage != rhs.subMessage {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension VCSEC_NFCSEState: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".NFCSEState"
+extension NFCSEState: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "NFCSEState"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "devicePubKeyState"),
     2: .same(proto: "vehiclePubKeyState"),
@@ -9456,7 +10458,7 @@ extension VCSEC_NFCSEState: SwiftProtobuf.Message, SwiftProtobuf._MessageImpleme
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_NFCSEState, rhs: VCSEC_NFCSEState) -> Bool {
+  static func ==(lhs: NFCSEState, rhs: NFCSEState) -> Bool {
     if lhs.devicePubKeyState != rhs.devicePubKeyState {return false}
     if lhs.vehiclePubKeyState != rhs.vehiclePubKeyState {return false}
     if lhs.sharedSecretState != rhs.sharedSecretState {return false}
@@ -9467,40 +10469,8 @@ extension VCSEC_NFCSEState: SwiftProtobuf.Message, SwiftProtobuf._MessageImpleme
   }
 }
 
-extension VCSEC_NominalError: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".NominalError"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "genericError"),
-  ]
-
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    while let fieldNumber = try decoder.nextFieldNumber() {
-      // The use of inline closures is to circumvent an issue where the compiler
-      // allocates stack space for every case branch when no optimizations are
-      // enabled. https://github.com/apple/swift-protobuf/issues/1034
-      switch fieldNumber {
-      case 1: try { try decoder.decodeSingularEnumField(value: &self.genericError) }()
-      default: break
-      }
-    }
-  }
-
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    if self.genericError != .genericerrorNone {
-      try visitor.visitSingularEnumField(value: self.genericError, fieldNumber: 1)
-    }
-    try unknownFields.traverse(visitor: &visitor)
-  }
-
-  static func ==(lhs: VCSEC_NominalError, rhs: VCSEC_NominalError) -> Bool {
-    if lhs.genericError != rhs.genericError {return false}
-    if lhs.unknownFields != rhs.unknownFields {return false}
-    return true
-  }
-}
-
-extension VCSEC_PermissionChange: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".PermissionChange"
+extension PermissionChange: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "PermissionChange"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "key"),
     2: .same(proto: "permission"),
@@ -9543,7 +10513,7 @@ extension VCSEC_PermissionChange: SwiftProtobuf.Message, SwiftProtobuf._MessageI
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_PermissionChange, rhs: VCSEC_PermissionChange) -> Bool {
+  static func ==(lhs: PermissionChange, rhs: PermissionChange) -> Bool {
     if lhs._key != rhs._key {return false}
     if lhs.permission != rhs.permission {return false}
     if lhs.secondsToBeActive != rhs.secondsToBeActive {return false}
@@ -9553,8 +10523,8 @@ extension VCSEC_PermissionChange: SwiftProtobuf.Message, SwiftProtobuf._MessageI
   }
 }
 
-extension VCSEC_PersonalizationInformation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".PersonalizationInformation"
+extension PersonalizationInformation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "PersonalizationInformation"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "VIN"),
   ]
@@ -9578,15 +10548,77 @@ extension VCSEC_PersonalizationInformation: SwiftProtobuf.Message, SwiftProtobuf
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_PersonalizationInformation, rhs: VCSEC_PersonalizationInformation) -> Bool {
+  static func ==(lhs: PersonalizationInformation, rhs: PersonalizationInformation) -> Bool {
     if lhs.vin != rhs.vin {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension VCSEC_PublicKey: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".PublicKey"
+extension PhoneVersionInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "PhoneVersionInfo"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .standard(proto: "os_version_major"),
+    2: .standard(proto: "os_version_minor"),
+    3: .standard(proto: "os_version_patch"),
+    4: .standard(proto: "app_version_major"),
+    5: .standard(proto: "app_version_minor"),
+    6: .standard(proto: "app_version_patch"),
+  ]
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularUInt32Field(value: &self.osVersionMajor) }()
+      case 2: try { try decoder.decodeSingularUInt32Field(value: &self.osVersionMinor) }()
+      case 3: try { try decoder.decodeSingularUInt32Field(value: &self.osVersionPatch) }()
+      case 4: try { try decoder.decodeSingularUInt32Field(value: &self.appVersionMajor) }()
+      case 5: try { try decoder.decodeSingularUInt32Field(value: &self.appVersionMinor) }()
+      case 6: try { try decoder.decodeSingularUInt32Field(value: &self.appVersionPatch) }()
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if self.osVersionMajor != 0 {
+      try visitor.visitSingularUInt32Field(value: self.osVersionMajor, fieldNumber: 1)
+    }
+    if self.osVersionMinor != 0 {
+      try visitor.visitSingularUInt32Field(value: self.osVersionMinor, fieldNumber: 2)
+    }
+    if self.osVersionPatch != 0 {
+      try visitor.visitSingularUInt32Field(value: self.osVersionPatch, fieldNumber: 3)
+    }
+    if self.appVersionMajor != 0 {
+      try visitor.visitSingularUInt32Field(value: self.appVersionMajor, fieldNumber: 4)
+    }
+    if self.appVersionMinor != 0 {
+      try visitor.visitSingularUInt32Field(value: self.appVersionMinor, fieldNumber: 5)
+    }
+    if self.appVersionPatch != 0 {
+      try visitor.visitSingularUInt32Field(value: self.appVersionPatch, fieldNumber: 6)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: PhoneVersionInfo, rhs: PhoneVersionInfo) -> Bool {
+    if lhs.osVersionMajor != rhs.osVersionMajor {return false}
+    if lhs.osVersionMinor != rhs.osVersionMinor {return false}
+    if lhs.osVersionPatch != rhs.osVersionPatch {return false}
+    if lhs.appVersionMajor != rhs.appVersionMajor {return false}
+    if lhs.appVersionMinor != rhs.appVersionMinor {return false}
+    if lhs.appVersionPatch != rhs.appVersionPatch {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension PublicKey: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "PublicKey"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "PublicKeyRaw"),
   ]
@@ -9610,15 +10642,57 @@ extension VCSEC_PublicKey: SwiftProtobuf.Message, SwiftProtobuf._MessageImplemen
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_PublicKey, rhs: VCSEC_PublicKey) -> Bool {
+  static func ==(lhs: PublicKey, rhs: PublicKey) -> Bool {
     if lhs.publicKeyRaw != rhs.publicKeyRaw {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension VCSEC_RCISignature: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".RCISignature"
+extension PublicKeyResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "PublicKeyResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "publicKey"),
+    2: .same(proto: "publicKeyStatus"),
+  ]
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularMessageField(value: &self._publicKey) }()
+      case 2: try { try decoder.decodeSingularEnumField(value: &self.publicKeyStatus) }()
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._publicKey {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    } }()
+    if self.publicKeyStatus != .publicKeyStatusNone {
+      try visitor.visitSingularEnumField(value: self.publicKeyStatus, fieldNumber: 2)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: PublicKeyResponse, rhs: PublicKeyResponse) -> Bool {
+    if lhs._publicKey != rhs._publicKey {return false}
+    if lhs.publicKeyStatus != rhs.publicKeyStatus {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension RCISignature: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "RCISignature"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "nonce"),
     2: .same(proto: "tag"),
@@ -9647,7 +10721,7 @@ extension VCSEC_RCISignature: SwiftProtobuf.Message, SwiftProtobuf._MessageImple
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_RCISignature, rhs: VCSEC_RCISignature) -> Bool {
+  static func ==(lhs: RCISignature, rhs: RCISignature) -> Bool {
     if lhs.nonce != rhs.nonce {return false}
     if lhs.tag != rhs.tag {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -9655,8 +10729,8 @@ extension VCSEC_RCISignature: SwiftProtobuf.Message, SwiftProtobuf._MessageImple
   }
 }
 
-extension VCSEC_ReplaceKey: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".ReplaceKey"
+extension ReplaceKey: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "ReplaceKey"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     3: .same(proto: "keyToAdd"),
     4: .same(proto: "keyRole"),
@@ -9672,7 +10746,7 @@ extension VCSEC_ReplaceKey: SwiftProtobuf.Message, SwiftProtobuf._MessageImpleme
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
       switch fieldNumber {
       case 1: try {
-        var v: VCSEC_PublicKey?
+        var v: PublicKey?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -9728,7 +10802,7 @@ extension VCSEC_ReplaceKey: SwiftProtobuf.Message, SwiftProtobuf._MessageImpleme
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_ReplaceKey, rhs: VCSEC_ReplaceKey) -> Bool {
+  static func ==(lhs: ReplaceKey, rhs: ReplaceKey) -> Bool {
     if lhs._keyToAdd != rhs._keyToAdd {return false}
     if lhs.keyRole != rhs.keyRole {return false}
     if lhs.impermanent != rhs.impermanent {return false}
@@ -9738,8 +10812,8 @@ extension VCSEC_ReplaceKey: SwiftProtobuf.Message, SwiftProtobuf._MessageImpleme
   }
 }
 
-extension VCSEC_ResetTrackerStats: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".ResetTrackerStats"
+extension ResetTrackerStats: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "ResetTrackerStats"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "totalResetsDueToPowerOn"),
     2: .same(proto: "totalResetsDueToPinReset"),
@@ -9808,7 +10882,7 @@ extension VCSEC_ResetTrackerStats: SwiftProtobuf.Message, SwiftProtobuf._Message
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_ResetTrackerStats, rhs: VCSEC_ResetTrackerStats) -> Bool {
+  static func ==(lhs: ResetTrackerStats, rhs: ResetTrackerStats) -> Bool {
     if lhs.totalResetsDueToPowerOn != rhs.totalResetsDueToPowerOn {return false}
     if lhs.totalResetsDueToPinReset != rhs.totalResetsDueToPinReset {return false}
     if lhs.totalResetsDueToVddsloss != rhs.totalResetsDueToVddsloss {return false}
@@ -9824,12 +10898,11 @@ extension VCSEC_ResetTrackerStats: SwiftProtobuf.Message, SwiftProtobuf._Message
   }
 }
 
-extension VCSEC_SessionInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".SessionInfo"
+extension RFMonitorCounterResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "RFMonitorCounterResponse"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "token"),
-    2: .same(proto: "counter"),
-    3: .same(proto: "publicKey"),
+    1: .same(proto: "RFInterruptCounter"),
+    2: .same(proto: "advCompleteCounter"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -9838,41 +10911,36 @@ extension VCSEC_SessionInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplem
       // allocates stack space for every case branch when no optimizations are
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
       switch fieldNumber {
-      case 1: try { try decoder.decodeSingularBytesField(value: &self.token) }()
-      case 2: try { try decoder.decodeSingularUInt32Field(value: &self.counter) }()
-      case 3: try { try decoder.decodeSingularBytesField(value: &self.publicKey) }()
+      case 1: try { try decoder.decodeSingularUInt32Field(value: &self.rfinterruptCounter) }()
+      case 2: try { try decoder.decodeSingularUInt32Field(value: &self.advCompleteCounter) }()
       default: break
       }
     }
   }
 
   func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    if !self.token.isEmpty {
-      try visitor.visitSingularBytesField(value: self.token, fieldNumber: 1)
+    if self.rfinterruptCounter != 0 {
+      try visitor.visitSingularUInt32Field(value: self.rfinterruptCounter, fieldNumber: 1)
     }
-    if self.counter != 0 {
-      try visitor.visitSingularUInt32Field(value: self.counter, fieldNumber: 2)
-    }
-    if !self.publicKey.isEmpty {
-      try visitor.visitSingularBytesField(value: self.publicKey, fieldNumber: 3)
+    if self.advCompleteCounter != 0 {
+      try visitor.visitSingularUInt32Field(value: self.advCompleteCounter, fieldNumber: 2)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_SessionInfo, rhs: VCSEC_SessionInfo) -> Bool {
-    if lhs.token != rhs.token {return false}
-    if lhs.counter != rhs.counter {return false}
-    if lhs.publicKey != rhs.publicKey {return false}
+  static func ==(lhs: RFMonitorCounterResponse, rhs: RFMonitorCounterResponse) -> Bool {
+    if lhs.rfinterruptCounter != rhs.rfinterruptCounter {return false}
+    if lhs.advCompleteCounter != rhs.advCompleteCounter {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension VCSEC_SetTPConfigration: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".SetTPConfigration"
+extension SetTPConfiguration: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "SetTPConfiguration"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "stationaryConfig"),
-    2: .same(proto: "motionConfig"),
+    1: .same(proto: "config"),
+    2: .same(proto: "permanentConfig"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -9881,8 +10949,8 @@ extension VCSEC_SetTPConfigration: SwiftProtobuf.Message, SwiftProtobuf._Message
       // allocates stack space for every case branch when no optimizations are
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
       switch fieldNumber {
-      case 1: try { try decoder.decodeSingularMessageField(value: &self._stationaryConfig) }()
-      case 2: try { try decoder.decodeSingularMessageField(value: &self._motionConfig) }()
+      case 1: try { try decoder.decodeSingularMessageField(value: &self._config) }()
+      case 2: try { try decoder.decodeSingularBoolField(value: &self.permanentConfig) }()
       default: break
       }
     }
@@ -9893,25 +10961,25 @@ extension VCSEC_SetTPConfigration: SwiftProtobuf.Message, SwiftProtobuf._Message
     // allocates stack space for every if/case branch local when no optimizations
     // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
     // https://github.com/apple/swift-protobuf/issues/1182
-    try { if let v = self._stationaryConfig {
+    try { if let v = self._config {
       try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
     } }()
-    try { if let v = self._motionConfig {
-      try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
-    } }()
+    if self.permanentConfig != false {
+      try visitor.visitSingularBoolField(value: self.permanentConfig, fieldNumber: 2)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_SetTPConfigration, rhs: VCSEC_SetTPConfigration) -> Bool {
-    if lhs._stationaryConfig != rhs._stationaryConfig {return false}
-    if lhs._motionConfig != rhs._motionConfig {return false}
+  static func ==(lhs: SetTPConfiguration, rhs: SetTPConfiguration) -> Bool {
+    if lhs._config != rhs._config {return false}
+    if lhs.permanentConfig != rhs.permanentConfig {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension VCSEC_SetUpdaterLocation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".SetUpdaterLocation"
+extension SetUpdaterLocation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "SetUpdaterLocation"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "updaterLocation"),
   ]
@@ -9935,15 +11003,15 @@ extension VCSEC_SetUpdaterLocation: SwiftProtobuf.Message, SwiftProtobuf._Messag
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_SetUpdaterLocation, rhs: VCSEC_SetUpdaterLocation) -> Bool {
+  static func ==(lhs: SetUpdaterLocation, rhs: SetUpdaterLocation) -> Bool {
     if lhs.updaterLocation != rhs.updaterLocation {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension VCSEC_Signatures: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".Signatures"
+extension Signatures: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "Signatures"
   static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -9955,14 +11023,14 @@ extension VCSEC_Signatures: SwiftProtobuf.Message, SwiftProtobuf._MessageImpleme
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_Signatures, rhs: VCSEC_Signatures) -> Bool {
+  static func ==(lhs: Signatures, rhs: Signatures) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension VCSEC_Signatures.SessionInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = VCSEC_Signatures.protoMessageName + ".SessionInfo"
+extension Signatures.SessionInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = Signatures.protoMessageName + ".SessionInfo"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "counter"),
     2: .same(proto: "publicKey"),
@@ -10006,7 +11074,7 @@ extension VCSEC_Signatures.SessionInfo: SwiftProtobuf.Message, SwiftProtobuf._Me
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_Signatures.SessionInfo, rhs: VCSEC_Signatures.SessionInfo) -> Bool {
+  static func ==(lhs: Signatures.SessionInfo, rhs: Signatures.SessionInfo) -> Bool {
     if lhs.counter != rhs.counter {return false}
     if lhs.publicKey != rhs.publicKey {return false}
     if lhs.epoch != rhs.epoch {return false}
@@ -10017,8 +11085,8 @@ extension VCSEC_Signatures.SessionInfo: SwiftProtobuf.Message, SwiftProtobuf._Me
   }
 }
 
-extension VCSEC_SignedMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".SignedMessage"
+extension SignedMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "SignedMessage"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "token"),
     2: .same(proto: "protobufMessageAsBytes"),
@@ -10067,7 +11135,7 @@ extension VCSEC_SignedMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImpl
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_SignedMessage, rhs: VCSEC_SignedMessage) -> Bool {
+  static func ==(lhs: SignedMessage, rhs: SignedMessage) -> Bool {
     if lhs.token != rhs.token {return false}
     if lhs.protobufMessageAsBytes != rhs.protobufMessageAsBytes {return false}
     if lhs.signatureType != rhs.signatureType {return false}
@@ -10079,8 +11147,8 @@ extension VCSEC_SignedMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImpl
   }
 }
 
-extension VCSEC_SignedMessage_status: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".SignedMessage_status"
+extension SignedMessage_status: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "SignedMessage_status"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "counter"),
     2: .same(proto: "signedMessageInformation"),
@@ -10109,7 +11177,7 @@ extension VCSEC_SignedMessage_status: SwiftProtobuf.Message, SwiftProtobuf._Mess
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_SignedMessage_status, rhs: VCSEC_SignedMessage_status) -> Bool {
+  static func ==(lhs: SignedMessage_status, rhs: SignedMessage_status) -> Bool {
     if lhs.counter != rhs.counter {return false}
     if lhs.signedMessageInformation != rhs.signedMessageInformation {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -10117,8 +11185,8 @@ extension VCSEC_SignedMessage_status: SwiftProtobuf.Message, SwiftProtobuf._Mess
   }
 }
 
-extension VCSEC_SleepManagerRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".SleepManagerRequest"
+extension SleepManagerRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "SleepManagerRequest"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "delaySleepRequest"),
     2: .same(proto: "sleepManagerCommand"),
@@ -10131,7 +11199,7 @@ extension VCSEC_SleepManagerRequest: SwiftProtobuf.Message, SwiftProtobuf._Messa
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
       switch fieldNumber {
       case 1: try {
-        var v: VCSEC_DelaySleepRequest?
+        var v: DelaySleepRequest?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -10144,7 +11212,7 @@ extension VCSEC_SleepManagerRequest: SwiftProtobuf.Message, SwiftProtobuf._Messa
         }
       }()
       case 2: try {
-        var v: VCSEC_SleepManagerCommand_E?
+        var v: SleepManagerCommand_E?
         try decoder.decodeSingularEnumField(value: &v)
         if let v = v {
           if self.subMessage != nil {try decoder.handleConflictingOneOf()}
@@ -10175,15 +11243,15 @@ extension VCSEC_SleepManagerRequest: SwiftProtobuf.Message, SwiftProtobuf._Messa
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_SleepManagerRequest, rhs: VCSEC_SleepManagerRequest) -> Bool {
+  static func ==(lhs: SleepManagerRequest, rhs: SleepManagerRequest) -> Bool {
     if lhs.subMessage != rhs.subMessage {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension VCSEC_SleepManagerStats: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".SleepManagerStats"
+extension SleepManagerStats: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "SleepManagerStats"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "totalCPUTime"),
     2: .same(proto: "totalAwakeTime"),
@@ -10217,7 +11285,7 @@ extension VCSEC_SleepManagerStats: SwiftProtobuf.Message, SwiftProtobuf._Message
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_SleepManagerStats, rhs: VCSEC_SleepManagerStats) -> Bool {
+  static func ==(lhs: SleepManagerStats, rhs: SleepManagerStats) -> Bool {
     if lhs.totalCputime != rhs.totalCputime {return false}
     if lhs.totalAwakeTime != rhs.totalAwakeTime {return false}
     if lhs.isBletrimApplied != rhs.isBletrimApplied {return false}
@@ -10226,8 +11294,8 @@ extension VCSEC_SleepManagerStats: SwiftProtobuf.Message, SwiftProtobuf._Message
   }
 }
 
-extension VCSEC_StageBlock: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".StageBlock"
+extension StageBlock: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "StageBlock"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "blockAddress"),
     2: .same(proto: "blockToStage"),
@@ -10256,7 +11324,7 @@ extension VCSEC_StageBlock: SwiftProtobuf.Message, SwiftProtobuf._MessageImpleme
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_StageBlock, rhs: VCSEC_StageBlock) -> Bool {
+  static func ==(lhs: StageBlock, rhs: StageBlock) -> Bool {
     if lhs.blockAddress != rhs.blockAddress {return false}
     if lhs.blockToStage != rhs.blockToStage {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -10264,8 +11332,8 @@ extension VCSEC_StageBlock: SwiftProtobuf.Message, SwiftProtobuf._MessageImpleme
   }
 }
 
-extension VCSEC_ToRCI: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".ToRCI"
+extension ToRCI: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "ToRCI"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "command"),
     2: .standard(proto: "HMAC_signature"),
@@ -10288,7 +11356,7 @@ extension VCSEC_ToRCI: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementati
         }
       }()
       case 3: try {
-        var v: VCSEC_RCISignature?
+        var v: RCISignature?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -10327,7 +11395,7 @@ extension VCSEC_ToRCI: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementati
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_ToRCI, rhs: VCSEC_ToRCI) -> Bool {
+  static func ==(lhs: ToRCI, rhs: ToRCI) -> Bool {
     if lhs.command != rhs.command {return false}
     if lhs.subMessage != rhs.subMessage {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -10335,8 +11403,8 @@ extension VCSEC_ToRCI: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementati
   }
 }
 
-extension VCSEC_ToVCSECMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".ToVCSECMessage"
+extension ToVCSECMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "ToVCSECMessage"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "signedMessage"),
     2: .same(proto: "unsignedMessage"),
@@ -10349,7 +11417,7 @@ extension VCSEC_ToVCSECMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
       switch fieldNumber {
       case 1: try {
-        var v: VCSEC_SignedMessage?
+        var v: SignedMessage?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -10362,7 +11430,7 @@ extension VCSEC_ToVCSECMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
         }
       }()
       case 2: try {
-        var v: VCSEC_UnsignedMessage?
+        var v: UnsignedMessage?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -10398,15 +11466,15 @@ extension VCSEC_ToVCSECMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_ToVCSECMessage, rhs: VCSEC_ToVCSECMessage) -> Bool {
+  static func ==(lhs: ToVCSECMessage, rhs: ToVCSECMessage) -> Bool {
     if lhs.subMessage != rhs.subMessage {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension VCSEC_TPAdv: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".TPAdv"
+extension TPAdv: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "TPAdv"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "pressure"),
     2: .same(proto: "temperature"),
@@ -10455,7 +11523,7 @@ extension VCSEC_TPAdv: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementati
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_TPAdv, rhs: VCSEC_TPAdv) -> Bool {
+  static func ==(lhs: TPAdv, rhs: TPAdv) -> Bool {
     if lhs.pressure != rhs.pressure {return false}
     if lhs.temperature != rhs.temperature {return false}
     if lhs.tpnotifyReason != rhs.tpnotifyReason {return false}
@@ -10467,8 +11535,116 @@ extension VCSEC_TPAdv: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementati
   }
 }
 
-extension VCSEC_TPData: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".TPData"
+extension TPCapabilities: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "TPCapabilities"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "pressureInAdv"),
+    2: .same(proto: "configurableIntervalThreshold"),
+  ]
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularBoolField(value: &self.pressureInAdv) }()
+      case 2: try { try decoder.decodeSingularBoolField(value: &self.configurableIntervalThreshold) }()
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if self.pressureInAdv != false {
+      try visitor.visitSingularBoolField(value: self.pressureInAdv, fieldNumber: 1)
+    }
+    if self.configurableIntervalThreshold != false {
+      try visitor.visitSingularBoolField(value: self.configurableIntervalThreshold, fieldNumber: 2)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: TPCapabilities, rhs: TPCapabilities) -> Bool {
+    if lhs.pressureInAdv != rhs.pressureInAdv {return false}
+    if lhs.configurableIntervalThreshold != rhs.configurableIntervalThreshold {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension TPConfiguration: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "TPConfiguration"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "stationaryConfig"),
+    2: .same(proto: "motionConfig"),
+  ]
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try {
+        var v: TPStationaryConfig?
+        var hadOneofValue = false
+        if let current = self.subMessage {
+          hadOneofValue = true
+          if case .stationaryConfig(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.subMessage = .stationaryConfig(v)
+        }
+      }()
+      case 2: try {
+        var v: TPMotionConfig?
+        var hadOneofValue = false
+        if let current = self.subMessage {
+          hadOneofValue = true
+          if case .motionConfig(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.subMessage = .motionConfig(v)
+        }
+      }()
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    switch self.subMessage {
+    case .stationaryConfig?: try {
+      guard case .stationaryConfig(let v)? = self.subMessage else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    }()
+    case .motionConfig?: try {
+      guard case .motionConfig(let v)? = self.subMessage else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
+    }()
+    case nil: break
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: TPConfiguration, rhs: TPConfiguration) -> Bool {
+    if lhs.subMessage != rhs.subMessage {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension TPData: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "TPData"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "pressure"),
     2: .same(proto: "temperature"),
@@ -10497,7 +11673,7 @@ extension VCSEC_TPData: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementat
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_TPData, rhs: VCSEC_TPData) -> Bool {
+  static func ==(lhs: TPData, rhs: TPData) -> Bool {
     if lhs.pressure != rhs.pressure {return false}
     if lhs.temperature != rhs.temperature {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -10505,8 +11681,8 @@ extension VCSEC_TPData: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementat
   }
 }
 
-extension VCSEC_TPLRDetection: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".TPLRDetection"
+extension TPLRDetection: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "TPLRDetection"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "LRDetectionResult"),
     2: .standard(proto: "totalPeriod_ms"),
@@ -10555,7 +11731,7 @@ extension VCSEC_TPLRDetection: SwiftProtobuf.Message, SwiftProtobuf._MessageImpl
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_TPLRDetection, rhs: VCSEC_TPLRDetection) -> Bool {
+  static func ==(lhs: TPLRDetection, rhs: TPLRDetection) -> Bool {
     if lhs.lrdetectionResult != rhs.lrdetectionResult {return false}
     if lhs.totalPeriodMs != rhs.totalPeriodMs {return false}
     if lhs.x90DegCnt != rhs.x90DegCnt {return false}
@@ -10567,12 +11743,15 @@ extension VCSEC_TPLRDetection: SwiftProtobuf.Message, SwiftProtobuf._MessageImpl
   }
 }
 
-extension VCSEC_TPMotionConfig: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".TPMotionConfig"
+extension TPMotionConfig: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "TPMotionConfig"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "pressureDelta"),
     2: .same(proto: "temperatureDelta"),
-    3: .same(proto: "PTMeasurePeriod"),
+    3: .same(proto: "motionPeriod"),
+    4: .same(proto: "accelMeasureMod"),
+    5: .same(proto: "PTMeasureMod"),
+    6: .same(proto: "motionDuration"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -10583,7 +11762,10 @@ extension VCSEC_TPMotionConfig: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
       switch fieldNumber {
       case 1: try { try decoder.decodeSingularUInt32Field(value: &self.pressureDelta) }()
       case 2: try { try decoder.decodeSingularUInt32Field(value: &self.temperatureDelta) }()
-      case 3: try { try decoder.decodeSingularEnumField(value: &self.ptmeasurePeriod) }()
+      case 3: try { try decoder.decodeSingularEnumField(value: &self.motionPeriod) }()
+      case 4: try { try decoder.decodeSingularUInt32Field(value: &self.accelMeasureMod) }()
+      case 5: try { try decoder.decodeSingularUInt32Field(value: &self.ptmeasureMod) }()
+      case 6: try { try decoder.decodeSingularUInt32Field(value: &self.motionDuration) }()
       default: break
       }
     }
@@ -10596,23 +11778,35 @@ extension VCSEC_TPMotionConfig: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
     if self.temperatureDelta != 0 {
       try visitor.visitSingularUInt32Field(value: self.temperatureDelta, fieldNumber: 2)
     }
-    if self.ptmeasurePeriod != .mlxwakeperiod2Ms {
-      try visitor.visitSingularEnumField(value: self.ptmeasurePeriod, fieldNumber: 3)
+    if self.motionPeriod != .mlxwakeperiod2Ms {
+      try visitor.visitSingularEnumField(value: self.motionPeriod, fieldNumber: 3)
+    }
+    if self.accelMeasureMod != 0 {
+      try visitor.visitSingularUInt32Field(value: self.accelMeasureMod, fieldNumber: 4)
+    }
+    if self.ptmeasureMod != 0 {
+      try visitor.visitSingularUInt32Field(value: self.ptmeasureMod, fieldNumber: 5)
+    }
+    if self.motionDuration != 0 {
+      try visitor.visitSingularUInt32Field(value: self.motionDuration, fieldNumber: 6)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_TPMotionConfig, rhs: VCSEC_TPMotionConfig) -> Bool {
+  static func ==(lhs: TPMotionConfig, rhs: TPMotionConfig) -> Bool {
     if lhs.pressureDelta != rhs.pressureDelta {return false}
     if lhs.temperatureDelta != rhs.temperatureDelta {return false}
-    if lhs.ptmeasurePeriod != rhs.ptmeasurePeriod {return false}
+    if lhs.motionPeriod != rhs.motionPeriod {return false}
+    if lhs.accelMeasureMod != rhs.accelMeasureMod {return false}
+    if lhs.ptmeasureMod != rhs.ptmeasureMod {return false}
+    if lhs.motionDuration != rhs.motionDuration {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension VCSEC_TPMSAlarms: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".TPMSAlarms"
+extension TPMSAlarms: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "TPMSAlarms"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "pressure"),
     2: .same(proto: "temperature"),
@@ -10661,7 +11855,7 @@ extension VCSEC_TPMSAlarms: SwiftProtobuf.Message, SwiftProtobuf._MessageImpleme
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_TPMSAlarms, rhs: VCSEC_TPMSAlarms) -> Bool {
+  static func ==(lhs: TPMSAlarms, rhs: TPMSAlarms) -> Bool {
     if lhs.pressure != rhs.pressure {return false}
     if lhs.temperature != rhs.temperature {return false}
     if lhs.acceleration != rhs.acceleration {return false}
@@ -10673,8 +11867,8 @@ extension VCSEC_TPMSAlarms: SwiftProtobuf.Message, SwiftProtobuf._MessageImpleme
   }
 }
 
-extension VCSEC_TPNewSensorData: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".TPNewSensorData"
+extension TPNewSensorData: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "TPNewSensorData"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "sensorPublicKey"),
   ]
@@ -10702,15 +11896,15 @@ extension VCSEC_TPNewSensorData: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_TPNewSensorData, rhs: VCSEC_TPNewSensorData) -> Bool {
+  static func ==(lhs: TPNewSensorData, rhs: TPNewSensorData) -> Bool {
     if lhs._sensorPublicKey != rhs._sensorPublicKey {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension VCSEC_TPNotifyTrackerStats: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".TPNotifyTrackerStats"
+extension TPNotifyTrackerStats: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "TPNotifyTrackerStats"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "notifyReasonUnknownCount"),
     2: .same(proto: "notifyReasonLowPressureCount"),
@@ -10764,7 +11958,7 @@ extension VCSEC_TPNotifyTrackerStats: SwiftProtobuf.Message, SwiftProtobuf._Mess
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_TPNotifyTrackerStats, rhs: VCSEC_TPNotifyTrackerStats) -> Bool {
+  static func ==(lhs: TPNotifyTrackerStats, rhs: TPNotifyTrackerStats) -> Bool {
     if lhs.notifyReasonUnknownCount != rhs.notifyReasonUnknownCount {return false}
     if lhs.notifyReasonLowPressureCount != rhs.notifyReasonLowPressureCount {return false}
     if lhs.notifyReasonPtvalueUpdateCount != rhs.notifyReasonPtvalueUpdateCount {return false}
@@ -10777,14 +11971,14 @@ extension VCSEC_TPNotifyTrackerStats: SwiftProtobuf.Message, SwiftProtobuf._Mess
   }
 }
 
-extension VCSEC_TPStationaryConfig: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".TPStationaryConfig"
+extension TPStationaryConfig: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "TPStationaryConfig"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "lowPressureThreshold"),
     2: .same(proto: "pressureDelta"),
-    3: .same(proto: "accelMeasurePeriod"),
-    4: .same(proto: "absoluteAccelWakeThreshold"),
-    5: .same(proto: "PTMeasureMod"),
+    3: .same(proto: "stationaryTaskPeriod"),
+    4: .same(proto: "pressureMeasureMod"),
+    5: .same(proto: "accelMeasureMod"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -10795,9 +11989,9 @@ extension VCSEC_TPStationaryConfig: SwiftProtobuf.Message, SwiftProtobuf._Messag
       switch fieldNumber {
       case 1: try { try decoder.decodeSingularUInt32Field(value: &self.lowPressureThreshold) }()
       case 2: try { try decoder.decodeSingularUInt32Field(value: &self.pressureDelta) }()
-      case 3: try { try decoder.decodeSingularEnumField(value: &self.accelMeasurePeriod) }()
-      case 4: try { try decoder.decodeSingularInt32Field(value: &self.absoluteAccelWakeThreshold) }()
-      case 5: try { try decoder.decodeSingularUInt32Field(value: &self.ptmeasureMod) }()
+      case 3: try { try decoder.decodeSingularEnumField(value: &self.stationaryTaskPeriod) }()
+      case 4: try { try decoder.decodeSingularUInt32Field(value: &self.pressureMeasureMod) }()
+      case 5: try { try decoder.decodeSingularUInt32Field(value: &self.accelMeasureMod) }()
       default: break
       }
     }
@@ -10810,31 +12004,31 @@ extension VCSEC_TPStationaryConfig: SwiftProtobuf.Message, SwiftProtobuf._Messag
     if self.pressureDelta != 0 {
       try visitor.visitSingularUInt32Field(value: self.pressureDelta, fieldNumber: 2)
     }
-    if self.accelMeasurePeriod != .mlxwakeperiod2Ms {
-      try visitor.visitSingularEnumField(value: self.accelMeasurePeriod, fieldNumber: 3)
+    if self.stationaryTaskPeriod != .mlxwakeperiod2Ms {
+      try visitor.visitSingularEnumField(value: self.stationaryTaskPeriod, fieldNumber: 3)
     }
-    if self.absoluteAccelWakeThreshold != 0 {
-      try visitor.visitSingularInt32Field(value: self.absoluteAccelWakeThreshold, fieldNumber: 4)
+    if self.pressureMeasureMod != 0 {
+      try visitor.visitSingularUInt32Field(value: self.pressureMeasureMod, fieldNumber: 4)
     }
-    if self.ptmeasureMod != 0 {
-      try visitor.visitSingularUInt32Field(value: self.ptmeasureMod, fieldNumber: 5)
+    if self.accelMeasureMod != 0 {
+      try visitor.visitSingularUInt32Field(value: self.accelMeasureMod, fieldNumber: 5)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_TPStationaryConfig, rhs: VCSEC_TPStationaryConfig) -> Bool {
+  static func ==(lhs: TPStationaryConfig, rhs: TPStationaryConfig) -> Bool {
     if lhs.lowPressureThreshold != rhs.lowPressureThreshold {return false}
     if lhs.pressureDelta != rhs.pressureDelta {return false}
-    if lhs.accelMeasurePeriod != rhs.accelMeasurePeriod {return false}
-    if lhs.absoluteAccelWakeThreshold != rhs.absoluteAccelWakeThreshold {return false}
-    if lhs.ptmeasureMod != rhs.ptmeasureMod {return false}
+    if lhs.stationaryTaskPeriod != rhs.stationaryTaskPeriod {return false}
+    if lhs.pressureMeasureMod != rhs.pressureMeasureMod {return false}
+    if lhs.accelMeasureMod != rhs.accelMeasureMod {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension VCSEC_TPWheelUnitInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".TPWheelUnitInfo"
+extension TPWheelUnitInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "TPWheelUnitInfo"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "TIAppCRC"),
     2: .same(proto: "MLXAppCRC"),
@@ -10868,7 +12062,7 @@ extension VCSEC_TPWheelUnitInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_TPWheelUnitInfo, rhs: VCSEC_TPWheelUnitInfo) -> Bool {
+  static func ==(lhs: TPWheelUnitInfo, rhs: TPWheelUnitInfo) -> Bool {
     if lhs.tiappCrc != rhs.tiappCrc {return false}
     if lhs.mlxappCrc != rhs.mlxappCrc {return false}
     if lhs.batteryVoltageMV != rhs.batteryVoltageMV {return false}
@@ -10877,8 +12071,8 @@ extension VCSEC_TPWheelUnitInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
   }
 }
 
-extension VCSEC_UnknownKeyInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".UnknownKeyInfo"
+extension UnknownKeyInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "UnknownKeyInfo"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "keyStatus"),
     2: .same(proto: "publicKey"),
@@ -10916,7 +12110,7 @@ extension VCSEC_UnknownKeyInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_UnknownKeyInfo, rhs: VCSEC_UnknownKeyInfo) -> Bool {
+  static func ==(lhs: UnknownKeyInfo, rhs: UnknownKeyInfo) -> Bool {
     if lhs._keyStatus != rhs._keyStatus {return false}
     if lhs._publicKey != rhs._publicKey {return false}
     if lhs.keyFormFactor != rhs.keyFormFactor {return false}
@@ -10925,8 +12119,8 @@ extension VCSEC_UnknownKeyInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
   }
 }
 
-extension VCSEC_UnsecureNotification: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".UnsecureNotification"
+extension UnsecureNotification: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "UnsecureNotification"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "notifyUser"),
     2: .same(proto: "closureStatuses"),
@@ -10959,7 +12153,7 @@ extension VCSEC_UnsecureNotification: SwiftProtobuf.Message, SwiftProtobuf._Mess
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_UnsecureNotification, rhs: VCSEC_UnsecureNotification) -> Bool {
+  static func ==(lhs: UnsecureNotification, rhs: UnsecureNotification) -> Bool {
     if lhs.notifyUser != rhs.notifyUser {return false}
     if lhs._closureStatuses != rhs._closureStatuses {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -10967,8 +12161,8 @@ extension VCSEC_UnsecureNotification: SwiftProtobuf.Message, SwiftProtobuf._Mess
   }
 }
 
-extension VCSEC_UnsignedMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".UnsignedMessage"
+extension UnsignedMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "UnsignedMessage"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     25: .same(proto: "personalizationInformation"),
     1: .same(proto: "InformationRequest"),
@@ -11002,6 +12196,15 @@ extension VCSEC_UnsignedMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
     43: .same(proto: "MISessionStopped"),
     44: .same(proto: "accelData"),
     45: .same(proto: "TPMSAlarms"),
+    46: .same(proto: "certificateResponse"),
+    47: .same(proto: "challengeResponse"),
+    48: .same(proto: "publicKeyResponse"),
+    49: .same(proto: "ASICSPIRead"),
+    50: .same(proto: "RFMonitorCounterResponse"),
+    51: .same(proto: "BLENickName"),
+    52: .same(proto: "TPConfiguration"),
+    53: .same(proto: "TPCapabilities"),
+    54: .same(proto: "appEventLog"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -11011,7 +12214,7 @@ extension VCSEC_UnsignedMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
       switch fieldNumber {
       case 1: try {
-        var v: VCSEC_InformationRequest?
+        var v: InformationRequest?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -11024,7 +12227,7 @@ extension VCSEC_UnsignedMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
         }
       }()
       case 2: try {
-        var v: VCSEC_RKEAction_E?
+        var v: RKEAction_E?
         try decoder.decodeSingularEnumField(value: &v)
         if let v = v {
           if self.subMessage != nil {try decoder.handleConflictingOneOf()}
@@ -11032,7 +12235,7 @@ extension VCSEC_UnsignedMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
         }
       }()
       case 3: try {
-        var v: VCSEC_AuthenticationResponse?
+        var v: AuthenticationResponse?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -11045,7 +12248,7 @@ extension VCSEC_UnsignedMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
         }
       }()
       case 4: try {
-        var v: VCSEC_ClosureMoveRequest?
+        var v: ClosureMoveRequest?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -11058,7 +12261,7 @@ extension VCSEC_UnsignedMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
         }
       }()
       case 5: try {
-        var v: VCSEC_TPAdv?
+        var v: TPAdv?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -11071,7 +12274,7 @@ extension VCSEC_UnsignedMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
         }
       }()
       case 16: try {
-        var v: VCSEC_WhitelistOperation?
+        var v: WhitelistOperation?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -11084,7 +12287,7 @@ extension VCSEC_UnsignedMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
         }
       }()
       case 20: try {
-        var v: VCSEC_UpdaterResponse?
+        var v: UpdaterResponse?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -11097,7 +12300,7 @@ extension VCSEC_UnsignedMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
         }
       }()
       case 21: try {
-        var v: VCSEC_GenealogyResponse?
+        var v: GenealogyResponse?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -11110,7 +12313,7 @@ extension VCSEC_UnsignedMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
         }
       }()
       case 22: try {
-        var v: VCSEC_KeyMetadata?
+        var v: KeyMetadata?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -11123,7 +12326,7 @@ extension VCSEC_UnsignedMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
         }
       }()
       case 23: try {
-        var v: VCSEC_KeyfobInfo?
+        var v: KeyfobInfo?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -11136,7 +12339,7 @@ extension VCSEC_UnsignedMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
         }
       }()
       case 24: try {
-        var v: VCSEC_IMUState_E?
+        var v: IMUState_E?
         try decoder.decodeSingularEnumField(value: &v)
         if let v = v {
           if self.subMessage != nil {try decoder.handleConflictingOneOf()}
@@ -11145,7 +12348,7 @@ extension VCSEC_UnsignedMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
       }()
       case 25: try { try decoder.decodeSingularMessageField(value: &self._personalizationInformation) }()
       case 26: try {
-        var v: VCSEC_NFCSEState?
+        var v: NFCSEState?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -11158,7 +12361,7 @@ extension VCSEC_UnsignedMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
         }
       }()
       case 27: try {
-        var v: VCSEC_SleepManagerStats?
+        var v: SleepManagerStats?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -11171,7 +12374,7 @@ extension VCSEC_UnsignedMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
         }
       }()
       case 28: try {
-        var v: VCSEC_TPData?
+        var v: TPData?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -11184,7 +12387,7 @@ extension VCSEC_UnsignedMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
         }
       }()
       case 29: try {
-        var v: VCSEC_TPWheelUnitInfo?
+        var v: TPWheelUnitInfo?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -11197,7 +12400,7 @@ extension VCSEC_UnsignedMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
         }
       }()
       case 30: try {
-        var v: VCSEC_ResetTrackerStats?
+        var v: ResetTrackerStats?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -11210,7 +12413,7 @@ extension VCSEC_UnsignedMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
         }
       }()
       case 31: try {
-        var v: VCSEC_TPNotifyTrackerStats?
+        var v: TPNotifyTrackerStats?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -11223,7 +12426,7 @@ extension VCSEC_UnsignedMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
         }
       }()
       case 32: try {
-        var v: VCSEC_TPNewSensorData?
+        var v: TPNewSensorData?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -11236,7 +12439,7 @@ extension VCSEC_UnsignedMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
         }
       }()
       case 33: try {
-        var v: VCSEC_TPLRDetection?
+        var v: TPLRDetection?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -11249,7 +12452,7 @@ extension VCSEC_UnsignedMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
         }
       }()
       case 34: try {
-        var v: VCSEC_ConnectionMetrics?
+        var v: ConnectionMetrics?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -11262,7 +12465,7 @@ extension VCSEC_UnsignedMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
         }
       }()
       case 35: try {
-        var v: VCSEC_Activity_E?
+        var v: Activity_E?
         try decoder.decodeSingularEnumField(value: &v)
         if let v = v {
           if self.subMessage != nil {try decoder.handleConflictingOneOf()}
@@ -11270,7 +12473,7 @@ extension VCSEC_UnsignedMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
         }
       }()
       case 36: try {
-        var v: VCSEC_GetSessionInfoRequest?
+        var v: GetSessionInfoRequest?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -11283,7 +12486,7 @@ extension VCSEC_UnsignedMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
         }
       }()
       case 37: try {
-        var v: VCSEC_FromRCI?
+        var v: FromRCI?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -11296,7 +12499,7 @@ extension VCSEC_UnsignedMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
         }
       }()
       case 38: try {
-        var v: VCSEC_BLEConfigAll?
+        var v: BLEConfigAll?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -11309,7 +12512,7 @@ extension VCSEC_UnsignedMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
         }
       }()
       case 39: try {
-        var v: VCSEC_DeviceMotion?
+        var v: DeviceMotion?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -11322,7 +12525,7 @@ extension VCSEC_UnsignedMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
         }
       }()
       case 40: try {
-        var v: VCSEC_AppDeviceInfo?
+        var v: AppDeviceInfo?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -11335,7 +12538,7 @@ extension VCSEC_UnsignedMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
         }
       }()
       case 41: try {
-        var v: VCSEC_GetReaderKey?
+        var v: GetReaderKey?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -11348,7 +12551,7 @@ extension VCSEC_UnsignedMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
         }
       }()
       case 42: try {
-        var v: VCSEC_MISessionResponse?
+        var v: MISessionResponse?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -11361,7 +12564,7 @@ extension VCSEC_UnsignedMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
         }
       }()
       case 43: try {
-        var v: VCSEC_MISessionStopped?
+        var v: MISessionStopped?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -11374,7 +12577,7 @@ extension VCSEC_UnsignedMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
         }
       }()
       case 44: try {
-        var v: VCSEC_AccelData?
+        var v: AccelData?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -11387,7 +12590,7 @@ extension VCSEC_UnsignedMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
         }
       }()
       case 45: try {
-        var v: VCSEC_TPMSAlarms?
+        var v: TPMSAlarms?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -11397,6 +12600,123 @@ extension VCSEC_UnsignedMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
         if let v = v {
           if hadOneofValue {try decoder.handleConflictingOneOf()}
           self.subMessage = .tpmsalarms(v)
+        }
+      }()
+      case 46: try {
+        var v: CertificateResponse?
+        var hadOneofValue = false
+        if let current = self.subMessage {
+          hadOneofValue = true
+          if case .certificateResponse(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.subMessage = .certificateResponse(v)
+        }
+      }()
+      case 47: try {
+        var v: ChallengeResponse?
+        var hadOneofValue = false
+        if let current = self.subMessage {
+          hadOneofValue = true
+          if case .challengeResponse(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.subMessage = .challengeResponse(v)
+        }
+      }()
+      case 48: try {
+        var v: PublicKeyResponse?
+        var hadOneofValue = false
+        if let current = self.subMessage {
+          hadOneofValue = true
+          if case .publicKeyResponse(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.subMessage = .publicKeyResponse(v)
+        }
+      }()
+      case 49: try {
+        var v: ASICSPIRead?
+        var hadOneofValue = false
+        if let current = self.subMessage {
+          hadOneofValue = true
+          if case .asicspiread(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.subMessage = .asicspiread(v)
+        }
+      }()
+      case 50: try {
+        var v: RFMonitorCounterResponse?
+        var hadOneofValue = false
+        if let current = self.subMessage {
+          hadOneofValue = true
+          if case .rfmonitorCounterResponse(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.subMessage = .rfmonitorCounterResponse(v)
+        }
+      }()
+      case 51: try {
+        var v: VehicleBLENickName?
+        var hadOneofValue = false
+        if let current = self.subMessage {
+          hadOneofValue = true
+          if case .blenickName(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.subMessage = .blenickName(v)
+        }
+      }()
+      case 52: try {
+        var v: TPConfiguration?
+        var hadOneofValue = false
+        if let current = self.subMessage {
+          hadOneofValue = true
+          if case .tpconfiguration(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.subMessage = .tpconfiguration(v)
+        }
+      }()
+      case 53: try {
+        var v: TPCapabilities?
+        var hadOneofValue = false
+        if let current = self.subMessage {
+          hadOneofValue = true
+          if case .tpcapabilities(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.subMessage = .tpcapabilities(v)
+        }
+      }()
+      case 54: try {
+        var v: AppEventLog?
+        var hadOneofValue = false
+        if let current = self.subMessage {
+          hadOneofValue = true
+          if case .appEventLog(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.subMessage = .appEventLog(v)
         }
       }()
       default: break
@@ -11540,12 +12860,48 @@ extension VCSEC_UnsignedMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
       guard case .tpmsalarms(let v)? = self.subMessage else { preconditionFailure() }
       try visitor.visitSingularMessageField(value: v, fieldNumber: 45)
     }()
+    case .certificateResponse?: try {
+      guard case .certificateResponse(let v)? = self.subMessage else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 46)
+    }()
+    case .challengeResponse?: try {
+      guard case .challengeResponse(let v)? = self.subMessage else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 47)
+    }()
+    case .publicKeyResponse?: try {
+      guard case .publicKeyResponse(let v)? = self.subMessage else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 48)
+    }()
+    case .asicspiread?: try {
+      guard case .asicspiread(let v)? = self.subMessage else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 49)
+    }()
+    case .rfmonitorCounterResponse?: try {
+      guard case .rfmonitorCounterResponse(let v)? = self.subMessage else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 50)
+    }()
+    case .blenickName?: try {
+      guard case .blenickName(let v)? = self.subMessage else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 51)
+    }()
+    case .tpconfiguration?: try {
+      guard case .tpconfiguration(let v)? = self.subMessage else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 52)
+    }()
+    case .tpcapabilities?: try {
+      guard case .tpcapabilities(let v)? = self.subMessage else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 53)
+    }()
+    case .appEventLog?: try {
+      guard case .appEventLog(let v)? = self.subMessage else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 54)
+    }()
     default: break
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_UnsignedMessage, rhs: VCSEC_UnsignedMessage) -> Bool {
+  static func ==(lhs: UnsignedMessage, rhs: UnsignedMessage) -> Bool {
     if lhs._personalizationInformation != rhs._personalizationInformation {return false}
     if lhs.subMessage != rhs.subMessage {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -11553,8 +12909,8 @@ extension VCSEC_UnsignedMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
   }
 }
 
-extension VCSEC_UpdaterCommand: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".UpdaterCommand"
+extension UpdaterCommand: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "UpdaterCommand"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "getCodeDescriptor"),
     2: .same(proto: "setUpdaterLocation"),
@@ -11570,7 +12926,7 @@ extension VCSEC_UpdaterCommand: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
       switch fieldNumber {
       case 1: try {
-        var v: VCSEC_GetCodeDescriptor?
+        var v: GetCodeDescriptor?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -11583,7 +12939,7 @@ extension VCSEC_UpdaterCommand: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
         }
       }()
       case 2: try {
-        var v: VCSEC_SetUpdaterLocation?
+        var v: SetUpdaterLocation?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -11596,7 +12952,7 @@ extension VCSEC_UpdaterCommand: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
         }
       }()
       case 3: try {
-        var v: VCSEC_StageBlock?
+        var v: StageBlock?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -11609,7 +12965,7 @@ extension VCSEC_UpdaterCommand: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
         }
       }()
       case 4: try {
-        var v: VCSEC_VerifyAndInstallApp?
+        var v: VerifyAndInstallApp?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -11665,15 +13021,15 @@ extension VCSEC_UpdaterCommand: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_UpdaterCommand, rhs: VCSEC_UpdaterCommand) -> Bool {
+  static func ==(lhs: UpdaterCommand, rhs: UpdaterCommand) -> Bool {
     if lhs.subMessage != rhs.subMessage {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension VCSEC_UpdaterResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".UpdaterResponse"
+extension UpdaterResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "UpdaterResponse"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "codeDescriptorMessage"),
     2: .same(proto: "updaterStatus"),
@@ -11686,7 +13042,7 @@ extension VCSEC_UpdaterResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
       switch fieldNumber {
       case 1: try {
-        var v: VCSEC_CodeDescriptor?
+        var v: CodeDescriptor?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -11699,7 +13055,7 @@ extension VCSEC_UpdaterResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
         }
       }()
       case 2: try {
-        var v: VCSEC_UpdaterStatus?
+        var v: UpdaterStatus?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -11735,15 +13091,15 @@ extension VCSEC_UpdaterResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_UpdaterResponse, rhs: VCSEC_UpdaterResponse) -> Bool {
+  static func ==(lhs: UpdaterResponse, rhs: UpdaterResponse) -> Bool {
     if lhs.subMessage != rhs.subMessage {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension VCSEC_UpdaterStatus: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".UpdaterStatus"
+extension UpdaterStatus: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "UpdaterStatus"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "statusCode"),
     2: .same(proto: "location"),
@@ -11777,7 +13133,7 @@ extension VCSEC_UpdaterStatus: SwiftProtobuf.Message, SwiftProtobuf._MessageImpl
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_UpdaterStatus, rhs: VCSEC_UpdaterStatus) -> Bool {
+  static func ==(lhs: UpdaterStatus, rhs: UpdaterStatus) -> Bool {
     if lhs.statusCode != rhs.statusCode {return false}
     if lhs.location != rhs.location {return false}
     if lhs.nextAddressNumber != rhs.nextAddressNumber {return false}
@@ -11786,8 +13142,40 @@ extension VCSEC_UpdaterStatus: SwiftProtobuf.Message, SwiftProtobuf._MessageImpl
   }
 }
 
-extension VCSEC_VehicleInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".VehicleInfo"
+extension VehicleBLENickName: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "VehicleBLENickName"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "nickName"),
+  ]
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularBytesField(value: &self.nickName) }()
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.nickName.isEmpty {
+      try visitor.visitSingularBytesField(value: self.nickName, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: VehicleBLENickName, rhs: VehicleBLENickName) -> Bool {
+    if lhs.nickName != rhs.nickName {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension VehicleInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "VehicleInfo"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "VIN"),
   ]
@@ -11811,19 +13199,21 @@ extension VCSEC_VehicleInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplem
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_VehicleInfo, rhs: VCSEC_VehicleInfo) -> Bool {
+  static func ==(lhs: VehicleInfo, rhs: VehicleInfo) -> Bool {
     if lhs.vin != rhs.vin {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension VCSEC_VehicleStatus: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".VehicleStatus"
+extension VehicleStatus: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "VehicleStatus"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "closureStatuses"),
     2: .same(proto: "vehicleLockState"),
     3: .same(proto: "vehicleSleepStatus"),
+    4: .same(proto: "userPresence"),
+    5: .same(proto: "detailedClosureStatus"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -11835,6 +13225,8 @@ extension VCSEC_VehicleStatus: SwiftProtobuf.Message, SwiftProtobuf._MessageImpl
       case 1: try { try decoder.decodeSingularMessageField(value: &self._closureStatuses) }()
       case 2: try { try decoder.decodeSingularEnumField(value: &self.vehicleLockState) }()
       case 3: try { try decoder.decodeSingularEnumField(value: &self.vehicleSleepStatus) }()
+      case 4: try { try decoder.decodeSingularEnumField(value: &self.userPresence) }()
+      case 5: try { try decoder.decodeSingularMessageField(value: &self._detailedClosureStatus) }()
       default: break
       }
     }
@@ -11854,20 +13246,28 @@ extension VCSEC_VehicleStatus: SwiftProtobuf.Message, SwiftProtobuf._MessageImpl
     if self.vehicleSleepStatus != .vehicleSleepStatusUnknown {
       try visitor.visitSingularEnumField(value: self.vehicleSleepStatus, fieldNumber: 3)
     }
+    if self.userPresence != .vehicleUserPresenceUnknown {
+      try visitor.visitSingularEnumField(value: self.userPresence, fieldNumber: 4)
+    }
+    try { if let v = self._detailedClosureStatus {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 5)
+    } }()
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_VehicleStatus, rhs: VCSEC_VehicleStatus) -> Bool {
+  static func ==(lhs: VehicleStatus, rhs: VehicleStatus) -> Bool {
     if lhs._closureStatuses != rhs._closureStatuses {return false}
     if lhs.vehicleLockState != rhs.vehicleLockState {return false}
     if lhs.vehicleSleepStatus != rhs.vehicleSleepStatus {return false}
+    if lhs.userPresence != rhs.userPresence {return false}
+    if lhs._detailedClosureStatus != rhs._detailedClosureStatus {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension VCSEC_VerifyAndInstallApp: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".VerifyAndInstallApp"
+extension VerifyAndInstallApp: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "VerifyAndInstallApp"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "sha256"),
     2: .same(proto: "rValue"),
@@ -11901,7 +13301,7 @@ extension VCSEC_VerifyAndInstallApp: SwiftProtobuf.Message, SwiftProtobuf._Messa
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_VerifyAndInstallApp, rhs: VCSEC_VerifyAndInstallApp) -> Bool {
+  static func ==(lhs: VerifyAndInstallApp, rhs: VerifyAndInstallApp) -> Bool {
     if lhs.sha256 != rhs.sha256 {return false}
     if lhs.rValue != rhs.rValue {return false}
     if lhs.sValue != rhs.sValue {return false}
@@ -11910,8 +13310,8 @@ extension VCSEC_VerifyAndInstallApp: SwiftProtobuf.Message, SwiftProtobuf._Messa
   }
 }
 
-extension VCSEC_WhitelistEntryInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".WhitelistEntryInfo"
+extension WhitelistEntryInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "WhitelistEntryInfo"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "keyId"),
     2: .same(proto: "publicKey"),
@@ -11969,7 +13369,7 @@ extension VCSEC_WhitelistEntryInfo: SwiftProtobuf.Message, SwiftProtobuf._Messag
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_WhitelistEntryInfo, rhs: VCSEC_WhitelistEntryInfo) -> Bool {
+  static func ==(lhs: WhitelistEntryInfo, rhs: WhitelistEntryInfo) -> Bool {
     if lhs._keyID != rhs._keyID {return false}
     if lhs._publicKey != rhs._publicKey {return false}
     if lhs.permissions != rhs.permissions {return false}
@@ -11982,8 +13382,8 @@ extension VCSEC_WhitelistEntryInfo: SwiftProtobuf.Message, SwiftProtobuf._Messag
   }
 }
 
-extension VCSEC_WhitelistInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".WhitelistInfo"
+extension WhitelistInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "WhitelistInfo"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "numberOfEntries"),
     2: .same(proto: "whitelistEntries"),
@@ -12017,7 +13417,7 @@ extension VCSEC_WhitelistInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImpl
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_WhitelistInfo, rhs: VCSEC_WhitelistInfo) -> Bool {
+  static func ==(lhs: WhitelistInfo, rhs: WhitelistInfo) -> Bool {
     if lhs.numberOfEntries != rhs.numberOfEntries {return false}
     if lhs.whitelistEntries != rhs.whitelistEntries {return false}
     if lhs.slotMask != rhs.slotMask {return false}
@@ -12026,8 +13426,8 @@ extension VCSEC_WhitelistInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImpl
   }
 }
 
-extension VCSEC_WhitelistOperation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".WhitelistOperation"
+extension WhitelistOperation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "WhitelistOperation"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     6: .same(proto: "metadataForKey"),
     1: .same(proto: "addPublicKeyToWhitelist"),
@@ -12049,7 +13449,7 @@ extension VCSEC_WhitelistOperation: SwiftProtobuf.Message, SwiftProtobuf._Messag
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
       switch fieldNumber {
       case 1: try {
-        var v: VCSEC_PublicKey?
+        var v: PublicKey?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -12062,7 +13462,7 @@ extension VCSEC_WhitelistOperation: SwiftProtobuf.Message, SwiftProtobuf._Messag
         }
       }()
       case 2: try {
-        var v: VCSEC_PublicKey?
+        var v: PublicKey?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -12075,7 +13475,7 @@ extension VCSEC_WhitelistOperation: SwiftProtobuf.Message, SwiftProtobuf._Messag
         }
       }()
       case 3: try {
-        var v: VCSEC_PermissionChange?
+        var v: PermissionChange?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -12088,7 +13488,7 @@ extension VCSEC_WhitelistOperation: SwiftProtobuf.Message, SwiftProtobuf._Messag
         }
       }()
       case 4: try {
-        var v: VCSEC_PermissionChange?
+        var v: PermissionChange?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -12101,7 +13501,7 @@ extension VCSEC_WhitelistOperation: SwiftProtobuf.Message, SwiftProtobuf._Messag
         }
       }()
       case 5: try {
-        var v: VCSEC_PermissionChange?
+        var v: PermissionChange?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -12115,7 +13515,7 @@ extension VCSEC_WhitelistOperation: SwiftProtobuf.Message, SwiftProtobuf._Messag
       }()
       case 6: try { try decoder.decodeSingularMessageField(value: &self._metadataForKey) }()
       case 7: try {
-        var v: VCSEC_PermissionChange?
+        var v: PermissionChange?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -12128,7 +13528,7 @@ extension VCSEC_WhitelistOperation: SwiftProtobuf.Message, SwiftProtobuf._Messag
         }
       }()
       case 8: try {
-        var v: VCSEC_PermissionChange?
+        var v: PermissionChange?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -12141,7 +13541,7 @@ extension VCSEC_WhitelistOperation: SwiftProtobuf.Message, SwiftProtobuf._Messag
         }
       }()
       case 9: try {
-        var v: VCSEC_PermissionChange?
+        var v: PermissionChange?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -12162,7 +13562,7 @@ extension VCSEC_WhitelistOperation: SwiftProtobuf.Message, SwiftProtobuf._Messag
         }
       }()
       case 17: try {
-        var v: VCSEC_ReplaceKey?
+        var v: ReplaceKey?
         var hadOneofValue = false
         if let current = self.subMessage {
           hadOneofValue = true
@@ -12236,7 +13636,7 @@ extension VCSEC_WhitelistOperation: SwiftProtobuf.Message, SwiftProtobuf._Messag
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_WhitelistOperation, rhs: VCSEC_WhitelistOperation) -> Bool {
+  static func ==(lhs: WhitelistOperation, rhs: WhitelistOperation) -> Bool {
     if lhs._metadataForKey != rhs._metadataForKey {return false}
     if lhs.subMessage != rhs.subMessage {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -12244,8 +13644,8 @@ extension VCSEC_WhitelistOperation: SwiftProtobuf.Message, SwiftProtobuf._Messag
   }
 }
 
-extension VCSEC_WhitelistOperation_status: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".WhitelistOperation_status"
+extension WhitelistOperation_status: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "WhitelistOperation_status"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "whitelistOperationInformation"),
     2: .same(proto: "signerOfOperation"),
@@ -12283,7 +13683,7 @@ extension VCSEC_WhitelistOperation_status: SwiftProtobuf.Message, SwiftProtobuf.
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: VCSEC_WhitelistOperation_status, rhs: VCSEC_WhitelistOperation_status) -> Bool {
+  static func ==(lhs: WhitelistOperation_status, rhs: WhitelistOperation_status) -> Bool {
     if lhs.whitelistOperationInformation != rhs.whitelistOperationInformation {return false}
     if lhs._signerOfOperation != rhs._signerOfOperation {return false}
     if lhs.operationStatus != rhs.operationStatus {return false}

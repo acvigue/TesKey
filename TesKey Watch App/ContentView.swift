@@ -1,21 +1,43 @@
-//
-//  ContentView.swift
+// ContentView.swift
 //  TesKey Watch App
 //
-//  Created by aiden on November 14, 2023.
+//  Created by aiden on 11/15/23.
+//  
 //
 
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var bluetoothManager = BluetoothManager()
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        switch(bluetoothManager.state) {
+        case .not_setup:
+            GetStartedView().environmentObject(bluetoothManager)
+        case .discovering:
+            DiscoveryView().environmentObject(bluetoothManager)
+        case .disconnected:
+            DisconnectedView().environmentObject(bluetoothManager)
+        case .connecting:
+            ConnectingView()
+        case .authenticate:
+            ConnectingView()
+                .environmentObject(bluetoothManager)
+        case .connected:
+            Text("Connected")
+        case .powered_off:
+            Text("Bluetooth off!")
+                .font(.title3)
+        case .bt_unauthorized:
+            Text("Bluetooth unauthorized!")
+                .font(.title3)
+        case .bt_unavailable:
+            Text("Bluetooth unavailable!")
+                .font(.title3)
+        case .connect_failed:
+            ConnectFailedView().environmentObject(bluetoothManager)
         }
-        .padding()
+        
     }
 }
 
