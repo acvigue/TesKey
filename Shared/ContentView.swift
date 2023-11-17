@@ -20,11 +20,6 @@ struct ContentView: View {
             DisconnectedView().environmentObject(bluetoothManager)
         case .connecting:
             ConnectingView()
-        case .authenticate:
-            ConnectingView()
-                .environmentObject(bluetoothManager)
-        case .connected:
-            Text("Connected")
         case .powered_off:
             Text("Bluetooth off!")
                 .font(.title3)
@@ -36,6 +31,9 @@ struct ContentView: View {
                 .font(.title3)
         case .connect_failed:
             ConnectFailedView().environmentObject(bluetoothManager)
+        case .connected:
+            ConnectedView()
+                .environmentObject(bluetoothManager.teslaPeripheral!)
         }
         
     }

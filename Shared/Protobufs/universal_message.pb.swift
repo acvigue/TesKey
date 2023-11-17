@@ -344,79 +344,91 @@ struct RoutableMessage {
   // methods supported on all messages.
 
   var toDestination: Destination {
-    get {return _toDestination ?? Destination()}
-    set {_toDestination = newValue}
+    get {return _storage._toDestination ?? Destination()}
+    set {_uniqueStorage()._toDestination = newValue}
   }
   /// Returns true if `toDestination` has been explicitly set.
-  var hasToDestination: Bool {return self._toDestination != nil}
+  var hasToDestination: Bool {return _storage._toDestination != nil}
   /// Clears the value of `toDestination`. Subsequent reads from it will return its default value.
-  mutating func clearToDestination() {self._toDestination = nil}
+  mutating func clearToDestination() {_uniqueStorage()._toDestination = nil}
 
   var fromDestination: Destination {
-    get {return _fromDestination ?? Destination()}
-    set {_fromDestination = newValue}
+    get {return _storage._fromDestination ?? Destination()}
+    set {_uniqueStorage()._fromDestination = newValue}
   }
   /// Returns true if `fromDestination` has been explicitly set.
-  var hasFromDestination: Bool {return self._fromDestination != nil}
+  var hasFromDestination: Bool {return _storage._fromDestination != nil}
   /// Clears the value of `fromDestination`. Subsequent reads from it will return its default value.
-  mutating func clearFromDestination() {self._fromDestination = nil}
+  mutating func clearFromDestination() {_uniqueStorage()._fromDestination = nil}
 
   var signedMessageStatus: MessageStatus {
-    get {return _signedMessageStatus ?? MessageStatus()}
-    set {_signedMessageStatus = newValue}
+    get {return _storage._signedMessageStatus ?? MessageStatus()}
+    set {_uniqueStorage()._signedMessageStatus = newValue}
   }
   /// Returns true if `signedMessageStatus` has been explicitly set.
-  var hasSignedMessageStatus: Bool {return self._signedMessageStatus != nil}
+  var hasSignedMessageStatus: Bool {return _storage._signedMessageStatus != nil}
   /// Clears the value of `signedMessageStatus`. Subsequent reads from it will return its default value.
-  mutating func clearSignedMessageStatus() {self._signedMessageStatus = nil}
+  mutating func clearSignedMessageStatus() {_uniqueStorage()._signedMessageStatus = nil}
 
-  var requestUuid: Data = Data()
-
-  var uuid: Data = Data()
-
-  var flags: UInt32 = 0
-
-  var subMessage: RoutableMessage.OneOf_SubMessage? = nil
+  var subMessage: OneOf_SubMessage? {
+    get {return _storage._subMessage}
+    set {_uniqueStorage()._subMessage = newValue}
+  }
 
   var protobufMessageAsBytes: Data {
     get {
-      if case .protobufMessageAsBytes(let v)? = subMessage {return v}
+      if case .protobufMessageAsBytes(let v)? = _storage._subMessage {return v}
       return Data()
     }
-    set {subMessage = .protobufMessageAsBytes(newValue)}
-  }
-
-  var signatureData: SignatureData {
-    get {
-      if case .signatureData(let v)? = subMessage {return v}
-      return SignatureData()
-    }
-    set {subMessage = .signatureData(newValue)}
+    set {_uniqueStorage()._subMessage = .protobufMessageAsBytes(newValue)}
   }
 
   var sessionInfoRequest: SessionInfoRequest {
     get {
-      if case .sessionInfoRequest(let v)? = subMessage {return v}
+      if case .sessionInfoRequest(let v)? = _storage._subMessage {return v}
       return SessionInfoRequest()
     }
-    set {subMessage = .sessionInfoRequest(newValue)}
+    set {_uniqueStorage()._subMessage = .sessionInfoRequest(newValue)}
   }
 
-  var sessionInfo: Data {
+  var sessionInfo: SessionInfo {
     get {
-      if case .sessionInfo(let v)? = subMessage {return v}
-      return Data()
+      if case .sessionInfo(let v)? = _storage._subMessage {return v}
+      return SessionInfo()
     }
-    set {subMessage = .sessionInfo(newValue)}
+    set {_uniqueStorage()._subMessage = .sessionInfo(newValue)}
+  }
+
+  var signatureData: SignatureData {
+    get {return _storage._signatureData ?? SignatureData()}
+    set {_uniqueStorage()._signatureData = newValue}
+  }
+  /// Returns true if `signatureData` has been explicitly set.
+  var hasSignatureData: Bool {return _storage._signatureData != nil}
+  /// Clears the value of `signatureData`. Subsequent reads from it will return its default value.
+  mutating func clearSignatureData() {_uniqueStorage()._signatureData = nil}
+
+  var requestUuid: Data {
+    get {return _storage._requestUuid}
+    set {_uniqueStorage()._requestUuid = newValue}
+  }
+
+  var uuid: Data {
+    get {return _storage._uuid}
+    set {_uniqueStorage()._uuid = newValue}
+  }
+
+  var flags: UInt32 {
+    get {return _storage._flags}
+    set {_uniqueStorage()._flags = newValue}
   }
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   enum OneOf_SubMessage: Equatable {
     case protobufMessageAsBytes(Data)
-    case signatureData(SignatureData)
     case sessionInfoRequest(SessionInfoRequest)
-    case sessionInfo(Data)
+    case sessionInfo(SessionInfo)
 
   #if !swift(>=4.1)
     static func ==(lhs: RoutableMessage.OneOf_SubMessage, rhs: RoutableMessage.OneOf_SubMessage) -> Bool {
@@ -426,10 +438,6 @@ struct RoutableMessage {
       switch (lhs, rhs) {
       case (.protobufMessageAsBytes, .protobufMessageAsBytes): return {
         guard case .protobufMessageAsBytes(let l) = lhs, case .protobufMessageAsBytes(let r) = rhs else { preconditionFailure() }
-        return l == r
-      }()
-      case (.signatureData, .signatureData): return {
-        guard case .signatureData(let l) = lhs, case .signatureData(let r) = rhs else { preconditionFailure() }
         return l == r
       }()
       case (.sessionInfoRequest, .sessionInfoRequest): return {
@@ -448,9 +456,7 @@ struct RoutableMessage {
 
   init() {}
 
-  fileprivate var _toDestination: Destination? = nil
-  fileprivate var _fromDestination: Destination? = nil
-  fileprivate var _signedMessageStatus: MessageStatus? = nil
+  fileprivate var _storage = _StorageClass.defaultInstance
 }
 
 struct SessionInfoRequest {
@@ -635,126 +641,165 @@ extension RoutableMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplemen
     6: .standard(proto: "to_destination"),
     7: .standard(proto: "from_destination"),
     12: .same(proto: "signedMessageStatus"),
+    10: .standard(proto: "protobuf_message_as_bytes"),
+    14: .standard(proto: "session_info_request"),
+    15: .standard(proto: "session_info"),
+    13: .standard(proto: "signature_data"),
     50: .standard(proto: "request_uuid"),
     51: .same(proto: "uuid"),
     52: .same(proto: "flags"),
-    10: .standard(proto: "protobuf_message_as_bytes"),
-    13: .standard(proto: "signature_data"),
-    14: .standard(proto: "session_info_request"),
-    15: .standard(proto: "session_info"),
   ]
 
+  fileprivate class _StorageClass {
+    var _toDestination: Destination? = nil
+    var _fromDestination: Destination? = nil
+    var _signedMessageStatus: MessageStatus? = nil
+    var _subMessage: RoutableMessage.OneOf_SubMessage?
+    var _signatureData: SignatureData? = nil
+    var _requestUuid: Data = Data()
+    var _uuid: Data = Data()
+    var _flags: UInt32 = 0
+
+    static let defaultInstance = _StorageClass()
+
+    private init() {}
+
+    init(copying source: _StorageClass) {
+      _toDestination = source._toDestination
+      _fromDestination = source._fromDestination
+      _signedMessageStatus = source._signedMessageStatus
+      _subMessage = source._subMessage
+      _signatureData = source._signatureData
+      _requestUuid = source._requestUuid
+      _uuid = source._uuid
+      _flags = source._flags
+    }
+  }
+
+  fileprivate mutating func _uniqueStorage() -> _StorageClass {
+    if !isKnownUniquelyReferenced(&_storage) {
+      _storage = _StorageClass(copying: _storage)
+    }
+    return _storage
+  }
+
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    while let fieldNumber = try decoder.nextFieldNumber() {
-      // The use of inline closures is to circumvent an issue where the compiler
-      // allocates stack space for every case branch when no optimizations are
-      // enabled. https://github.com/apple/swift-protobuf/issues/1034
-      switch fieldNumber {
-      case 6: try { try decoder.decodeSingularMessageField(value: &self._toDestination) }()
-      case 7: try { try decoder.decodeSingularMessageField(value: &self._fromDestination) }()
-      case 10: try {
-        var v: Data?
-        try decoder.decodeSingularBytesField(value: &v)
-        if let v = v {
-          if self.subMessage != nil {try decoder.handleConflictingOneOf()}
-          self.subMessage = .protobufMessageAsBytes(v)
+    _ = _uniqueStorage()
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      while let fieldNumber = try decoder.nextFieldNumber() {
+        // The use of inline closures is to circumvent an issue where the compiler
+        // allocates stack space for every case branch when no optimizations are
+        // enabled. https://github.com/apple/swift-protobuf/issues/1034
+        switch fieldNumber {
+        case 6: try { try decoder.decodeSingularMessageField(value: &_storage._toDestination) }()
+        case 7: try { try decoder.decodeSingularMessageField(value: &_storage._fromDestination) }()
+        case 10: try {
+          var v: Data?
+          try decoder.decodeSingularBytesField(value: &v)
+          if let v = v {
+            if _storage._subMessage != nil {try decoder.handleConflictingOneOf()}
+            _storage._subMessage = .protobufMessageAsBytes(v)
+          }
+        }()
+        case 12: try { try decoder.decodeSingularMessageField(value: &_storage._signedMessageStatus) }()
+        case 13: try { try decoder.decodeSingularMessageField(value: &_storage._signatureData) }()
+        case 14: try {
+          var v: SessionInfoRequest?
+          var hadOneofValue = false
+          if let current = _storage._subMessage {
+            hadOneofValue = true
+            if case .sessionInfoRequest(let m) = current {v = m}
+          }
+          try decoder.decodeSingularMessageField(value: &v)
+          if let v = v {
+            if hadOneofValue {try decoder.handleConflictingOneOf()}
+            _storage._subMessage = .sessionInfoRequest(v)
+          }
+        }()
+        case 15: try {
+          var v: SessionInfo?
+          var hadOneofValue = false
+          if let current = _storage._subMessage {
+            hadOneofValue = true
+            if case .sessionInfo(let m) = current {v = m}
+          }
+          try decoder.decodeSingularMessageField(value: &v)
+          if let v = v {
+            if hadOneofValue {try decoder.handleConflictingOneOf()}
+            _storage._subMessage = .sessionInfo(v)
+          }
+        }()
+        case 50: try { try decoder.decodeSingularBytesField(value: &_storage._requestUuid) }()
+        case 51: try { try decoder.decodeSingularBytesField(value: &_storage._uuid) }()
+        case 52: try { try decoder.decodeSingularUInt32Field(value: &_storage._flags) }()
+        default: break
         }
-      }()
-      case 12: try { try decoder.decodeSingularMessageField(value: &self._signedMessageStatus) }()
-      case 13: try {
-        var v: SignatureData?
-        var hadOneofValue = false
-        if let current = self.subMessage {
-          hadOneofValue = true
-          if case .signatureData(let m) = current {v = m}
-        }
-        try decoder.decodeSingularMessageField(value: &v)
-        if let v = v {
-          if hadOneofValue {try decoder.handleConflictingOneOf()}
-          self.subMessage = .signatureData(v)
-        }
-      }()
-      case 14: try {
-        var v: SessionInfoRequest?
-        var hadOneofValue = false
-        if let current = self.subMessage {
-          hadOneofValue = true
-          if case .sessionInfoRequest(let m) = current {v = m}
-        }
-        try decoder.decodeSingularMessageField(value: &v)
-        if let v = v {
-          if hadOneofValue {try decoder.handleConflictingOneOf()}
-          self.subMessage = .sessionInfoRequest(v)
-        }
-      }()
-      case 15: try {
-        var v: Data?
-        try decoder.decodeSingularBytesField(value: &v)
-        if let v = v {
-          if self.subMessage != nil {try decoder.handleConflictingOneOf()}
-          self.subMessage = .sessionInfo(v)
-        }
-      }()
-      case 50: try { try decoder.decodeSingularBytesField(value: &self.requestUuid) }()
-      case 51: try { try decoder.decodeSingularBytesField(value: &self.uuid) }()
-      case 52: try { try decoder.decodeSingularUInt32Field(value: &self.flags) }()
-      default: break
       }
     }
   }
 
   func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    // The use of inline closures is to circumvent an issue where the compiler
-    // allocates stack space for every if/case branch local when no optimizations
-    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
-    // https://github.com/apple/swift-protobuf/issues/1182
-    try { if let v = self._toDestination {
-      try visitor.visitSingularMessageField(value: v, fieldNumber: 6)
-    } }()
-    try { if let v = self._fromDestination {
-      try visitor.visitSingularMessageField(value: v, fieldNumber: 7)
-    } }()
-    try { if case .protobufMessageAsBytes(let v)? = self.subMessage {
-      try visitor.visitSingularBytesField(value: v, fieldNumber: 10)
-    } }()
-    try { if let v = self._signedMessageStatus {
-      try visitor.visitSingularMessageField(value: v, fieldNumber: 12)
-    } }()
-    switch self.subMessage {
-    case .signatureData?: try {
-      guard case .signatureData(let v)? = self.subMessage else { preconditionFailure() }
-      try visitor.visitSingularMessageField(value: v, fieldNumber: 13)
-    }()
-    case .sessionInfoRequest?: try {
-      guard case .sessionInfoRequest(let v)? = self.subMessage else { preconditionFailure() }
-      try visitor.visitSingularMessageField(value: v, fieldNumber: 14)
-    }()
-    case .sessionInfo?: try {
-      guard case .sessionInfo(let v)? = self.subMessage else { preconditionFailure() }
-      try visitor.visitSingularBytesField(value: v, fieldNumber: 15)
-    }()
-    default: break
-    }
-    if !self.requestUuid.isEmpty {
-      try visitor.visitSingularBytesField(value: self.requestUuid, fieldNumber: 50)
-    }
-    if !self.uuid.isEmpty {
-      try visitor.visitSingularBytesField(value: self.uuid, fieldNumber: 51)
-    }
-    if self.flags != 0 {
-      try visitor.visitSingularUInt32Field(value: self.flags, fieldNumber: 52)
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every if/case branch local when no optimizations
+      // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+      // https://github.com/apple/swift-protobuf/issues/1182
+      try { if let v = _storage._toDestination {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 6)
+      } }()
+      try { if let v = _storage._fromDestination {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 7)
+      } }()
+      try { if case .protobufMessageAsBytes(let v)? = _storage._subMessage {
+        try visitor.visitSingularBytesField(value: v, fieldNumber: 10)
+      } }()
+      try { if let v = _storage._signedMessageStatus {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 12)
+      } }()
+      try { if let v = _storage._signatureData {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 13)
+      } }()
+      switch _storage._subMessage {
+      case .sessionInfoRequest?: try {
+        guard case .sessionInfoRequest(let v)? = _storage._subMessage else { preconditionFailure() }
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 14)
+      }()
+      case .sessionInfo?: try {
+        guard case .sessionInfo(let v)? = _storage._subMessage else { preconditionFailure() }
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 15)
+      }()
+      default: break
+      }
+      if !_storage._requestUuid.isEmpty {
+        try visitor.visitSingularBytesField(value: _storage._requestUuid, fieldNumber: 50)
+      }
+      if !_storage._uuid.isEmpty {
+        try visitor.visitSingularBytesField(value: _storage._uuid, fieldNumber: 51)
+      }
+      if _storage._flags != 0 {
+        try visitor.visitSingularUInt32Field(value: _storage._flags, fieldNumber: 52)
+      }
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   static func ==(lhs: RoutableMessage, rhs: RoutableMessage) -> Bool {
-    if lhs._toDestination != rhs._toDestination {return false}
-    if lhs._fromDestination != rhs._fromDestination {return false}
-    if lhs._signedMessageStatus != rhs._signedMessageStatus {return false}
-    if lhs.requestUuid != rhs.requestUuid {return false}
-    if lhs.uuid != rhs.uuid {return false}
-    if lhs.flags != rhs.flags {return false}
-    if lhs.subMessage != rhs.subMessage {return false}
+    if lhs._storage !== rhs._storage {
+      let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
+        let _storage = _args.0
+        let rhs_storage = _args.1
+        if _storage._toDestination != rhs_storage._toDestination {return false}
+        if _storage._fromDestination != rhs_storage._fromDestination {return false}
+        if _storage._signedMessageStatus != rhs_storage._signedMessageStatus {return false}
+        if _storage._subMessage != rhs_storage._subMessage {return false}
+        if _storage._signatureData != rhs_storage._signatureData {return false}
+        if _storage._requestUuid != rhs_storage._requestUuid {return false}
+        if _storage._uuid != rhs_storage._uuid {return false}
+        if _storage._flags != rhs_storage._flags {return false}
+        return true
+      }
+      if !storagesAreEqual {return false}
+    }
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

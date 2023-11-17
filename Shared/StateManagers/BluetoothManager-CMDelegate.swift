@@ -7,16 +7,7 @@
 
 import CoreBluetooth
 
-extension BluetoothManager: CBCentralManagerDelegate, TeslaPeripheralDelegate {
-    //MARK: Tesla Peripheral Delegate
-    func vehicleRequiresAuthentication() {
-        state = .authenticate
-    }
-    
-    func vehicleConnected() {
-        state = .connected
-    }
-    
+extension BluetoothManager: CBCentralManagerDelegate {
     //MARK: CentralManagerDelegate
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         if(central.state == .poweredOn) {
@@ -34,9 +25,9 @@ extension BluetoothManager: CBCentralManagerDelegate, TeslaPeripheralDelegate {
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         discoveredPeripherals = []
         connectedPeripheral = peripheral
-        teslaPeripheral = TeslaPeripheral(connectedPeripheral!)
+        teslaPeripheral = Vehicle(connectedPeripheral!)
         
-        teslaPeripheral!.delegate = self
+        state = .connected
     }
     
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {

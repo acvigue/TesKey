@@ -21,7 +21,6 @@ enum BluetoothManagerState {
     case disconnected
     case connecting
     case connect_failed
-    case authenticate
     case connected
 }
 
@@ -31,12 +30,12 @@ class BluetoothManager: NSObject, ObservableObject {
     var logger = Logger(subsystem: "BLE", category: "BluetoothManager")
     var userDefaults = UserDefaults.standard
     
-    let serviceUUID = CBUUID(string: "00000211-b2d1-43f0-9b88-960cebf8b91e")
+    let serviceUUID = CBUUID(string: "1122")
     
     @Published var discoveredPeripherals: [CBPeripheral] = [];
     @Published var state: BluetoothManagerState = .powered_off;
     var connectedPeripheral: CBPeripheral? = nil;
-    @Published var teslaPeripheral: TeslaPeripheral? = nil;
+    @Published var teslaPeripheral: Vehicle? = nil;
     
     override init() {
         super.init()

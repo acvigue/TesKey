@@ -12,9 +12,6 @@
 		DF31F13E2B02CC65006A47F4 /* GetStartedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF31F13D2B02CC65006A47F4 /* GetStartedView.swift */; };
 		DF31F1402B02CC67006A47F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF31F13F2B02CC67006A47F4 /* Assets.xcassets */; };
 		DF31F1432B02CC67006A47F4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF31F1422B02CC67006A47F4 /* Preview Assets.xcassets */; };
-		DF31F14D2B02CC67006A47F4 /* TesKey_Watch_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF31F14C2B02CC67006A47F4 /* TesKey_Watch_AppTests.swift */; };
-		DF31F1572B02CC67006A47F4 /* TesKey_Watch_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF31F1562B02CC67006A47F4 /* TesKey_Watch_AppUITests.swift */; };
-		DF31F1592B02CC67006A47F4 /* TesKey_Watch_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF31F1582B02CC67006A47F4 /* TesKey_Watch_AppUITestsLaunchTests.swift */; };
 		DF930FD42B058501003869D5 /* errors.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF930FCD2B058501003869D5 /* errors.pb.swift */; };
 		DF930FD52B058501003869D5 /* keys.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF930FCE2B058501003869D5 /* keys.pb.swift */; };
 		DF930FD62B058501003869D5 /* universal_message.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF930FCF2B058501003869D5 /* universal_message.pb.swift */; };
@@ -27,7 +24,42 @@
 		DF930FE12B059E55003869D5 /* DisconnectedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF930FE02B059E55003869D5 /* DisconnectedView.swift */; };
 		DF930FE32B059E77003869D5 /* ConnectFailedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF930FE22B059E77003869D5 /* ConnectFailedView.swift */; };
 		DF930FE52B05A0DB003869D5 /* ConnectingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF930FE42B05A0DB003869D5 /* ConnectingView.swift */; };
-		DF930FE72B05A497003869D5 /* TeslaPeripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF930FE62B05A497003869D5 /* TeslaPeripheral.swift */; };
+		DF930FE72B05A497003869D5 /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF930FE62B05A497003869D5 /* Vehicle.swift */; };
+		DF930FE92B05C438003869D5 /* Signer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF930FE82B05C438003869D5 /* Signer.swift */; };
+		DF930FEB2B05CA31003869D5 /* Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF930FEA2B05CA31003869D5 /* Metadata.swift */; };
+		DF930FED2B05D9A1003869D5 /* Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF930FEC2B05D9A1003869D5 /* Crypto.swift */; };
+		DF930FEF2B0652A9003869D5 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF930FEE2B0652A9003869D5 /* SessionManager.swift */; };
+		DF930FF22B065FAD003869D5 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DF930FF02B065FAD003869D5 /* Model.xcdatamodeld */; };
+		DF930FFC2B072607003869D5 /* TesKey_PhoneTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF930FFB2B072607003869D5 /* TesKey_PhoneTestApp.swift */; };
+		DF9310002B072608003869D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF930FFF2B072608003869D5 /* Assets.xcassets */; };
+		DF9310032B072608003869D5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF9310022B072608003869D5 /* Preview Assets.xcassets */; };
+		DF9310082B07262E003869D5 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DF930FF02B065FAD003869D5 /* Model.xcdatamodeld */; };
+		DF9310092B072640003869D5 /* Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF930FEA2B05CA31003869D5 /* Metadata.swift */; };
+		DF93100A2B072640003869D5 /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF930FE62B05A497003869D5 /* Vehicle.swift */; };
+		DF93100B2B072640003869D5 /* BluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD10B8A2B03FF83007E8477 /* BluetoothManager.swift */; };
+		DF93100C2B072640003869D5 /* Signer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF930FE82B05C438003869D5 /* Signer.swift */; };
+		DF93100D2B072640003869D5 /* Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF930FEC2B05D9A1003869D5 /* Crypto.swift */; };
+		DF93100E2B072640003869D5 /* BluetoothManager-CMDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD10B8C2B03FFA9007E8477 /* BluetoothManager-CMDelegate.swift */; };
+		DF93100F2B072640003869D5 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF930FEE2B0652A9003869D5 /* SessionManager.swift */; };
+		DF9310102B072644003869D5 /* universal_message.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF930FCF2B058501003869D5 /* universal_message.pb.swift */; };
+		DF9310112B072644003869D5 /* car_server.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF930FD12B058501003869D5 /* car_server.pb.swift */; };
+		DF9310122B072644003869D5 /* signatures.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF930FD22B058501003869D5 /* signatures.pb.swift */; };
+		DF9310132B072644003869D5 /* vehicle.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF930FD02B058501003869D5 /* vehicle.pb.swift */; };
+		DF9310142B072644003869D5 /* keys.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF930FCE2B058501003869D5 /* keys.pb.swift */; };
+		DF9310152B072644003869D5 /* vcsec.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD10B872B03BE0B007E8477 /* vcsec.pb.swift */; };
+		DF9310162B072644003869D5 /* errors.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF930FCD2B058501003869D5 /* errors.pb.swift */; };
+		DF9310172B072644003869D5 /* common.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF930FD32B058501003869D5 /* common.pb.swift */; };
+		DF9310182B072648003869D5 /* DiscoveryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF930FDE2B059098003869D5 /* DiscoveryView.swift */; };
+		DF9310192B072648003869D5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF930FDC2B058F7F003869D5 /* ContentView.swift */; };
+		DF93101A2B072648003869D5 /* ConnectFailedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF930FE22B059E77003869D5 /* ConnectFailedView.swift */; };
+		DF93101B2B072648003869D5 /* DisconnectedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF930FE02B059E55003869D5 /* DisconnectedView.swift */; };
+		DF93101C2B072648003869D5 /* GetStartedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF31F13D2B02CC65006A47F4 /* GetStartedView.swift */; };
+		DF93101D2B072648003869D5 /* ConnectingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF930FE42B05A0DB003869D5 /* ConnectingView.swift */; };
+		DF9310202B072678003869D5 /* SwiftProtobuf in Frameworks */ = {isa = PBXBuildFile; productRef = DF93101F2B072678003869D5 /* SwiftProtobuf */; };
+		DF9310222B0750BF003869D5 /* Dispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9310212B0750BF003869D5 /* Dispatcher.swift */; };
+		DF9310232B0750BF003869D5 /* Dispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9310212B0750BF003869D5 /* Dispatcher.swift */; };
+		DF9310252B080FC6003869D5 /* ConnectedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9310242B080FC6003869D5 /* ConnectedView.swift */; };
+		DF9310262B080FC6003869D5 /* ConnectedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9310242B080FC6003869D5 /* ConnectedView.swift */; };
 		DFD10B862B03BE00007E8477 /* SwiftProtobuf in Frameworks */ = {isa = PBXBuildFile; productRef = DFD10B852B03BE00007E8477 /* SwiftProtobuf */; };
 		DFD10B882B03BE0B007E8477 /* vcsec.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD10B872B03BE0B007E8477 /* vcsec.pb.swift */; };
 		DFD10B8B2B03FF83007E8477 /* BluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD10B8A2B03FF83007E8477 /* BluetoothManager.swift */; };
@@ -36,20 +68,6 @@
 
 /* Begin PBXContainerItemProxy section */
 		DF31F1382B02CC65006A47F4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DF31F12A2B02CC65006A47F4 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = DF31F1352B02CC65006A47F4;
-			remoteInfo = "TesKey Watch App";
-		};
-		DF31F1492B02CC67006A47F4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DF31F12A2B02CC65006A47F4 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = DF31F1352B02CC65006A47F4;
-			remoteInfo = "TesKey Watch App";
-		};
-		DF31F1532B02CC67006A47F4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = DF31F12A2B02CC65006A47F4 /* Project object */;
 			proxyType = 1;
@@ -79,11 +97,6 @@
 		DF31F13D2B02CC65006A47F4 /* GetStartedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedView.swift; sourceTree = "<group>"; };
 		DF31F13F2B02CC67006A47F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DF31F1422B02CC67006A47F4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		DF31F1482B02CC67006A47F4 /* TesKey Watch AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TesKey Watch AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		DF31F14C2B02CC67006A47F4 /* TesKey_Watch_AppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TesKey_Watch_AppTests.swift; sourceTree = "<group>"; };
-		DF31F1522B02CC67006A47F4 /* TesKey Watch AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TesKey Watch AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		DF31F1562B02CC67006A47F4 /* TesKey_Watch_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TesKey_Watch_AppUITests.swift; sourceTree = "<group>"; };
-		DF31F1582B02CC67006A47F4 /* TesKey_Watch_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TesKey_Watch_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		DF930FCD2B058501003869D5 /* errors.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = errors.pb.swift; sourceTree = "<group>"; };
 		DF930FCE2B058501003869D5 /* keys.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = keys.pb.swift; sourceTree = "<group>"; };
 		DF930FCF2B058501003869D5 /* universal_message.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = universal_message.pb.swift; sourceTree = "<group>"; };
@@ -96,7 +109,18 @@
 		DF930FE02B059E55003869D5 /* DisconnectedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisconnectedView.swift; sourceTree = "<group>"; };
 		DF930FE22B059E77003869D5 /* ConnectFailedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectFailedView.swift; sourceTree = "<group>"; };
 		DF930FE42B05A0DB003869D5 /* ConnectingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectingView.swift; sourceTree = "<group>"; };
-		DF930FE62B05A497003869D5 /* TeslaPeripheral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeslaPeripheral.swift; sourceTree = "<group>"; };
+		DF930FE62B05A497003869D5 /* Vehicle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
+		DF930FE82B05C438003869D5 /* Signer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Signer.swift; sourceTree = "<group>"; };
+		DF930FEA2B05CA31003869D5 /* Metadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metadata.swift; sourceTree = "<group>"; };
+		DF930FEC2B05D9A1003869D5 /* Crypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crypto.swift; sourceTree = "<group>"; };
+		DF930FEE2B0652A9003869D5 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
+		DF930FF12B065FAD003869D5 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		DF930FF92B072606003869D5 /* TesKey-PhoneTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TesKey-PhoneTest.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF930FFB2B072607003869D5 /* TesKey_PhoneTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TesKey_PhoneTestApp.swift; sourceTree = "<group>"; };
+		DF930FFF2B072608003869D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DF9310022B072608003869D5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		DF9310212B0750BF003869D5 /* Dispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dispatcher.swift; sourceTree = "<group>"; };
+		DF9310242B080FC6003869D5 /* ConnectedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectedView.swift; sourceTree = "<group>"; };
 		DFD10B872B03BE0B007E8477 /* vcsec.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vcsec.pb.swift; sourceTree = "<group>"; };
 		DFD10B8A2B03FF83007E8477 /* BluetoothManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothManager.swift; sourceTree = "<group>"; };
 		DFD10B8C2B03FFA9007E8477 /* BluetoothManager-CMDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BluetoothManager-CMDelegate.swift"; sourceTree = "<group>"; };
@@ -111,17 +135,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DF31F1452B02CC67006A47F4 /* Frameworks */ = {
+		DF930FF62B072606003869D5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DF31F14F2B02CC67006A47F4 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				DF9310202B072678003869D5 /* SwiftProtobuf in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,10 +149,11 @@
 		DF31F1292B02CC65006A47F4 = {
 			isa = PBXGroup;
 			children = (
-				DF31F13A2B02CC65006A47F4 /* TesKey Watch App */,
-				DF31F14B2B02CC67006A47F4 /* TesKey Watch AppTests */,
-				DF31F1552B02CC67006A47F4 /* TesKey Watch AppUITests */,
+				DF9310072B072622003869D5 /* Shared */,
+				DF31F13A2B02CC65006A47F4 /* TesKeyWatch */,
+				DF930FFA2B072607003869D5 /* TesKey-PhoneTest */,
 				DF31F1312B02CC65006A47F4 /* Products */,
+				DF93101E2B072678003869D5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -143,28 +162,19 @@
 			children = (
 				DF31F1302B02CC65006A47F4 /* TesKey.app */,
 				DF31F1362B02CC65006A47F4 /* TesKey Watch App.app */,
-				DF31F1482B02CC67006A47F4 /* TesKey Watch AppTests.xctest */,
-				DF31F1522B02CC67006A47F4 /* TesKey Watch AppUITests.xctest */,
+				DF930FF92B072606003869D5 /* TesKey-PhoneTest.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		DF31F13A2B02CC65006A47F4 /* TesKey Watch App */ = {
+		DF31F13A2B02CC65006A47F4 /* TesKeyWatch */ = {
 			isa = PBXGroup;
 			children = (
-				DF930FDB2B05850A003869D5 /* Protobufs */,
-				DFD10B892B03FF72007E8477 /* StateManagers */,
 				DF31F13B2B02CC65006A47F4 /* TesKeyApp.swift */,
-				DF31F13D2B02CC65006A47F4 /* GetStartedView.swift */,
 				DF31F13F2B02CC67006A47F4 /* Assets.xcassets */,
 				DF31F1412B02CC67006A47F4 /* Preview Content */,
-				DF930FDC2B058F7F003869D5 /* ContentView.swift */,
-				DF930FE42B05A0DB003869D5 /* ConnectingView.swift */,
-				DF930FE22B059E77003869D5 /* ConnectFailedView.swift */,
-				DF930FE02B059E55003869D5 /* DisconnectedView.swift */,
-				DF930FDE2B059098003869D5 /* DiscoveryView.swift */,
 			);
-			path = "TesKey Watch App";
+			path = TesKeyWatch;
 			sourceTree = "<group>";
 		};
 		DF31F1412B02CC67006A47F4 /* Preview Content */ = {
@@ -173,23 +183,6 @@
 				DF31F1422B02CC67006A47F4 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		DF31F14B2B02CC67006A47F4 /* TesKey Watch AppTests */ = {
-			isa = PBXGroup;
-			children = (
-				DF31F14C2B02CC67006A47F4 /* TesKey_Watch_AppTests.swift */,
-			);
-			path = "TesKey Watch AppTests";
-			sourceTree = "<group>";
-		};
-		DF31F1552B02CC67006A47F4 /* TesKey Watch AppUITests */ = {
-			isa = PBXGroup;
-			children = (
-				DF31F1562B02CC67006A47F4 /* TesKey_Watch_AppUITests.swift */,
-				DF31F1582B02CC67006A47F4 /* TesKey_Watch_AppUITestsLaunchTests.swift */,
-			);
-			path = "TesKey Watch AppUITests";
 			sourceTree = "<group>";
 		};
 		DF930FDB2B05850A003869D5 /* Protobufs */ = {
@@ -207,12 +200,59 @@
 			path = Protobufs;
 			sourceTree = "<group>";
 		};
+		DF930FFA2B072607003869D5 /* TesKey-PhoneTest */ = {
+			isa = PBXGroup;
+			children = (
+				DF930FFB2B072607003869D5 /* TesKey_PhoneTestApp.swift */,
+				DF930FFF2B072608003869D5 /* Assets.xcassets */,
+				DF9310012B072608003869D5 /* Preview Content */,
+			);
+			path = "TesKey-PhoneTest";
+			sourceTree = "<group>";
+		};
+		DF9310012B072608003869D5 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				DF9310022B072608003869D5 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		DF9310072B072622003869D5 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				DFD10B892B03FF72007E8477 /* StateManagers */,
+				DF930FDB2B05850A003869D5 /* Protobufs */,
+				DF930FF02B065FAD003869D5 /* Model.xcdatamodeld */,
+				DF31F13D2B02CC65006A47F4 /* GetStartedView.swift */,
+				DF930FDC2B058F7F003869D5 /* ContentView.swift */,
+				DF930FE42B05A0DB003869D5 /* ConnectingView.swift */,
+				DF930FE22B059E77003869D5 /* ConnectFailedView.swift */,
+				DF930FE02B059E55003869D5 /* DisconnectedView.swift */,
+				DF930FDE2B059098003869D5 /* DiscoveryView.swift */,
+				DF9310242B080FC6003869D5 /* ConnectedView.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		DF93101E2B072678003869D5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		DFD10B892B03FF72007E8477 /* StateManagers */ = {
 			isa = PBXGroup;
 			children = (
 				DFD10B8A2B03FF83007E8477 /* BluetoothManager.swift */,
 				DFD10B8C2B03FFA9007E8477 /* BluetoothManager-CMDelegate.swift */,
-				DF930FE62B05A497003869D5 /* TeslaPeripheral.swift */,
+				DF930FE62B05A497003869D5 /* Vehicle.swift */,
+				DF930FE82B05C438003869D5 /* Signer.swift */,
+				DF930FEA2B05CA31003869D5 /* Metadata.swift */,
+				DF930FEC2B05D9A1003869D5 /* Crypto.swift */,
+				DF930FEE2B0652A9003869D5 /* SessionManager.swift */,
+				DF9310212B0750BF003869D5 /* Dispatcher.swift */,
 			);
 			path = StateManagers;
 			sourceTree = "<group>";
@@ -257,41 +297,25 @@
 			productReference = DF31F1362B02CC65006A47F4 /* TesKey Watch App.app */;
 			productType = "com.apple.product-type.application";
 		};
-		DF31F1472B02CC67006A47F4 /* TesKey Watch AppTests */ = {
+		DF930FF82B072606003869D5 /* TesKey-PhoneTest */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DF31F1632B02CC67006A47F4 /* Build configuration list for PBXNativeTarget "TesKey Watch AppTests" */;
+			buildConfigurationList = DF9310042B072608003869D5 /* Build configuration list for PBXNativeTarget "TesKey-PhoneTest" */;
 			buildPhases = (
-				DF31F1442B02CC67006A47F4 /* Sources */,
-				DF31F1452B02CC67006A47F4 /* Frameworks */,
-				DF31F1462B02CC67006A47F4 /* Resources */,
+				DF930FF52B072606003869D5 /* Sources */,
+				DF930FF62B072606003869D5 /* Frameworks */,
+				DF930FF72B072606003869D5 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				DF31F14A2B02CC67006A47F4 /* PBXTargetDependency */,
 			);
-			name = "TesKey Watch AppTests";
-			productName = "TesKey Watch AppTests";
-			productReference = DF31F1482B02CC67006A47F4 /* TesKey Watch AppTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		DF31F1512B02CC67006A47F4 /* TesKey Watch AppUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = DF31F1662B02CC67006A47F4 /* Build configuration list for PBXNativeTarget "TesKey Watch AppUITests" */;
-			buildPhases = (
-				DF31F14E2B02CC67006A47F4 /* Sources */,
-				DF31F14F2B02CC67006A47F4 /* Frameworks */,
-				DF31F1502B02CC67006A47F4 /* Resources */,
+			name = "TesKey-PhoneTest";
+			packageProductDependencies = (
+				DF93101F2B072678003869D5 /* SwiftProtobuf */,
 			);
-			buildRules = (
-			);
-			dependencies = (
-				DF31F1542B02CC67006A47F4 /* PBXTargetDependency */,
-			);
-			name = "TesKey Watch AppUITests";
-			productName = "TesKey Watch AppUITests";
-			productReference = DF31F1522B02CC67006A47F4 /* TesKey Watch AppUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
+			productName = "TesKey-PhoneTest";
+			productReference = DF930FF92B072606003869D5 /* TesKey-PhoneTest.app */;
+			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
@@ -309,13 +333,8 @@
 					DF31F1352B02CC65006A47F4 = {
 						CreatedOnToolsVersion = 15.0.1;
 					};
-					DF31F1472B02CC67006A47F4 = {
+					DF930FF82B072606003869D5 = {
 						CreatedOnToolsVersion = 15.0.1;
-						TestTargetID = DF31F1352B02CC65006A47F4;
-					};
-					DF31F1512B02CC67006A47F4 = {
-						CreatedOnToolsVersion = 15.0.1;
-						TestTargetID = DF31F1352B02CC65006A47F4;
 					};
 				};
 			};
@@ -337,8 +356,7 @@
 			targets = (
 				DF31F12F2B02CC65006A47F4 /* TesKey */,
 				DF31F1352B02CC65006A47F4 /* TesKey Watch App */,
-				DF31F1472B02CC67006A47F4 /* TesKey Watch AppTests */,
-				DF31F1512B02CC67006A47F4 /* TesKey Watch AppUITests */,
+				DF930FF82B072606003869D5 /* TesKey-PhoneTest */,
 			);
 		};
 /* End PBXProject section */
@@ -360,17 +378,12 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DF31F1462B02CC67006A47F4 /* Resources */ = {
+		DF930FF72B072606003869D5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DF31F1502B02CC67006A47F4 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				DF9310032B072608003869D5 /* Preview Assets.xcassets in Resources */,
+				DF9310002B072608003869D5 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,17 +395,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF930FD72B058501003869D5 /* vehicle.pb.swift in Sources */,
+				DF930FF22B065FAD003869D5 /* Model.xcdatamodeld in Sources */,
+				DF9310222B0750BF003869D5 /* Dispatcher.swift in Sources */,
 				DFD10B882B03BE0B007E8477 /* vcsec.pb.swift in Sources */,
+				DF930FEB2B05CA31003869D5 /* Metadata.swift in Sources */,
 				DF930FD52B058501003869D5 /* keys.pb.swift in Sources */,
 				DF930FD62B058501003869D5 /* universal_message.pb.swift in Sources */,
 				DF31F13E2B02CC65006A47F4 /* GetStartedView.swift in Sources */,
+				DF930FE92B05C438003869D5 /* Signer.swift in Sources */,
 				DFD10B8D2B03FFA9007E8477 /* BluetoothManager-CMDelegate.swift in Sources */,
 				DF930FE52B05A0DB003869D5 /* ConnectingView.swift in Sources */,
 				DF930FD92B058501003869D5 /* signatures.pb.swift in Sources */,
+				DF9310252B080FC6003869D5 /* ConnectedView.swift in Sources */,
+				DF930FEF2B0652A9003869D5 /* SessionManager.swift in Sources */,
 				DF930FD42B058501003869D5 /* errors.pb.swift in Sources */,
 				DFD10B8B2B03FF83007E8477 /* BluetoothManager.swift in Sources */,
+				DF930FED2B05D9A1003869D5 /* Crypto.swift in Sources */,
 				DF930FE12B059E55003869D5 /* DisconnectedView.swift in Sources */,
-				DF930FE72B05A497003869D5 /* TeslaPeripheral.swift in Sources */,
+				DF930FE72B05A497003869D5 /* Vehicle.swift in Sources */,
 				DF930FDF2B059098003869D5 /* DiscoveryView.swift in Sources */,
 				DF930FD82B058501003869D5 /* car_server.pb.swift in Sources */,
 				DF930FE32B059E77003869D5 /* ConnectFailedView.swift in Sources */,
@@ -402,20 +422,35 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DF31F1442B02CC67006A47F4 /* Sources */ = {
+		DF930FF52B072606003869D5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DF31F14D2B02CC67006A47F4 /* TesKey_Watch_AppTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DF31F14E2B02CC67006A47F4 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DF31F1572B02CC67006A47F4 /* TesKey_Watch_AppUITests.swift in Sources */,
-				DF31F1592B02CC67006A47F4 /* TesKey_Watch_AppUITestsLaunchTests.swift in Sources */,
+				DF930FFC2B072607003869D5 /* TesKey_PhoneTestApp.swift in Sources */,
+				DF93100A2B072640003869D5 /* Vehicle.swift in Sources */,
+				DF9310232B0750BF003869D5 /* Dispatcher.swift in Sources */,
+				DF93100F2B072640003869D5 /* SessionManager.swift in Sources */,
+				DF93101C2B072648003869D5 /* GetStartedView.swift in Sources */,
+				DF9310172B072644003869D5 /* common.pb.swift in Sources */,
+				DF9310122B072644003869D5 /* signatures.pb.swift in Sources */,
+				DF9310092B072640003869D5 /* Metadata.swift in Sources */,
+				DF93100C2B072640003869D5 /* Signer.swift in Sources */,
+				DF9310182B072648003869D5 /* DiscoveryView.swift in Sources */,
+				DF9310192B072648003869D5 /* ContentView.swift in Sources */,
+				DF9310152B072644003869D5 /* vcsec.pb.swift in Sources */,
+				DF9310262B080FC6003869D5 /* ConnectedView.swift in Sources */,
+				DF9310162B072644003869D5 /* errors.pb.swift in Sources */,
+				DF9310082B07262E003869D5 /* Model.xcdatamodeld in Sources */,
+				DF93101A2B072648003869D5 /* ConnectFailedView.swift in Sources */,
+				DF93101D2B072648003869D5 /* ConnectingView.swift in Sources */,
+				DF9310132B072644003869D5 /* vehicle.pb.swift in Sources */,
+				DF9310142B072644003869D5 /* keys.pb.swift in Sources */,
+				DF93100D2B072640003869D5 /* Crypto.swift in Sources */,
+				DF93100B2B072640003869D5 /* BluetoothManager.swift in Sources */,
+				DF9310102B072644003869D5 /* universal_message.pb.swift in Sources */,
+				DF93101B2B072648003869D5 /* DisconnectedView.swift in Sources */,
+				DF93100E2B072640003869D5 /* BluetoothManager-CMDelegate.swift in Sources */,
+				DF9310112B072644003869D5 /* car_server.pb.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -426,16 +461,6 @@
 			isa = PBXTargetDependency;
 			target = DF31F1352B02CC65006A47F4 /* TesKey Watch App */;
 			targetProxy = DF31F1382B02CC65006A47F4 /* PBXContainerItemProxy */;
-		};
-		DF31F14A2B02CC67006A47F4 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = DF31F1352B02CC65006A47F4 /* TesKey Watch App */;
-			targetProxy = DF31F1492B02CC67006A47F4 /* PBXContainerItemProxy */;
-		};
-		DF31F1542B02CC67006A47F4 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = DF31F1352B02CC65006A47F4 /* TesKey Watch App */;
-			targetProxy = DF31F1532B02CC67006A47F4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -652,87 +677,68 @@
 			};
 			name = Release;
 		};
-		DF31F1642B02CC67006A47F4 /* Debug */ = {
+		DF9310052B072608003869D5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"TesKey-PhoneTest/Preview Content\"";
 				DEVELOPMENT_TEAM = 9R8RREG67J;
+				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Our app uses bluetooth to find, connect and transfer data between different devices";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "me.vigue.TesKey-Watch-AppTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "me.vigue.TesKey-PhoneTest";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SWIFT_EMIT_LOC_STRINGS = NO;
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TesKey Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TesKey Watch App";
-				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		DF31F1652B02CC67006A47F4 /* Release */ = {
+		DF9310062B072608003869D5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"TesKey-PhoneTest/Preview Content\"";
 				DEVELOPMENT_TEAM = 9R8RREG67J;
+				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Our app uses bluetooth to find, connect and transfer data between different devices";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "me.vigue.TesKey-Watch-AppTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "me.vigue.TesKey-PhoneTest";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SWIFT_EMIT_LOC_STRINGS = NO;
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TesKey Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TesKey Watch App";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
-				WATCHOS_DEPLOYMENT_TARGET = 10.0;
-			};
-			name = Release;
-		};
-		DF31F1672B02CC67006A47F4 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 9R8RREG67J;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "me.vigue.TesKey-Watch-AppUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				TEST_TARGET_NAME = "TesKey Watch App";
-				WATCHOS_DEPLOYMENT_TARGET = 10.0;
-			};
-			name = Debug;
-		};
-		DF31F1682B02CC67006A47F4 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 9R8RREG67J;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "me.vigue.TesKey-Watch-AppUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				TEST_TARGET_NAME = "TesKey Watch App";
-				VALIDATE_PRODUCT = YES;
-				WATCHOS_DEPLOYMENT_TARGET = 10.0;
 			};
 			name = Release;
 		};
@@ -766,20 +772,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DF31F1632B02CC67006A47F4 /* Build configuration list for PBXNativeTarget "TesKey Watch AppTests" */ = {
+		DF9310042B072608003869D5 /* Build configuration list for PBXNativeTarget "TesKey-PhoneTest" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				DF31F1642B02CC67006A47F4 /* Debug */,
-				DF31F1652B02CC67006A47F4 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		DF31F1662B02CC67006A47F4 /* Build configuration list for PBXNativeTarget "TesKey Watch AppUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				DF31F1672B02CC67006A47F4 /* Debug */,
-				DF31F1682B02CC67006A47F4 /* Release */,
+				DF9310052B072608003869D5 /* Debug */,
+				DF9310062B072608003869D5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -798,12 +795,30 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		DF93101F2B072678003869D5 /* SwiftProtobuf */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DFD10B842B03BE00007E8477 /* XCRemoteSwiftPackageReference "swift-protobuf" */;
+			productName = SwiftProtobuf;
+		};
 		DFD10B852B03BE00007E8477 /* SwiftProtobuf */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = DFD10B842B03BE00007E8477 /* XCRemoteSwiftPackageReference "swift-protobuf" */;
 			productName = SwiftProtobuf;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		DF930FF02B065FAD003869D5 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				DF930FF12B065FAD003869D5 /* Model.xcdatamodel */,
+			);
+			currentVersion = DF930FF12B065FAD003869D5 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = DF31F12A2B02CC65006A47F4 /* Project object */;
 }
