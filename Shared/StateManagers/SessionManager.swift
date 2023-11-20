@@ -18,10 +18,13 @@ class SessionManager: NSObject {
     private var logger = Logger(subsystem: "Tesla", category: "SessionManager")
     private var defaults = UserDefaults();
     private var signer: Signer?;
+    private var uuid: UUID;
     
-    init(domain: Domain, vin: String) {
+    init(domain: Domain, uuid: UUID) {
+        self.uuid = uuid
+        self.counter = UInt32((defaults.value(forKey: "me.vigue.teskey.counter.\(self.uuid.uuidString)") ?? 0) as! Int)
         super.init()
-        self.signer = Signer(vin: vin, sessionManager: self);
+        self.signer = Signer(uuid: uuid, sessionManager: self);
     }
     
     // UpdateSessionInfo allows Signer to resync session state with a Verifier.
@@ -31,7 +34,8 @@ class SessionManager: NSObject {
     //Called when Dispatcher receives a valid SessionInfo response
     func updateSessionInfo(_ info: SessionInfo) {
         if(!epoch.elementsEqual(info.epoch) || (setTime <= info.clockTime)) {
-            counter = max(info.counter, 1)
+            //counter = max(info.counter, 1)
+            //defaults.setValue(counter, forKey: "me.vigue.teskey.counter.\(self.uuid.uuidString)")
             
             epoch = Data(info.epoch)
             setTime = info.clockTime
@@ -60,27 +64,27 @@ class SessionManager: NSObject {
         
     }
     
+    func updateCounter(_ ct: Int) {
+        counter = UInt32(ct)
+        defaults.setValue(counter, forKey: "me.vigue.teskey.counter.\(self.uuid.uuidString)")
+    }
+    
     func signVCSECUnsignedMessage(_ msg: UnsignedMessage) -> ToVCSECMessage {
         self.counter += 1;
-        var u32BE = counter.bigEndian
-        let gcm = GCM(iv: withUnsafeBytes(of: Data(bytes: &u32BE, count: 4), Array.init), mode: .detached)
-        let aes = try! AES(key: withUnsafeBytes(of: getSigner().agreedSymmetricKey!, Array.init), blockMode: gcm, padding: .noPadding)
+        defaults.setValue(counter, forKey: "me.vigue.teskey.counter.\(self.uuid.uuidString)")
+        let nonce: [UInt8] = withUnsafeBytes(of: counter.bigEndian, Array.init)
+        let key: [UInt8] = Array(getSigner().agreedSymmetricKey!)
+        
+        let gcm = GCM(iv: nonce, mode: .detached)
+        let aes = try! AES(key: key, blockMode: gcm, padding: .noPadding)
         let encrypted = try! aes.encrypt([UInt8](msg.serializedData()))
         
-        logger.debug("nonce: \(Data(bytes: &u32BE, count: 4).hexEncodedString()), counter: \(self.counter)")
+        logger.debug("nonce: \(Data(nonce).hexEncodedString()), counter: \(self.counter)")
         
         var toMessage = ToVCSECMessage()
         
-        var ciphertext = Data()
-        ciphertext.append(contentsOf: encrypted)
-        
-        logger.debug("AES: \(ciphertext.hexEncodedString())")
-
-        var tag = Data()
-        tag.append(contentsOf: gcm.authenticationTag!)
-        
-        toMessage.signedMessage.protobufMessageAsBytes = ciphertext
-        toMessage.signedMessage.signature = tag
+        toMessage.signedMessage.protobufMessageAsBytes = Data(encrypted)
+        toMessage.signedMessage.signature = Data(gcm.authenticationTag!)
         toMessage.signedMessage.counter = self.counter
         toMessage.signedMessage.keyID = getSigner().getKeyId()
         

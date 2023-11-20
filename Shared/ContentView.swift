@@ -34,6 +34,7 @@ struct ContentView: View {
         case .connected:
             ConnectedView()
                 .environmentObject(bluetoothManager.teslaPeripheral!)
+                .environmentObject(bluetoothManager)
         }
         
     }

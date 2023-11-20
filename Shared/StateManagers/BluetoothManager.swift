@@ -59,19 +59,20 @@ class BluetoothManager: NSObject, ObservableObject {
     
     func attemptConnection() {
         //Check if we have a saved device.
-        let savedPeripherals = userDefaults.value(forKey: "savedPeripherals") as? [UUID];
+        let savedPeripherals = userDefaults.value(forKey: "savedPeripherals") as? [String];
         if(savedPeripherals?.isEmpty ?? true) {
             logger.warning("savedPeripherals empty!")
             state = .not_setup
         } else {
-            let thisPeripheral = cbCM.retrievePeripherals(withIdentifiers: savedPeripherals!)
+            let thisPeripheral = cbCM.retrievePeripherals(withIdentifiers: [UUID(uuidString: savedPeripherals!.first!)!])
             guard let peripheral = thisPeripheral.first else {
                 state = .not_setup
                 logger.warning("could not retrieve savedperipheral!")
                 userDefaults.setValue([], forKey: "savedPeripherals")
                 return
             }
-            cbCM.connect(peripheral)
+            connectedPeripheral = peripheral
+            cbCM.connect(connectedPeripheral!)
             state = .connecting
         }
     }
@@ -79,5 +80,9 @@ class BluetoothManager: NSObject, ObservableObject {
     func unpair() {
         userDefaults.setValue([], forKey: "savedPeripherals")
         state = .not_setup
+    }
+    
+    func disconnect() {
+        cbCM.cancelPeripheralConnection(connectedPeripheral!)
     }
 }

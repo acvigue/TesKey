@@ -12,6 +12,9 @@
 		DF31F13E2B02CC65006A47F4 /* GetStartedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF31F13D2B02CC65006A47F4 /* GetStartedView.swift */; };
 		DF31F1402B02CC67006A47F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF31F13F2B02CC67006A47F4 /* Assets.xcassets */; };
 		DF31F1432B02CC67006A47F4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF31F1422B02CC67006A47F4 /* Preview Assets.xcassets */; };
+		DF3F9D732B095C7000FB2A0E /* CryptoSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DF3F9D722B095C7000FB2A0E /* CryptoSwift */; };
+		DF3F9D752B09813200FB2A0E /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3F9D742B09813200FB2A0E /* SessionManager.swift */; };
+		DF3F9D762B09813200FB2A0E /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3F9D742B09813200FB2A0E /* SessionManager.swift */; };
 		DF930FD42B058501003869D5 /* errors.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF930FCD2B058501003869D5 /* errors.pb.swift */; };
 		DF930FD52B058501003869D5 /* keys.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF930FCE2B058501003869D5 /* keys.pb.swift */; };
 		DF930FD62B058501003869D5 /* universal_message.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF930FCF2B058501003869D5 /* universal_message.pb.swift */; };
@@ -28,7 +31,6 @@
 		DF930FE92B05C438003869D5 /* Signer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF930FE82B05C438003869D5 /* Signer.swift */; };
 		DF930FEB2B05CA31003869D5 /* Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF930FEA2B05CA31003869D5 /* Metadata.swift */; };
 		DF930FED2B05D9A1003869D5 /* Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF930FEC2B05D9A1003869D5 /* Crypto.swift */; };
-		DF930FEF2B0652A9003869D5 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF930FEE2B0652A9003869D5 /* SessionManager.swift */; };
 		DF930FF22B065FAD003869D5 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DF930FF02B065FAD003869D5 /* Model.xcdatamodeld */; };
 		DF930FFC2B072607003869D5 /* TesKey_PhoneTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF930FFB2B072607003869D5 /* TesKey_PhoneTestApp.swift */; };
 		DF9310002B072608003869D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF930FFF2B072608003869D5 /* Assets.xcassets */; };
@@ -40,7 +42,6 @@
 		DF93100C2B072640003869D5 /* Signer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF930FE82B05C438003869D5 /* Signer.swift */; };
 		DF93100D2B072640003869D5 /* Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF930FEC2B05D9A1003869D5 /* Crypto.swift */; };
 		DF93100E2B072640003869D5 /* BluetoothManager-CMDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD10B8C2B03FFA9007E8477 /* BluetoothManager-CMDelegate.swift */; };
-		DF93100F2B072640003869D5 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF930FEE2B0652A9003869D5 /* SessionManager.swift */; };
 		DF9310102B072644003869D5 /* universal_message.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF930FCF2B058501003869D5 /* universal_message.pb.swift */; };
 		DF9310112B072644003869D5 /* car_server.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF930FD12B058501003869D5 /* car_server.pb.swift */; };
 		DF9310122B072644003869D5 /* signatures.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF930FD22B058501003869D5 /* signatures.pb.swift */; };
@@ -60,6 +61,13 @@
 		DF9310232B0750BF003869D5 /* Dispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9310212B0750BF003869D5 /* Dispatcher.swift */; };
 		DF9310252B080FC6003869D5 /* ConnectedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9310242B080FC6003869D5 /* ConnectedView.swift */; };
 		DF9310262B080FC6003869D5 /* ConnectedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9310242B080FC6003869D5 /* ConnectedView.swift */; };
+		DFCC0D4A2B0A6BA0004E8D74 /* SecKeyConvertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCC0D492B0A6BA0004E8D74 /* SecKeyConvertable.swift */; };
+		DFCC0D4C2B0A6BEF004E8D74 /* SecKeyStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCC0D4B2B0A6BEF004E8D74 /* SecKeyStore.swift */; };
+		DFCC0D4D2B0A6CB0004E8D74 /* SecKeyStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCC0D4B2B0A6BEF004E8D74 /* SecKeyStore.swift */; };
+		DFCC0D4E2B0A6CBA004E8D74 /* SecKeyConvertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCC0D492B0A6BA0004E8D74 /* SecKeyConvertable.swift */; };
+		DFCC0D502B0A6D1E004E8D74 /* KeyStoreError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCC0D4F2B0A6D1E004E8D74 /* KeyStoreError.swift */; };
+		DFCC0D512B0A6D1E004E8D74 /* KeyStoreError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCC0D4F2B0A6D1E004E8D74 /* KeyStoreError.swift */; };
+		DFCC0D532B0AEA82004E8D74 /* CryptoSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DFCC0D522B0AEA82004E8D74 /* CryptoSwift */; };
 		DFD10B862B03BE00007E8477 /* SwiftProtobuf in Frameworks */ = {isa = PBXBuildFile; productRef = DFD10B852B03BE00007E8477 /* SwiftProtobuf */; };
 		DFD10B882B03BE0B007E8477 /* vcsec.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD10B872B03BE0B007E8477 /* vcsec.pb.swift */; };
 		DFD10B8B2B03FF83007E8477 /* BluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD10B8A2B03FF83007E8477 /* BluetoothManager.swift */; };
@@ -97,6 +105,7 @@
 		DF31F13D2B02CC65006A47F4 /* GetStartedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedView.swift; sourceTree = "<group>"; };
 		DF31F13F2B02CC67006A47F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DF31F1422B02CC67006A47F4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		DF3F9D742B09813200FB2A0E /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		DF930FCD2B058501003869D5 /* errors.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = errors.pb.swift; sourceTree = "<group>"; };
 		DF930FCE2B058501003869D5 /* keys.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = keys.pb.swift; sourceTree = "<group>"; };
 		DF930FCF2B058501003869D5 /* universal_message.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = universal_message.pb.swift; sourceTree = "<group>"; };
@@ -113,7 +122,6 @@
 		DF930FE82B05C438003869D5 /* Signer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Signer.swift; sourceTree = "<group>"; };
 		DF930FEA2B05CA31003869D5 /* Metadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metadata.swift; sourceTree = "<group>"; };
 		DF930FEC2B05D9A1003869D5 /* Crypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crypto.swift; sourceTree = "<group>"; };
-		DF930FEE2B0652A9003869D5 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		DF930FF12B065FAD003869D5 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		DF930FF92B072606003869D5 /* TesKey-PhoneTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TesKey-PhoneTest.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF930FFB2B072607003869D5 /* TesKey_PhoneTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TesKey_PhoneTestApp.swift; sourceTree = "<group>"; };
@@ -121,6 +129,9 @@
 		DF9310022B072608003869D5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DF9310212B0750BF003869D5 /* Dispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dispatcher.swift; sourceTree = "<group>"; };
 		DF9310242B080FC6003869D5 /* ConnectedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectedView.swift; sourceTree = "<group>"; };
+		DFCC0D492B0A6BA0004E8D74 /* SecKeyConvertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecKeyConvertable.swift; sourceTree = "<group>"; };
+		DFCC0D4B2B0A6BEF004E8D74 /* SecKeyStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecKeyStore.swift; sourceTree = "<group>"; };
+		DFCC0D4F2B0A6D1E004E8D74 /* KeyStoreError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyStoreError.swift; sourceTree = "<group>"; };
 		DFD10B872B03BE0B007E8477 /* vcsec.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vcsec.pb.swift; sourceTree = "<group>"; };
 		DFD10B8A2B03FF83007E8477 /* BluetoothManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothManager.swift; sourceTree = "<group>"; };
 		DFD10B8C2B03FFA9007E8477 /* BluetoothManager-CMDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BluetoothManager-CMDelegate.swift"; sourceTree = "<group>"; };
@@ -132,6 +143,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DFD10B862B03BE00007E8477 /* SwiftProtobuf in Frameworks */,
+				DFCC0D532B0AEA82004E8D74 /* CryptoSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,6 +152,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF9310202B072678003869D5 /* SwiftProtobuf in Frameworks */,
+				DF3F9D732B095C7000FB2A0E /* CryptoSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,7 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				DF9310072B072622003869D5 /* Shared */,
-				DF31F13A2B02CC65006A47F4 /* TesKeyWatch */,
+				DF31F13A2B02CC65006A47F4 /* TesKey Watch App */,
 				DF930FFA2B072607003869D5 /* TesKey-PhoneTest */,
 				DF31F1312B02CC65006A47F4 /* Products */,
 				DF93101E2B072678003869D5 /* Frameworks */,
@@ -167,14 +180,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		DF31F13A2B02CC65006A47F4 /* TesKeyWatch */ = {
+		DF31F13A2B02CC65006A47F4 /* TesKey Watch App */ = {
 			isa = PBXGroup;
 			children = (
 				DF31F13B2B02CC65006A47F4 /* TesKeyApp.swift */,
 				DF31F13F2B02CC67006A47F4 /* Assets.xcassets */,
 				DF31F1412B02CC67006A47F4 /* Preview Content */,
 			);
-			path = TesKeyWatch;
+			path = "TesKey Watch App";
 			sourceTree = "<group>";
 		};
 		DF31F1412B02CC67006A47F4 /* Preview Content */ = {
@@ -221,6 +234,7 @@
 		DF9310072B072622003869D5 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				DFCC0D482B0A6B92004E8D74 /* Extensions */,
 				DFD10B892B03FF72007E8477 /* StateManagers */,
 				DF930FDB2B05850A003869D5 /* Protobufs */,
 				DF930FF02B065FAD003869D5 /* Model.xcdatamodeld */,
@@ -242,17 +256,27 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		DFCC0D482B0A6B92004E8D74 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DFCC0D492B0A6BA0004E8D74 /* SecKeyConvertable.swift */,
+				DFCC0D4B2B0A6BEF004E8D74 /* SecKeyStore.swift */,
+				DFCC0D4F2B0A6D1E004E8D74 /* KeyStoreError.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		DFD10B892B03FF72007E8477 /* StateManagers */ = {
 			isa = PBXGroup;
 			children = (
 				DFD10B8A2B03FF83007E8477 /* BluetoothManager.swift */,
 				DFD10B8C2B03FFA9007E8477 /* BluetoothManager-CMDelegate.swift */,
-				DF930FE62B05A497003869D5 /* Vehicle.swift */,
+				DF930FEC2B05D9A1003869D5 /* Crypto.swift */,
+				DF9310212B0750BF003869D5 /* Dispatcher.swift */,
+				DF3F9D742B09813200FB2A0E /* SessionManager.swift */,
 				DF930FE82B05C438003869D5 /* Signer.swift */,
 				DF930FEA2B05CA31003869D5 /* Metadata.swift */,
-				DF930FEC2B05D9A1003869D5 /* Crypto.swift */,
-				DF930FEE2B0652A9003869D5 /* SessionManager.swift */,
-				DF9310212B0750BF003869D5 /* Dispatcher.swift */,
+				DF930FE62B05A497003869D5 /* Vehicle.swift */,
 			);
 			path = StateManagers;
 			sourceTree = "<group>";
@@ -292,6 +316,7 @@
 			name = "TesKey Watch App";
 			packageProductDependencies = (
 				DFD10B852B03BE00007E8477 /* SwiftProtobuf */,
+				DFCC0D522B0AEA82004E8D74 /* CryptoSwift */,
 			);
 			productName = "TesKey Watch App";
 			productReference = DF31F1362B02CC65006A47F4 /* TesKey Watch App.app */;
@@ -312,6 +337,7 @@
 			name = "TesKey-PhoneTest";
 			packageProductDependencies = (
 				DF93101F2B072678003869D5 /* SwiftProtobuf */,
+				DF3F9D722B095C7000FB2A0E /* CryptoSwift */,
 			);
 			productName = "TesKey-PhoneTest";
 			productReference = DF930FF92B072606003869D5 /* TesKey-PhoneTest.app */;
@@ -349,6 +375,7 @@
 			mainGroup = DF31F1292B02CC65006A47F4;
 			packageReferences = (
 				DFD10B842B03BE00007E8477 /* XCRemoteSwiftPackageReference "swift-protobuf" */,
+				DF3F9D712B095C7000FB2A0E /* XCRemoteSwiftPackageReference "CryptoSwift" */,
 			);
 			productRefGroup = DF31F1312B02CC65006A47F4 /* Products */;
 			projectDirPath = "";
@@ -397,7 +424,9 @@
 				DF930FD72B058501003869D5 /* vehicle.pb.swift in Sources */,
 				DF930FF22B065FAD003869D5 /* Model.xcdatamodeld in Sources */,
 				DF9310222B0750BF003869D5 /* Dispatcher.swift in Sources */,
+				DF3F9D752B09813200FB2A0E /* SessionManager.swift in Sources */,
 				DFD10B882B03BE0B007E8477 /* vcsec.pb.swift in Sources */,
+				DFCC0D4A2B0A6BA0004E8D74 /* SecKeyConvertable.swift in Sources */,
 				DF930FEB2B05CA31003869D5 /* Metadata.swift in Sources */,
 				DF930FD52B058501003869D5 /* keys.pb.swift in Sources */,
 				DF930FD62B058501003869D5 /* universal_message.pb.swift in Sources */,
@@ -407,17 +436,18 @@
 				DF930FE52B05A0DB003869D5 /* ConnectingView.swift in Sources */,
 				DF930FD92B058501003869D5 /* signatures.pb.swift in Sources */,
 				DF9310252B080FC6003869D5 /* ConnectedView.swift in Sources */,
-				DF930FEF2B0652A9003869D5 /* SessionManager.swift in Sources */,
 				DF930FD42B058501003869D5 /* errors.pb.swift in Sources */,
 				DFD10B8B2B03FF83007E8477 /* BluetoothManager.swift in Sources */,
 				DF930FED2B05D9A1003869D5 /* Crypto.swift in Sources */,
 				DF930FE12B059E55003869D5 /* DisconnectedView.swift in Sources */,
+				DFCC0D4C2B0A6BEF004E8D74 /* SecKeyStore.swift in Sources */,
 				DF930FE72B05A497003869D5 /* Vehicle.swift in Sources */,
 				DF930FDF2B059098003869D5 /* DiscoveryView.swift in Sources */,
 				DF930FD82B058501003869D5 /* car_server.pb.swift in Sources */,
 				DF930FE32B059E77003869D5 /* ConnectFailedView.swift in Sources */,
 				DF930FDD2B058F7F003869D5 /* ContentView.swift in Sources */,
 				DF31F13C2B02CC65006A47F4 /* TesKeyApp.swift in Sources */,
+				DFCC0D502B0A6D1E004E8D74 /* KeyStoreError.swift in Sources */,
 				DF930FDA2B058501003869D5 /* common.pb.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -429,7 +459,8 @@
 				DF930FFC2B072607003869D5 /* TesKey_PhoneTestApp.swift in Sources */,
 				DF93100A2B072640003869D5 /* Vehicle.swift in Sources */,
 				DF9310232B0750BF003869D5 /* Dispatcher.swift in Sources */,
-				DF93100F2B072640003869D5 /* SessionManager.swift in Sources */,
+				DFCC0D4E2B0A6CBA004E8D74 /* SecKeyConvertable.swift in Sources */,
+				DF3F9D762B09813200FB2A0E /* SessionManager.swift in Sources */,
 				DF93101C2B072648003869D5 /* GetStartedView.swift in Sources */,
 				DF9310172B072644003869D5 /* common.pb.swift in Sources */,
 				DF9310122B072644003869D5 /* signatures.pb.swift in Sources */,
@@ -443,6 +474,7 @@
 				DF9310082B07262E003869D5 /* Model.xcdatamodeld in Sources */,
 				DF93101A2B072648003869D5 /* ConnectFailedView.swift in Sources */,
 				DF93101D2B072648003869D5 /* ConnectingView.swift in Sources */,
+				DFCC0D4D2B0A6CB0004E8D74 /* SecKeyStore.swift in Sources */,
 				DF9310132B072644003869D5 /* vehicle.pb.swift in Sources */,
 				DF9310142B072644003869D5 /* keys.pb.swift in Sources */,
 				DF93100D2B072640003869D5 /* Crypto.swift in Sources */,
@@ -450,6 +482,7 @@
 				DF9310102B072644003869D5 /* universal_message.pb.swift in Sources */,
 				DF93101B2B072648003869D5 /* DisconnectedView.swift in Sources */,
 				DF93100E2B072640003869D5 /* BluetoothManager-CMDelegate.swift in Sources */,
+				DFCC0D512B0A6D1E004E8D74 /* KeyStoreError.swift in Sources */,
 				DF9310112B072644003869D5 /* car_server.pb.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -784,6 +817,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		DF3F9D712B095C7000FB2A0E /* XCRemoteSwiftPackageReference "CryptoSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/krzyzanowskim/CryptoSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.8.0;
+			};
+		};
 		DFD10B842B03BE00007E8477 /* XCRemoteSwiftPackageReference "swift-protobuf" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-protobuf.git";
@@ -795,10 +836,20 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		DF3F9D722B095C7000FB2A0E /* CryptoSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DF3F9D712B095C7000FB2A0E /* XCRemoteSwiftPackageReference "CryptoSwift" */;
+			productName = CryptoSwift;
+		};
 		DF93101F2B072678003869D5 /* SwiftProtobuf */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = DFD10B842B03BE00007E8477 /* XCRemoteSwiftPackageReference "swift-protobuf" */;
 			productName = SwiftProtobuf;
+		};
+		DFCC0D522B0AEA82004E8D74 /* CryptoSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DF3F9D712B095C7000FB2A0E /* XCRemoteSwiftPackageReference "CryptoSwift" */;
+			productName = CryptoSwift;
 		};
 		DFD10B852B03BE00007E8477 /* SwiftProtobuf */ = {
 			isa = XCSwiftPackageProductDependency;

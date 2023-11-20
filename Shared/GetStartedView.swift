@@ -12,7 +12,7 @@ struct GetStartedView: View {
     
     var body: some View {
         VStack(alignment: .center) {
-            Text("TesKey")
+            Text("WatchKey")
                 .font(.title2)
             Spacer()
             Text("Unlock and control your vehicle on the go")
@@ -29,8 +29,9 @@ struct GetStartedView: View {
 
 #if DEBUG
 struct GetStartedView_Previews : PreviewProvider {
+    static var bm = BluetoothManager()
     static var previews: some View {
-        GetStartedView()
+        GetStartedView().environmentObject(bm)
     }
 
 }

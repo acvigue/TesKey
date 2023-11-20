@@ -45,6 +45,11 @@ extension BluetoothManager: CBCentralManagerDelegate {
         }
         
         logger.info("periph \(peripheral.name!) disconnected");
-        state = .disconnected
+        let savedPeripherals = userDefaults.value(forKey: "savedPeripherals") as? [UUID];
+        if(savedPeripherals?.isEmpty ?? true) {
+            state = .not_setup
+        } else {
+            state = .disconnected
+        }
     }
 }

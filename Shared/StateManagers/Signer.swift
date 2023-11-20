@@ -15,19 +15,19 @@ enum AuthMethod {
 }
 
 class Signer: NSObject {
-    private var vin: String
-    private var privKey: SecKey? = nil;
-    private var agreedSymmetricKey: SymmetricKey? = nil;
+    private var privKey: P256.KeyAgreement.PrivateKey? = nil;
+    var agreedSymmetricKey: Data? = nil;
     private var pubKeyBytes: Data? = nil;
-    private var verifierPubKeyBytes: Data? = nil;
+    private var verifierPubKey: P256.KeyAgreement.PublicKey? = nil;
     private var defaults = UserDefaults();
     private var sessionManager: SessionManager;
+    private var uuid: UUID;
     
     private var logger = Logger(subsystem: "Tesla", category: "Signer")
     
-    init(vin: String, sessionManager: SessionManager) {
-        self.vin = vin
+    init(uuid: UUID, sessionManager: SessionManager) {
         self.sessionManager = sessionManager
+        self.uuid = uuid
         super.init()
         
         loadKeys()
@@ -38,47 +38,70 @@ class Signer: NSObject {
         return pubKeyBytes ?? Data()
     }
     
+    func getKeyId() -> Data {
+        var sha1Hash = Data()
+        var ourSHA1 = Insecure.SHA1.init()
+        ourSHA1.update(data: getPublicKey())
+        ourSHA1.finalize().withUnsafeBytes { bytes in
+            sha1Hash.append(contentsOf: bytes)
+        }
+        sha1Hash = sha1Hash.dropLast(sha1Hash.count - 4)
+        return sha1Hash
+    }
+    
+    func setVerifierPubKey(_ key: Data) {
+        verifierPubKey = try! P256.KeyAgreement.PublicKey(x963Representation: key)
+
+        logger.debug("public key (verifier) bytes: \((key).hexEncodedString())")
+        doKeyExchange()
+    }
+    
+    func doKeyExchange() {
+        var ssData = Data()
+
+        try! privKey!.sharedSecretFromKeyAgreement(with: verifierPubKey!).withUnsafeBytes { byte in
+            ssData.append(contentsOf: byte)
+        }
+
+        print("ECDH secret: \(ssData.hexEncodedString())")
+
+        var hashData = Data()
+        Insecure.SHA1.hash(data: ssData).withUnsafeBytes { byte in
+            hashData.append(contentsOf: byte)
+        }
+
+        hashData = hashData[0...15]
+        
+        agreedSymmetricKey = hashData
+        logger.debug("Agreed symmetric key: \((self.agreedSymmetricKey! as Data).hexEncodedString())")
+    }
+    
     private func loadKeys() {
         // Clients can check if publicKey has been enrolled and synchronized
         //with the infotainment system by attempting to call v.SessionInfo
         //with the domain argument set to [universal.Domain_DOMAIN_INFOTAINMENT].
-        
-        let tag = "me.vigue.teskey.\(vin)".data(using: .utf8)!
-        let getquery: [String: Any] = [
-            kSecClass as String: kSecClassKey,
-            kSecAttrApplicationTag as String: tag,
-            kSecAttrKeyType as String: kSecAttrKeyTypeECSECPrimeRandom,
-            kSecReturnRef as String: true
-        ]
-        
-        var item: CFTypeRef?
-        let status = SecItemCopyMatching(getquery as CFDictionary, &item)
-        if(status != errSecSuccess) {
-            let attributes: [String: Any] = [
-                kSecAttrKeyType as String: kSecAttrKeyTypeECSECPrimeRandom,
-                kSecAttrKeySizeInBits as String: 256,
-                kSecAttrTokenID as String: kSecAttrTokenIDSecureEnclave,
-                kSecPrivateKeyAttrs as String: [
-                    kSecAttrIsPermanent as String: true,
-                    kSecAttrApplicationTag as String: tag
-                ]
-            ]
-            var error: Unmanaged<CFError>?
-            guard let privateKey = SecKeyCreateRandomKey(attributes as CFDictionary, &error) else {
-                abort()
+
+        //function will attempt to load key from the secure enclave, else
+        //it will generate one and store it
+        let tag = "me.vigue.teskey_se.\(uuid.uuidString)"
+        do {
+            privKey = try SecKeyStore().readKey(label: tag)
+            if(privKey == nil) {
+                createKeys(tag: tag)
+                return;
             }
-            item = privateKey as CFTypeRef
-            logger.info("generated new SE private key for vehicle \(self.vin)")
-        } else {
-            logger.debug("retrieved saved SE private key for vehicle \(self.vin)")
+            pubKeyBytes = privKey!.publicKey.x963Representation
+            logger.info("Loaded signer private key from SE (\(tag)): \(self.privKey!.pemRepresentation)")
+        } catch {
+            createKeys(tag: tag)
         }
-        
-        privKey = (item as! SecKey)
-        
-        //Get uncompressed x9.62 pubkey
-        guard let pubKey = SecKeyCopyPublicKey(privKey!) else { return }
-        var error: Unmanaged<CFError>?
-        pubKeyBytes = SecKeyCopyExternalRepresentation(pubKey, &error)! as Data
+    }
+    
+    private func createKeys(tag: String) {
+        privKey = P256.KeyAgreement.PrivateKey()
+        logger.info("Created signer private key in SE (\(tag)): \(self.privKey!.pemRepresentation)")
+        try! SecKeyStore().storeKey(privKey!, label: tag)
+        pubKeyBytes = privKey!.publicKey.x963Representation
     }
     
     func genRandomData(_ len: Int) -> Data {
@@ -103,7 +126,7 @@ class Signer: NSObject {
         
         if(authType == .Encrypt) {
             var gcmData = AES_GCM_Personalized_Signature_Data()
-            let counter = 1;
+            let _ = 1;
             
             logger.debug(" -> encrypting: \(editableMessage.uuid)")
             
@@ -120,9 +143,7 @@ class Signer: NSObject {
             
             editableMessage.signatureData.aesGcmPersonalizedData = gcmData
             
-            let m = extractMetadata(editableMessage, signatureType: SignatureType(rawValue: 5)!)
-            
-            let plaintext = editableMessage.protobufMessageAsBytes
+            let _ = editableMessage.protobufMessageAsBytes
             
             
             editableMessage.signatureData.signerIdentity.publicKey = pubKeyBytes!
@@ -138,19 +159,5 @@ class Signer: NSObject {
                 return (signedMessage: Data(), messageUUID: editableMessage.uuid.hexEncodedString())
             }
         }
-    }
-                                         
-    private func extractMetadata(_ message: RoutableMessage, signatureType: SignatureType) -> Metadata {
-        let m = Metadata()
-        m.Add(tag: .SIGNATURE_TYPE, Data([UInt8(signatureType.rawValue)]))
-        m.Add(tag: .DOMAIN, Data([UInt8(message.toDestination.domain.rawValue)]))
-        m.Add(tag: .PERSONALIZATION, vin.data(using: .utf8)!)
-        m.Add(tag: .EPOCH, Data())
-        m.AddUint32(tag: .EXPIRES_AT, message.signatureData.aesGcmPersonalizedData.expiresAt)
-        m.AddUint32(tag: .COUNTER, UInt32(0))
-        if(message.flags > 0) {
-            m.AddUint32(tag: .FLAGS, message.flags)
-        }
-        return m
     }
 }
