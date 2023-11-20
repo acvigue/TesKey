@@ -8,6 +8,7 @@
 import Foundation
 import CoreData
 import os
+import CryptoSwift
 
 class SessionManager: NSObject {
     private var setTime: UInt32 = 0;
@@ -30,12 +31,13 @@ class SessionManager: NSObject {
     //Called when Dispatcher receives a valid SessionInfo response
     func updateSessionInfo(_ info: SessionInfo) {
         if(!epoch.elementsEqual(info.epoch) || (setTime <= info.clockTime)) {
-            counter = info.counter
+            counter = max(info.counter, 1)
             
             epoch = Data(info.epoch)
             setTime = info.clockTime
             timeZero = epochStartTime(epochTime: info.clockTime)
         }
+        self.signer?.setVerifierPubKey(info.publicKey)
     }
     
     func epochStartTime(epochTime: UInt32) -> NSDate {
@@ -52,5 +54,38 @@ class SessionManager: NSObject {
     
     func getSigner() -> Signer {
         return signer!
+    }
+    
+    func signRoutableMessage() {
+        
+    }
+    
+    func signVCSECUnsignedMessage(_ msg: UnsignedMessage) -> ToVCSECMessage {
+        self.counter += 1;
+        var u32BE = counter.bigEndian
+        let gcm = GCM(iv: withUnsafeBytes(of: Data(bytes: &u32BE, count: 4), Array.init), mode: .detached)
+        let aes = try! AES(key: withUnsafeBytes(of: getSigner().agreedSymmetricKey!, Array.init), blockMode: gcm, padding: .noPadding)
+        let encrypted = try! aes.encrypt([UInt8](msg.serializedData()))
+        
+        logger.debug("nonce: \(Data(bytes: &u32BE, count: 4).hexEncodedString()), counter: \(self.counter)")
+        
+        var toMessage = ToVCSECMessage()
+        
+        var ciphertext = Data()
+        ciphertext.append(contentsOf: encrypted)
+        
+        logger.debug("AES: \(ciphertext.hexEncodedString())")
+
+        var tag = Data()
+        tag.append(contentsOf: gcm.authenticationTag!)
+        
+        toMessage.signedMessage.protobufMessageAsBytes = ciphertext
+        toMessage.signedMessage.signature = tag
+        toMessage.signedMessage.counter = self.counter
+        toMessage.signedMessage.keyID = getSigner().getKeyId()
+        
+        logger.debug("\(toMessage.textFormatString())")
+        
+        return toMessage
     }
 }
